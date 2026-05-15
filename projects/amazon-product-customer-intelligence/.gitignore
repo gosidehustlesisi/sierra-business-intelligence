@@ -1,0 +1,16 @@
+# Data files - users should run fetch_amazon_data.py to download
+data/*.csv
+data/*.json.gz
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Python
+__pycache__/
+*.pyc
+.env
+venv/
+
+# OS
+.DS_Store

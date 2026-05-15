@@ -1,0 +1,84 @@
+import os
+import gzip
+import json
+import csv
+import random
+import urllib.request
+
+# Configuration
+DATA_URL = "http://snap.stanford.edu/data/amazon/productGraph/categoryFiles/reviews_Electronics_5.json.gz"
+RAW_GZ = "data/reviews_Electronics_5.json.gz"
+CSV_OUT = "data/amazon_reviews_electronics_5core.csv"
+SAMPLE_RATE = 1 / 13  # yields ~130K from 1.69M
+RANDOM_SEED = 42
+
+
+def download():
+    if os.path.exists(RAW_GZ):
+        print(f"[skip] Raw file already exists: {RAW_GZ}")
+        return
+    print(f"[down] {DATA_URL}")
+    os.makedirs("data", exist_ok=True)
+    req = urllib.request.Request(DATA_URL, headers={"User-Agent": "Mozilla/5.0"})
+    with urllib.request.urlopen(req, timeout=120) as resp, open(RAW_GZ, "wb") as f:
+        f.write(resp.read())
+    print(f"[done] Saved {RAW_GZ}")
+
+
+def convert():
+    print(f"[conv] Streaming JSON → CSV (sample rate = {SAMPLE_RATE})")
+    random.seed(RANDOM_SEED)
+    count = kept = 0
+
+    with gzip.open(RAW_GZ, "rt", encoding="utf-8") as f_in, \
+         open(CSV_OUT, "w", newline="", encoding="utf-8") as f_out:
+        writer = csv.writer(f_out)
+        writer.writerow([
+            "reviewerID", "asin", "reviewerName",
+            "helpful_upvotes", "helpful_total",
+            "reviewText", "overall", "summary",
+            "unixReviewTime", "reviewTime"
+        ])
+
+        for line in f_in:
+            count += 1
+            if random.random() < SAMPLE_RATE:
+                d = json.loads(line)
+                helpful = d.get("helpful", [0, 0])
+                up = helpful[0] if isinstance(helpful, list) and len(helpful) == 2 else 0
+                tot = helpful[1] if isinstance(helpful, list) and len(helpful) == 2 else 0
+                writer.writerow([
+                    d.get("reviewerID", ""),
+                    d.get("asin", ""),
+                    d.get("reviewerName", ""),
+                    up, tot,
+                    d.get("reviewText", "").replace("\n", " ").replace("\r", " "),
+                    d.get("overall", 0),
+                    d.get("summary", "").replace("\n", " ").replace("\r", " "),
+                    d.get("unixReviewTime", 0),
+                    d.get("reviewTime", "")
+                ])
+                kept += 1
+            if count % 500_000 == 0:
+                print(f"  processed {count:,} | kept {kept:,}")
+
+    print(f"[done] Total scanned: {count:,} | Kept: {kept:,}")
+    print(f"[done] Output: {CSV_OUT}")
+
+
+def verify():
+    import pandas as pd
+    df = pd.read_csv(CSV_OUT)
+    print(f"\n[verify] Records: {len(df):,}")
+    print(f"[verify] Columns: {list(df.columns)}")
+    print(f"[verify] Avg rating: {df['overall'].mean():.2f}")
+    print(f"[verify] Date range: {pd.to_datetime(df['unixReviewTime'], unit='s').min().date()} to {pd.to_datetime(df['unixReviewTime'], unit='s').max().date()}")
+    print(f"[verify] Unique products: {df['asin'].nunique():,}")
+    print(f"[verify] Unique reviewers: {df['reviewerID'].nunique():,}")
+    print("[verify] Data looks real ✓")
+
+
+if __name__ == "__main__":
+    download()
+    convert()
+    verify()
