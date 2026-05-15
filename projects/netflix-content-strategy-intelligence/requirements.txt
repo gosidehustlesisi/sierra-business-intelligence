@@ -1,0 +1,11 @@
+duckdb
+pandas
+numpy
+matplotlib
+seaborn
+plotly
+streamlit
+kagglehub
+jupyterlab
+ipython-sql
+pandasql
