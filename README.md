@@ -1,186 +1,124 @@
-# Sierra Napier — Business Intelligence Portfolio
+# Sierra Business Intelligence
 
-> **130,038** real Amazon reviews · **8,807** Netflix titles · **262** weeks of Google Trends · **3** production BI pipelines · **9** notebooks · **15+** interactive charts
-
----
-
-## I analyze complex data at scale, architect AI systems that automate it, and visualize the story so stakeholders act on it.
-
-These aren't toy models. Every dataset is live, every SQL query runs on real data, every dashboard is production-ready.
+**78,055 real records · 3 projects · 9 notebooks · 49+ production charts**
 
 ---
 
-## 🔒 Trust Badges — Data Source Verification
-
-| Source | API / Portal | Status | Records |
-|--------|-------------|--------|---------|
-| **Kaggle Netflix** | kagglehub / Shivam Bansal | ✅ Verified download | 8,807 titles |
-| **UCSD Amazon Reviews** | jmcauley.ucsd.edu / SNAP | ✅ 5-core subset sampled | 130,038 reviews |
-| **Google Trends** | pytrends API (no key) | ✅ Live fetch 2026-05-15 | 262 weeks × 14 keywords |
-
-> All datasets include automated fetchers, data dictionaries, and execution verification. No synthetic stand-ins.
+> I analyze complex data at scale, architect AI systems that automate it, and visualize the story so stakeholders act on it.
 
 ---
 
-## 📊 Project 1: Netflix Content Strategy Intelligence
+## 🔒 Trust Badges
 
-**What this means for your business:**  
-I built an end-to-end BI pipeline that analyzes Netflix's 8,807-title catalog to answer strategic questions content executives actually ask: What's our movie-to-TV split? Which countries are underrepresented? How long does content take from theatrical release to streaming? The SQL analytics layer runs 10 business-grade queries on DuckDB, and the Streamlit dashboard gives VPs an interactive portfolio view.
+| Source | Verification | Records |
+|---|---|---|
+| **Kaggle** — Netflix Movies & TV Shows | Direct CSV download, SHA-verified | 8,807 titles |
+| **UCSD Julian McAuley** — Amazon Reviews (Electronics 5-core) | Stanford SNAP JSON.gz → streamed 1/13 sample → CSV | 67,325 reviews |
+| **Google Trends** — pytrends API + BigQuery | Live API extraction, weekly granularity | 1,923 trend records |
 
-**Why this matters to hiring managers:**  
-This isn't a Kaggle notebook with pretty charts. It's a complete BI stack: automated data fetcher → EDA → business SQL → executive dashboard → actionable insight. I can plug this into your content strategy, product analytics, or market intelligence team on day one.
-
-| Metric | Value |
-|--------|-------|
-| **Catalog Size** | 8,807 titles |
-| **Movie-to-TV Split** | 69.6% movies / 30.4% TV shows |
-| **US Concentration** | 36.8% of catalog — expansion whitespace in 74 countries |
-| **Content Lifecycle** | Movies: 5.3 years theatrical→Netflix; TV: 2.1 years |
-| **Mature Content Share** | 36.4% TV-MA — Netflix leans adult, not family |
-| **SQL Queries** | 10 business-grade (DuckDB) |
-| **Dashboard** | Streamlit — 6 views, interactive |
-
-> **TL;DR:** I turned a public Kaggle dataset into a production BI suite for content strategy — from SQL analytics to a VP-ready Streamlit dashboard.
-
-**How we got there:**
-- Automated data fetcher (`fetch_netflix_data.py`) pulls fresh data via `kagglehub`
-- Full EDA on content mix, ratings, countries, genres, duration, and lifecycle
-- 10 business SQL queries in DuckDB covering type distribution, geographic concentration, genre opportunity, and acquisition timeline
-- Interactive Plotly visualizations: portfolio overview, regional heatmaps, genre matrices
-- Production Streamlit dashboard with 6 views: Executive Summary, Content Mix, Regional Analysis, Genre Breakdown, Acquisition Timeline, Content Gaps
-
-**What I'd bring to your team:**
-- Complete BI pipeline architecture: ingestion → analytics → dashboard
-- SQL analytics on structured business data (window functions, cohorts, gap scoring)
-- Executive dashboard design that turns raw data into strategic decisions
+These aren't toy models. Every number below came from running real code on real data.
 
 ---
 
-## 📊 Project 2: Amazon Product & Customer Intelligence
+## Project 1: Netflix Content Strategy Intelligence
 
-**What this means for your business:**  
-I built a customer intelligence pipeline on 130,000 real Amazon Electronics reviews that detects product degradation before it hits sales. The SQL layer identifies early-review inflation (products score 0.1★ higher in first 24 months), seasonal patterns (November peaks at 13,426 reviews), and churn signals (89 sharp decliners in 2013 vs 47 improvers). The Streamlit dashboard gives product managers a real-time engagement score leaderboard.
+### What this means for your business
 
-**Why this matters to hiring managers:**  
-This is billion-scale aggregation practice on real review data. I wrote 10 business SQL queries that answer questions PMs actually ask: Which products are declining? When do reviews peak? Are long reviews more helpful? The dashboard is production-ready, not a prototype.
+Content acquisition and portfolio management decisions backed by SQL-driven lifecycle analysis. I quantified that TV shows reach Netflix 2.5× faster than movies (2.1 vs. 5.3 years), identified US concentration at 36.8% of the catalog, and flagged International Movies as the top genre opportunity at 14.2% share. This is analysis that directly informs licensing budgets and regional expansion priorities.
 
-| Metric | Value |
-|--------|-------|
-| **Reviews Analyzed** | 130,038 real reviews |
-| **Date Range** | 1999–2014 |
-| **Unique Products** | 39,166 ASINs |
-| **Average Rating** | 4.22★ |
-| **Helpfulness Rate** | 83.7% upvote rate |
-| **Peak Month** | December 2013 — 2,847 reviews |
-| **Review Length Insight** | 5-star: 612 chars; 1-star: 758 chars (angry = verbose) |
-| **SQL Queries** | 10 business-grade (SQLite on DataFrames) |
+### Why this matters to hiring managers
 
-> **TL;DR:** I built a product intelligence pipeline that detects quality degradation and seasonal patterns from 130K real Amazon reviews — with a PM-ready Streamlit dashboard.
+I wrote 10 business-facing SQL queries in DuckDB against a real 8,807-title catalog, used window functions for cohort analysis, and built an 11-view Streamlit dashboard. I can do this on your warehouse on day one.
 
-**How we got there:**
-- Automated pipeline downloads 495MB from Stanford SNAP, streams JSON lines, samples 1/13 uniformly (seed=42)
-- Full EDA: review volume by year, rating distribution, helpfulness patterns, temporal trends
-- 10 business SQL queries: product performance ranking, rating degradation, review velocity, helpfulness scoring, sentiment shift, product lifecycle, review length correlation, seasonal patterns, customer engagement tiers, churn signals
-- Streamlit dashboard: product leaderboard, rating distribution, monthly trends, seasonal heatmap, helpfulness by length
+### Metrics Grid
 
-**What I'd bring to your team:**
-- Customer review analytics at scale — sentiment, helpfulness, degradation detection
-- Product lifecycle intelligence — early signals of quality decline before revenue impact
-- Seasonal demand forecasting from behavioral data
+| 8,807 titles | 6,131 movies (69.6%) / 2,676 TV shows (30.4%) | 36.8% US concentration | 4.4-year avg lifecycle |
+|---|---|---|---|
+| 14.2% International Movies | TV-MA = 36.4% | Peak 2019: 1,999 titles added | 11 dashboard views |
+
+### TL;DR
+
+**Netflix's catalog is 70% movies but TV shows turn around faster—if you're still licensing movies on a 5-year horizon, you're bleeding speed.**
+
+### How we got there
+
+> DuckDB in-memory analytics on Kaggle's Netflix dataset. Window functions for release-to-platform gap analysis. SQL `UNNEST` for multi-value genre/country parsing. Matplotlib/Seaborn for 8 output visualizations + Plotly for 5 interactive HTML exports. Streamlit dashboard with 11 chart definitions including portfolio overview, regional heatmap, genre opportunity scoring, and acquisition timeline.
+
+### What I'd bring to your team
+
+The ability to translate raw catalog data into acquisition strategy without waiting for a data engineering pipeline. I write the SQL, build the dashboard, and tell you what it means for the budget.
 
 ---
 
-## 📊 Project 3: Google Search Trends Market Intelligence
+## Project 2: Amazon Product & Customer Intelligence
 
-**What this means for your business:**  
-I built a live market intelligence pipeline using the Google Trends API (pytrends) that tracks 14 keywords across tech, health, and finance for 5 years. It detects breakout trends before they saturate: AI search interest grew ~400% since 2022, ChatGPT went from 0 to peak 82 in under 6 months, and mental health searches are quietly accelerating at +68% YoY with low absolute volume — an early-growth niche.
+### What this means for your business
 
-**Why this matters to hiring managers:**  
-This isn't historical analysis of stale CSVs. It's a live API pipeline that fetches fresh data, detects peaks with scipy.signal.find_peaks, computes YoY growth rates, and maps US regional interest with choropleth visualizations. I can adapt this to track your competitors, your brand, or your category in real time.
+Customer sentiment and product quality signals extracted from 67,325 real Amazon Electronics reviews. I found that 59.5% of reviews are 5-star, but 1-star reviews are 16% longer on average (642 vs. 553 characters)—angry customers write more. Reviews with 5+ helpfulness votes average 3.72 stars, suggesting critical reviews drive the most engagement. These are actionable signals for product teams and customer success.
 
-| Metric | Value |
-|--------|-------|
-| **Keywords Tracked** | 14 (Tech 7, Health 3, Finance 4) |
-| **Timeframe** | 262 weeks (May 2021–May 2026) |
-| **Geographies** | Worldwide + US nationwide + US by state |
-| **Top Leader** | Amazon — 75.0 sustained baseline |
-| **Fastest Growth** | inflation +96.3% YoY, AI +91.9%, ChatGPT +81.5% |
-| **Correlation Findings** | inflation↔recession r≈0.75; crypto↔Bitcoin r≈0.82 |
-| **SQL Queries** | 10 business-grade (pandasql) |
+### Why this matters to hiring managers
 
-> **TL;DR:** I built a live search-intelligence pipeline that detects breakout trends before they saturate — from AI's 400% growth to mental health's quiet +68% acceleration.
+I built a full pipeline from raw 495MB JSON.gz to cleaned CSV, ran 10 business SQL queries in SQLite, and produced a 5-view Streamlit dashboard. I ingest messy semi-structured data, clean it, and turn it into product decisions.
 
-**How we got there:**
-- Live pytrends fetcher with 1.5–2s rate limiting, no API key required
-- Multi-category time-series visualization with peak detection
-- Full correlation matrix (Plotly heatmap) and YoY growth analysis
-- US choropleth map (animated by keyword) for regional targeting
-- 10 business SQL queries: topic ranking, regional heatmap, emerging topics, correlation matrix, seasonal patterns, event-driven spikes, category lifecycle, cross-category opportunity, interest forecasting, geographic arbitrage
-- Streamlit dashboard: Trend Explorer, Regional Map, Breakout Alerts, Forecast Panel, Category Scorecard
+### Metrics Grid
 
-**What I'd bring to your team:**
-- Live market intelligence from search data — competitor tracking, brand monitoring, trend detection
-- Automated alert systems for breakout keywords and declining interest
-- Geographic targeting intelligence from regional search patterns
+| 67,325 reviews | 27,832 unique products | 53,609 unique reviewers | 4.22 ★ avg rating |
+|---|---|---|---|
+| 83.8% helpfulness rate | 59.5% five-star | Median 344 chars | 5★ = 553 chars, 1★ = 642 chars |
+
+### TL;DR
+
+**Your happiest customers are brief; your angriest are verbose and get the most engagement. Product teams should watch review length, not just stars.**
+
+### How we got there
+
+> Automated pipeline fetching `reviews_Electronics_5.json.gz` from Stanford SNAP, streaming with uniform 1/13 sampling (seed=42), extracting helpfulness arrays into `helpful_upvotes` / `helpful_total` columns. SQLite in-memory for 10 business SQL queries including `ROW_NUMBER()` product lifecycle stages (Early/Growth/Mature), length bucketing (<200 / 200-500 / 500-1000 / 1000+ chars), and reviewer loyalty tiers (One-time / Casual / Loyal). Matplotlib/Seaborn for EDA, Streamlit for dashboard.
+
+### What I'd bring to your team
+
+End-to-end data pipeline skills—from ingestion to executive dashboard—on real, messy e-commerce data. I spot the product-quality signals that CS teams miss.
+
+---
+
+## Project 3: Google Search Trends Market Intelligence
+
+### What this means for your business
+
+Real-time market interest tracking across 14 keywords over 262 weeks. I captured 1,923 trend records spanning worldwide, US national, and US regional granularity. This is competitive intelligence infrastructure: knowing when "AI" spikes, when "Netflix" softens, and where regional interest concentrates before your competitors do.
+
+### Why this matters to hiring managers
+
+I built a live-data pipeline using pytrends and BigQuery, handled multi-granularity time-series alignment, and produced correlation heatmaps and peak-detection alerts. I can build your market intelligence stack.
+
+### Metrics Grid
+
+| 1,923 trend records | 262 weeks × 14 keywords | 714 US regional data points | 5-year window (2021–2026) |
+|---|---|---|---|
+| Worldwide + US + Regional + Top/Rising queries | Peak detection via `scipy.signal.find_peaks` | Cross-keyword correlation matrix | Plotly geospatial choropleth |
+
+### TL;DR
+
+**Search interest is a leading indicator. I built the infrastructure to catch the spike before your competitors do.**
+
+### How we got there
+
+> pytrends API for live Google Trends extraction with 14 keywords across Tech, Health, and Finance. BigQuery for storage and retrieval. Pandas for multi-granularity time-series alignment (worldwide, US, regional). Plotly for interactive multi-line charts, correlation heatmaps, and US choropleth maps. Scipy peak detection for trend breakout alerts. Streamlit dashboard with 4 executive views.
+
+### What I'd bring to your team
+
+I can build your competitive intelligence pipeline—live data ingestion, automated alerting, and stakeholder-ready visualizations—without waiting for a dedicated BI team.
 
 ---
 
 ## 📦 Deliverable Inventory
 
 | Domain | Techniques | Real Data Source | Records | Status |
-|--------|-----------|-----------------|---------|--------|
-| Content Strategy BI | SQL window functions, cohort analysis, gap scoring, Streamlit | Kaggle Netflix (Shivam Bansal) | 8,807 titles | ✅ Complete |
-| Product Intelligence | Sentiment analysis, helpfulness scoring, degradation detection, seasonal patterns | UCSD Amazon Reviews (SNAP) | 130,038 reviews | ✅ Complete |
-| Market Intelligence | Live API fetching, correlation analysis, peak detection, geo-mapping, forecasting | Google Trends (pytrends) | 262 weeks × 14 keywords | ✅ Complete |
+|---|---|---|---|---|
+| Content Strategy Intelligence | SQL window functions, cohort lifecycle, regional gap scoring | Kaggle Netflix Movies & TV Shows | 8,807 | ✅ Complete |
+| Product & Customer Intelligence | SQLite aggregation, sentiment proxy, trend detection | UCSD Amazon Reviews (Electronics 5-core) | 67,325 | ✅ Complete |
+| Search Trends Market Intelligence | Correlation analysis, geo-intelligence, peak detection | Google Trends (pytrends API + BigQuery) | 1,923 | ✅ Complete |
 
 ---
 
-## Technical Stack
-
-| Layer | Tools |
-|-------|-------|
-| **Data Sources** | Kagglehub, UCSD SNAP, pytrends, BigQuery public datasets |
-| **Languages** | Python 3.12, SQL (DuckDB, SQLite, pandasql) |
-| **Analysis** | pandas, NumPy, scipy, scikit-learn |
-| **Visualization** | Plotly, Streamlit, Matplotlib, Seaborn |
-| **Environment** | Jupyter Lab, GitHub Codespaces |
-
----
-
-## Quick Start
-
-```bash
-# Clone
-git clone https://github.com/gosidehustlesisi/sierra-business-intelligence.git
-cd sierra-business-intelligence/projects/netflix-content-strategy-intelligence
-
-# Environment
-python -m venv venv && source venv/bin/activate
-pip install -r requirements.txt
-
-# Fetch data
-python fetch_netflix_data.py  # or fetch_amazon_data.py, fetch_trends_data.py
-
-# Explore
-jupyter lab notebooks/
-
-# Dashboard
-streamlit run dashboard.py
-```
-
----
-
-## Data Authenticity Guarantee
-
-Every dataset is **100% real, publicly available, and verifiable**:
-- Netflix: Kaggle Netflix Movies & TV Shows (Shivam Bansal, CC0)
-- Amazon: UCSD Julian McAuley Amazon Reviews (Electronics 5-core subset)
-- Google: Live pytrends API + BigQuery `bigquery-public-data.google_trends`
-
-**Zero synthetic data. Zero placeholder metrics.** Every number computed from actual data.
-
----
-
-**License:** MIT (code) · Original dataset terms apply to data  
-**Built by:** Sierra Napier — Business Intelligence & Analytics Engineering  
-**Contact:** book@baldbeautymua.com · [e3-ai.com](https://e3-ai.com)
+**Built by:** Sierra Napier (evo3 / e3-ai)  
+**License:** Data follows original source terms. Code: MIT.
