@@ -1,0 +1,14 @@
+{
+  "fetched_at": "2026-05-17T16:58:17.852197",
+  "timestamp_suffix": "20260517_165735",
+  "source": "FALLBACK \u2014 legacy Netflix Kaggle dataset (CC0) transformed to TMDB schema",
+  "source_note": "Run 'export TMDB_API_KEY=xxx && python fetch_tmdb_data.py' for LIVE TMDB data",
+  "record_counts": {
+    "trending_movies": 6131,
+    "popular_tv": 2676,
+    "movie_genres": 27,
+    "top_rated_movies": 6131,
+    "upcoming_movies": 0,
+    "genre_popularity": 27
+  }
+}
