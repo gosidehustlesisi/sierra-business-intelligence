@@ -1,6 +1,6 @@
-# Data files - users should run fetch_amazon_data.py to download
-data/*.csv
+# Raw data files - users should run fetch_amazon_data.py to download the raw source
 data/*.json.gz
+reviews_Electronics_5.json.gz
 
 # Jupyter
 .ipynb_checkpoints/
