@@ -7,3 +7,6 @@ streamlit>=1.25.0
 plotly>=5.15.0
 scipy>=1.10.0
 wordcloud>=1.9.0
+keepa>=1.4.0
+python-dotenv>=1.0.0
+duckdb>=0.10.0
