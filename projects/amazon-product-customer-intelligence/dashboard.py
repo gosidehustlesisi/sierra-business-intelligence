@@ -246,6 +246,131 @@ with right2:
 
 st.markdown("---")
 
+# ── KEEPA LIVE PRICE INTELLIGENCE SECTION ──
+st.header("💰 Live Price Intelligence (Keepa)")
+st.caption("Real-time Amazon Electronics bestsellers, price tracking, and active deals. Data fetched via Keepa API.")
+
+@st.cache_data
+def load_keepa_data():
+    import glob
+    from pathlib import Path
+    d = Path("data")
+    pf = sorted(d.glob("keepa_products_*.csv"))[-1]
+    hf = sorted(d.glob("keepa_price_history_*.csv"))[-1]
+    df = sorted(d.glob("keepa_deals_*.csv"))[-1]
+    products = pd.read_csv(pf)
+    history = pd.read_csv(hf)
+    deals = pd.read_csv(df)
+    history["timestamp"] = pd.to_datetime(history["timestamp"])
+    return products, history, deals
+
+products_k, history_k, deals_k = load_keepa_data()
+
+# KPI Row for Keepa
+k1, k2, k3, k4, k5 = st.columns(5)
+k1.metric("Products Tracked", f"{len(products_k)}")
+k2.metric("Active Deals", f"{len(deals_k)}")
+k3.metric("Avg Price", f"${products_k['current_price'].mean():.0f}")
+k4.metric("Avg Rating", f"{products_k['rating'].mean():.2f} ★")
+k5.metric("Review Volume", f"{products_k['review_count'].sum()/1e6:.2f}M")
+
+st.markdown("---")
+
+# Keepa Row 1: Brand landscape + Deal timeline
+kleft, kright = st.columns([2, 1])
+
+with kleft:
+    st.subheader("🏷️ Brand Landscape — Bestseller Presence")
+    brand_stats = products_k.groupby("brand").agg(
+        count=("asin", "size"),
+        avg_price=("current_price", "mean"),
+        avg_rating=("rating", "mean"),
+        total_reviews=("review_count", "sum"),
+    ).reset_index().sort_values("count", ascending=True)
+    figk1 = go.Figure(go.Bar(
+        y=brand_stats["brand"],
+        x=brand_stats["count"],
+        orientation="h",
+        marker_color=brand_stats["avg_rating"],
+        marker_colorscale="RdYlGn",
+        text=[f"${p:.0f} | {r:.1f}★" for p, r in zip(brand_stats["avg_price"], brand_stats["avg_rating"])],
+        textposition="outside",
+    ))
+    figk1.update_layout(
+        xaxis_title="Products in Bestseller List",
+        height=400,
+        margin=dict(l=10, r=10, t=30, b=10),
+    )
+    st.plotly_chart(figk1, use_container_width=True)
+
+with kright:
+    st.subheader("🔥 Active Deals")
+    if not deals_k.empty:
+        deals_sorted = deals_k.sort_values("price_drop_pct", ascending=False)
+        figk2 = go.Figure(go.Bar(
+            x=deals_sorted["title"].str[:25],
+            y=deals_sorted["price_drop_pct"],
+            marker_color=["#d32f2f" if x > 25 else "#f57c00" if x > 20 else "#fbc02d" for x in deals_sorted["price_drop_pct"]],
+            text=[f"${c:.0f}" for c in deals_sorted["current_price"]],
+            textposition="outside",
+        ))
+        figk2.update_layout(
+            xaxis_title="Product",
+            yaxis_title="Price Drop (%)",
+            height=400,
+            xaxis_tickangle=-45,
+        )
+        st.plotly_chart(figk2, use_container_width=True)
+    else:
+        st.info("No active deals detected.")
+
+st.markdown("---")
+
+# Keepa Row 2: Price history tracker
+st.subheader("📈 Live Price Tracker — Top Products by Review Volume")
+top_asins = products_k.nlargest(5, "review_count")["asin"].tolist()
+top_history = history_k[history_k["asin"].isin(top_asins)].copy()
+figk3 = px.line(
+    top_history, x="timestamp", y="price", color="title",
+    labels={"price": "Price ($)", "timestamp": "Date"},
+    height=450,
+)
+figk3.update_layout(legend=dict(orientation="h", yanchor="bottom", y=-0.3))
+st.plotly_chart(figk3, use_container_width=True)
+
+st.markdown("---")
+
+# Keepa Row 3: Price tier treemap + Volatility
+kleft2, kright2 = st.columns(2)
+
+with kleft2:
+    st.subheader("🏗️ Market Hierarchy")
+    figk4 = px.treemap(
+        products_k, path=["brand", "title"], values="review_count",
+        color="current_price", color_continuous_scale="RdYlGn_r",
+        height=450,
+    )
+    st.plotly_chart(figk4, use_container_width=True)
+
+with kright2:
+    st.subheader("📊 Price Volatility")
+    vol = history_k.groupby("asin").agg(
+        price_std=("price", "std"),
+        price_mean=("price", "mean"),
+        observations=("price", "size"),
+    ).reset_index()
+    vol = vol.merge(products_k[["asin", "title", "brand", "review_count"]], on="asin")
+    vol["cv"] = vol["price_std"] / vol["price_mean"] * 100
+    figk5 = px.scatter(
+        vol, x="price_mean", y="cv", size="review_count", color="brand",
+        hover_data=["title"],
+        labels={"price_mean": "Avg Price ($)", "cv": "Volatility (CV %)", "review_count": "Reviews"},
+        height=450,
+    )
+    st.plotly_chart(figk5, use_container_width=True)
+
+st.markdown("---")
+
 # ── Footer ──
 st.caption(
     "Built with real Amazon review data. Source: Ni, Jianmo, Jiacheng Li, and Julian McAuley. 'Justifying recommendations using distantly-labeled reviews and fine-grained aspects.' EMNLP 2019."

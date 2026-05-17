@@ -5,7 +5,8 @@ matplotlib
 seaborn
 plotly
 streamlit
-kagglehub
 jupyterlab
 ipython-sql
 pandasql
+requests
+python-dotenv
