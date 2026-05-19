@@ -1,24 +1,35 @@
 # Netflix Content Strategy Intelligence
 
-> **TL;DR:** End-to-end business intelligence suite for entertainment content strategy. **Now powered by live TMDB API data** — with fallback to the legacy Netflix Kaggle dataset when no API key is configured.
+> **TL;DR:** End-to-end business intelligence suite for entertainment content strategy. Data is sourced from the **Netflix Movies & TV Shows dataset (Kaggle, CC0)** and transformed into a TMDB-compatible schema for analysis.
 
 ---
 
-## What's New: TMDB Live Data
+## Data Source
 
-**Previous:** Static 2021 Kaggle dataset (8,807 titles)  
-**Current:** Live data pipeline from [The Movie Database (TMDB)](https://www.themoviedb.org/) API
+| Dataset | Records | True Source |
+|---------|---------|-----------|
+| Trending Movies | 6,131 | Netflix Kaggle dataset (CC0) mapped to TMDB schema |
+| Popular TV Shows | 2,676 | Netflix Kaggle dataset (CC0) mapped to TMDB schema |
+| Movie Genres | 27 | TMDB genre taxonomy applied to Netflix content |
+| Top-Rated Movies | 6,131 | Netflix Kaggle dataset (CC0) mapped to TMDB schema |
+| Upcoming Releases | 0 | None available in static dataset |
+| Genre Popularity | 27 | Derived from Netflix content distribution |
 
-| Dataset | Records | Source |
-|---------|---------|--------|
-| Trending Movies (daily) | ~100/page × 5 pages | `/trending/movie/day` |
-| Popular TV Shows | ~100/page × 5 pages | `/tv/popular` |
-| Movie Genres | 27 genres | `/genre/movie/list` |
-| Top-Rated Movies | ~100/page × 5 pages | `/movie/top_rated` |
-| Upcoming Releases | ~100/page × 5 pages | `/movie/upcoming` |
-| Genre Popularity | 27 rows | `/discover/movie` per genre |
+**Total analyzed:** 8,807 titles from the [Netflix Movies & TV Shows Kaggle dataset](https://www.kaggle.com/datasets/shivamb/netflix-shows).
 
-**Total analyzed:** 8,808+ titles (movies + TV) with live popularity scores, ratings, and release metadata.
+### Why Not Live TMDB?
+
+The project includes a `fetch_tmdb_data.py` script for live TMDB API integration, but **it requires a valid TMDB API key**. The current key in this workspace's secrets file is invalid (TMDB returns `status_code: 7 — Invalid API key`). To activate live data:
+
+1. Create an account at [themoviedb.org](https://www.themoviedb.org/)
+2. Go to **Settings → API** and request a free Developer API key
+3. Update the `TMDB_API_KEY` in `sierra-secrets.json` or export it:
+   ```bash
+   export TMDB_API_KEY="your_new_key_here"
+   python fetch_tmdb_data.py
+   ```
+
+Until then, all analysis uses the **real, verified Netflix Kaggle dataset** — not simulated data.
 
 ---
 
@@ -30,7 +41,7 @@ How is the entertainment content landscape structured across type, genre, rating
 
 ## What It Does
 
-- **Live Data Fetcher:** `fetch_tmdb_data.py` pulls current data from TMDB API with rate-limit respect (40 req / 10 sec)
+- **Live Data Fetcher:** `fetch_tmdb_data.py` pulls current data from TMDB API with rate-limit respect (40 req / 10 sec) — **requires valid API key**
 - **Exploratory Analysis:** Full EDA — genre distribution, rating trends, popularity scores, release patterns
 - **SQL Analytics:** 10 business-grade SQL queries (DuckDB in-memory) answering strategic questions
 - **Executive Dashboard:** Interactive Plotly visualizations for stakeholder presentations
