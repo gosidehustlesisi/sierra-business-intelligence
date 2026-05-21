@@ -1,7 +1,7 @@
 # Amazon Electronics Reviews — Data Dictionary
 
 **Dataset:** `amazon_reviews_electronics_5core.csv`
-**Records:** 130,038 (sampled 1/13 from 1,689,188 Electronics 5-core)
+**Records:** 67,325 (sampled 1/13 from 1,689,188 Electronics 5-core)
 **Date Range:** 1999-11-23 to 2014-07-23
 **Source:** [UCSD Amazon Review Data](http://jmcauley.ucsd.edu/data/amazon/)
 
@@ -20,13 +20,14 @@
 | `unixReviewTime` | integer | Review timestamp (Unix seconds since epoch) |
 | `reviewTime` | string | Human-readable date (MM DD, YYYY format) |
 
-## Derived Metrics (computed in notebooks)
+## Derived Metrics (computed in notebooks/dashboard)
 
 | Metric | Formula | Value |
 |--------|---------|-------|
 | Helpfulness Ratio | `helpful_upvotes / helpful_total` | 83.7% overall |
-| Review Length | `len(reviewText)` | Median 345 chars |
+| Review Length | `len(reviewText)` | Median ~345 chars |
 | Review Year/Month | `datetime.fromtimestamp(unixReviewTime)` | — |
+| Engagement Score | `rating×0.4 + log1p(volume)×0.4 + helpfulness×0.2` | Per-product |
 
 ## Data Quality
 

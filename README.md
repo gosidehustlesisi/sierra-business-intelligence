@@ -34,7 +34,7 @@ I analyze complex data at scale, architect AI systems that automate it, and visu
 |---|---|---|
 | **Kaggle** — Netflix Movies & TV Shows | Direct CSV download, SHA-verified | 8,807 titles |
 | **TMDB** — Trending, Top-Rated, Upcoming + Genre Popularity | Live API via `fetch_tmdb_data.py` | 438 live records |
-| **UCSD Julian McAuley** — Amazon Reviews (Electronics 5-core) | Stanford SNAP JSON.gz → streamed 1/13 sample → CSV | 67,325 reviews |
+| **UCSD** — Amazon Reviews (Electronics 5-core) | Direct CSV download | 67,325 reviews |
 | **Google Trends** — pytrends API + BigQuery | Live API extraction, weekly granularity | 1,923 trend records |
 
 These aren't toy models. Every number below came from running real code on real data.
@@ -46,7 +46,7 @@ These aren't toy models. Every number below came from running real code on real 
 | Project | Domain | Records | Source | Notebooks | Charts | Status |
 |---|---|---|---|---|---|---|
 | **Netflix Content Strategy** | Media & Entertainment | 9,245 titles | Kaggle Netflix (CC0) + TMDB Live | 3 | 17+ | ✅ Complete |
-| **Amazon Product Intelligence** | E-commerce & Retail | 67,325 reviews | UCSD Amazon 5-core + Keepa seed | 3 | 21+ | ✅ Complete |
+| **Amazon Review Intelligence** | E-commerce & Retail | 67,325 reviews | UCSD Amazon 5-core | 3 | 21+ | ✅ Complete |
 | **Google Search Trends** | Market Intelligence | 1,923 records | pytrends live API | 3 | 11+ | ✅ Complete |
 
 **Total: 78,055+ real records · 9 notebooks · 49+ production charts · 0 synthetic data**
@@ -55,7 +55,7 @@ These aren't toy models. Every number below came from running real code on real 
 
 ## About This Work
 
-This portfolio bridges three high-value business domains — **content strategy**, **product intelligence**, and **market trends** — using the same end-to-end pattern: ingest real data, run business-grade SQL analytics, and ship stakeholder-ready dashboards.
+This portfolio bridges three high-value business domains — **content strategy**, **review intelligence**, and **market trends** — using the same end-to-end pattern: ingest real data, run business-grade SQL analytics, and ship stakeholder-ready dashboards.
 
 The arc: **data → insight → action**. Every project starts with a real public or live API dataset, progresses through exploratory analysis and 10+ business SQL queries, and ends with an interactive Streamlit dashboard that a VP could open in a meeting.
 
@@ -118,53 +118,54 @@ The ability to translate raw catalog data into acquisition strategy without wait
 
 ---
 
-## Project 2: Amazon Product & Customer Intelligence
+## Project 2: Amazon Review Intelligence
 
 <p>
   <img src="https://img.shields.io/badge/Source-UCSD%20Amazon%20Reviews-blue" alt="UCSD">
-  <img src="https://img.shields.io/badge/Source-Keepa%20Seed-green" alt="Keepa">
-  <img src="https://img.shields.io/badge/SQL-DuckDB-yellow" alt="DuckDB">
+  <img src="https://img.shields.io/badge/SQL-pandas%20%2B%20DuckDB-yellow" alt="DuckDB">
   <img src="https://img.shields.io/badge/Dashboard-Streamlit-ff4b4b" alt="Streamlit">
 </p>
 
 ### What This Means for Business
 
-Customer sentiment and product quality signals extracted from 67,325 real Amazon Electronics reviews. I found that 59.5% of reviews are 5-star, but 1-star reviews are 16% longer on average (642 vs. 553 characters) — angry customers write more. Reviews with 5+ helpfulness votes average 3.72 stars, suggesting critical reviews drive the most engagement. These are actionable signals for product teams and customer success.
+Customer sentiment and product quality signals extracted from 67,325 real Amazon Electronics reviews (1999–2014). I found that 59.5% of reviews are 5-star, but 1-star reviews are 16% longer on average (642 vs. 553 characters) — angry customers write more. Long reviews achieve 91% helpfulness vs. 78% for short ones. These are actionable signals for product teams and customer success.
 
 ### Why This Matters to Hiring Managers
 
-I built a full pipeline from raw 495MB JSON.gz to cleaned CSV, ran 10 business SQL queries in SQLite/DuckDB, and produced a 5-view Streamlit dashboard. I ingest messy semi-structured data, clean it, and turn it into product decisions.
+I built a full pipeline from raw 495MB JSON.gz to cleaned CSV, ran 10 business SQL queries in SQLite/DuckDB, and produced a 6-view Streamlit dashboard. I ingest messy semi-structured data, clean it, and turn it into product decisions.
 
 ### Metrics Grid
 
 | 67,325 reviews | 27,832 unique products | 53,609 unique reviewers | 4.22 ★ avg rating |
 |---|---|---|---|
-| 83.8% helpfulness rate | 59.5% five-star | Median 344 chars | 5★ = 553 chars, 1★ = 642 chars |
+| 83.7% helpfulness rate | 59.5% five-star | Median 345 chars | 1★ = 642 chars, 5★ = 553 chars |
 
 **Peak insight:** Your happiest customers are brief; your angriest are verbose and get the most engagement. Product teams should watch review length, not just stars.
 
 ### Key Figures
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_001_brand_landscape.png" width="45%" alt="Brand Landscape">
-  <img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_002_price_rating_scatter.png" width="45%" alt="Price vs Rating">
+  <img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_001_rating_distribution.png" width="45%" alt="Rating Distribution">
+  <img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_002_monthly_volume.png" width="45%" alt="Monthly Volume">
 </p>
 
-> **Peak insight — Brand Landscape:** Apple dominates by review volume, but price-rating scatter reveals no clear premium correlation — brand equity decouples from perceived quality.
+> **Peak insight — Rating Distribution:** 59.5% five-star dominance with a long tail of critical detail. The volume of negative sentiment is small but disproportionately informative.
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_007_q1_brand_performance.png" width="70%" alt="Brand Performance">
+  <img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_005_helpfulness_by_length.png" width="70%" alt="Helpfulness by Length">
 </p>
 
-> **Peak insight — Brand Performance:** Bose and Sony command higher ratings at premium price tiers, while Anker dominates the value segment with consistent 4.5+ performance.
+> **Peak insight — Helpfulness Gradient:** Long reviews (500+ chars) achieve 91% helpfulness vs. 78% for short reviews. Detail drives perceived value.
 
 ### How We Got There
 
-Automated pipeline fetching `reviews_Electronics_5.json.gz` from Stanford SNAP, streaming with uniform 1/13 sampling (seed=42), extracting helpfulness arrays into `helpful_upvotes` / `helpful_total` columns. SQLite/DuckDB in-memory for 10 business SQL queries including `ROW_NUMBER()` product lifecycle stages (Early/Growth/Mature), length bucketing (<200 / 200-500 / 500-1000 / 1000+ chars), and reviewer loyalty tiers (One-time / Casual / Loyal). Matplotlib/Seaborn for EDA, Streamlit for dashboard. Keepa live API integration for 30-product price tracking with 180-day history.
+Automated pipeline fetching `reviews_Electronics_5.json.gz` from Stanford SNAP, streaming with uniform 1/13 sampling (seed=42), extracting helpfulness arrays into `helpful_upvotes` / `helpful_total` columns. DuckDB in-memory for 10 business SQL queries including brand performance ranking, rating distribution by year, helpfulness leaderboard, review length vs. rating correlation, seasonal pattern analysis, reviewer loyalty distribution, summary usage by rating, and product lifecycle tracking. Matplotlib/Seaborn for EDA, Plotly for interactive executive dashboards. Streamlit dashboard with 12 chart definitions including product leaderboard, rating evolution, review length distribution, helpfulness trends, reviewer loyalty, and rating-length correlation.
 
 ### Notebook
 
-📓 [`notebooks/03_executive_dashboard.ipynb`](projects/amazon-product-customer-intelligence/notebooks/03_executive_dashboard.ipynb) — Hybrid live + historical executive dashboard
+📓 [`notebooks/01_exploratory_analysis.ipynb`](projects/amazon-product-customer-intelligence/notebooks/01_exploratory_analysis.ipynb) — EDA on 67K real reviews  
+📓 [`notebooks/02_review_analytics_sql.ipynb`](projects/amazon-product-customer-intelligence/notebooks/02_review_analytics_sql.ipynb) — 10 SQL-style business queries  
+📓 [`notebooks/03_executive_dashboard.ipynb`](projects/amazon-product-customer-intelligence/notebooks/03_executive_dashboard.ipynb) — Plotly interactive visualizations
 
 ### What I'd Bring to Your Team
 
@@ -230,8 +231,7 @@ I can build your competitive intelligence pipeline — live data ingestion, auto
 | Project | Primary Source | Method | Records | Citation / URL |
 |---|---|---|---|---|
 | **Netflix Content Strategy** | Kaggle — Netflix Movies & TV Shows | Direct CSV download | 8,807 titles | [Shivam Bansal, CC0](https://www.kaggle.com/datasets/shivamb/netflix-shows) |
-| **Amazon Product Intelligence** | UCSD Julian McAuley — Amazon Reviews (Electronics 5-core) | JSON.gz stream, 1/13 sample | 67,325 reviews | [Ni, Li & McAuley, EMNLP 2019](http://jmcauley.ucsd.edu/data/amazon/) |
-| **Amazon Product Intelligence** | Keepa.com — Amazon Price API | Live API (seed fallback) | 30 products, 5,428 price points | [keepa.com](https://keepa.com) |
+| **Amazon Review Intelligence** | UCSD Julian McAuley — Amazon Reviews (Electronics 5-core) | JSON.gz stream, 1/13 sample | 67,325 reviews | [Ni, Li & McAuley, EMNLP 2019](http://jmcauley.ucsd.edu/data/amazon/) |
 | **Google Search Trends** | Google Trends via pytrends | Live API, weekly granularity | 1,923 records | [Google Trends](https://trends.google.com) |
 
 **Zero synthetic data. Zero `generate_data.py`. Every metric was computed on real data.**
@@ -254,10 +254,9 @@ python fetch_tmdb_data.py    # or python fallback_data.py
 jupyter lab notebooks/
 streamlit run dashboard.py
 
-# --- Amazon Product Intelligence ---
+# --- Amazon Review Intelligence ---
 cd projects/amazon-product-customer-intelligence
 python fetch_amazon_data.py
-python fetch_keepa_data.py
 jupyter lab notebooks/
 streamlit run dashboard.py
 
@@ -289,15 +288,14 @@ sierra-business-intelligence/
 │   │   └── requirements.txt
 │   │
 │   ├── amazon-product-customer-intelligence/
-│   │   ├── data/                # Real UCSD + Keepa CSVs
+│   │   ├── data/                # Real UCSD review CSV
 │   │   ├── figures/             # 21+ chart outputs
 │   │   ├── notebooks/
 │   │   │   ├── 01_exploratory_analysis.ipynb
-│   │   │   ├── 02_price_intelligence_sql.ipynb
+│   │   │   ├── 02_review_analytics_sql.ipynb
 │   │   │   └── 03_executive_dashboard.ipynb
-│   │   ├── dashboard.py         # Streamlit hybrid dashboard
+│   │   ├── dashboard.py         # Streamlit review dashboard
 │   │   ├── fetch_amazon_data.py # UCSD pipeline
-│   │   ├── fetch_keepa_data.py  # Live price fetcher
 │   │   └── requirements.txt
 │   │
 │   └── google-search-trends-market-intelligence/

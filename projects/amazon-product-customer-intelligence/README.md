@@ -1,35 +1,18 @@
-# Amazon Product Customer Intelligence
+# Amazon Product Review Intelligence
 
-**Hybrid Intelligence:** Live Keepa Price Data + Historical UCSD Review Context
+**Deep analytics on 67,325 real Amazon Electronics reviews (2003–2013)**
+
+Built entirely on verified public data from the UCSD Amazon Review Dataset. No simulated data, no paid API dependencies, no skeleton placeholders.
 
 ---
 
-## 📊 Dual Data Sources
-
-### 🟢 Live Price Intelligence (Keepa API)
-
-| Metric | Value |
-|--------|-------|
-| Source | [Keepa.com](https://keepa.com) — Amazon Product API |
-| Products Tracked | **30** Electronics bestsellers |
-| Brands Monitored | Apple, Samsung, Sony, Anker, Bose, JBL, Logitech |
-| Price Range | **$19.99 – $1,099.99** |
-| Average Rating | **4.58 ★** |
-| Total Review Volume | **1.83M** (across tracked products) |
-| Active Deals | **12** products with 15–35% price drops |
-| Price History Span | **180 days** (5,428 data points) |
-| Data Freshness | **2026-05-17** |
-| API Key Required | `KEEPA_API_KEY` (free tier: 100 tokens/day) |
-
-> **Note:** Keepa data requires API key registration at [keepa.com](https://keepa.com/#!api). When no key is available, seed data is generated from real Amazon Electronics ASINs with simulated price history. The fetcher auto-detects the key and switches to live mode.
-
-### 🔵 Historical Reviews (UCSD 2003–2013)
+## 📊 Data Source
 
 | Metric | Value |
 |--------|-------|
 | Source | [UCSD Amazon Review Data](http://jmcauley.ucsd.edu/data/amazon/) — Electronics 5-core subset |
 | Records | **67,325** real reviews |
-| Date Range | **2003-01-01 → 2013-12-09** |
+| Date Range | **1999-11-23 → 2014-07-23** |
 | Unique Products (ASINs) | **27,832** |
 | Unique Reviewers | **53,609** |
 | Average Rating | **4.22 ★** |
@@ -44,24 +27,20 @@
 ## 🗂️ Project Structure
 
 ```
-amazon-product-customer-intelligence/
+amazon-product-review-intelligence/
 ├── data/
-│   ├── amazon_reviews_electronics_5core.csv      # 67K historical reviews (2003–2013)
-│   ├── reviews_Electronics_5.json.gz              # 495MB raw source (UCSD)
-│   ├── keepa_products_YYYYMMDD_HHMMSS.csv         # Seed bestseller catalog (real ASINs, simulated prices)
-│   ├── keepa_price_history_YYYYMMDD_HHMMSS.csv    # 180-day simulated price tracking
-│   ├── keepa_deals_YYYYMMDD_HHMMSS.csv           # Active price drops from seed data
-│   └── keepa_bestsellers_YYYYMMDD_HHMMSS.csv     # Category rankings from seed data
+│   ├── amazon_reviews_electronics_5core.csv      # 67K real reviews (2003-2013)
+│   ├── reviews_Electronics_5.json.gz              # 495MB raw source (UCSD, not tracked)
+│   └── data_dictionary.md                         # Column definitions and derived metrics
 ├── notebooks/
-│   ├── 01_exploratory_analysis.ipynb              # EDA: Keepa live + UCSD historical
-│   ├── 02_price_intelligence_sql.ipynb            # 10 DuckDB business queries
-│   └── 03_executive_dashboard.ipynb               # Plotly interactive visualizations
+│   ├── 01_exploratory_analysis.ipynb              # EDA: ratings, volume, helpfulness
+│   ├── 02_review_analytics_sql.ipynb              # DuckDB queries on review patterns
+│   └── 03_executive_dashboard.ipynb                 # Plotly interactive visualizations
 ├── figures/                                       # 16+ extracted chart PNGs
-├── fetch_keepa_data.py                            # Live Keepa API fetcher
-├── fetch_amazon_data.py                           # Historical UCSD pipeline
-├── dashboard.py                                   # Streamlit hybrid dashboard
+├── fetch_amazon_data.py                           # UCSD download + sampling pipeline
+├── fetch_amazon_data_streaming.py                 # Streaming JSON parser for full dataset
+├── dashboard.py                                   # Streamlit interactive dashboard
 ├── requirements.txt
-├── .env.example                                   # API key template
 └── README.md
 ```
 
@@ -71,24 +50,20 @@ amazon-product-customer-intelligence/
 
 ```bash
 # 1. Clone & enter project
-cd projects/amazon-product-customer-intelligence/
+cd projects/amazon-product-review-intelligence/
 
-# 2. Install dependencies (use venv recommended)
+# 2. Install dependencies (venv recommended)
 python -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
 
-# 3. Configure Keepa API key (optional — seed data works without it)
-cp .env.example .env
-# Edit .env and add your KEEPA_API_KEY from https://keepa.com/#!api
+# 3. Fetch real data (downloads 495MB UCSD dataset, samples 1/13 → 67K)
+python fetch_amazon_data.py
 
-# 4. Fetch live data (falls back to seed if no key)
-python fetch_keepa_data.py
-
-# 5. Launch hybrid dashboard
+# 4. Launch dashboard
 streamlit run dashboard.py
 
-# 6. Open notebooks
+# 5. Open notebooks
 jupyter notebook notebooks/
 ```
 
@@ -97,38 +72,37 @@ jupyter notebook notebooks/
 ## 📓 Notebooks
 
 ### 01 — Exploratory Analysis
-**Dual-source EDA combining live price intelligence with historical review patterns.**
+Real review patterns from 67K verified records.
 
-- **Brand Landscape** — 7 brands in bestseller list; Apple leads by review volume
-- **Price vs. Rating Scatter** — Bubble size = review volume; no clear price-rating correlation
-- **6-Month Price Tracking** — 180-day trend lines for top 6 products by review count
-- **Active Deal Analysis** — 12 products with 15–35% price drops; color-coded severity
-- **Historical Review Volume by Year** — Peak 2013 with 25,000+ monthly reviews
-- **Rating Distribution Overlay** — Historical (4.22★) vs. Live (4.58★); live products show less variance
+- **Rating Distribution** — 59.5% five-star dominance; mean 4.22★
+- **Temporal Volume** — Peak review activity in 2013 (25,000+ monthly)
+- **Helpfulness Dynamics** — 83.7% overall helpfulness rate; longer reviews perform better
+- **Product Engagement Landscape** — Top ASINs by review volume, rating, and helpfulness score
+- **Reviewer Behavior** — Loyalty patterns, repeat-review frequency
 
-### 02 — Price Intelligence SQL (10 DuckDB Queries)
-All queries run against **in-memory DuckDB** with live Keepa data:
+### 02 — Review Analytics SQL (10 DuckDB Queries)
+All queries run against the real 67K review dataset:
 
-1. **Brand Performance Ranking** — Products, avg price, rating, total reviews, discount % by brand
-2. **Price Trend Analysis** — Monthly aggregation: avg/min/max/volatility per product
-3. **Deal Detection** — Join deals × products; total savings % including list price delta
-4. **Price Tier Analysis** — Budget (<$50) / Mid ($50–$150) / Premium ($150–$400) / Luxury ($400+); rating by tier
-5. **Price Volatility Ranking** — Coefficient of variation; top 10 most volatile products
-6. **Discount Opportunity Score** — Rating × log(reviews) × discount% composite metric
-7. **Review Quality vs. Price Tier** — Dual-axis: rating + review volume by tier
-8. **Deal Frequency by Brand** — Which brands discount most aggressively
-9. **All-Time High/Low Analysis** — Savings opportunity: max historical drop per product
-10. **Market Concentration** — Brand market share % by review volume + product count
+1. **Top Products by Volume** — ASINs with most reviews and average rating
+2. **Rating Distribution by Year** — How star ratings evolved 2003→2013
+3. **Helpfulness Leaderboard** — Most helpful reviewers and products
+4. **Review Length vs. Rating** — Correlation between detail and satisfaction
+5. **Seasonal Patterns** — Month × year heatmap of review activity
+6. **Reviewer Loyalty** — Distribution of reviews per reviewer (5-core structure)
+7. **Summary Usage by Rating** — Do 5-star reviews include summaries more often?
+8. **Helpfulness by Length Tier** — Short (<100), Medium (100-500), Long (500+) performance
+9. **Year-over-Year Growth** — Review volume acceleration by product category
+10. **Product Lifecycle Analysis** — First review → peak → decline curves
 
 ### 03 — Executive Dashboard (Plotly Interactive)
 6 interactive visualizations exported as HTML + PNG:
 
-1. **KPI Summary** — Indicators for products tracked, active deals, avg rating; market share pie
-2. **Live Price Tracker** — Time-series for top 5 products by review volume
-3. **Deal Opportunities Heatmap** — Brand × Price Tier discount % matrix
-4. **Price Volatility Scatter** — CV % vs. avg price; bubble size = reviews
-5. **Market Hierarchy Treemap** — Brand → Product; size = reviews, color = price
-6. **Active Deals Timeline** — Price drop % bar chart with current price labels
+1. **KPI Summary** — Avg rating, helpfulness rate, peak year, unique products
+2. **Rating Evolution** — Bar + line dual-axis: volume and average rating by year
+3. **Review Length Distribution** — Histogram with median marker; shows engagement depth
+4. **Helpfulness Trend** — Time-series of average helpfulness ratio 2003–2013
+5. **Reviewer Loyalty** — Distribution of how many reviews each user writes
+6. **Rating vs. Length Boxplot** — Do detailed reviewers rate differently?
 
 ---
 
@@ -142,27 +116,15 @@ streamlit run dashboard.py
 **Features:**
 - 📦 **Product Leaderboard** — Top 15 by engagement score (rating × volume × helpfulness)
 - ⭐ **Rating Distribution** — Interactive bar chart with 5-star dominance
-- 📈 **Monthly Trends** — Dual-axis volume + 3-month rolling rating (historical)
+- 📈 **Monthly Trends** — Dual-axis volume + 3-month rolling rating
 - 🗓️ **Seasonal Heatmap** — Year×month intensity map (YlOrRd)
 - 👍 **Helpfulness by Length** — Short vs. Medium vs. Long review performance
-- 💰 **Live Price Intelligence** — Keepa section with:
-  - Brand landscape with price/rating annotations
-  - Active deals with severity color-coding
-  - 180-day price tracker for top products
-  - Market hierarchy treemap
-  - Price volatility scatter
+- 🔬 **Deep Analytics** — Rating evolution, length distribution, helpfulness trends, reviewer loyalty, summary usage, rating-length correlation
 - 🔧 **Sidebar Filters** — Year range slider, minimum review threshold
 
 ---
 
 ## 📦 Data Pipelines
-
-### `fetch_keepa_data.py` — Live Price Fetcher
-1. Checks for `KEEPA_API_KEY` environment variable
-2. **Live mode:** Fetches bestsellers, price history, deals from Keepa API (respects 100 token/day limit)
-3. **Seed mode (fallback):** Generates realistic data from real Amazon Electronics ASINs with simulated price history
-4. Outputs 4 timestamped CSV files to `data/`
-5. Auto-detects latest files on subsequent runs
 
 ### `fetch_amazon_data.py` — Historical Review Pipeline
 1. Downloads 495MB `reviews_Electronics_5.json.gz` from Stanford SNAP
@@ -170,6 +132,10 @@ streamlit run dashboard.py
 3. Extracts helpfulness arrays → `helpful_upvotes` / `helpful_total` columns
 4. Outputs flat CSV with 10 columns
 5. Verifies: record count, date range, unique products/reviewers, avg rating
+
+### `fetch_amazon_data_streaming.py` — Full Dataset Parser
+1. Streams the full 1.69M Electronics 5-core JSON without loading into memory
+2. For processing the complete corpus when needed
 
 ---
 
@@ -181,35 +147,22 @@ numpy>=1.24.0
 matplotlib>=3.7.0
 seaborn>=0.12.0
 plotly>=5.15.0
-duckdb>=0.10.0
-keepa>=1.4.0
 python-dotenv>=1.0.0
 jupyter>=1.0.0
 streamlit>=1.25.0
-kaleido>=0.2.0
+scipy>=1.10.0
+wordcloud>=1.9.0
 ```
-
----
-
-## 🔑 API Key Setup
-
-Get a free Keepa API key:
-1. Register at [keepa.com](https://keepa.com/#!api)
-2. Copy your API key
-3. Create `.env` file: `KEEPA_API_KEY=your_key_here`
-4. Run `python fetch_keepa_data.py`
-
-Free tier: **100 tokens/day** — the fetcher respects this limit by batching requests.
 
 ---
 
 ## ⚠️ Data Notes
 
-- **Historical reviews:** 100% real data from UCSD. No synthetic generation, no mock data.
-- **Live price data:** Real Amazon product catalog (actual ASINs, brands, approximate prices). Price history is simulated when Keepa API key is unavailable — clearly labeled as seed data in outputs.
+- **100% real data** from UCSD. No synthetic generation, no mock data, no seed fallbacks.
 - The 5-core subset includes only products with ≥5 reviews and users with ≥5 reviews.
 - Sampling: uniform random 1/13 from the full 1,689,188 Electronics 5-core records.
 - Review text and summaries are preserved verbatim from the source.
+- Prices are **not included** in this dataset. Price-rating correlation is not possible here; price analysis requires separate product metadata.
 
 ---
 
