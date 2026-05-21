@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sierra Napier — Business Intelligence & Strategic Analytics. Real Amazon, Netflix, and Google Trends data.">
-    <title>Business Intelligence & Strategic Analytics — Sierra Napier</title>
+    <meta name="description" content="Sierra Napier — Business Intelligence. Netflix content strategy, Amazon marketplace, Google trends. Real corporate datasets.">
+    <title>Business Intelligence — Sierra Napier</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -17,10 +17,9 @@
             --text-primary: #f0f0f0;
             --text-secondary: #94a3b8;
             --text-muted: #64748b;
-            --accent-rose: #e11d48;
+            --accent-gold: #f59e0b;
             --accent-cyan: #06b6d4;
-            --accent-rose-hover: #f43f5e;
-            --accent-cyan-hover: #22d3ee;
+            --accent-gold-hover: #fbbf24;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -69,7 +68,7 @@
             font-weight: 500;
             transition: color 0.2s;
         }
-        .nav-links a:hover { color: var(--accent-rose); }
+        .nav-links a:hover { color: var(--accent-gold); }
         .hero {
             padding: 6rem 0 4rem;
             text-align: center;
@@ -78,7 +77,7 @@
             font-size: 3rem;
             font-weight: 800;
             margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--accent-rose) 0%, var(--accent-cyan) 100%);
+            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-cyan) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -102,7 +101,7 @@
         .hero .stat-number {
             font-size: 2.5rem;
             font-weight: 800;
-            color: var(--accent-rose);
+            color: var(--accent-gold);
             font-family: 'JetBrains Mono', monospace;
         }
         .hero .stat-label {
@@ -125,7 +124,7 @@
         }
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 1.5rem;
         }
         .project-card {
@@ -137,18 +136,18 @@
         }
         .project-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 32px rgba(225, 29, 72, 0.1);
+            box-shadow: 0 8px 32px rgba(245, 158, 11, 0.1);
         }
         .project-card h3 {
-            font-size: 1.15rem;
+            font-size: 1.25rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
-            color: var(--accent-rose);
+            color: var(--accent-gold);
         }
         .project-card .tag {
             display: inline-block;
-            background: rgba(225, 29, 72, 0.15);
-            color: var(--accent-rose);
+            background: rgba(245, 158, 11, 0.15);
+            color: var(--accent-gold);
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
             font-size: 0.8rem;
@@ -157,17 +156,17 @@
         }
         .project-card p {
             color: var(--text-secondary);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             margin-bottom: 0.75rem;
         }
         .project-card .meta {
             font-family: 'JetBrains Mono', monospace;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 1rem;
         }
         .chart-box {
@@ -179,7 +178,7 @@
             transition: border-color 0.2s;
         }
         .chart-box:hover {
-            border-color: var(--accent-rose);
+            border-color: var(--accent-gold);
         }
         .chart-box img {
             width: 100%;
@@ -211,7 +210,7 @@
             color: var(--text-primary);
         }
         .data-table tr:hover td {
-            background: rgba(225, 29, 72, 0.05);
+            background: rgba(245, 158, 11, 0.05);
         }
         .data-table a {
             color: var(--accent-cyan);
@@ -248,13 +247,13 @@
             text-decoration: none;
             transition: color 0.2s;
         }
-        footer a:hover { color: var(--accent-rose); }
+        footer a:hover { color: var(--accent-gold); }
         .floating-cta {
             position: fixed;
             bottom: 2rem;
             right: 2rem;
-            background: var(--accent-rose);
-            color: #fff;
+            background: var(--accent-gold);
+            color: #000;
             padding: 0.875rem 1.5rem;
             border-radius: 50px;
             font-weight: 700;
@@ -262,12 +261,12 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            box-shadow: 0 4px 20px rgba(225, 29, 72, 0.3);
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
             transition: background 0.2s;
             z-index: 1000;
         }
         .floating-cta:hover {
-            background: var(--accent-rose-hover);
+            background: var(--accent-gold-hover);
         }
         .lightbox-overlay {
             display: none;
@@ -305,7 +304,7 @@
     <div class="container">
         <div class="nav-inner">
             <a href="#" class="nav-brand">
-                <span style="color:var(--accent-rose);">◆</span> Sierra Napier
+                <span style="color:var(--accent-gold);">◆</span> Sierra Napier
             </a>
             <ul class="nav-links">
                 <li><a href="#projects">Projects</a></li>
@@ -319,8 +318,8 @@
 
 <section class="hero">
     <div class="container">
-        <h1>Business Intelligence & Strategic Analytics</h1>
-        <p class="subtitle">Consumer intelligence, content strategy, and market trend analysis on real Amazon, Netflix, and Google search data. 3 projects, 70 figures, all real data.</p>
+        <h1>Business Intelligence</h1>
+        <p class="subtitle">Corporate strategy analytics with real market data. Netflix content intelligence, Amazon customer analytics, and Google Trends market forecasting.</p>
         <div class="stats">
             <div class="stat">
                 <div class="stat-number">3</div>
@@ -332,7 +331,7 @@
             </div>
             <div class="stat">
                 <div class="stat-number">140K+</div>
-                <div class="stat-label">Real Records</div>
+                <div class="stat-label">Records</div>
             </div>
         </div>
     </div>
@@ -341,25 +340,25 @@
 <section id="projects" class="section">
     <div class="container">
         <h2 class="section-title">Projects</h2>
-        <p class="section-subtitle">End-to-end business intelligence pipelines</p>
+        <p class="section-subtitle">Market intelligence and competitive analytics</p>
         <div class="projects-grid">
             <div class="project-card reveal">
-                <span class="tag">Consumer Intelligence</span>
-                <h3>Amazon Product Intelligence</h3>
-                <p>Hybrid live + historical analysis of Amazon Electronics. Keepa API tracks 30 bestsellers with real price history, while UCSD's 130K review dataset (1999–2014) provides historical context. 10 DuckDB SQL queries cover brand performance, deal detection, price volatility, and market concentration.</p>
-                <div class="meta">130K reviews · 30 live products · Keepa API · UCSD dataset</div>
+                <span class="tag">Streaming Intelligence</span>
+                <h3>Netflix Content Strategy Intelligence</h3>
+                <p>8,807 Netflix titles analyzed for content mix, genre distribution, rating patterns, and release trends. 10 SQL queries answer strategic questions about quality tiers and the movies-vs-shows split. Interactive Plotly dashboard for stakeholder presentations.</p>
+                <div class="meta">8,807 titles · Netflix Kaggle (CC0) · 25 figures · 3 notebooks</div>
             </div>
             <div class="project-card reveal">
-                <span class="tag">Content Strategy</span>
-                <h3>Netflix Content Strategy Intelligence</h3>
-                <p>8,807 Netflix titles analyzed for content mix, genre distribution, rating patterns, and release trends. 10 SQL queries answer strategic questions about quality tiers, genre popularity, and the movies-vs-shows split. Interactive Plotly dashboard for stakeholder presentations.</p>
-                <div class="meta">8,807 titles · Netflix Kaggle (CC0) · TMDB schema</div>
+                <span class="tag">Consumer Intelligence</span>
+                <h3>Amazon Product Customer Intelligence</h3>
+                <p>Hybrid live + historical analysis: Keepa API tracks 30 Electronics bestsellers with real price history, while UCSD's 130K review dataset (1999–2014) provides historical context. 10 DuckDB SQL queries cover brand performance, deal detection, price volatility, and market concentration.</p>
+                <div class="meta">130K reviews · 30 live products · Keepa API · 31 figures · 3 notebooks</div>
             </div>
             <div class="project-card reveal">
                 <span class="tag">Market Intelligence</span>
                 <h3>Google Search Trends Analysis</h3>
                 <p>14 search topics tracked over 5 years (2021–2026) via live pytrends API. Multi-category time-series, YoY growth analysis, US regional choropleth, and correlation matrices. AI leads at +70.7% YoY growth; inflation peaked at 68.9% before cooling.</p>
-                <div class="meta">14 keywords · 262 weeks · pytrends live · Worldwide + US</div>
+                <div class="meta">14 keywords · 262 weeks · pytrends live · 14 figures · 3 notebooks</div>
             </div>
         </div>
     </div>
@@ -372,46 +371,47 @@
         <div class="gallery-grid">
             <!-- Amazon -->
             <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_001.png" alt="Brand Landscape"><div class="chart-caption">Top 20 electronics products ranked by engagement score — color intensity shows average customer rating</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_002_price_rating_scatter.png" alt="Price vs Rating"><div class="chart-caption">Price vs. rating scatter plot — bubble size equals review volume; no clear correlation between price and satisfaction</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_003_price_history_trends.png" alt="Price History"><div class="chart-caption">180-day price tracking for top 6 bestselling products — reveals seasonal discount patterns and volatility</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_004_active_deals.png" alt="Active Deals"><div class="chart-caption">12 products with active price drops of 15–35% — color-coded by discount severity for quick identification</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_005_historical_reviews_by_year.png" alt="Review Volume"><div class="chart-caption">Historical review volume peaks in 2013 with 25,000+ monthly reviews — shows the growth of Amazon's marketplace</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_002_price_rating_scatter.png" alt="Price vs Rating"><div class="chart-caption">Price vs. rating scatter — bubble size equals review volume; no clear correlation between price and satisfaction</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_003_price_history_trends.png" alt="Price History"><div class="chart-caption">180-day price tracking for top 6 bestsellers — reveals seasonal discount patterns and volatility windows</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_004_active_deals.png" alt="Active Deals"><div class="chart-caption">12 products with active price drops of 15–35% — color-coded by discount severity</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_005_historical_reviews_by_year.png" alt="Review Volume"><div class="chart-caption">Historical review volume peaks in 2013 with 25,000+ monthly reviews — tracks Amazon marketplace growth</div></div>
             <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_006_rating_comparison.png" alt="Rating Comparison"><div class="chart-caption">Live products average 4.58 stars vs. historical 4.22 — newer products show less rating variance</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_007_q1_brand_performance.png" alt="Brand Performance"><div class="chart-caption">Brand performance ranking — Apple leads by review volume, followed by Samsung and Sony in the electronics space</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_008_q2_price_trend.png" alt="Price Trends"><div class="chart-caption">Monthly price trends show average, minimum, and maximum prices per product — identifies volatility windows</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_009_q3_deal_detection.png" alt="Deal Detection"><div class="chart-caption">Deal detection analysis — joins active deals with product data to calculate total savings including list price delta</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_010_q4_price_tiers.png" alt="Price Tiers"><div class="chart-caption">Products grouped by price tier — Budget (&lt;$50), Mid ($50–$150), Premium ($150–$400), Luxury ($400+) with ratings by tier</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_011_q5_volatility.png" alt="Volatility"><div class="chart-caption">Price volatility ranking by coefficient of variation — identifies the top 10 most volatile products for traders and buyers</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_012_q6_deal_score.png" alt="Deal Score"><div class="chart-caption">Discount opportunity score — composite metric combining rating, review volume, and discount percentage</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_013_q7_review_vs_price.png" alt="Review vs Price"><div class="chart-caption">Review quality vs. price tier — dual-axis showing both rating strength and review volume across price segments</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_007_q1_brand_performance.png" alt="Brand Performance"><div class="chart-caption">Brand performance ranking — Apple leads by review volume, followed by Samsung and Sony</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_008_q2_price_trend.png" alt="Price Trends"><div class="chart-caption">Monthly price trends show average, min, and max per product — identifies volatility windows</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_009_q3_deal_detection.png" alt="Deal Detection"><div class="chart-caption">Deal detection — joins active deals with products to calculate total savings including list price delta</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_010_q4_price_tiers.png" alt="Price Tiers"><div class="chart-caption">Products grouped by price tier — Budget (&lt;$50), Mid ($50–$150), Premium ($150–$400), Luxury ($400+)</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_011_q5_volatility.png" alt="Volatility"><div class="chart-caption">Price volatility ranking by coefficient of variation — top 10 most volatile products for buyers and traders</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_012_q6_deal_score.png" alt="Deal Score"><div class="chart-caption">Discount opportunity score — composite metric: rating × log(reviews) × discount percentage</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_013_q7_review_vs_price.png" alt="Review vs Price"><div class="chart-caption">Review quality vs. price tier — dual-axis showing rating strength and review volume across segments</div></div>
             <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_014_q8_deals_by_brand.png" alt="Deals by Brand"><div class="chart-caption">Which brands discount most aggressively — deal frequency and depth by manufacturer</div></div>
             <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_015_q9_high_low.png" alt="High Low"><div class="chart-caption">All-time high/low price analysis — maximum historical drops per product reveal best buying opportunities</div></div>
             <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_016_q10_market_concentration.png" alt="Market Concentration"><div class="chart-caption">Market concentration — brand share by review volume and product count shows competitive landscape</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_001_Executive_KPI_Dashboard_%E2%80%94_Amaz.png" alt="KPI Dashboard"><div class="chart-caption">Executive KPI summary — products tracked, active deals, average rating, and market share pie chart</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_001_Executive_KPI_Dashboard_%E2%80%94_Amaz.png" alt="KPI Dashboard"><div class="chart-caption">Executive KPI summary — products tracked, active deals, average rating, market share pie chart</div></div>
 
             <!-- Netflix -->
             <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/01_content_mix.png" alt="Content Mix"><div class="chart-caption">Content mix: Movies dominate at 69.6% (6,131 titles) vs. TV Shows at 30.4% (2,676 titles)</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/01_genre_distribution.png" alt="Genre Distribution"><div class="chart-caption">Genre distribution across all Netflix content — Drama, Comedy, and Thriller lead the catalog</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/01_rating_distribution.png" alt="Rating Distribution"><div class="chart-caption">Rating distribution — mean vote average of 6.48 with a left skew; most content clusters around 6–7 stars</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/01_release_year_trend.png" alt="Release Trend"><div class="chart-caption">Release year trends — content production peaked in the late 2010s with a sharp post-2020 decline</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/01_genre_distribution.png" alt="Genre Distribution"><div class="chart-caption">Genre distribution — Drama, Comedy, and Thriller lead the Netflix catalog</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/01_rating_distribution.png" alt="Rating Distribution"><div class="chart-caption">Rating distribution — mean 6.48 with left skew; most content clusters around 6–7 stars</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/01_release_year_trend.png" alt="Release Trend"><div class="chart-caption">Release year trends — content production peaked in late 2010s with sharp post-2020 decline</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/01_popularity_vs_rating.png" alt="Popularity vs Rating"><div class="chart-caption">Popularity vs. quality — weak correlation (~0.05) confirms popular content is not always highly rated</div></div>
             <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/02_q2_top_genres.png" alt="Top Genres"><div class="chart-caption">Top genres by title count — strategic view of where Netflix has invested most heavily</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/02_q3_avg_rating_by_genre.png" alt="Rating by Genre"><div class="chart-caption">Average rating by genre — which content categories deliver the highest audience satisfaction</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/02_q5_release_trend.png" alt="Release Trend"><div class="chart-caption">Release trends by content type — movies vs. TV shows added to the catalog over time</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/02_q6_vote_bucket_rating.png" alt="Vote Buckets"><div class="chart-caption">Vote bucket analysis — distribution across rating tiers: Excellent (8.0+), Good (7.0–7.9), Average, Poor</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/02_q10_quality_tiers.png" alt="Quality Tiers"><div class="chart-caption">Quality tier breakdown — ~35% rated Good, ~15% Excellent; identifies premium content opportunities</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/03_content_mix.png" alt="Content Mix Dashboard"><div class="chart-caption">Executive dashboard view — content mix with interactive breakdown by type and genre</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/03_genre_treemap.png" alt="Genre Treemap"><div class="chart-caption">Genre treemap — hierarchical view of content investment: Drama and Comedy occupy the largest blocks</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/02_q3_avg_rating_by_genre.png" alt="Rating by Genre"><div class="chart-caption">Average rating by genre — which content categories deliver highest audience satisfaction</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/02_q5_release_trend.png" alt="Release Trend"><div class="chart-caption">Release trends by content type — movies vs. TV shows added to catalog over time</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/02_q6_vote_bucket_rating.png" alt="Vote Buckets"><div class="chart-caption">Vote bucket analysis — distribution across rating tiers: Excellent, Good, Average, Poor</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/02_q10_quality_tiers.png" alt="Quality Tiers"><div class="chart-caption">Quality tier breakdown — ~35% rated Good, ~15% Excellent; identifies premium opportunities</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/03_content_mix.png" alt="Content Mix Dashboard"><div class="chart-caption">Executive dashboard — content mix with interactive breakdown by type and genre</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/03_genre_treemap.png" alt="Genre Treemap"><div class="chart-caption">Genre treemap — hierarchical view: Drama and Comedy occupy the largest content blocks</div></div>
             <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/03_quality_sunburst.png" alt="Quality Sunburst"><div class="chart-caption">Quality sunburst — radial breakdown of content quality by type, genre, and rating tier</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/03_upcoming_month.png" alt="Upcoming"><div class="chart-caption">Upcoming releases by month — content pipeline view for strategic planning and competitive positioning</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/03_upcoming_month.png" alt="Upcoming"><div class="chart-caption">Upcoming releases by month — content pipeline view for strategic planning</div></div>
 
             <!-- Google Trends -->
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_figure_001.png" alt="Search Interest"><div class="chart-caption">Worldwide search interest (2021–2026) across Tech, Health, and Finance — AI's surge since 2023 is visible in the Tech panel</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_figure_002.png" alt="Peak Detection"><div class="chart-caption">Peak detection analysis — identifies major search spikes using scipy.signal.find_peaks for event analysis</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_figure_003.png" alt="Correlation"><div class="chart-caption">Full correlation matrix across 14 search topics — AI and ChatGPT are tightly correlated (r ≈ 0.96)</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_figure_004.png" alt="YoY Growth"><div class="chart-caption">Year-over-year growth rates — AI leads at +70.7%, inflation peaked at +68.9%, mental health quietly rising at +62.5%</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/03_executive_dashboard_figure_001.png" alt="Trend Explorer"><div class="chart-caption">Trend explorer — multi-select time series with hover tooltips for detailed inspection of any search topic</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/03_executive_dashboard_figure_002.png" alt="Regional Map"><div class="chart-caption">US regional choropleth — search interest by state with top-10 table for geographic targeting</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/03_executive_dashboard_figure_003.png" alt="Breakout Alerts"><div class="chart-caption">Breakout alerts — rising related queries by parent keyword spot emerging search trends early</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_figure_001.png" alt="Search Interest"><div class="chart-caption">Worldwide search interest (2021–2026) — AI's surge since 2023 visible in Tech panel</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_figure_002.png" alt="Peak Detection"><div class="chart-caption">Peak detection — identifies major search spikes using scipy.signal.find_peaks</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_figure_003.png" alt="Correlation"><div class="chart-caption">Full correlation matrix — AI and ChatGPT are tightly correlated (r ≈ 0.96)</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_figure_004.png" alt="YoY Growth"><div class="chart-caption">Year-over-year growth — AI +70.7%, inflation peaked +68.9%, mental health rising +62.5%</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/03_executive_dashboard_figure_001.png" alt="Trend Explorer"><div class="chart-caption">Trend explorer — multi-select time series with hover tooltips for any search topic</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/03_executive_dashboard_figure_002.png" alt="Regional Map"><div class="chart-caption">US regional choropleth — search interest by state with top-10 table for geo-targeting</div></div>
+            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/03_executive_dashboard_figure_003.png" alt="Breakout Alerts"><div class="chart-caption">Breakout alerts — rising related queries by parent keyword spot emerging trends early</div></div>
         </div>
     </div>
 </section>
@@ -425,8 +425,8 @@
                 <tr><th>Dataset</th><th>Source</th><th>Records</th><th>License</th></tr>
             </thead>
             <tbody>
-                <tr><td>Amazon Reviews (Historical)</td><td><a href="http://jmcauley.ucsd.edu/data/amazon/">UCSD Amazon Review Data</a></td><td>130,038 reviews</td><td>Academic</td></tr>
-                <tr><td>Amazon Products (Live)</td><td><a href="https://keepa.com/#!api">Keepa API</a></td><td>30 bestsellers</td><td>Keepa Terms</td></tr>
+                <tr><td>Amazon Reviews (Historical)</td><td><a href="http://jmcauley.ucsd.edu/data/amazon/">UCSD Amazon Review Data</a></td><td>130,038 reviews (1999–2014)</td><td>Academic</td></tr>
+                <tr><td>Amazon Products (Live)</td><td><a href="https://keepa.com/#!api">Keepa API</a></td><td>30 bestsellers, 180-day history</td><td>Keepa Terms</td></tr>
                 <tr><td>Netflix Titles</td><td><a href="https://www.kaggle.com/datasets/shivamb/netflix-shows">Netflix Movies & TV Shows (Kaggle)</a></td><td>8,807 titles</td><td>CC0</td></tr>
                 <tr><td>Google Search Trends</td><td><a href="https://trends.google.com">Google Trends</a> via <a href="https://github.com/GeneralMills/pytrends">pytrends</a></td><td>14 keywords × 262 weeks</td><td>Public</td></tr>
             </tbody>
@@ -451,6 +451,8 @@
             <div class="tech-item">seaborn</div>
             <div class="tech-item">matplotlib</div>
             <div class="tech-item">numpy</div>
+            <div class="tech-item">scipy</div>
+            <div class="tech-item">pandasql</div>
         </div>
     </div>
 </section>
