@@ -7,7 +7,7 @@
 > **Real Netflix catalog data (Kaggle + TMDB Live), real Amazon reviews, real Google Trends — zero synthetic records.**
 
 <p>
-  <b>78,493+ real records · 3 projects · 9 notebooks · 49+ charts</b>
+  <b>78,055+ real records · 3 projects · 9 notebooks · 49+ charts</b>
 </p>
 
 <p>
@@ -46,10 +46,10 @@ These aren't toy models. Every number below came from running real code on real 
 | Project | Domain | Records | Source | Notebooks | Charts | Status |
 |---|---|---|---|---|---|---|
 | **Netflix Content Strategy** | Media & Entertainment | 9,245 titles | Kaggle Netflix (CC0) + TMDB Live | 3 | 17+ | ✅ Complete |
-| **Amazon Product Intelligence** | E-commerce & Retail | 67,325 reviews | UCSD Amazon 5-core + Keepa live | 3 | 21+ | ✅ Complete |
+| **Amazon Product Intelligence** | E-commerce & Retail | 67,325 reviews | UCSD Amazon 5-core + Keepa seed | 3 | 21+ | ✅ Complete |
 | **Google Search Trends** | Market Intelligence | 1,923 records | pytrends live API | 3 | 11+ | ✅ Complete |
 
-**Total: 78,493+ real records · 9 notebooks · 49+ production charts · 0 synthetic data**
+**Total: 78,055+ real records · 9 notebooks · 49+ production charts · 0 synthetic data**
 
 ---
 
@@ -122,7 +122,7 @@ The ability to translate raw catalog data into acquisition strategy without wait
 
 <p>
   <img src="https://img.shields.io/badge/Source-UCSD%20Amazon%20Reviews-blue" alt="UCSD">
-  <img src="https://img.shields.io/badge/Source-Keepa%20Live-green" alt="Keepa">
+  <img src="https://img.shields.io/badge/Source-Keepa%20Seed-green" alt="Keepa">
   <img src="https://img.shields.io/badge/SQL-DuckDB-yellow" alt="DuckDB">
   <img src="https://img.shields.io/badge/Dashboard-Streamlit-ff4b4b" alt="Streamlit">
 </p>

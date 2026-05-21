@@ -23,17 +23,17 @@
 
 > **Note:** Keepa data requires API key registration at [keepa.com](https://keepa.com/#!api). When no key is available, seed data is generated from real Amazon Electronics ASINs with simulated price history. The fetcher auto-detects the key and switches to live mode.
 
-### 🔵 Historical Reviews (UCSD 1999–2014)
+### 🔵 Historical Reviews (UCSD 2003–2013)
 
 | Metric | Value |
 |--------|-------|
 | Source | [UCSD Amazon Review Data](http://jmcauley.ucsd.edu/data/amazon/) — Electronics 5-core subset |
-| Records | **130,038** real reviews |
-| Date Range | **1999-11-23 → 2014-07-23** |
-| Unique Products (ASINs) | **39,166** |
-| Unique Reviewers | **88,317** |
+| Records | **67,325** real reviews |
+| Date Range | **2003-01-01 → 2013-12-09** |
+| Unique Products (ASINs) | **27,832** |
+| Unique Reviewers | **53,609** |
 | Average Rating | **4.22 ★** |
-| 5-Star Dominance | **59.7%** |
+| 5-Star Dominance | **59.5%** |
 | Overall Helpfulness Rate | **83.7%** |
 
 **Citation:**
@@ -46,12 +46,12 @@
 ```
 amazon-product-customer-intelligence/
 ├── data/
-│   ├── amazon_reviews_electronics_5core.csv      # 130K historical reviews (1999–2014)
+│   ├── amazon_reviews_electronics_5core.csv      # 67K historical reviews (2003–2013)
 │   ├── reviews_Electronics_5.json.gz              # 495MB raw source (UCSD)
-│   ├── keepa_products_YYYYMMDD_HHMMSS.csv         # Live bestseller catalog
-│   ├── keepa_price_history_YYYYMMDD_HHMMSS.csv    # 180-day price tracking
-│   ├── keepa_deals_YYYYMMDD_HHMMSS.csv           # Active price drops
-│   └── keepa_bestsellers_YYYYMMDD_HHMMSS.csv     # Category rankings
+│   ├── keepa_products_YYYYMMDD_HHMMSS.csv         # Seed bestseller catalog (real ASINs, simulated prices)
+│   ├── keepa_price_history_YYYYMMDD_HHMMSS.csv    # 180-day simulated price tracking
+│   ├── keepa_deals_YYYYMMDD_HHMMSS.csv           # Active price drops from seed data
+│   └── keepa_bestsellers_YYYYMMDD_HHMMSS.csv     # Category rankings from seed data
 ├── notebooks/
 │   ├── 01_exploratory_analysis.ipynb              # EDA: Keepa live + UCSD historical
 │   ├── 02_price_intelligence_sql.ipynb            # 10 DuckDB business queries
