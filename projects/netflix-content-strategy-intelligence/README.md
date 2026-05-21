@@ -45,7 +45,11 @@ How is the entertainment content landscape structured across type, genre, rating
 - **Exploratory Analysis:** Full EDA — genre distribution, rating trends, popularity scores, release patterns
 - **SQL Analytics:** 10 business-grade SQL queries (DuckDB in-memory) answering strategic questions
 - **Executive Dashboard:** Interactive Plotly visualizations for stakeholder presentations
-- **Streamlit App:** Production-ready dashboard (`dashboard.py`) with 5 views
+- **Live Streamlit Dashboard:** `app.py` launches a multi-page interactive dashboard with real movie posters, geographic analysis, and quality tiers
+- **6 Dashboard Views:** Executive Summary, Live Data Explorer, Genre Analysis, Geographic Insights, Ratings & Quality, Release Timeline
+- **Self-Healing Data Loader:** Validates data files on startup, shows last refresh timestamp, handles missing files gracefully
+- **Real Movie Posters:** Fetches actual poster images from TMDB's CDN — not placeholders
+- **Verified TMDB Links:** Every title links to its real themoviedb.org page with live ID verification
 
 ---
 
@@ -53,14 +57,29 @@ How is the entertainment content landscape structured across type, genre, rating
 
 Live TMDB data is **already fetched** (2026-05-21 22:17 UTC). The `*_latest.csv` files in `data/` contain real TMDB records.
 
-To refresh with current data:
+### Option A: Launch the Full Dashboard (Recommended)
+
 ```bash
 pip install -r requirements.txt
-export TMDB_API_KEY="your_key_here"  # or use existing key in sierra-secrets.json
-python fetch_tmdb_data.py
+streamlit run app.py
 ```
 
-### 1. Run Notebooks
+The dashboard opens at `http://localhost:8501` with 6 interactive pages:
+
+1. **📊 Executive Summary** — Key metrics, content mix pie chart, top-rated highlights with real posters
+2. **🔍 Live Data Explorer** — Sortable, filterable table with movie poster grid, genre filters, rating sliders
+3. **🎭 Genre Analysis** — Volume vs. quality scatter, per-genre rating distributions, top titles by genre
+4. **🌍 Geographic Insights** — Content by origin country, country-level rating and popularity analysis
+5. **⭐ Ratings & Quality** — Quality tiers, hidden gems (high rating + low popularity), rating vs. popularity scatter
+6. **📅 Release Timeline** — Upcoming releases calendar, month breakdown, year trends, TV seasonality
+
+### Option B: Run the Legacy Single-Page Dashboard
+
+```bash
+streamlit run dashboard.py
+```
+
+### Option C: Run Notebooks
 
 ```bash
 jupyter lab notebooks/
@@ -71,21 +90,12 @@ Notebooks:
 - `02_content_intelligence_sql.ipynb` — 10 DuckDB SQL queries
 - `03_executive_dashboard.ipynb` — Interactive Plotly charts
 
-### 2. Launch Streamlit Dashboard
+### Option D: Refresh Live Data
 
 ```bash
-streamlit run dashboard.py
+export TMDB_API_KEY="your_key_here"  # or use existing key in sierra-secrets.json
+python fetch_tmdb_data.py
 ```
-
-Views: Executive Summary, Content Mix, Genre Landscape, Ratings & Quality, Release Timeline
-
-### 3. Extract Figures
-
-```bash
-python extract_figures.py
-```
-
-Generates PNG exports from all notebook outputs to `figures/`.
 
 ---
 
@@ -146,6 +156,15 @@ All CSVs include a `fetched_at` timestamp (UTC). The `data/manifest_latest.json`
 
 ```
 netflix-content-strategy-intelligence/
+├── app.py                          # 🆕 Multi-page Streamlit dashboard (6 views)
+├── pages/
+│   ├── 01_Executive_Summary.py     # Key metrics and top-rated highlights
+│   ├── 02_Live_Explorer.py         # Filterable table with real movie posters
+│   ├── 03_Genre_Analysis.py        # Genre volume vs. quality deep dive
+│   ├── 04_Geographic_Insights.py   # Content by origin country
+│   ├── 05_Ratings_Quality.py       # Quality tiers and hidden gems
+│   └── 06_Release_Timeline.py      # Upcoming releases and trends
+├── utils.py                        # 🆕 Shared data loader and helpers
 ├── data/
 │   ├── trending_movies_latest.csv
 │   ├── popular_tv_latest.csv
@@ -164,7 +183,7 @@ netflix-content-strategy-intelligence/
 │   └── 03_*.png
 ├── output/
 │   └── 03_*.html (interactive Plotly exports)
-├── dashboard.py                    # Streamlit app
+├── dashboard.py                    # Legacy single-page Streamlit app
 ├── fetch_tmdb_data.py              # Live TMDB fetcher
 ├── fallback_data.py                # Netflix → TMDB schema transformer
 ├── extract_figures.py              # Notebook → PNG extractor
