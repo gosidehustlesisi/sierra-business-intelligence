@@ -330,7 +330,7 @@
                 <div class="stat-label">Figures</div>
             </div>
             <div class="stat">
-                <div class="stat-number">140K+</div>
+                <div class="stat-number">76K+</div>
                 <div class="stat-label">Records</div>
             </div>
         </div>
@@ -345,14 +345,14 @@
             <div class="project-card reveal">
                 <span class="tag">Streaming Intelligence</span>
                 <h3>Netflix Content Strategy Intelligence</h3>
-                <p>8,807 Netflix titles analyzed for content mix, genre distribution, rating patterns, and release trends. 10 SQL queries answer strategic questions about quality tiers and the movies-vs-shows split. Interactive Plotly dashboard for stakeholder presentations.</p>
-                <div class="meta">8,807 titles · Netflix Kaggle (CC0) + TMDB API live · 26 figures · 3 notebooks</div>
+                <p>8,807-title Netflix catalog (Kaggle CC0) plus 438 live TMDB records — trending movies, popular TV, top-rated, upcoming releases, and genre popularity scores. Content mix analysis, genre distribution, rating patterns, and release trends. 10 SQL queries in DuckDB plus interactive Plotly dashboard with live data attribution.</p>
+                <div class="meta">8,807 catalog + 438 live · Netflix Kaggle (CC0) + TMDB API · 26 figures · 3 notebooks</div>
             </div>
             <div class="project-card reveal">
                 <span class="tag">Consumer Intelligence</span>
                 <h3>Amazon Product Customer Intelligence</h3>
-                <p>Hybrid live + historical analysis: Keepa API tracks 30 Electronics bestsellers with real price history, while UCSD's 130K review dataset (1999–2014) provides historical context. 10 DuckDB SQL queries cover brand performance, deal detection, price volatility, and market concentration.</p>
-                <div class="meta">130K reviews · 30 live products · Keepa API · 31 figures · 3 notebooks</div>
+                <p>67,325 real Amazon Electronics reviews (1999–2014) from UCSD's 5-core dataset. Customer sentiment analysis, rating distribution, review length vs. helpfulness correlation, seasonal patterns, and brand performance ranking. 10 DuckDB SQL queries plus interactive Plotly executive dashboard.</p>
+                <div class="meta">67,325 reviews · 27,832 ASINs · UCSD 5-core · 23 figures · 3 notebooks</div>
             </div>
             <div class="project-card reveal">
                 <span class="tag">Market Intelligence</span>
@@ -426,8 +426,7 @@
                 <tr><th>Dataset</th><th>Source</th><th>Records</th><th>License</th></tr>
             </thead>
             <tbody>
-                <tr><td>Amazon Reviews (Historical)</td><td><a href="http://jmcauley.ucsd.edu/data/amazon/">UCSD Amazon Review Data</a></td><td>130,038 reviews (1999–2014)</td><td>Academic</td></tr>
-                <tr><td>Amazon Products (Live)</td><td><a href="https://keepa.com/#!api">Keepa API</a></td><td>30 bestsellers, 180-day history</td><td>Keepa Terms</td></tr>
+                <tr><td>Amazon Reviews (Historical)</td><td><a href="http://jmcauley.ucsd.edu/data/amazon/">UCSD Amazon 5-core Review Data</a></td><td>67,325 reviews (1999–2014)</td><td>Academic</td></tr>
                 <tr><td>Netflix Titles (Historical)</td><td><a href="https://www.kaggle.com/datasets/shivamb/netflix-shows">Netflix Movies & TV Shows (Kaggle)</a></td><td>8,807 titles</td><td>CC0</td></tr>
                 <tr><td>Netflix Content (Live)</td><td><a href="https://www.themoviedb.org/">TMDB API</a> (authenticated)</td><td>438 records per fetch</td><td>TMDB Terms</td></tr>
                 <tr><td>Google Search Trends</td><td><a href="https://trends.google.com">Google Trends</a> via <a href="https://github.com/GeneralMills/pytrends">pytrends</a></td><td>14 keywords × 262 weeks</td><td>Public</td></tr>
@@ -447,7 +446,6 @@
             <div class="tech-item">Plotly</div>
             <div class="tech-item">Streamlit</div>
             <div class="tech-item">pytrends</div>
-            <div class="tech-item">Keepa API</div>
             <div class="tech-item">Jupyter</div>
             <div class="tech-item">scikit-learn</div>
             <div class="tech-item">seaborn</div>

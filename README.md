@@ -85,7 +85,7 @@ I wrote 10 business-facing SQL queries in DuckDB against a real 8,807-title cata
 | 8,807 titles | 6,131 movies (69.6%) / 2,676 TV shows (30.4%) | 36.8% US concentration | 4.4-year avg lifecycle |
 |---|---|---|---|
 | 14.2% International Movies | TV-MA = 36.4% | Peak 2019: 1,999 titles added | 11 dashboard views |
-| **+438 TMDB live records** | Trending, top-rated, upcoming | 19 genre popularity scores | Updated 2026-05-20 |
+| **+438 TMDB live records** | Trending, top-rated, upcoming | 19 genre popularity scores | Updated 2026-05-21 |
 
 **Peak insight:** Netflix's catalog is 70% movies but TV shows turn around faster — if you're still licensing movies on a 5-year horizon, you're bleeding speed.
 
