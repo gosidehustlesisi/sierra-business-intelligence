@@ -97,6 +97,16 @@ export TMDB_API_KEY="your_key_here"  # or use existing key in sierra-secrets.jso
 python fetch_tmdb_data.py
 ```
 
+### Option E: Deploy to Streamlit Cloud (Free)
+
+1. Go to [share.streamlit.io](https://share.streamlit.io)
+2. Click "New app" → select this repository
+3. Set **Main file path:** `projects/netflix-content-strategy-intelligence/app.py`
+4. Click Deploy — takes ~2 minutes
+5. Update the link in `docs/index.html` with your new URL
+
+**Note:** TMDB API key is not required for the dashboard — it reads pre-fetched CSV files. To enable live refresh inside the app, add `TMDB_API_KEY` to Streamlit Cloud secrets.
+
 ---
 
 ## Key Insights
