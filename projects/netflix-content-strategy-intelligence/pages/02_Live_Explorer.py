@@ -128,9 +128,25 @@ for row_df in rows:
             if genre_names:
                 st.markdown(f"<p style='color:#E50914;font-size:0.7rem;margin:2px 0;'>🏷️ {', '.join(genre_names[:3])}</p>", unsafe_allow_html=True)
             
-            # TMDB link
-            if tmdb_id:
-                st.markdown(f"<a href='{get_tmdb_url(tmdb_id)}' target='_blank' style='font-size:0.7rem;color:#1f77b4;'>View on TMDB →</a>", unsafe_allow_html=True)
+            # Expandable details
+            with st.expander("Details", expanded=False):
+                overview = row.get("overview", "")
+                release_date = row.get("release_date") or row.get("first_air_date", "")
+                original_language = row.get("original_language", "")
+                origin_country = row.get("origin_country", "")
+                
+                if overview:
+                    st.markdown(f"**Overview:** {overview[:200]}{'...' if len(overview) > 200 else ''}")
+                if release_date:
+                    st.markdown(f"**Release:** {release_date}")
+                if original_language:
+                    st.markdown(f"**Language:** {original_language}")
+                if origin_country and isinstance(origin_country, str):
+                    st.markdown(f"**Origin:** {origin_country}")
+                
+                # Full TMDB link
+                if tmdb_id:
+                    st.markdown(f"[View on TMDB →]({get_tmdb_url(tmdb_id)})")
             
             st.markdown("<hr style='margin:8px 0;border-color:#333;'>", unsafe_allow_html=True)
 

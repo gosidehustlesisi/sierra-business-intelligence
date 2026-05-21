@@ -3,6 +3,31 @@ import streamlit as st
 import plotly.express as px
 from utils import load_all_data, parse_genres, format_timestamp
 
+# Country mapping for choropleth (ISO 3166-1 alpha-3)
+COUNTRY_MAP = {
+    "US": "USA", "GB": "GBR", "JP": "JPN", "KR": "KOR", "CA": "CAN",
+    "FR": "FRA", "DE": "DEU", "ES": "ESP", "IT": "ITA", "AU": "AUS",
+    "BR": "BRA", "IN": "IND", "MX": "MEX", "RU": "RUS", "CN": "CHN",
+    "SE": "SWE", "NO": "NOR", "DK": "DNK", "NL": "NLD", "BE": "BEL",
+    "PL": "POL", "TR": "TUR", "AR": "ARG", "ZA": "ZAF", "FI": "FIN",
+    "IE": "IRL", "NZ": "NZL", "PT": "PRT", "CH": "CHE", "AT": "AUT",
+    "CZ": "CZE", "HU": "HUN", "RO": "ROU", "IL": "ISR", "TH": "THA",
+    "PH": "PHL", "ID": "IDN", "MY": "MYS", "SG": "SGP", "TW": "TWN",
+    "HK": "HKG", "GR": "GRC", "UA": "UKR", "SA": "SAU", "AE": "ARE",
+    "EG": "EGY", "NG": "NGA", "KE": "KEN", "CO": "COL", "CL": "CHL",
+    "PE": "PER", "VE": "VEN", "EC": "ECU", "UY": "URY", "PK": "PAK",
+    "BD": "BGD", "VN": "VNM", "UA": "UKR", "SK": "SVK", "SI": "SVN",
+    "HR": "HRV", "RS": "SRB", "BG": "BGR", "LT": "LTU", "LV": "LVA",
+    "EE": "EST", "GE": "GEO", "AM": "ARM", "AZ": "AZE", "KZ": "KAZ",
+    "UZ": "UZB", "KG": "KGZ", "TJ": "TJK", "TM": "TKM", "MN": "MNG",
+    "KH": "KHM", "LA": "LAO", "MM": "MMR", "NP": "NPL", "BT": "BTN",
+    "LK": "LKA", "MV": "MDV", "AF": "AFG", "IR": "IRN", "IQ": "IRQ",
+    "JO": "JOR", "LB": "LBN", "SY": "SYR", "YE": "YEM", "OM": "OMN",
+    "QA": "QAT", "BH": "BHR", "KW": "KWT", "CY": "CYP", "MT": "MLT",
+    "LU": "LUX", "IS": "ISL", "GL": "GRL", "FO": "FRO", "LI": "LIE",
+    "MC": "MCO", "SM": "SMR", "AD": "AND", "VA": "VAT"
+}
+
 st.set_page_config(page_title="Geographic Insights", page_icon="🌍", layout="wide")
 
 data, manifest = load_all_data()
@@ -71,6 +96,30 @@ country_df = pd.DataFrame([
 ]).sort_values("Count", ascending=False)
 
 st.write(f"Analyzing {len(tv)} TV shows across {len(country_df)} origin countries")
+
+# Choropleth World Map
+st.subheader("🗺️ Global Content Distribution")
+
+# Map countries to ISO alpha-3
+country_df["iso_alpha"] = country_df["Country"].map(COUNTRY_MAP)
+mapped_countries = country_df.dropna(subset=["iso_alpha"])
+
+if len(mapped_countries) > 0:
+    fig_map = px.choropleth(
+        mapped_countries,
+        locations="iso_alpha",
+        color="Count",
+        hover_name="Country",
+        hover_data=["Avg Rating", "Avg Popularity", "Sample Titles"],
+        color_continuous_scale="Reds",
+        projection="natural earth",
+        title="TV Show Count by Origin Country"
+    )
+    fig_map.update_layout(height=600, geo=dict(showframe=False, showcoastlines=True))
+    st.plotly_chart(fig_map, use_container_width=True)
+    st.caption(f"Mapped {len(mapped_countries)} of {len(country_df)} countries. Unmapped: {', '.join(country_df[country_df['iso_alpha'].isna()]['Country'].tolist())}")
+else:
+    st.warning("No countries could be mapped to ISO codes for choropleth display.")
 
 col1, col2 = st.columns(2)
 

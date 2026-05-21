@@ -45,8 +45,9 @@ How is the entertainment content landscape structured across type, genre, rating
 - **Exploratory Analysis:** Full EDA — genre distribution, rating trends, popularity scores, release patterns
 - **SQL Analytics:** 10 business-grade SQL queries (DuckDB in-memory) answering strategic questions
 - **Executive Dashboard:** Interactive Plotly visualizations for stakeholder presentations
-- **Live Streamlit Dashboard:** `app.py` launches a multi-page interactive dashboard with real movie posters, geographic analysis, and quality tiers
-- **6 Dashboard Views:** Executive Summary, Live Data Explorer, Genre Analysis, Geographic Insights, Ratings & Quality, Release Timeline
+- **Live Streamlit Dashboard:** `app.py` launches a multi-page interactive dashboard with real movie posters, geographic analysis, quality tiers, and a **Content Strategy Simulator**
+- **7 Dashboard Views:** Executive Summary, Live Data Explorer (with click-to-expand details), Genre Analysis, Geographic Insights (choropleth world map), Ratings & Quality, Release Timeline, **Content Strategy Simulator**
+- **Content Strategy Simulator:** Interactive "what-if" tool — pick Genre + Type + Rating + Budget + Release Quarter → get competitive analysis, audience overlap, and strategic recommendations based on 438 live records
 - **Self-Healing Data Loader:** Validates data files on startup, shows last refresh timestamp, handles missing files gracefully
 - **Real Movie Posters:** Fetches actual poster images from TMDB's CDN — not placeholders
 - **Verified TMDB Links:** Every title links to its real themoviedb.org page with live ID verification
@@ -64,14 +65,15 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-The dashboard opens at `http://localhost:8501` with 6 interactive pages:
+The dashboard opens at `http://localhost:8501` with **7 interactive pages**:
 
 1. **📊 Executive Summary** — Key metrics, content mix pie chart, top-rated highlights with real posters
-2. **🔍 Live Data Explorer** — Sortable, filterable table with movie poster grid, genre filters, rating sliders
+2. **🔍 Live Data Explorer** — Sortable, filterable table with movie poster grid, genre filters, rating sliders, **click to expand full details**
 3. **🎭 Genre Analysis** — Volume vs. quality scatter, per-genre rating distributions, top titles by genre
-4. **🌍 Geographic Insights** — Content by origin country, country-level rating and popularity analysis
+4. **🌍 Geographic Insights** — Content by origin country, **choropleth world map**
 5. **⭐ Ratings & Quality** — Quality tiers, hidden gems (high rating + low popularity), rating vs. popularity scatter
 6. **📅 Release Timeline** — Upcoming releases calendar, month breakdown, year trends, TV seasonality
+7. **🎯 Content Strategy Simulator** — **Interactive "what-if" tool**: pick Genre + Type + Rating + Budget + Release Quarter → get competitive analysis, audience overlap, and strategic recommendations based on 438 live records
 
 ### Option B: Run the Legacy Single-Page Dashboard
 
@@ -169,11 +171,12 @@ netflix-content-strategy-intelligence/
 ├── app.py                          # 🆕 Multi-page Streamlit dashboard (6 views)
 ├── pages/
 │   ├── 01_Executive_Summary.py     # Key metrics and top-rated highlights
-│   ├── 02_Live_Explorer.py         # Filterable table with real movie posters
+│   ├── 02_Live_Explorer.py         # Filterable table with real movie posters + click-expand details
 │   ├── 03_Genre_Analysis.py        # Genre volume vs. quality deep dive
-│   ├── 04_Geographic_Insights.py   # Content by origin country
+│   ├── 04_Geographic_Insights.py   # Content by origin country + choropleth map
 │   ├── 05_Ratings_Quality.py       # Quality tiers and hidden gems
-│   └── 06_Release_Timeline.py      # Upcoming releases and trends
+│   ├── 06_Release_Timeline.py      # Upcoming releases and trends
+│   └── 07_Content_Simulator.py     # 🆕 Interactive "what-if" strategy simulator
 ├── utils.py                        # 🆕 Shared data loader and helpers
 ├── data/
 │   ├── trending_movies_latest.csv
