@@ -74,9 +74,71 @@ if fetched_at != "Unknown":
     except:
         pass
 
-# ── TMDB API Check ──────────────────────────────────────────────────────────
-TMDB_API_KEY = os.environ.get("TMDB_API_KEY", "")
-TMDB_READ_TOKEN = os.environ.get("TMDB_READ_TOKEN", "")
+# ── TMDB API Key Resolution (Multi-Source) ────────────────────────────────────
+def resolve_api_keys():
+    """Resolve TMDB API keys from multiple sources in priority order."""
+    api_key = ""
+    read_token = ""
+    source = "none"
+    
+    # 1. Environment variables (highest priority — for Streamlit Cloud secrets)
+    api_key = os.environ.get("TMDB_API_KEY", "")
+    read_token = os.environ.get("TMDB_READ_TOKEN", "")
+    if api_key:
+        return api_key, read_token, "env"
+    
+    # 2. Local .streamlit/secrets.toml (Streamlit local secrets)
+    secrets_toml = Path.home() / ".streamlit" / "secrets.toml"
+    if secrets_toml.exists():
+        try:
+            import toml
+            secrets = toml.load(secrets_toml)
+            api_key = secrets.get("TMDB_API_KEY", "")
+            read_token = secrets.get("TMDB_READ_TOKEN", "")
+            if api_key:
+                return api_key, read_token, "streamlit_secrets"
+        except Exception:
+            pass
+    
+    # 3. Workspace secrets vault (sierra-secrets.json)
+    vault_paths = [
+        Path("/root/.openclaw/workspace/sierra-secrets.json"),
+        Path.home() / ".openclaw" / "workspace" / "sierra-secrets.json",
+        Path.cwd().parent.parent / "sierra-secrets.json",
+    ]
+    for vault_path in vault_paths:
+        if vault_path.exists():
+            try:
+                with open(vault_path) as f:
+                    vault = json.load(f)
+                api_key = vault.get("tmdb_api_key", "")
+                read_token = vault.get("tmdb_read_token", "")
+                if api_key:
+                    return api_key, read_token, "vault"
+            except Exception:
+                pass
+    
+    # 4. .env file in project directory
+    env_path = Path(__file__).parent / ".env"
+    if env_path.exists():
+        try:
+            with open(env_path) as f:
+                for line in f:
+                    line = line.strip()
+                    if line.startswith("TMDB_API_KEY="):
+                        api_key = line.split("=", 1)[1].strip().strip('"\'')
+                    elif line.startswith("TMDB_READ_TOKEN="):
+                        read_token = line.split("=", 1)[1].strip().strip('"\'')
+            if api_key:
+                return api_key, read_token, "dotenv"
+        except Exception:
+            pass
+    
+    return "", "", "none"
+
+TMDB_API_KEY, TMDB_READ_TOKEN, KEY_SOURCE = resolve_api_keys()
+
+# ── TMDB API Validation ───────────────────────────────────────────────────────
 api_key_valid = False
 api_status_message = "No API key configured"
 
@@ -89,13 +151,15 @@ if TMDB_API_KEY:
         )
         if test_resp.status_code == 200:
             api_key_valid = True
-            api_status_message = "✅ API key valid"
+            api_status_message = f"✅ API key valid (via {KEY_SOURCE})"
         elif test_resp.status_code == 401:
-            api_status_message = "❌ API key invalid (401)"
+            api_status_message = f"❌ API key invalid (401) — source: {KEY_SOURCE}"
         else:
-            api_status_message = f"⚠️ API status {test_resp.status_code}"
+            api_status_message = f"⚠️ API status {test_resp.status_code} — source: {KEY_SOURCE}"
     except Exception as e:
-        api_status_message = f"⚠️ API unreachable ({str(e)[:50]})"
+        api_status_message = f"⚠️ API unreachable ({str(e)[:50]}) — source: {KEY_SOURCE}"
+else:
+    api_status_message = f"❌ No API key found — checked: env, streamlit secrets, vault, .env"
 
 # ── Trailer Fetch Function ──────────────────────────────────────────────────
 @st.cache_data(ttl=3600)
@@ -375,9 +439,23 @@ elif view == "⚙️ Settings":
     st.json(manifest)
     
     st.subheader("API Configuration")
-    st.markdown(f"- **TMDB_API_KEY:** {'✅ Set' if TMDB_API_KEY else '❌ Not set'}")
+    st.markdown(f"- **TMDB_API_KEY:** {'✅ Set (source: ' + KEY_SOURCE + ')' if TMDB_API_KEY else '❌ Not set'}")
     st.markdown(f"- **TMDB_READ_TOKEN:** {'✅ Set' if TMDB_READ_TOKEN else '❌ Not set'}")
     st.markdown(f"- **API Status:** {api_status_message}")
+    
+    st.subheader("Key Resolution Sources Checked")
+    sources_checked = [
+        ("Environment variable (TMDB_API_KEY)", os.environ.get("TMDB_API_KEY", "") != ""),
+        ("Streamlit secrets (~/.streamlit/secrets.toml)", (Path.home() / ".streamlit" / "secrets.toml").exists()),
+        ("Workspace vault (sierra-secrets.json)", any([
+            Path("/root/.openclaw/workspace/sierra-secrets.json").exists(),
+            (Path.home() / ".openclaw" / "workspace" / "sierra-secrets.json").exists(),
+        ])),
+        ("Local .env file", (Path(__file__).parent / ".env").exists()),
+    ]
+    for name, found in sources_checked:
+        icon = "✅" if found else "❌"
+        st.markdown(f"{icon} {name}")
     
     if TMDB_API_KEY and not api_key_valid:
         st.error("API key is set but invalid. Get a new key at https://www.themoviedb.org/settings/api")
