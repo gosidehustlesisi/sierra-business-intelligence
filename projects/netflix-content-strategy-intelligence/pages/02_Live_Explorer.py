@@ -134,6 +134,8 @@ for row_df in rows:
                 release_date = row.get("release_date") or row.get("first_air_date", "")
                 original_language = row.get("original_language", "")
                 origin_country = row.get("origin_country", "")
+                youtube_key = row.get("youtube_key", "")
+                trailer_name = row.get("trailer_name", "")
                 
                 if overview:
                     st.markdown(f"**Overview:** {overview[:200]}{'...' if len(overview) > 200 else ''}")
@@ -143,6 +145,11 @@ for row_df in rows:
                     st.markdown(f"**Language:** {original_language}")
                 if origin_country and isinstance(origin_country, str):
                     st.markdown(f"**Origin:** {origin_country}")
+                
+                # Trailer
+                if youtube_key:
+                    st.markdown(f"**🎬 Trailer:** {trailer_name or 'Official Trailer'}")
+                    st.video(f"https://www.youtube.com/watch?v={youtube_key}")
                 
                 # Full TMDB link
                 if tmdb_id:

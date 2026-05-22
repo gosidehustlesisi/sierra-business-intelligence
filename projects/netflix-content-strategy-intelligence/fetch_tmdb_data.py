@@ -34,15 +34,31 @@ RATE_LIMIT_WINDOW = 10  # seconds
 
 # ── Auth helpers ────────────────────────────────────────────────────────────
 
+def get_api_key():
+    """Get TMDB API key from Streamlit Cloud secrets or environment."""
+    try:
+        import streamlit as st
+        return st.secrets.get("TMDB_API_KEY", "")
+    except Exception:
+        pass
+    return os.environ.get("TMDB_API_KEY", "").strip()
+
+
+def get_read_token():
+    """Get TMDB read token from Streamlit Cloud secrets or environment."""
+    try:
+        import streamlit as st
+        return st.secrets.get("TMDB_READ_TOKEN", "")
+    except Exception:
+        pass
+    return os.environ.get("TMDB_READ_TOKEN", "").strip()
+
+
 def get_auth_headers():
-    token = os.environ.get("TMDB_READ_TOKEN", "").strip()
+    token = get_read_token()
     if token:
         return {"Authorization": f"Bearer {token}", "accept": "application/json"}
     return None
-
-
-def get_api_key():
-    return os.environ.get("TMDB_API_KEY", "").strip()
 
 
 def tmdb_get(endpoint, params=None, page=1):
@@ -213,7 +229,45 @@ def fetch_genre_popularity(genre_df):
 
 # ── Main entrypoint ─────────────────────────────────────────────────────────
 
-def fetch_all(data_dir="data"):
+def fetch_movie_trailers(movie_ids):
+    """
+    Fetch YouTube trailer keys for a list of movie IDs.
+    TMDB /movie/{id}/videos endpoint returns videos with type='Trailer' and site='YouTube'.
+    Returns dict: {tmdb_id: {'youtube_key': str, 'name': str, 'type': str}}
+    """
+    trailers = {}
+    for mid in movie_ids:
+        try:
+            data = tmdb_get(f"/movie/{mid}/videos")
+            results = data.get("results", [])
+            # Prefer official trailer, fallback to any trailer
+            trailer = None
+            for v in results:
+                if v.get("type") == "Trailer" and v.get("site") == "YouTube":
+                    if "official" in v.get("name", "").lower() or not trailer:
+                        trailer = v
+                        if "official" in v.get("name", "").lower():
+                            break
+            if trailer:
+                trailers[mid] = {
+                    "youtube_key": trailer["key"],
+                    "trailer_name": trailer.get("name", ""),
+                    "trailer_type": trailer.get("type", ""),
+                }
+        except Exception as e:
+            print(f"  [WARN] Trailer fetch failed for movie {mid}: {e}")
+    return trailers
+
+
+def enrich_with_trailers(df, trailers_dict):
+    """Add trailer columns to a movie DataFrame."""
+    df = df.copy()
+    df["youtube_key"] = df["tmdb_id"].map(lambda x: trailers_dict.get(x, {}).get("youtube_key", ""))
+    df["trailer_name"] = df["tmdb_id"].map(lambda x: trailers_dict.get(x, {}).get("trailer_name", ""))
+    df["trailer_type"] = df["tmdb_id"].map(lambda x: trailers_dict.get(x, {}).get("trailer_type", ""))
+    df["trailer_url"] = df["youtube_key"].apply(lambda k: f"https://www.youtube.com/watch?v={k}" if k else "")
+    return df
+
     Path(data_dir).mkdir(parents=True, exist_ok=True)
     ts = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
     print(f"\n{'='*60}")
@@ -257,11 +311,41 @@ def fetch_all(data_dir="data"):
         path = Path(data_dir) / f"{name}_latest.csv"
         df.to_csv(path, index=False)
 
+    # ── Fetch trailers for all movie datasets ───────────────────────────────
+    print("\n[7/7] Fetching YouTube trailers for all movies...")
+    all_movie_ids = set()
+    for name in ["trending_movies", "top_rated_movies", "upcoming_movies"]:
+        if name in datasets:
+            all_movie_ids.update(datasets[name]["tmdb_id"].tolist())
+    print(f"       Unique movie IDs: {len(all_movie_ids)}")
+    trailers = fetch_movie_trailers(list(all_movie_ids))
+    print(f"       Trailers found: {len(trailers)}")
+
+    # Enrich movie datasets with trailer data
+    for name in ["trending_movies", "top_rated_movies", "upcoming_movies"]:
+        if name in datasets:
+            datasets[name] = enrich_with_trailers(datasets[name], trailers)
+            # Re-save enriched version
+            path = Path(data_dir) / f"{name}_{ts}.csv"
+            datasets[name].to_csv(path, index=False)
+            path = Path(data_dir) / f"{name}_latest.csv"
+            datasets[name].to_csv(path, index=False)
+
+    # Save trailers as separate CSV
+    if trailers:
+        trailers_df = pd.DataFrame([
+            {"tmdb_id": k, **v} for k, v in trailers.items()
+        ])
+        trailers_df.to_csv(Path(data_dir) / f"trailers_{ts}.csv", index=False)
+        trailers_df.to_csv(Path(data_dir) / "trailers_latest.csv", index=False)
+        print(f"  ✓ Saved trailers: {len(trailers_df)} records")
+
     # Write manifest
     manifest = {
         "fetched_at": datetime.utcnow().isoformat(),
         "timestamp_suffix": ts,
         "record_counts": {k: len(v) for k, v in datasets.items()},
+        "trailer_count": len(trailers),
         "files": [f"{k}_{ts}.csv" for k in datasets.keys()] + [f"{k}_latest.csv" for k in datasets.keys()],
     }
     manifest_path = Path(data_dir) / f"manifest_{ts}.json"
