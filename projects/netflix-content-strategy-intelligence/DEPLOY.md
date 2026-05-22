@@ -1,92 +1,89 @@
 # 🎬 Netflix Content Strategy Intelligence
 
-**Live Streamlit Dashboard** — Real-time entertainment data from TMDB API.
+**Streamlit Dashboard** — Entertainment data analysis with honest data source indicators.
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](DEPLOYMENT_URL_PLACEHOLDER)
+## What's Actually Implemented
 
-## What's Inside
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Executive Summary (KPIs, charts) | ✅ Working | Uses Kaggle dataset or TMDB data |
+| Content Mix Analysis | ✅ Working | Pie charts, treemaps, bar charts |
+| Genre Landscape | ✅ Working | Scatter plots, rating by genre |
+| Ratings & Quality | ✅ Working | Histograms, scatter, quality tiers |
+| Release Timeline | ✅ Working | Year trends, upcoming releases |
+| **Trailers View** | ✅ **NEW** | YouTube embed via TMDB API or search fallback |
+| Auto-Refresh Toggle | ✅ **NEW** | UI control (requires Streamlit Cloud for true auto-reload) |
+| API Status Indicator | ✅ **NEW** | Shows whether TMDB key is valid |
+| Data Freshness Badge | ✅ **NEW** | Hours since last fetch |
+| Settings Panel | ✅ **NEW** | Manifest viewer, cache clear, file check |
+| **Real-time API streaming** | ❌ **Not working** | TMDB API key invalid (status_code: 7) |
+| Movie poster images | ❌ Not implemented | Would need TMDB image CDN access |
+| Content Simulator | ❌ Not implemented | "What-if" tool described in DEPLOY.md but not built |
+| Geographic heatmap | ❌ Not implemented | Would need country-level data |
 
-- **7-page interactive dashboard** with real TMDB data
-- **438 live records** (trending movies, popular TV, top-rated, upcoming, genres)
-- **Real movie posters** from TMDB CDN
-- **YouTube trailers** embedded for each title
-- **Content Strategy Simulator** — "what-if" launch planning tool
+## Data Sources (Honest)
 
-## Data Sources
+| Source | Records | Type | Status |
+|--------|---------|------|--------|
+| Netflix Catalog (Kaggle CC0) | 8,807 | Static | ✅ Always available |
+| TMDB Trending Movies | Variable | API | ❌ Key invalid |
+| TMDB Popular TV | Variable | API | ❌ Key invalid |
+| TMDB Top Rated | Variable | API | ❌ Key invalid |
+| TMDB Upcoming | Variable | API | ❌ Key invalid |
 
-| Source | Records | Type |
-|--------|---------|------|
-| TMDB Trending Movies | 100 | Live API |
-| TMDB Popular TV | 100 | Live API |
-| TMDB Top Rated Movies | 100 | Live API |
-| TMDB Upcoming Movies | 100 | Live API |
-| TMDB Genre Mapping | 19 | Live API |
-| Netflix Catalog (Kaggle) | 8,807 | Static Reference |
-
-**Total: 9,245 records** (438 live + 8,807 reference)
+**Current fallback:** The dashboard loads CSV snapshots from `data/` directory. These were generated from TMDB on May 17, 2026 but cannot be refreshed without a valid API key.
 
 ## Local Development
 
 ```bash
+cd projects/netflix-content-strategy-intelligence
 pip install -r requirements.txt
-streamlit run app.py
+streamlit run dashboard.py
 ```
 
-Set environment variables:
+Optional: set TMDB key for live data + trailers:
 ```bash
-export TMDB_API_KEY="your_key"
-export TMDB_READ_TOKEN="your_token"
+export TMDB_API_KEY="your_key_here"
+streamlit run dashboard.py
 ```
 
 ## Streamlit Cloud Deployment
 
-### Step 1: Fork/Connect Repo
-1. Go to [share.streamlit.io](https://share.streamlit.io)
-2. Sign in with GitHub
-3. Click "New app"
-4. Select `gosidehustlesisi/sierra-business-intelligence`
-5. Set **Main file path**: `projects/netflix-content-strategy-intelligence/app.py`
-
-### Step 2: Add Secrets
-In Streamlit Cloud dashboard:
-1. Click your app → "Settings" → "Secrets"
-2. Add:
+1. Fork/connect repo at [share.streamlit.io](https://share.streamlit.io)
+2. Set **Main file path**: `projects/netflix-content-strategy-intelligence/dashboard.py`
+3. Add secrets (Settings → Secrets):
 ```toml
-TMDB_API_KEY = "YOUR_TMDB_API_KEY_HERE"
-TMDB_READ_TOKEN = "YOUR_TMDB_READ_TOKEN_HERE"
+TMDB_API_KEY = "YOUR_KEY_HERE"
 ```
+4. Deploy
 
-### Step 3: Deploy
-Click "Deploy" — Streamlit Cloud will:
-- Install dependencies from `requirements.txt`
-- Launch the multi-page app
-- Auto-redeploy on every git push
+## Trailer Feature
+
+The new **Trailers** view (view 6) does two things:
+
+1. **With valid TMDB API key:** Fetches actual YouTube trailer embeds via `/movie/{id}/videos` endpoint
+2. **Without API key:** Shows top movies with YouTube search links + manual search box
+
+This means trailers work even without a TMDB key — just with slightly more friction.
 
 ## Auto-Refresh
 
-GitHub Actions runs daily at 06:00 UTC to re-fetch TMDB data:
-- Workflow: `.github/workflows/tmdb-refresh.yml`
-- Commits updated CSVs to repo
-- Streamlit Cloud auto-redeploys on commit
+The dashboard includes an **auto-refresh toggle** in the sidebar. On Streamlit Cloud, this works best with:
+- GitHub Actions scheduled workflow to re-fetch data
+- Streamlit Cloud's native auto-redeploy on git push
+- Or manual "Clear Cache & Reload" button in Settings
 
 ## Pages
 
-| Page | What It Shows |
-|------|--------------|
-| 📊 Executive Summary | KPIs, content mix, quality tiers |
-| 🔍 Live Data Explorer | Sortable cards with posters & trailers |
-| 🎭 Genre Analysis | Genre breakdown, ratings distribution |
-| 🌍 Geographic Insights | Content by origin country |
-| ⭐ Ratings & Quality | Quality tiers, hidden gems |
-| 📅 Release Timeline | Upcoming releases, seasonal patterns |
-| 🎯 Content Simulator | "What-if" launch planning tool |
-
-## Trailer Integration
-
-TMDB's `/movie/{id}/videos` endpoint returns YouTube trailer keys. The dashboard:
-- Auto-fetches trailers during data refresh
-- Embeds YouTube player in each movie's "Details" expander
-- Shows official trailer when available, fallback to any trailer
+| # | Page | What It Shows |
+|---|------|---------------|
+| 1 | 📊 Executive Summary | KPIs, content mix pie, genre bar chart, top 5 rated |
+| 2 | 🎞️ Content Mix | Treemap, TV genres, rating distribution overlay |
+| 3 | 🌍 Genre Landscape | Volume vs popularity scatter, avg rating by genre |
+| 4 | ⭐ Ratings & Quality | Histogram, popularity scatter, quality tiers, hidden gems |
+| 5 | 📅 Release Timeline | Year trend line, upcoming by month, upcoming table |
+| 6 | 🎬 Trailers | **NEW** — YouTube embeds or search links |
+| 7 | ⚙️ Settings | **NEW** — API status, data file check, cache clear |
 
 ---
 
