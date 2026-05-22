@@ -52,8 +52,8 @@ In Streamlit Cloud dashboard:
 1. Click your app → "Settings" → "Secrets"
 2. Add:
 ```toml
-TMDB_API_KEY = "b96521e9c5e91e11151fa17741acc0d8"
-TMDB_READ_TOKEN = "eyJhbGciOiJIUzI1NiJ9..."
+TMDB_API_KEY = "YOUR_TMDB_API_KEY_HERE"
+TMDB_READ_TOKEN = "YOUR_TMDB_READ_TOKEN_HERE"
 ```
 
 ### Step 3: Deploy
