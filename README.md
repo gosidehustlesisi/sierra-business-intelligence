@@ -7,7 +7,7 @@
 > **Real Netflix catalog data (Kaggle + TMDB Live), real Amazon reviews, real Google Trends — zero synthetic records.**
 
 <p>
-  <b>78,055+ real records · 3 projects · 9 notebooks · 49+ charts</b>
+  <b>78,055+ real records · 3 projects · 8 notebooks · 75 charts</b>
 </p>
 
 <p>
@@ -16,8 +16,8 @@
   </a>
   <img src="https://img.shields.io/badge/Data-Real%20Records-2ea44f" alt="Real Data">
   <img src="https://img.shields.io/badge/Synthetic-Zero-red" alt="Zero Synthetic">
-  <img src="https://img.shields.io/badge/Notebooks-9-blue" alt="9 Notebooks">
-  <img src="https://img.shields.io/badge/Charts-49+-orange" alt="49+ Charts">
+  <img src="https://img.shields.io/badge/Notebooks-8-blue" alt="8 Notebooks">
+  <img src="https://img.shields.io/badge/Charts-75+-orange" alt="75+ Charts">
 </p>
 
 </div>
