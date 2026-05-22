@@ -40,6 +40,9 @@ jobs:
 
       - name: Execute all notebooks
         id: execute
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
         run: |
           NOTEBOOKS=$(find . -name "*.ipynb" -not -path "*/.git/*" -not -path "*/site-packages/*" | sort)
           
