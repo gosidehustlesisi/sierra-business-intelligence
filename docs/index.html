@@ -574,11 +574,11 @@
                     <p>Netflix's catalog is movie-heavy (70%) but TV shows rate higher on average. Drama and Comedy are safe bets by volume, but Thriller and Documentary deliver disproportionate audience satisfaction. Post-2020 content additions dropped sharply — a strategic gap worth watching.</p>
                 </div>
                 <div class="notebook-links">
-                    <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/blob/main/projects/netflix-content-strategy-intelligence/notebooks/01_exploratory_analysis.ipynb" class="notebook-link">📓 01 Exploratory</a>
-                    <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/blob/main/projects/netflix-content-strategy-intelligence/notebooks/02_content_intelligence_sql.ipynb" class="notebook-link">📓 02 SQL Analysis</a>
-                    <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/blob/main/projects/netflix-content-strategy-intelligence/notebooks/03_executive_dashboard.ipynb" class="notebook-link">📓 03 Dashboard</a>
+                    <a href="https://nbviewer.org/github/gosidehustlesisi/sierra-business-intelligence/blob/main/projects/netflix-content-strategy-intelligence/notebooks/01_exploratory_analysis.ipynb" class="notebook-link">📓 01 Exploratory</a>
+                    <a href="https://nbviewer.org/github/gosidehustlesisi/sierra-business-intelligence/blob/main/projects/netflix-content-strategy-intelligence/notebooks/02_content_intelligence_sql.ipynb" class="notebook-link">📓 02 SQL Analysis</a>
+                    <a href="https://nbviewer.org/github/gosidehustlesisi/sierra-business-intelligence/blob/main/projects/netflix-content-strategy-intelligence/notebooks/03_executive_dashboard.ipynb" class="notebook-link">📓 03 Dashboard <span style="color:#f59e0b">✦ Interactive</span></a>
                 </div>
-                <div class="meta">8,807 catalog titles · Netflix Kaggle (CC0) · 20 figures · 3 notebooks</div>
+                <div class="meta">8,807 catalog titles · Netflix Kaggle (CC0) · 20 figures · 3 notebooks · <b>8 interactive Plotly charts</b></div>
             </div>
 
             <!-- Amazon -->
@@ -617,6 +617,318 @@
         </div>
     </div>
 </section>
+
+<!-- NETFLIX INTERACTIVE DASHBOARD -->
+<style>
+/* Netflix Interactive Dashboard */
+.netflix-dashboard {
+    background: linear-gradient(180deg, var(--bg-deep) 0%, #0a0d12 100%);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 4rem 0;
+}
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+.dashboard-header h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent-gold);
+    margin-bottom: 0.5rem;
+}
+.dashboard-header p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+}
+
+/* KPI Cards */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+.kpi-card {
+    background: rgba(26, 34, 52, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+.kpi-card:hover {
+    border-color: rgba(245, 158, 11, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(245, 158, 11, 0.08);
+}
+.kpi-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--accent-gold);
+    line-height: 1.2;
+}
+.kpi-label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.kpi-delta {
+    font-size: 0.75rem;
+    color: var(--accent-green);
+    margin-top: 0.25rem;
+}
+
+/* Tabs */
+.dashboard-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.tab-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    color: var(--text-secondary);
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.25s ease;
+    font-family: inherit;
+}
+.tab-btn:hover {
+    background: rgba(255,255,255,0.1);
+    color: var(--text-primary);
+}
+.tab-btn.active {
+    background: rgba(245, 158, 11, 0.15);
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+}
+
+/* Tab Content */
+.tab-panel {
+    display: none;
+    animation: fadeIn 0.4s ease;
+}
+.tab-panel.active {
+    display: block;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Chart Grid */
+.chart-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    gap: 1.5rem;
+}
+@media (max-width: 768px) {
+    .chart-grid {
+        grid-template-columns: 1fr;
+    }
+}
+.chart-frame-container {
+    background: rgba(26, 34, 52, 0.4);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+.chart-frame-container:hover {
+    border-color: rgba(6, 182, 212, 0.2);
+}
+.chart-frame-container iframe {
+    width: 100%;
+    height: 450px;
+    border: none;
+    display: block;
+}
+@media (max-width: 768px) {
+    .chart-frame-container iframe {
+        height: 350px;
+    }
+}
+.chart-title {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.chart-title .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--accent-cyan);
+}
+
+/* Insight callout */
+.insight-bar {
+    background: rgba(245, 158, 11, 0.08);
+    border-left: 3px solid var(--accent-gold);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+.insight-bar strong {
+    color: var(--accent-gold);
+}
+
+/* Full width chart */
+.chart-full {
+    grid-column: 1 / -1;
+}
+</style>
+
+<section id="netflix-dashboard" class="netflix-dashboard">
+    <div class="container">
+        <div class="dashboard-header">
+            <h2>🎬 Netflix Interactive Dashboard</h2>
+            <p>8,807 real titles · Hover, zoom, and explore every chart · Updated from Kaggle CC0 dataset</p>
+        </div>
+
+        <!-- KPI Row -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-value">8,807</div>
+                <div class="kpi-label">Total Titles</div>
+                <div class="kpi-delta">Kaggle CC0</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value">69.6%</div>
+                <div class="kpi-label">Movies</div>
+                <div class="kpi-delta">6,131 titles</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value">30.4%</div>
+                <div class="kpi-label">TV Shows</div>
+                <div class="kpi-delta">2,676 titles</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value">6.51</div>
+                <div class="kpi-label">Mean Rating</div>
+                <div class="kpi-delta">0–10 scale</div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-value">5,788</div>
+                <div class="kpi-label">Top Genre: Drama</div>
+                <div class="kpi-delta">94% of catalog</div>
+            </div>
+        </div>
+
+        <!-- Insight Callout -->
+        <div class="insight-bar">
+            <strong>Key Finding:</strong> Netflix's catalog is movie-heavy (69.6%) but TV shows rate higher on average. 
+            Drama dominates by volume, yet Thriller and Documentary deliver disproportionate audience satisfaction. 
+            Post-2020 content additions dropped sharply — a strategic gap worth watching.
+        </div>
+
+        <!-- Tabs -->
+        <div class="dashboard-tabs">
+            <button class="tab-btn active" onclick="switchTab('tab-overview')">📊 Overview</button>
+            <button class="tab-btn" onclick="switchTab('tab-genres')">🎭 Genres</button>
+            <button class="tab-btn" onclick="switchTab('tab-quality')">⭐ Quality</button>
+            <button class="tab-btn" onclick="switchTab('tab-trends')">📈 Trends</button>
+            <button class="tab-btn" onclick="switchTab('tab-pipeline')">🎬 Pipeline</button>
+        </div>
+
+        <!-- Tab Panels -->
+        <div id="tab-overview" class="tab-panel active">
+            <div class="chart-grid">
+                <div class="chart-frame-container">
+                    <div class="chart-title"><span class="dot"></span> Content Mix — Movies vs TV Shows</div>
+                    <iframe src="./netflix-dashboard/05_content_mix.html" loading="lazy"></iframe>
+                </div>
+                <div class="chart-frame-container">
+                    <div class="chart-title"><span class="dot" style="background:#ff6b6b"></span> Rating Distribution with Mean Line</div>
+                    <iframe src="./netflix-dashboard/02_rating_distribution.html" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-genres" class="tab-panel">
+            <div class="chart-grid">
+                <div class="chart-frame-container">
+                    <div class="chart-title"><span class="dot" style="background:#636efa"></span> Top 15 Genres by Volume</div>
+                    <iframe src="./netflix-dashboard/01_top_genres.html" loading="lazy"></iframe>
+                </div>
+                <div class="chart-frame-container">
+                    <div class="chart-title"><span class="dot" style="background:#10b981"></span> Genre Landscape Treemap</div>
+                    <iframe src="./netflix-dashboard/06_genre_treemap.html" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-quality" class="tab-panel">
+            <div class="chart-grid">
+                <div class="chart-frame-container">
+                    <div class="chart-title"><span class="dot" style="background:#f59e0b"></span> Quality Tiers Sunburst</div>
+                    <iframe src="./netflix-dashboard/08_quality_sunburst.html" loading="lazy"></iframe>
+                </div>
+                <div class="chart-frame-container">
+                    <div class="chart-title"><span class="dot" style="background:#ab63fa"></span> Popularity vs Rating (3,000 title sample)</div>
+                    <iframe src="./netflix-dashboard/03_popularity_vs_rating.html" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-trends" class="tab-panel">
+            <div class="chart-grid">
+                <div class="chart-frame-container chart-full">
+                    <div class="chart-title"><span class="dot" style="background:#06b6d4"></span> Release Year Trend (2000–2021)</div>
+                    <iframe src="./netflix-dashboard/04_release_trend.html" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <div id="tab-pipeline" class="tab-panel">
+            <div class="chart-grid">
+                <div class="chart-frame-container chart-full">
+                    <div class="chart-title"><span class="dot" style="background:#f97316"></span> Upcoming Releases by Month (TMDB Live Data)</div>
+                    <iframe src="./netflix-dashboard/07_upcoming_months.html" loading="lazy"></iframe>
+                </div>
+            </div>
+            <div class="insight-bar" style="margin-top:1rem">
+                <strong>Pipeline Insight:</strong> October and December are peak release months — holiday season strategy. 
+                January and February are valleys — content drought by design, or a pipeline gap for competitors to exploit.
+            </div>
+        </div>
+
+        <!-- Data Source Footer -->
+        <div style="text-align:center; margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--border);">
+            <p style="font-size:0.8rem; color:var(--text-muted);">
+                📊 Data: <strong>Netflix Movies & TV Shows</strong> (Kaggle CC0, 8,807 titles) + <strong>TMDB API</strong> (438 live records) · 
+                Charts: <strong>Plotly.js</strong> (interactive, dark theme) · 
+                <a href="https://nbviewer.org/github/gosidehustlesisi/sierra-business-intelligence/blob/main/projects/netflix-content-strategy-intelligence/notebooks/03_executive_dashboard.ipynb" style="color:var(--accent-cyan)">Open in nbviewer →</a>
+            </p>
+        </div>
+    </div>
+</section>
+
+<script>
+function switchTab(tabId) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    event.target.classList.add('active');
+}
+</script>
+<!-- END NETFLIX INTERACTIVE DASHBOARD -->
 
 <section id="gallery" class="section">
     <div class="container">
