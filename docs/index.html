@@ -3,1036 +3,874 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sierra Napier — Business Intelligence. Netflix content strategy, Amazon marketplace, Google trends. Real corporate datasets.">
-    <title>Business Intelligence — Sierra Napier</title>
+    <meta name="description" content="Sierra Napier — Business Intelligence. 78,055+ real records from Netflix, Amazon, and Google. Media strategy, e-commerce analytics, and market intelligence.">
+    
+    <meta property="og:title" content="Sierra Napier — Business Intelligence">
+    <meta property="og:description" content="78,055+ real records · Netflix · Amazon · Google Trends. Zero synthetic data.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/docs/figures/nflx_01_genre_distribution.png">
+    <meta property="og:url" content="https://gosidehustlesisi.github.io/sierra-business-intelligence/">
+    <meta property="og:type" content="website">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sierra Napier — Business Intelligence">
+    <meta name="twitter:description" content="78,055+ real records from Netflix, Amazon, and Google Trends.">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/docs/figures/nflx_01_genre_distribution.png">
+
+    <title>Sierra Napier — Business Intelligence</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --bg-deep: #0f1115;
-            --bg-surface: #111827;
-            --bg-elevated: #1a2234;
-            --border: #1f2d44;
+            --charcoal: #0D0D0D;
+            --charcoal-light: #1A1A1A;
+            --charcoal-lighter: #262626;
+            --amber: #FFB800;
+            --amber-dark: #E6A600;
+            --teal: #00D4AA;
+            --teal-dark: #00B894;
+            --green: #22C55E;
+            --green-dark: #16A34A;
             --text-primary: #f0f0f0;
-            --text-secondary: #94a3b8;
-            --text-muted: #64748b;
-            --accent-gold: #f59e0b;
-            --accent-cyan: #06b6d4;
-            --accent-green: #10b981;
-            --accent-gold-hover: #fbbf24;
+            --text-secondary: #a0a8b8;
+            --text-muted: #6b7280;
+            --border: #2a2f3c;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-            background: var(--bg-deep);
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--charcoal);
             color: var(--text-primary);
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        #particle-canvas {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;
+        }
         nav {
-            position: sticky;
-            top: 0;
-            background: rgba(15, 17, 21, 0.95);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
-            z-index: 100;
-            padding: 1rem 0;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            transition: all 0.3s ease; padding: 1rem 0;
+        }
+        nav.scrolled {
+            background: rgba(13,13,13,0.9); backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .nav-inner {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            max-width: 1200px; margin: 0 auto; padding: 0 2rem;
+            display: flex; justify-content: space-between; align-items: center;
         }
         .nav-brand {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 700;
-            font-size: 1.1rem;
-            color: var(--text-primary);
-            text-decoration: none;
+            display: flex; align-items: center; gap: 0.75rem;
+            font-weight: 700; font-size: 1.1rem; color: var(--text-primary); text-decoration: none;
         }
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
+        .nav-brand img {
+            width: 40px; height: 40px; border-radius: 50%; border: 2px solid var(--amber);
+            transition: transform 0.3s;
         }
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
+        .nav-brand:hover img { transform: scale(1.1); }
+        .nav-brand span {
+            background: linear-gradient(135deg, var(--amber), var(--teal));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-        .nav-links a:hover { color: var(--accent-gold); }
-        .hero {
-            padding: 6rem 0 4rem;
-            text-align: center;
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+        .nav-links a:hover { color: var(--amber); }
+
+        header {
+            position: relative; min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center; overflow: hidden;
         }
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--accent-gold) 0%, var(--accent-cyan) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .hero-content { position: relative; z-index: 10; max-width: 800px; padding: 0 2rem; }
+        .hero-avatar { position: relative; display: inline-block; margin-bottom: 2rem; }
+        .hero-avatar::before {
+            content: ''; position: absolute; inset: -10px;
+            background: radial-gradient(circle, rgba(255,184,0,0.3) 0%, transparent 70%);
+            border-radius: 50%; animation: pulse-glow 3s ease-in-out infinite;
         }
-        .hero .subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 700px;
-            margin: 0 auto 2rem;
+        @keyframes pulse-glow {
+            0%,100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.1); opacity: 0.3; }
         }
-        .hero .stats {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin-top: 2rem;
-            flex-wrap: wrap;
+        .hero-avatar img { position: relative; width: 120px; height: 120px; border-radius: 50%; border: 3px solid var(--amber); object-fit: cover; }
+        h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -0.02em; }
+        .gradient-text {
+            background: linear-gradient(135deg, var(--amber), var(--teal));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
-        .hero .stat {
-            text-align: center;
+        .hero-subtitle { font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem; font-weight: 400; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: rgba(255,184,0,0.1); border: 1px solid rgba(255,184,0,0.3);
+            color: var(--amber); padding: 0.4rem 1rem; border-radius: 50px;
+            font-size: 0.85rem; font-weight: 500; margin-bottom: 1.5rem; font-family: 'JetBrains Mono', monospace;
         }
-        .hero .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--accent-gold);
-            font-family: 'JetBrains Mono', monospace;
+        .hero-badge::before { content: ''; width: 8px; height: 8px; background: var(--amber); border-radius: 50%; animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.8); } }
+        .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem; }
+        .btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.875rem 2rem; border-radius: 10px; font-weight: 700;
+            text-decoration: none; transition: all 0.2s; font-size: 1rem;
         }
-        .hero .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-top: 0.25rem;
-        }
-        .section {
-            padding: 4rem 0;
-            border-top: 1px solid var(--border);
-        }
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        .section-subtitle {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-        /* TL;DR Box */
-        .tldr-box {
-            background: rgba(16, 185, 129, 0.08);
-            border-left: 3px solid var(--accent-green);
-            padding: 1rem 1.25rem;
-            border-radius: 0 8px 8px 0;
-            margin: 1rem 0;
-        }
-        .tldr-box .tldr-label {
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--accent-green);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.25rem;
-        }
-        .tldr-box p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin: 0;
-        }
-        /* Dashboard Cards */
-        .dashboards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-        .dashboard-card {
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .dashboard-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 32px rgba(6, 182, 212, 0.12);
-        }
-        .dashboard-card .dash-preview {
-            height: 180px;
-            background: var(--bg-surface);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-bottom: 1px solid var(--border);
-            position: relative;
-            overflow: hidden;
-        }
-        .dashboard-card .dash-preview img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.85;
-        }
-        .dashboard-card .dash-preview .dash-badge {
-            position: absolute;
-            top: 0.75rem;
-            right: 0.75rem;
-            background: rgba(16, 185, 129, 0.9);
-            color: #000;
-            font-size: 0.7rem;
-            font-weight: 700;
-            padding: 0.25rem 0.6rem;
-            border-radius: 4px;
-            text-transform: uppercase;
-        }
-        .dashboard-card .dash-body {
-            padding: 1.25rem;
-        }
-        .dashboard-card h4 {
-            font-size: 1.1rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--accent-cyan);
-        }
-        .dashboard-card p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .dash-actions {
-            display: flex;
-            gap: 0.75rem;
-            flex-wrap: wrap;
-        }
-        .dash-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-        .dash-btn-primary {
-            background: var(--accent-cyan);
-            color: #000;
-        }
-        .dash-btn-primary:hover {
-            background: #0891b2;
-        }
-        .dash-btn-secondary {
-            background: var(--bg-surface);
-            color: var(--text-secondary);
-            border: 1px solid var(--border);
-        }
-        .dash-btn-secondary:hover {
-            border-color: var(--accent-cyan);
-            color: var(--accent-cyan);
-        }
-        /* Projects */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 1.5rem;
-        }
+        .btn-primary { background: linear-gradient(135deg, var(--amber), var(--amber-dark)); color: var(--charcoal); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,184,0,0.3); }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-primary); }
+        .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+        .hero-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 3rem; }
+        .stat-item { text-align: center; }
+        .stat-value { font-size: 2.5rem; font-weight: 800; color: var(--amber); font-family: 'JetBrains Mono', monospace; }
+        .stat-label { font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.25rem; }
+        .scroll-indicator { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 10; }
+        .scroll-indicator-inner { width: 24px; height: 40px; border: 2px solid rgba(255,255,255,0.2); border-radius: 12px; display: flex; justify-content: center; padding-top: 8px; }
+        .scroll-indicator-inner::after { content: ''; width: 4px; height: 8px; background: var(--amber); border-radius: 2px; animation: scroll-bounce 2s ease infinite; }
+        @keyframes scroll-bounce { 0%,100% { transform: translateY(0); } 50% { transform: translateY(8px); } }
+
+        section { padding: 5rem 0; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; margin-bottom: 0.75rem; }
+        .section-header p { color: var(--text-secondary); max-width: 600px; margin: 0 auto; }
+        .section-line { width: 60px; height: 3px; background: linear-gradient(90deg, var(--amber), var(--teal)); margin: 1rem auto 0; border-radius: 2px; }
+
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; }
         .project-card {
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            transition: transform 0.2s, box-shadow 0.2s;
+            background: var(--charcoal-light); border: 1px solid var(--border); border-radius: 16px;
+            padding: 2rem; transition: all 0.3s ease; position: relative; overflow: hidden;
         }
-        .project-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 8px 32px rgba(245, 158, 11, 0.1);
+        .project-card::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, var(--amber), var(--teal)); opacity: 0; transition: opacity 0.3s;
         }
-        .project-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--accent-gold);
+        .project-card:hover { transform: translateY(-4px); border-color: rgba(255,184,0,0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .project-card:hover::before { opacity: 1; }
+        .project-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem; background: rgba(255,184,0,0.1); border: 1px solid rgba(255,184,0,0.2); }
+        .project-card:nth-child(2) .project-icon { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); }
+        .project-card:nth-child(3) .project-icon { background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.2); }
+        .project-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .project-card .subtitle { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--amber); margin-bottom: 1rem; }
+        .project-card:nth-child(2) .subtitle { color: var(--teal); }
+        .project-card:nth-child(3) .subtitle { color: var(--green); }
+        .project-card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.6; }
+        .tldr-box {
+            background: rgba(255,184,0,0.05); border-left: 3px solid var(--amber);
+            padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; margin: 1rem 0;
         }
-        .project-card .tag {
-            display: inline-block;
-            background: rgba(245, 158, 11, 0.15);
-            color: var(--accent-gold);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
+        .project-card:nth-child(2) .tldr-box { background: rgba(0,212,170,0.05); border-left-color: var(--teal); }
+        .project-card:nth-child(3) .tldr-box { background: rgba(34,197,94,0.05); border-left-color: var(--green); }
+        .tldr-box .tldr-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; color: var(--amber); }
+        .project-card:nth-child(2) .tldr-box .tldr-label { color: var(--teal); }
+        .project-card:nth-child(3) .tldr-box .tldr-label { color: var(--green); }
+        .tldr-box p { color: var(--text-secondary); font-size: 0.85rem; margin: 0; }
+        .project-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; }
+        .project-stat { display: flex; flex-direction: column; }
+        .project-stat-value { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 1.1rem; color: var(--text-primary); }
+        .project-stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; }
+        .project-tag { display: inline-block; background: rgba(255,184,0,0.1); border: 1px solid rgba(255,184,0,0.2); color: var(--amber); padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; margin-top: 1rem; }
+        .project-card:nth-child(2) .project-tag { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); color: var(--teal); }
+        .project-card:nth-child(3) .project-tag { background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.2); color: var(--green); }
+
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .gallery-item { background: var(--charcoal-light); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.3s ease; }
+        .gallery-item:hover { transform: scale(1.02); border-color: rgba(0,212,170,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .gallery-item.netflix { border-left: 3px solid var(--amber); }
+        .gallery-item.amazon { border-left: 3px solid var(--teal); }
+        .gallery-item.google { border-left: 3px solid var(--green); }
+        .gallery-item img { width: 100%; height: 220px; object-fit: cover; display: block; background: var(--charcoal); }
+        .gallery-caption { padding: 1rem; font-size: 0.85rem; color: var(--text-secondary); }
+        .gallery-caption strong { color: var(--text-primary); display: block; margin-bottom: 0.25rem; }
+        .gallery-domain { font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
+        .gallery-domain.netflix { color: var(--amber); }
+        .gallery-domain.amazon { color: var(--teal); }
+        .gallery-domain.google { color: var(--green); }
+
+        .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 1000; align-items: center; justify-content: center; padding: 2rem; }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-width: 90%; max-height: 85vh; border-radius: 8px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); }
+        .lightbox-close { position: absolute; top: 2rem; right: 2rem; font-size: 2rem; color: var(--text-secondary); cursor: pointer; background: none; border: none; transition: color 0.2s; }
+        .lightbox-close:hover { color: var(--text-primary); }
+
+        .notebooks-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+        .notebook-card {
+            background: var(--charcoal-light); border: 1px solid var(--border); border-radius: 12px;
+            padding: 1.5rem; transition: all 0.3s ease; text-decoration: none; color: inherit; display: block;
         }
-        .project-card p {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 0.75rem;
-        }
-        .project-card .meta {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-        .notebook-links {
-            display: flex;
-            gap: 0.5rem;
-            flex-wrap: wrap;
-            margin-top: 0.75rem;
-        }
-        .notebook-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            padding: 0.35rem 0.75rem;
-            background: rgba(6, 182, 212, 0.1);
-            border: 1px solid rgba(6, 182, 212, 0.2);
-            border-radius: 4px;
-            color: var(--accent-cyan);
-            font-size: 0.8rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.2s;
-        }
-        .notebook-link:hover {
-            background: rgba(6, 182, 212, 0.2);
-            border-color: var(--accent-cyan);
-        }
-        /* Gallery */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1rem;
-        }
-        .chart-box {
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: border-color 0.2s;
-        }
-        .chart-box:hover {
-            border-color: var(--accent-gold);
-        }
-        .chart-box img {
-            width: 100%;
-            display: block;
-            background: var(--bg-surface);
-        }
-        .chart-caption {
-            padding: 0.75rem 1rem;
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            border-top: 1px solid var(--border);
-        }
-        .chart-caption .insight {
-            display: block;
-            color: var(--accent-gold);
-            font-weight: 600;
-            margin-bottom: 0.25rem;
-        }
-        /* Data Table */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.95rem;
-        }
-        .data-table th {
-            text-align: left;
-            padding: 0.75rem 1rem;
-            background: var(--bg-elevated);
-            border-bottom: 1px solid var(--border);
-            color: var(--text-secondary);
-            font-weight: 600;
-        }
-        .data-table td {
-            padding: 0.75rem 1rem;
-            border-bottom: 1px solid var(--border);
-            color: var(--text-primary);
-        }
-        .data-table tr:hover td {
-            background: rgba(245, 158, 11, 0.05);
-        }
-        .data-table a {
-            color: var(--accent-cyan);
-            text-decoration: none;
-        }
-        .data-table a:hover { text-decoration: underline; }
-        /* Tech */
-        .tech-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.75rem;
-        }
+        .notebook-card:hover { transform: translateY(-4px); border-color: rgba(255,184,0,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .notebook-card .nb-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+        .notebook-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .notebook-card p { font-size: 0.85rem; color: var(--text-secondary); }
+        .notebook-card .nb-meta { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.75rem; }
+
+        .sources-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        .sources-table th, .sources-table td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--border); }
+        .sources-table th { color: var(--amber); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace; }
+        .sources-table td { color: var(--text-secondary); font-size: 0.95rem; }
+        .sources-table tr:hover td { color: var(--text-primary); background: rgba(255,184,0,0.03); }
+        .sources-table a { color: var(--teal); text-decoration: none; }
+        .sources-table a:hover { text-decoration: underline; }
+        .source-badge { display: inline-block; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+        .badge-kaggle { background: rgba(32,190,255,0.15); color: #20BEFF; border: 1px solid rgba(32,190,255,0.3); }
+        .badge-tmdb { background: rgba(1,180,228,0.15); color: #01B4E4; border: 1px solid rgba(1,180,228,0.3); }
+        .badge-ucsd { background: rgba(255,107,107,0.15); color: #FF6B6B; border: 1px solid rgba(255,107,107,0.3); }
+        .badge-google { background: rgba(66,133,244,0.15); color: #4285F4; border: 1px solid rgba(66,133,244,0.3); }
+
+        .tech-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 1rem; }
         .tech-item {
-            background: var(--bg-elevated);
-            border: 1px solid var(--border);
-            padding: 0.5rem 1rem;
-            border-radius: 6px;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
+            background: var(--charcoal-light); border: 1px solid var(--border); border-radius: 12px;
+            padding: 1.5rem 1rem; text-align: center; transition: all 0.3s ease;
         }
+        .tech-item:hover { transform: translateY(-4px); border-color: rgba(255,184,0,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .tech-item .tech-emoji { font-size: 2rem; margin-bottom: 0.5rem; }
+        .tech-item .tech-name { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); }
+        .tech-item .tech-role { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.25rem; font-family: 'JetBrains Mono', monospace; }
+
         footer {
-            border-top: 1px solid var(--border);
-            padding: 3rem 0;
-            text-align: center;
-            color: var(--text-muted);
+            background: var(--charcoal-light); border-top: 1px solid var(--border);
+            padding: 3rem 0; text-align: center;
         }
-        footer .social {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
+        footer .footer-cta {
+            background: linear-gradient(135deg, var(--amber), var(--teal));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            font-size: 1.5rem; font-weight: 800; margin-bottom: 1rem;
         }
-        footer a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        footer a:hover { color: var(--accent-gold); }
+        footer p { color: var(--text-secondary); margin-bottom: 1.5rem; }
+        .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; transition: color 0.2s; }
+        .footer-links a:hover { color: var(--amber); }
         .floating-cta {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--accent-gold);
-            color: #000;
-            padding: 0.875rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 700;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
-            transition: background 0.2s;
-            z-index: 1000;
+            position: fixed; bottom: 2rem; right: 2rem; z-index: 100;
+            background: linear-gradient(135deg, var(--amber), var(--amber-dark));
+            color: var(--charcoal); padding: 1rem 1.5rem; border-radius: 50px;
+            font-weight: 700; text-decoration: none; box-shadow: 0 10px 30px rgba(255,184,0,0.3);
+            transition: all 0.3s; display: flex; align-items: center; gap: 0.5rem;
         }
-        .floating-cta:hover {
-            background: var(--accent-gold-hover);
-        }
-        .lightbox-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-        }
-        .lightbox-overlay.active { display: flex; }
-        .lightbox-img { max-width: 90%; max-height: 90%; border-radius: 8px; }
-        .lightbox-close {
-            position: absolute;
-            top: 2rem; right: 2rem;
-            font-size: 2rem;
-            color: #fff;
-            cursor: pointer;
-        }
-        .reveal {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.5s ease, transform 0.5s ease;
-        }
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
+        .floating-cta:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(255,184,0,0.4); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero-stats { gap: 1.5rem; }
+            .stat-value { font-size: 2rem; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); }
+            .notebooks-grid { grid-template-columns: 1fr; }
+            .tech-grid { grid-template-columns: repeat(3, 1fr); }
+            .floating-cta { bottom: 1rem; right: 1rem; padding: 0.75rem 1rem; font-size: 0.85rem; }
         }
     </style>
 </head>
 <body>
-
-<nav>
-    <div class="container">
+    <canvas id="particle-canvas"></canvas>
+    <nav id="navbar">
         <div class="nav-inner">
             <a href="#" class="nav-brand">
-                <span style="color:var(--accent-gold);">◆</span> Sierra Napier
+                <img src="https://avatars.githubusercontent.com/u/267403929?v=4" alt="Sierra Napier">
+                <span>Sierra.BI</span>
             </a>
             <ul class="nav-links">
-                <li><a href="#dashboards">Dashboards</a></li>
                 <li><a href="#projects">Projects</a></li>
-                <li><a href="#gallery">Figures</a></li>
-                <li><a href="#data">Data</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#notebooks">Notebooks</a></li>
+                <li><a href="#sources">Sources</a></li>
                 <li><a href="#tech">Stack</a></li>
             </ul>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<section class="hero">
-    <div class="container">
-        <h1>Business Intelligence</h1>
-        <p class="subtitle">Corporate strategy analytics with real market data. Netflix content intelligence, Amazon customer analytics, and Google Trends market forecasting.</p>
-        <div class="stats">
-            <div class="stat">
-                <div class="stat-number">3</div>
-                <div class="stat-label">Projects</div>
+    <header>
+        <div class="hero-content">
+            <div class="hero-avatar">
+                <img src="https://avatars.githubusercontent.com/u/267403929?v=4" alt="Sierra Napier">
             </div>
-            <div class="stat">
-                <div class="stat-number">75</div>
-                <div class="stat-label">Figures</div>
+            <h1>SIERRA <span class="gradient-text">BUSINESS INTELLIGENCE</span></h1>
+            <p class="hero-subtitle">Real Netflix catalog data. Real Amazon reviews. Real Google Trends. Zero synthetic records.</p>
+            <div class="hero-badge">LIVE INTELLIGENCE — REAL CORPORATE DATA</div>
+            <div class="hero-cta">
+                <a href="#projects" class="btn btn-primary">Explore Projects</a>
+                <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence" class="btn btn-outline" target="_blank">View on GitHub</a>
             </div>
-            <div class="stat">
-                <div class="stat-number">76K+</div>
-                <div class="stat-label">Records</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">3</div>
-                <div class="stat-label">Live Dashboards</div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-value">78K+</div>
+                    <div class="stat-label">Real Records</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">3</div>
+                    <div class="stat-label">Data Domains</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">28</div>
+                    <div class="stat-label">Curated Charts</div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+        <div class="scroll-indicator">
+            <div class="scroll-indicator-inner"></div>
+        </div>
+    </header>
 
-<!-- DASHBOARDS SECTION — Streamlined & Embedded -->
-<section id="dashboards" class="section">
-    <div class="container">
-        <h2 class="section-title">Live Dashboards</h2>
-        <p class="section-subtitle">Interactive Streamlit applications — deploy to Streamlit Cloud for live access</p>
-
-        <div class="dashboards-grid">
-            <!-- Netflix Dashboard -->
-            <div class="dashboard-card reveal">
-                <div class="dash-preview">
-                    <img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/03_executive_dashboard.png" alt="Netflix Dashboard Preview">
-                    <span class="dash-badge">Kaggle Dataset (CC0)</span>
-                </div>
-                <div class="dash-body">
-                    <h4>🎬 Netflix Content Intelligence</h4>
-                    <p>7-page Streamlit dashboard with trailer integration, auto-refresh toggle, and honest data source badges. See what Netflix actually has, what audiences rate highest, and what genres dominate.</p>
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Projects</h2>
+                <p>End-to-end business intelligence across media, e-commerce, and market analytics</p>
+                <div class="section-line"></div>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-icon">🎬</div>
+                    <h3>Netflix Content Strategy</h3>
+                    <div class="subtitle">Media & Entertainment</div>
+                    <p>8,807-title catalog analysis + 438 live TMDB records. Genre distribution, content mix optimization, rating dynamics, and release trend forecasting for streaming strategy.</p>
                     <div class="tldr-box">
                         <div class="tldr-label">TL;DR</div>
-                        <p>Movies are 70% of the catalog but TV shows get better ratings. Drama and Comedy own the library, but Thriller and Documentary punch above their weight on audience scores. Trailer view fetches YouTube embeds when TMDB API key is valid.</p>
+                        <p>International content (54% non-English) dominates catalog. TV shows are rated higher than movies. Dramas + Comedies = 40% of all titles.</p>
                     </div>
-                    <div class="dash-actions">
-                        <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/tree/main/projects/netflix-content-strategy-intelligence/dashboard.py" class="dash-btn dash-btn-primary">📄 View Code</a>
-                        <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/tree/main/projects/netflix-content-strategy-intelligence/notebooks" class="dash-btn dash-btn-secondary">📓 Notebooks</a>
+                    <div class="project-stats">
+                        <div class="project-stat">
+                            <div class="project-stat-value">9,245</div>
+                            <div class="project-stat-label">Records</div>
+                        </div>
+                        <div class="project-stat">
+                            <div class="project-stat-value">10</div>
+                            <div class="project-stat-label">Charts</div>
+                        </div>
+                        <div class="project-stat">
+                            <div class="project-stat-value">3</div>
+                            <div class="project-stat-label">Notebooks</div>
+                        </div>
                     </div>
+                    <span class="project-tag">Kaggle + TMDB API</span>
                 </div>
-            </div>
-
-            <!-- Amazon Dashboard -->
-            <div class="dashboard-card reveal">
-                <div class="dash-preview">
-                    <img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_018_kpi_summary.png" alt="Amazon Dashboard Preview">
-                    <span class="dash-badge">67K Real Reviews</span>
-                </div>
-                <div class="dash-body">
-                    <h4>📦 Amazon Review Intelligence</h4>
-                    <p>Interactive dashboard on 67,325 real Amazon Electronics reviews (1999–2014). Filter by year, review volume, and product tier. KPI row tracks average rating, helpfulness rate, and peak activity years.</p>
+                <div class="project-card">
+                    <div class="project-icon">🛒</div>
+                    <h3>Amazon Review Intelligence</h3>
+                    <div class="subtitle">E-commerce & Retail</div>
+                    <p>67,325 real Electronics reviews from UCSD Amazon dataset. Rating dynamics, helpfulness prediction, seasonal patterns, reviewer loyalty, and brand performance analysis.</p>
                     <div class="tldr-box">
                         <div class="tldr-label">TL;DR</div>
-                        <p>Five-star reviews dominate at 59%, but angry customers write 16% longer reviews and achieve 91% helpfulness when detailed. Q4 drives a predictable holiday surge. Long reviews (&gt;500 chars) get 13% more helpful votes — verbosity pays in trust.</p>
+                        <p>4.22★ average rating with 59.5% 5-star dominance. 83.7% helpfulness rate. Longer reviews are more helpful. Review volume peaked 2003–2007.</p>
                     </div>
-                    <div class="dash-actions">
-                        <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/tree/main/projects/amazon-product-customer-intelligence/dashboard.py" class="dash-btn dash-btn-primary">📄 View Code</a>
-                        <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/tree/main/projects/amazon-product-customer-intelligence/notebooks" class="dash-btn dash-btn-secondary">📓 Notebooks</a>
+                    <div class="project-stats">
+                        <div class="project-stat">
+                            <div class="project-stat-value">67,325</div>
+                            <div class="project-stat-label">Reviews</div>
+                        </div>
+                        <div class="project-stat">
+                            <div class="project-stat-value">10</div>
+                            <div class="project-stat-label">Charts</div>
+                        </div>
+                        <div class="project-stat">
+                            <div class="project-stat-value">2</div>
+                            <div class="project-stat-label">Notebooks</div>
+                        </div>
                     </div>
+                    <span class="project-tag">UCSD Amazon Dataset</span>
                 </div>
-            </div>
-
-            <!-- Google Trends Dashboard -->
-            <div class="dashboard-card reveal">
-                <div class="dash-preview">
-                    <img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/03_executive_dashboard_figure_001.png" alt="Google Trends Dashboard Preview">
-                    <span class="dash-badge">Live pytrends API</span>
-                </div>
-                <div class="dash-body">
-                    <h4>🔍 Google Trends Market Intelligence</h4>
-                    <p>5-view Streamlit dashboard on 14 keywords × 262 weeks via live pytrends API. Trend explorer with multi-select, US regional choropleth, breakout alerts for rising queries, and linear forecast.</p>
+                <div class="project-card">
+                    <div class="project-icon">🔍</div>
+                    <h3>Google Search Trends</h3>
+                    <div class="subtitle">Market Intelligence</div>
+                    <p>Live pytrends extraction across 14 keywords, 5 years, worldwide + US regional. Trend trajectories, category comparisons, regional heatmaps, and executive forecasting dashboard.</p>
                     <div class="tldr-box">
                         <div class="tldr-label">TL;DR</div>
-                        <p>AI search interest is up 71% year-over-year and tightly correlated with ChatGPT (r ≈ 0.96). Inflation peaked at 69% before cooling. Mental health queries rose 63% — a sustained trend, not a spike. The regional map shows California and New York consistently lead tech-topic searches.</p>
+                        <p>"AI" and "machine learning" show exponential growth. Seasonal spikes in "fitness" (January) and "travel" (June). Regional patterns reveal market opportunity gaps.</p>
                     </div>
-                    <div class="dash-actions">
-                        <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/tree/main/projects/google-search-trends-market-intelligence/dashboard.py" class="dash-btn dash-btn-primary">📄 View Code</a>
-                        <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/tree/main/projects/google-search-trends-market-intelligence/notebooks" class="dash-btn dash-btn-secondary">📓 Notebooks</a>
+                    <div class="project-stats">
+                        <div class="project-stat">
+                            <div class="project-stat-value">1,923</div>
+                            <div class="project-stat-label">Records</div>
+                        </div>
+                        <div class="project-stat">
+                            <div class="project-stat-value">8</div>
+                            <div class="project-stat-label">Charts</div>
+                        </div>
+                        <div class="project-stat">
+                            <div class="project-stat-value">3</div>
+                            <div class="project-stat-label">Notebooks</div>
+                        </div>
+                    </div>
+                    <span class="project-tag">Google Trends API</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <div class="section-header">
+                <h2>Figure Gallery</h2>
+                <p>28 curated visualizations from real corporate datasets</p>
+                <div class="section-line"></div>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item netflix" onclick="openLightbox('figures/nflx_01_genre_distribution.png', 'Netflix Genre Distribution')">
+                    <img src="figures/nflx_01_genre_distribution.png" alt="Netflix Genre Distribution" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain netflix">Netflix</div>
+                        <strong>Genre Distribution</strong>
+                        Dramas and Comedies dominate the catalog
+                    </div>
+                </div>
+                <div class="gallery-item netflix" onclick="openLightbox('figures/nflx_02_popularity_vs_rating.png', 'Popularity vs Rating')">
+                    <img src="figures/nflx_02_popularity_vs_rating.png" alt="Popularity vs Rating" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain netflix">Netflix</div>
+                        <strong>Popularity vs Rating</strong>
+                        Higher-rated content does not always mean more popular
+                    </div>
+                </div>
+                <div class="gallery-item netflix" onclick="openLightbox('figures/nflx_03_rating_distribution.png', 'Rating Distribution')">
+                    <img src="figures/nflx_03_rating_distribution.png" alt="Rating Distribution" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain netflix">Netflix</div>
+                        <strong>Rating Distribution</strong>
+                        TV shows rated higher than movies on average
+                    </div>
+                </div>
+                <div class="gallery-item netflix" onclick="openLightbox('figures/nflx_04_release_trends.png', 'Release Trends')">
+                    <img src="figures/nflx_04_release_trends.png" alt="Release Trends" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain netflix">Netflix</div>
+                        <strong>Release Trends</strong>
+                        Content acquisition accelerated post-2015
+                    </div>
+                </div>
+                <div class="gallery-item netflix" onclick="openLightbox('figures/nflx_05_top_genres.png', 'Top Genres')">
+                    <img src="figures/nflx_05_top_genres.png" alt="Top Genres" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain netflix">Netflix</div>
+                        <strong>Top Genres by Volume</strong>
+                        International content exceeds 50% of catalog
+                    </div>
+                </div>
+                <div class="gallery-item netflix" onclick="openLightbox('figures/nflx_06_content_growth.png', 'Content Growth')">
+                    <img src="figures/nflx_06_content_growth.png" alt="Content Growth" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain netflix">Netflix</div>
+                        <strong>Content Growth Trajectory</strong>
+                        Year-over-year title additions by type
+                    </div>
+                </div>
+                <div class="gallery-item netflix" onclick="openLightbox('figures/nflx_07_content_mix.png', 'Content Mix')">
+                    <img src="figures/nflx_07_content_mix.png" alt="Content Mix" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain netflix">Netflix</div>
+                        <strong>Content Mix Analysis</strong>
+                        Movies vs TV shows composition over time
+                    </div>
+                </div>
+                <div class="gallery-item netflix" onclick="openLightbox('figures/nflx_08_genre_treemap.png', 'Genre Treemap')">
+                    <img src="figures/nflx_08_genre_treemap.png" alt="Genre Treemap" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain netflix">Netflix</div>
+                        <strong>Genre Treemap</strong>
+                        Hierarchical view of content categories
+                    </div>
+                </div>
+                <div class="gallery-item netflix" onclick="openLightbox('figures/nflx_09_quality_tiers.png', 'Quality Tiers')">
+                    <img src="figures/nflx_09_quality_tiers.png" alt="Quality Tiers" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain netflix">Netflix</div>
+                        <strong>Quality Tiers</strong>
+                        Content segmentation by rating and popularity
+                    </div>
+                </div>
+                <div class="gallery-item netflix" onclick="openLightbox('figures/nflx_10_upcoming_releases.png', 'Upcoming Releases')">
+                    <img src="figures/nflx_10_upcoming_releases.png" alt="Upcoming Releases" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain netflix">Netflix</div>
+                        <strong>Upcoming Releases</strong>
+                        TMDB live data on upcoming titles by month
+                    </div>
+                </div>
+                <div class="gallery-item amazon" onclick="openLightbox('figures/amz_01_rating_distribution.png', 'Rating Distribution')">
+                    <img src="figures/amz_01_rating_distribution.png" alt="Rating Distribution" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain amazon">Amazon</div>
+                        <strong>Rating Distribution</strong>
+                        5-star dominance at 59.5% of all reviews
+                    </div>
+                </div>
+                <div class="gallery-item amazon" onclick="openLightbox('figures/amz_02_monthly_volume.png', 'Monthly Volume')">
+                    <img src="figures/amz_02_monthly_volume.png" alt="Monthly Volume" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain amazon">Amazon</div>
+                        <strong>Monthly Review Volume</strong>
+                        Seasonal peaks around holiday shopping periods
+                    </div>
+                </div>
+                <div class="gallery-item amazon" onclick="openLightbox('figures/amz_03_historical_reviews.png', 'Historical Reviews')">
+                    <img src="figures/amz_03_historical_reviews.png" alt="Historical Reviews" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain amazon">Amazon</div>
+                        <strong>Historical Review Trends</strong>
+                        Volume peaked during 2003–2007 period
+                    </div>
+                </div>
+                <div class="gallery-item amazon" onclick="openLightbox('figures/amz_04_seasonal_heatmap.png', 'Seasonal Heatmap')">
+                    <img src="figures/amz_04_seasonal_heatmap.png" alt="Seasonal Heatmap" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain amazon">Amazon</div>
+                        <strong>Seasonal Heatmap</strong>
+                        Month-by-month rating patterns reveal cycles
+                    </div>
+                </div>
+                <div class="gallery-item amazon" onclick="openLightbox('figures/amz_05_brand_performance.png', 'Brand Performance')">
+                    <img src="figures/amz_05_brand_performance.png" alt="Brand Performance" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain amazon">Amazon</div>
+                        <strong>Brand Performance</strong>
+                        Top electronics brands by review volume and rating
+                    </div>
+                </div>
+                <div class="gallery-item amazon" onclick="openLightbox('figures/amz_06_rating_trends.png', 'Rating Trends')">
+                    <img src="figures/amz_06_rating_trends.png" alt="Rating Trends" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain amazon">Amazon</div>
+                        <strong>Rating Trends by Year</strong>
+                        Average rating evolution across review history
+                    </div>
+                </div>
+                <div class="gallery-item amazon" onclick="openLightbox('figures/amz_07_helpful_reviewers.png', 'Helpful Reviewers')">
+                    <img src="figures/amz_07_helpful_reviewers.png" alt="Helpful Reviewers" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain amazon">Amazon</div>
+                        <strong>Most Helpful Reviewers</strong>
+                        Top contributors by helpfulness votes
+                    </div>
+                </div>
+                <div class="gallery-item amazon" onclick="openLightbox('figures/amz_08_market_concentration.png', 'Market Concentration')">
+                    <img src="figures/amz_08_market_concentration.png" alt="Market Concentration" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain amazon">Amazon</div>
+                        <strong>Market Concentration</strong>
+                        Product category distribution and brand HHI
+                    </div>
+                </div>
+                <div class="gallery-item amazon" onclick="openLightbox('figures/amz_09_rating_evolution.png', 'Rating Evolution')">
+                    <img src="figures/amz_09_rating_evolution.png" alt="Rating Evolution" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain amazon">Amazon</div>
+                        <strong>Rating Evolution</strong>
+                        How product ratings change over time
+                    </div>
+                </div>
+                <div class="gallery-item amazon" onclick="openLightbox('figures/amz_10_rating_vs_length.png', 'Rating vs Length')">
+                    <img src="figures/amz_10_rating_vs_length.png" alt="Rating vs Length" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain amazon">Amazon</div>
+                        <strong>Rating vs Review Length</strong>
+                        Longer reviews correlate with higher ratings
+                    </div>
+                </div>
+                <div class="gallery-item google" onclick="openLightbox('figures/goo_01_keyword_trends.png', 'Keyword Trends')">
+                    <img src="figures/goo_01_keyword_trends.png" alt="Keyword Trends" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain google">Google</div>
+                        <strong>Keyword Trends</strong>
+                        5-year trajectory of top search terms
+                    </div>
+                </div>
+                <div class="gallery-item google" onclick="openLightbox('figures/goo_02_trend_comparison.png', 'Trend Comparison')">
+                    <img src="figures/goo_02_trend_comparison.png" alt="Trend Comparison" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain google">Google</div>
+                        <strong>Trend Comparison</strong>
+                        Relative search interest across categories
+                    </div>
+                </div>
+                <div class="gallery-item google" onclick="openLightbox('figures/goo_03_regional_heatmap.png', 'Regional Heatmap')">
+                    <img src="figures/goo_03_regional_heatmap.png" alt="Regional Heatmap" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain google">Google</div>
+                        <strong>Regional Heatmap</strong>
+                        US state-level search intensity patterns
+                    </div>
+                </div>
+                <div class="gallery-item google" onclick="openLightbox('figures/goo_04_category_analysis.png', 'Category Analysis')">
+                    <img src="figures/goo_04_category_analysis.png" alt="Category Analysis" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain google">Google</div>
+                        <strong>Category Analysis</strong>
+                        Search term clustering by industry vertical
+                    </div>
+                </div>
+                <div class="gallery-item google" onclick="openLightbox('figures/goo_05_exec_overview.png', 'Executive Overview')">
+                    <img src="figures/goo_05_exec_overview.png" alt="Executive Overview" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain google">Google</div>
+                        <strong>Executive Overview</strong>
+                        Dashboard summary of key trend metrics
+                    </div>
+                </div>
+                <div class="gallery-item google" onclick="openLightbox('figures/goo_06_trend_forecast.png', 'Trend Forecast')">
+                    <img src="figures/goo_06_trend_forecast.png" alt="Trend Forecast" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain google">Google</div>
+                        <strong>Trend Forecast</strong>
+                        Predicted trajectory based on historical patterns
+                    </div>
+                </div>
+                <div class="gallery-item google" onclick="openLightbox('figures/goo_07_market_insights.png', 'Market Insights')">
+                    <img src="figures/goo_07_market_insights.png" alt="Market Insights" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain google">Google</div>
+                        <strong>Market Insights</strong>
+                        Actionable intelligence from search patterns
+                    </div>
+                </div>
+                <div class="gallery-item google" onclick="openLightbox('figures/goo_08_dashboard_preview.png', 'Dashboard Preview')">
+                    <img src="figures/goo_08_dashboard_preview.png" alt="Dashboard Preview" loading="lazy">
+                    <div class="gallery-caption">
+                        <div class="gallery-domain google">Google</div>
+                        <strong>Dashboard Preview</strong>
+                        Interactive Streamlit executive dashboard
                     </div>
                 </div>
             </div>
         </div>
+    </section>
+
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img id="lightbox-img" src="" alt="">
     </div>
-</section>
 
-<section id="projects" class="section">
-    <div class="container">
-        <h2 class="section-title">Projects</h2>
-        <p class="section-subtitle">Market intelligence and competitive analytics — with natural-language takeaways</p>
-        <div class="projects-grid">
-            <!-- Netflix -->
-            <div class="project-card reveal">
-                <span class="tag">Streaming Intelligence</span>
-                <h3>Netflix Content Strategy Intelligence</h3>
-                <p>8,807-title Netflix catalog (Kaggle CC0). Content mix analysis, genre distribution, rating patterns, and release trends. Dashboard includes trailer view with YouTube embeds, auto-refresh toggle, API status indicator, and data freshness badge.</p>
-                <div class="tldr-box">
-                    <div class="tldr-label">What This Means</div>
-                    <p>Netflix's catalog is movie-heavy (70%) but TV shows rate higher on average. Drama and Comedy are safe bets by volume, but Thriller and Documentary deliver disproportionate audience satisfaction. Post-2020 content additions dropped sharply — a strategic gap worth watching.</p>
-                </div>
-                <div class="notebook-links">
-                    <a href="https://nbviewer.org/github/gosidehustlesisi/sierra-business-intelligence/blob/main/projects/netflix-content-strategy-intelligence/notebooks/01_exploratory_analysis.ipynb" class="notebook-link">📓 01 Exploratory</a>
-                    <a href="https://nbviewer.org/github/gosidehustlesisi/sierra-business-intelligence/blob/main/projects/netflix-content-strategy-intelligence/notebooks/02_content_intelligence_sql.ipynb" class="notebook-link">📓 02 SQL Analysis</a>
-                    <a href="https://nbviewer.org/github/gosidehustlesisi/sierra-business-intelligence/blob/main/projects/netflix-content-strategy-intelligence/notebooks/03_executive_dashboard.ipynb" class="notebook-link">📓 03 Dashboard <span style="color:#f59e0b">✦ Interactive</span></a>
-                </div>
-                <div class="meta">8,807 catalog titles · Netflix Kaggle (CC0) · 20 figures · 3 notebooks · <b>8 interactive Plotly charts</b></div>
+    <section id="notebooks">
+        <div class="container">
+            <div class="section-header">
+                <h2>Look at the Code</h2>
+                <p>8 executed Jupyter notebooks across all 3 projects</p>
+                <div class="section-line"></div>
             </div>
-
-            <!-- Amazon -->
-            <div class="project-card reveal">
-                <span class="tag">Consumer Intelligence</span>
-                <h3>Amazon Product Customer Intelligence</h3>
-                <p>67,325 real Amazon Electronics reviews (1999–2014) from UCSD's 5-core dataset. Customer sentiment analysis, rating distribution, review length vs. helpfulness correlation, seasonal patterns, and brand performance ranking.</p>
-                <div class="tldr-box">
-                    <div class="tldr-label">What This Means</div>
-                    <p>Amazon's Electronics shoppers are generally satisfied (4.22★ average) but the real signal is in the long tail: detailed negative reviews get 91% helpfulness because buyers trust specificity. Q4 is review season — volume doubles. If you're selling electronics, prioritize thorough product descriptions to preempt the detailed complaints that dominate helpfulness.</p>
-                </div>
-                <div class="notebook-links">
-                    <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/blob/main/projects/amazon-product-customer-intelligence/notebooks/01_exploratory_analysis.ipynb" class="notebook-link">📓 01 Exploratory</a>
-                    <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/blob/main/projects/amazon-product-customer-intelligence/notebooks/02_review_analytics_sql.ipynb" class="notebook-link">📓 02 SQL Analysis</a>
-                    <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/blob/main/projects/amazon-product-customer-intelligence/notebooks/03_executive_dashboard.ipynb" class="notebook-link">📓 03 Dashboard</a>
-                </div>
-                <div class="meta">67,325 reviews · 27,832 ASINs · UCSD 5-core · 23 figures · 3 notebooks</div>
-            </div>
-
-            <!-- Google -->
-            <div class="project-card reveal">
-                <span class="tag">Market Intelligence</span>
-                <h3>Google Search Trends Analysis</h3>
-                <p>14 search topics tracked over 5 years (2021–2026) via live pytrends API. Multi-category time-series, YoY growth analysis, US regional choropleth, and correlation matrices.</p>
-                <div class="tldr-box">
-                    <div class="tldr-label">What This Means</div>
-                    <p>AI isn't just trending — it's structurally diverging from every other search category. The 71% YoY growth is sustained, not viral. Inflation interest peaked in 2022-2023 and is now cooling (good signal for monetary policy watchers). Mental health searches are rising steadily (+63%), suggesting a durable shift in public attention, not a news cycle blip.</p>
-                </div>
-                <div class="notebook-links">
-                    <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/blob/main/projects/google-search-trends-market-intelligence/notebooks/01_exploratory_analysis.ipynb" class="notebook-link">📓 01 Exploratory</a>
-                    <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/blob/main/projects/google-search-trends-market-intelligence/notebooks/02_market_intelligence_sql.ipynb" class="notebook-link">📓 02 SQL Analysis</a>
-                    <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/blob/main/projects/google-search-trends-market-intelligence/notebooks/03_executive_dashboard.ipynb" class="notebook-link">📓 03 Dashboard</a>
-                </div>
-                <div class="meta">14 keywords · 262 weeks · pytrends live · 14 figures · 3 notebooks</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- NETFLIX INTERACTIVE DASHBOARD -->
-<style>
-/* Netflix Interactive Dashboard */
-.netflix-dashboard {
-    background: linear-gradient(180deg, var(--bg-deep) 0%, #0a0d12 100%);
-    border-top: 1px solid var(--border);
-    border-bottom: 1px solid var(--border);
-    padding: 4rem 0;
-}
-.dashboard-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-}
-.dashboard-header h2 {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--accent-gold);
-    margin-bottom: 0.5rem;
-}
-.dashboard-header p {
-    color: var(--text-secondary);
-    font-size: 1rem;
-}
-
-/* KPI Cards */
-.kpi-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2.5rem;
-}
-.kpi-card {
-    background: rgba(26, 34, 52, 0.6);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
-    padding: 1.25rem 1rem;
-    text-align: center;
-    transition: all 0.3s ease;
-}
-.kpi-card:hover {
-    border-color: rgba(245, 158, 11, 0.3);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(245, 158, 11, 0.08);
-}
-.kpi-value {
-    font-size: 1.75rem;
-    font-weight: 800;
-    color: var(--accent-gold);
-    line-height: 1.2;
-}
-.kpi-label {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    margin-top: 0.25rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-}
-.kpi-delta {
-    font-size: 0.75rem;
-    color: var(--accent-green);
-    margin-top: 0.25rem;
-}
-
-/* Tabs */
-.dashboard-tabs {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.tab-btn {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.08);
-    color: var(--text-secondary);
-    padding: 0.6rem 1.25rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: all 0.25s ease;
-    font-family: inherit;
-}
-.tab-btn:hover {
-    background: rgba(255,255,255,0.1);
-    color: var(--text-primary);
-}
-.tab-btn.active {
-    background: rgba(245, 158, 11, 0.15);
-    border-color: var(--accent-gold);
-    color: var(--accent-gold);
-}
-
-/* Tab Content */
-.tab-panel {
-    display: none;
-    animation: fadeIn 0.4s ease;
-}
-.tab-panel.active {
-    display: block;
-}
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* Chart Grid */
-.chart-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
-    gap: 1.5rem;
-}
-@media (max-width: 768px) {
-    .chart-grid {
-        grid-template-columns: 1fr;
-    }
-}
-.chart-frame-container {
-    background: rgba(26, 34, 52, 0.4);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 12px;
-    overflow: hidden;
-    transition: border-color 0.3s ease;
-}
-.chart-frame-container:hover {
-    border-color: rgba(6, 182, 212, 0.2);
-}
-.chart-frame-container iframe {
-    width: 100%;
-    height: 450px;
-    border: none;
-    display: block;
-}
-@media (max-width: 768px) {
-    .chart-frame-container iframe {
-        height: 350px;
-    }
-}
-.chart-title {
-    padding: 0.75rem 1rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-secondary);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-.chart-title .dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--accent-cyan);
-}
-
-/* Insight callout */
-.insight-bar {
-    background: rgba(245, 158, 11, 0.08);
-    border-left: 3px solid var(--accent-gold);
-    padding: 0.75rem 1rem;
-    margin: 1rem 0;
-    border-radius: 0 8px 8px 0;
-    font-size: 0.9rem;
-    color: var(--text-secondary);
-}
-.insight-bar strong {
-    color: var(--accent-gold);
-}
-
-/* Full width chart */
-.chart-full {
-    grid-column: 1 / -1;
-}
-</style>
-
-<section id="netflix-dashboard" class="netflix-dashboard">
-    <div class="container">
-        <div class="dashboard-header">
-            <h2>🎬 Netflix Interactive Dashboard</h2>
-            <p>8,807 real titles · Hover, zoom, and explore every chart · Updated from Kaggle CC0 dataset</p>
-        </div>
-
-        <!-- KPI Row -->
-        <div class="kpi-grid">
-            <div class="kpi-card">
-                <div class="kpi-value">8,807</div>
-                <div class="kpi-label">Total Titles</div>
-                <div class="kpi-delta">Kaggle CC0</div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-value">69.6%</div>
-                <div class="kpi-label">Movies</div>
-                <div class="kpi-delta">6,131 titles</div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-value">30.4%</div>
-                <div class="kpi-label">TV Shows</div>
-                <div class="kpi-delta">2,676 titles</div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-value">6.51</div>
-                <div class="kpi-label">Mean Rating</div>
-                <div class="kpi-delta">0–10 scale</div>
-            </div>
-            <div class="kpi-card">
-                <div class="kpi-value">5,788</div>
-                <div class="kpi-label">Top Genre: Drama</div>
-                <div class="kpi-delta">94% of catalog</div>
+            <div class="notebooks-grid">
+                <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/tree/main/projects/netflix-content-strategy-intelligence/notebooks/01_exploratory_analysis.ipynb" class="notebook-card" target="_blank">
+                    <div class="nb-icon">📊</div>
+                    <h4>Netflix EDA</h4>
+                    <p>Catalog exploration, genre analysis, and rating distribution</p>
+                    <div class="nb-meta">netflix / 01_exploratory_analysis.ipynb</div>
+                </a>
+                <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/tree/main/projects/netflix-content-strategy-intelligence/notebooks/02_content_intelligence_sql.ipynb" class="notebook-card" target="_blank">
+                    <div class="nb-icon">🗄️</div>
+                    <h4>Netflix SQL Analytics</h4>
+                    <p>10 SQL queries on content strategy metrics</p>
+                    <div class="nb-meta">netflix / 02_content_intelligence_sql.ipynb</div>
+                </a>
+                <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/tree/main/projects/netflix-content-strategy-intelligence/notebooks/03_executive_dashboard.ipynb" class="notebook-card" target="_blank">
+                    <div class="nb-icon">📈</div>
+                    <h4>Netflix Executive Dashboard</h4>
+                    <p>Comprehensive dashboard with KPIs and trend analysis</p>
+                    <div class="nb-meta">netflix / 03_executive_dashboard.ipynb</div>
+                </a>
+                <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/tree/main/projects/amazon-product-customer-intelligence/notebooks/01_exploratory_analysis.ipynb" class="notebook-card" target="_blank">
+                    <div class="nb-icon">📊</div>
+                    <h4>Amazon EDA</h4>
+                    <p>Review volume, rating dynamics, and product analysis</p>
+                    <div class="nb-meta">amazon / 01_exploratory_analysis.ipynb</div>
+                </a>
+                <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/tree/main/projects/amazon-product-customer-intelligence/notebooks/02_review_analytics_sql.ipynb" class="notebook-card" target="_blank">
+                    <div class="nb-icon">🗄️</div>
+                    <h4>Amazon SQL Analytics</h4>
+                    <p>10 SQL queries on review helpfulness and brand performance</p>
+                    <div class="nb-meta">amazon / 02_review_analytics_sql.ipynb</div>
+                </a>
+                <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/tree/main/projects/google-search-trends-market-intelligence/notebooks/01_exploratory_analysis.ipynb" class="notebook-card" target="_blank">
+                    <div class="nb-icon">📊</div>
+                    <h4>Google Trends EDA</h4>
+                    <p>Keyword trajectories, seasonal patterns, regional analysis</p>
+                    <div class="nb-meta">google / 01_exploratory_analysis.ipynb</div>
+                </a>
+                <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/tree/main/projects/google-search-trends-market-intelligence/notebooks/02_market_intelligence_sql.ipynb" class="notebook-card" target="_blank">
+                    <div class="nb-icon">🗄️</div>
+                    <h4>Google Trends SQL</h4>
+                    <p>10 SQL queries on market intelligence metrics</p>
+                    <div class="nb-meta">google / 02_market_intelligence_sql.ipynb</div>
+                </a>
+                <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence/tree/main/projects/google-search-trends-market-intelligence/notebooks/03_executive_dashboard.ipynb" class="notebook-card" target="_blank">
+                    <div class="nb-icon">📈</div>
+                    <h4>Google Trends Dashboard</h4>
+                    <p>Executive forecasting with trend predictions</p>
+                    <div class="nb-meta">google / 03_executive_dashboard.ipynb</div>
+                </a>
             </div>
         </div>
+    </section>
 
-        <!-- Insight Callout -->
-        <div class="insight-bar">
-            <strong>Key Finding:</strong> Netflix's catalog is movie-heavy (69.6%) but TV shows rate higher on average. 
-            Drama dominates by volume, yet Thriller and Documentary deliver disproportionate audience satisfaction. 
-            Post-2020 content additions dropped sharply — a strategic gap worth watching.
+    <section id="sources">
+        <div class="container">
+            <div class="section-header">
+                <h2>Verified Data Sources</h2>
+                <p>Every number came from running real code on real data</p>
+                <div class="section-line"></div>
+            </div>
+            <table class="sources-table">
+                <thead>
+                    <tr>
+                        <th>Source</th>
+                        <th>Type</th>
+                        <th>Records</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="source-badge badge-kaggle">KAGGLE</span> Netflix Movies & TV Shows</td>
+                        <td>CC0 Dataset</td>
+                        <td>8,807 titles</td>
+                        <td>Static, verified</td>
+                    </tr>
+                    <tr>
+                        <td><span class="source-badge badge-tmdb">TMDB</span> Trending, Top-Rated, Upcoming</td>
+                        <td>Live API</td>
+                        <td>438 records</td>
+                        <td>Real-time</td>
+                    </tr>
+                    <tr>
+                        <td><span class="source-badge badge-ucsd">UCSD</span> Amazon Reviews (Electronics 5-core)</td>
+                        <td>Academic Dataset</td>
+                        <td>67,325 reviews</td>
+                        <td>Verified download</td>
+                    </tr>
+                    <tr>
+                        <td><span class="source-badge badge-google">GOOGLE</span> Trends API (pytrends)</td>
+                        <td>Live API</td>
+                        <td>1,923 records</td>
+                        <td>Real-time</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
+    </section>
 
-        <!-- Tabs -->
-        <div class="dashboard-tabs">
-            <button class="tab-btn active" onclick="switchTab('tab-overview')">📊 Overview</button>
-            <button class="tab-btn" onclick="switchTab('tab-genres')">🎭 Genres</button>
-            <button class="tab-btn" onclick="switchTab('tab-quality')">⭐ Quality</button>
-            <button class="tab-btn" onclick="switchTab('tab-trends')">📈 Trends</button>
-            <button class="tab-btn" onclick="switchTab('tab-pipeline')">🎬 Pipeline</button>
-        </div>
-
-        <!-- Tab Panels -->
-        <div id="tab-overview" class="tab-panel active">
-            <div class="chart-grid">
-                <div class="chart-frame-container">
-                    <div class="chart-title"><span class="dot"></span> Content Mix — Movies vs TV Shows</div>
-                    <iframe src="./netflix-dashboard/05_content_mix.html" loading="lazy"></iframe>
-                </div>
-                <div class="chart-frame-container">
-                    <div class="chart-title"><span class="dot" style="background:#ff6b6b"></span> Rating Distribution with Mean Line</div>
-                    <iframe src="./netflix-dashboard/02_rating_distribution.html" loading="lazy"></iframe>
-                </div>
+    <section id="tech">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tech Stack</h2>
+                <p>Tools and libraries powering the analysis</p>
+                <div class="section-line"></div>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item"><div class="tech-emoji">🐍</div><div class="tech-name">Python</div><div class="tech-role">Core</div></div>
+                <div class="tech-item"><div class="tech-emoji">📊</div><div class="tech-name">pandas</div><div class="tech-role">Data</div></div>
+                <div class="tech-item"><div class="tech-emoji">📈</div><div class="tech-name">matplotlib</div><div class="tech-role">Viz</div></div>
+                <div class="tech-item"><div class="tech-emoji">🎨</div><div class="tech-name">seaborn</div><div class="tech-role">Viz</div></div>
+                <div class="tech-item"><div class="tech-emoji">🌐</div><div class="tech-name">plotly</div><div class="tech-role">Interactive</div></div>
+                <div class="tech-item"><div class="tech-emoji">🔍</div><div class="tech-name">pytrends</div><div class="tech-role">API</div></div>
+                <div class="tech-item"><div class="tech-emoji">🌐</div><div class="tech-name">requests</div><div class="tech-role">API</div></div>
+                <div class="tech-item"><div class="tech-emoji">🤖</div><div class="tech-name">scikit-learn</div><div class="tech-role">ML</div></div>
+                <div class="tech-item"><div class="tech-emoji">🚀</div><div class="tech-name">Streamlit</div><div class="tech-role">Dashboard</div></div>
+                <div class="tech-item"><div class="tech-emoji">📓</div><div class="tech-name">Jupyter</div><div class="tech-role">Notebook</div></div>
             </div>
         </div>
+    </section>
 
-        <div id="tab-genres" class="tab-panel">
-            <div class="chart-grid">
-                <div class="chart-frame-container">
-                    <div class="chart-title"><span class="dot" style="background:#636efa"></span> Top 15 Genres by Volume</div>
-                    <iframe src="./netflix-dashboard/01_top_genres.html" loading="lazy"></iframe>
-                </div>
-                <div class="chart-frame-container">
-                    <div class="chart-title"><span class="dot" style="background:#10b981"></span> Genre Landscape Treemap</div>
-                    <iframe src="./netflix-dashboard/06_genre_treemap.html" loading="lazy"></iframe>
-                </div>
+    <footer>
+        <div class="container">
+            <div class="footer-cta">Let's build something intelligent.</div>
+            <p>Business intelligence, data strategy, and analytics architecture for modern teams.</p>
+            <div class="footer-links">
+                <a href="https://github.com/gosidehustlesisi" target="_blank">GitHub</a>
+                <a href="https://www.linkedin.com/in/sierra-napier" target="_blank">LinkedIn</a>
+                <a href="mailto:sierra.napier@e3-ai.com">Email</a>
             </div>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Built with real data. No synthetic records. No placeholders.</p>
         </div>
+    </footer>
 
-        <div id="tab-quality" class="tab-panel">
-            <div class="chart-grid">
-                <div class="chart-frame-container">
-                    <div class="chart-title"><span class="dot" style="background:#f59e0b"></span> Quality Tiers Sunburst</div>
-                    <iframe src="./netflix-dashboard/08_quality_sunburst.html" loading="lazy"></iframe>
-                </div>
-                <div class="chart-frame-container">
-                    <div class="chart-title"><span class="dot" style="background:#ab63fa"></span> Popularity vs Rating (3,000 title sample)</div>
-                    <iframe src="./netflix-dashboard/03_popularity_vs_rating.html" loading="lazy"></iframe>
-                </div>
-            </div>
-        </div>
+    <a href="mailto:sierra.napier@e3-ai.com" class="floating-cta">📧 Get in Touch</a>
 
-        <div id="tab-trends" class="tab-panel">
-            <div class="chart-grid">
-                <div class="chart-frame-container chart-full">
-                    <div class="chart-title"><span class="dot" style="background:#06b6d4"></span> Release Year Trend (2000–2021)</div>
-                    <iframe src="./netflix-dashboard/04_release_trend.html" loading="lazy"></iframe>
-                </div>
-            </div>
-        </div>
+    <script>
+        // Particle Canvas
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.5;
+                this.vy = (Math.random() - 0.5) * 0.5;
+                this.size = Math.random() * 2 + 1;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 184, 0, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+        for (let i = 0; i < 50; i++) particles.push(new Particle());
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            // Connect nearby particles
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(255, 184, 0, ${0.1 * (1 - dist / 150)})`;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
 
-        <div id="tab-pipeline" class="tab-panel">
-            <div class="chart-grid">
-                <div class="chart-frame-container chart-full">
-                    <div class="chart-title"><span class="dot" style="background:#f97316"></span> Upcoming Releases by Month (TMDB Live Data)</div>
-                    <iframe src="./netflix-dashboard/07_upcoming_months.html" loading="lazy"></iframe>
-                </div>
-            </div>
-            <div class="insight-bar" style="margin-top:1rem">
-                <strong>Pipeline Insight:</strong> October and December are peak release months — holiday season strategy. 
-                January and February are valleys — content drought by design, or a pipeline gap for competitors to exploit.
-            </div>
-        </div>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        });
 
-        <!-- Data Source Footer -->
-        <div style="text-align:center; margin-top:2rem; padding-top:1.5rem; border-top:1px solid var(--border);">
-            <p style="font-size:0.8rem; color:var(--text-muted);">
-                📊 Data: <strong>Netflix Movies & TV Shows</strong> (Kaggle CC0, 8,807 titles) + <strong>TMDB API</strong> (438 live records) · 
-                Charts: <strong>Plotly.js</strong> (interactive, dark theme) · 
-                <a href="https://nbviewer.org/github/gosidehustlesisi/sierra-business-intelligence/blob/main/projects/netflix-content-strategy-intelligence/notebooks/03_executive_dashboard.ipynb" style="color:var(--accent-cyan)">Open in nbviewer →</a>
-            </p>
-        </div>
-    </div>
-</section>
+        // Lightbox
+        function openLightbox(src, alt) {
+            const lightbox = document.getElementById('lightbox');
+            const img = document.getElementById('lightbox-img');
+            img.src = src;
+            img.alt = alt;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightbox();
+        });
 
-<script>
-function switchTab(tabId) {
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.getElementById(tabId).classList.add('active');
-    event.target.classList.add('active');
-}
-</script>
-<!-- END NETFLIX INTERACTIVE DASHBOARD -->
-
-<section id="gallery" class="section">
-    <div class="container">
-        <h2 class="section-title">Figure Gallery</h2>
-        <p class="section-subtitle">Selected analysis outputs with plain-language insights</p>
-        <div class="gallery-grid">
-            <!-- Amazon -->
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_001_rating_distribution.png" alt="Rating Distribution"><div class="chart-caption"><span class="insight">💡 Five-star reviews are the default — but the signal is in the tail.</span>59.5% of all reviews are 5★, which means negative reviews (especially 1–2★) are disproportionately informative for product improvement because they break the positivity bias.</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_002_monthly_volume.png" alt="Monthly Volume"><div class="chart-caption"><span class="insight">💡 Review volume tracks marketplace maturity.</span>Monthly reviews peaked in 2013 at 25,000+, tracking Amazon's Electronics category growth. The post-2012 slowdown isn't declining interest — it's market saturation.</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_004_length_by_rating.png" alt="Length by Rating"><div class="chart-caption"><span class="insight">💡 Angry customers write 16% more — and people read them.</span>1-star reviews average 642 characters vs. 553 for 5-star. The anger-verbs-and-details effect makes negative reviews longer and, paradoxically, more trusted.</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_005_helpfulness_by_length.png" alt="Helpfulness"><div class="chart-caption"><span class="insight">💡 Length is the strongest predictor of helpfulness.</span>Long reviews (500+ chars) achieve 91% helpfulness vs. 78% for short ones. If you want your review to help others, write more — specificity beats brevity in trust signals.</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_006_seasonal_heatmap.png" alt="Seasonal"><div class="chart-caption"><span class="insight">💡 Q4 doubles everything — plan for the holiday surge.</span>Review volume spikes in November-December across all rating categories. If you're analyzing product performance, normalize by season or you'll misread Q1 as decline.</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/amazon-product-customer-intelligence/figures/figure_018_kpi_summary.png" alt="KPI"><div class="chart-caption"><span class="insight">💡 The headline numbers for stakeholder decks.</span>67,325 reviews · 4.22★ average · 27,832 unique products · 1999-2014 span. Use this as the single slide that answers "what's the size of this dataset?"</div></div>
-
-            <!-- Netflix -->
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/01_content_mix.png" alt="Content Mix"><div class="chart-caption"><span class="insight">💡 Netflix is a movie platform that also has TV.</span>Movies dominate at 69.6% (6,131 titles) vs. TV Shows at 30.4% (2,676). But TV shows have higher average ratings — the volume leader isn't the quality leader.</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/01_genre_distribution.png" alt="Genre Distribution"><div class="chart-caption"><span class="insight">💡 Drama and Comedy are safe bets by volume.</span>They lead the catalog by title count. But for audience satisfaction per dollar spent, look at Thriller and Documentary — smaller catalogs, higher ratings, less competition.</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/01_popularity_vs_rating.png" alt="Popularity vs Rating"><div class="chart-caption"><span class="insight">💡 Popular ≠ Good (correlation ≈ 0.05).</span>There's almost no relationship between how many people watch something and how highly they rate it. Marketing can drive views; quality drives retention. They're independent levers.</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/02_q10_quality_tiers.png" alt="Quality Tiers"><div class="chart-caption"><span class="insight">💡 ~35% of the catalog is "Good" — the upgrade opportunity.</span>Only ~15% scores Excellent. The bulk sits in Good (35%) and Average (30%). For a content strategy, upgrading Good → Excellent has higher ROI than adding more Good.</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/03_executive_dashboard.png" alt="Netflix Executive Dashboard"><div class="chart-caption"><span class="insight">💡 One dashboard, four decisions.</span>KPI cards, content mix pie, top genres bar, rating distribution, upcoming pipeline, and trailer view. Designed for the stakeholder who wants the answer in 30 seconds.</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/03_quality_sunburst.png" alt="Quality Sunburst"><div class="chart-caption"><span class="insight">💡 The sunburst shows where quality lives by genre.</span>Radial breakdown: Drama dominates by volume, but Documentary and Thriller occupy larger quality-adjusted slices. Use this for "where should we invest?" conversations.</div></div>
-
-            <!-- Google Trends -->
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_figure_001.png" alt="Search Interest"><div class="chart-caption"><span class="insight">💡 AI is in its own category now — it's not "tech" anymore.</span>Worldwide search interest shows AI's divergence from every other topic since 2023. This is structural growth, not a hype cycle.</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_figure_004.png" alt="YoY Growth"><div class="chart-caption"><span class="insight">💡 Three stories in one chart: AI boom, inflation peak, mental health shift.</span>AI +70.7% YoY, inflation peaked at +68.9% and is cooling, mental health rising +62.5% — a durable public attention shift, not a news blip.</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/03_executive_dashboard_figure_002.png" alt="Regional Map"><div class="chart-caption"><span class="insight">💡 California and New York drive tech-topic search — but the Midwest is catching up.</span>US regional choropleth with state-level interest scores. Target geo campaigns using actual search behavior, not population density.</div></div>
-            <div class="chart-box reveal"><img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/google-search-trends-market-intelligence/figures/03_executive_dashboard_figure_003.png" alt="Breakout Alerts"><div class="chart-caption"><span class="insight">💡 Spot emerging trends before they hit headlines.</span>Breakout alerts flag rising related queries by parent keyword. "AI" spawns "AI art," "AI detector," "AI jobs" — early signals of where attention is migrating.</div></div>
-        </div>
-    </div>
-</section>
-
-<section id="data" class="section">
-    <div class="container">
-        <h2 class="section-title">Data Sources</h2>
-        <p class="section-subtitle">All datasets are real, public, and verifiable</p>
-        <table class="data-table">
-            <thead>
-                <tr><th>Dataset</th><th>Source</th><th>Records</th><th>License</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Amazon Reviews (Historical)</td><td><a href="http://jmcauley.ucsd.edu/data/amazon/">UCSD Amazon 5-core Review Data</a></td><td>67,325 reviews (1999–2014)</td><td>Academic</td></tr>
-                <tr><td>Netflix Titles (Historical)</td><td><a href="https://www.kaggle.com/datasets/shivamb/netflix-shows">Netflix Movies & TV Shows (Kaggle)</a></td><td>8,807 titles</td><td>CC0</td></tr>
-                <tr><td>Netflix Content (Live)</td><td><a href="https://www.themoviedb.org/">TMDB API</a> (authenticated)</td><td>0 records (API key invalid)</td><td>TMDB Terms</td></tr>
-                <tr><td>Google Search Trends</td><td><a href="https://trends.google.com">Google Trends</a> via <a href="https://github.com/GeneralMills/pytrends">pytrends</a></td><td>14 keywords × 262 weeks</td><td>Public</td></tr>
-            </tbody>
-        </table>
-    </div>
-</section>
-
-<section id="tech" class="section">
-    <div class="container">
-        <h2 class="section-title">Tech Stack</h2>
-        <p class="section-subtitle">Tools and libraries used across all projects</p>
-        <div class="tech-grid">
-            <div class="tech-item">Python 3.12</div>
-            <div class="tech-item">DuckDB</div>
-            <div class="tech-item">pandas</div>
-            <div class="tech-item">Plotly</div>
-            <div class="tech-item">Streamlit</div>
-            <div class="tech-item">pytrends</div>
-            <div class="tech-item">Jupyter</div>
-            <div class="tech-item">scikit-learn</div>
-            <div class="tech-item">seaborn</div>
-            <div class="tech-item">matplotlib</div>
-            <div class="tech-item">numpy</div>
-            <div class="tech-item">scipy</div>
-            <div class="tech-item">pandasql</div>
-        </div>
-    </div>
-</section>
-
-<footer>
-    <div class="container">
-        <div class="social">
-            <a href="https://github.com/gosidehustlesisi">GitHub</a>
-            <a href="https://www.linkedin.com/in/sierranapier/">LinkedIn</a>
-            <a href="mailto:sierra.napier@e3-ai.com">Email</a>
-        </div>
-        <p>Built with real data. No synthetic shortcuts.</p>
-    </div>
-</footer>
-
-<a href="mailto:sierra.napier@e3-ai.com" class="floating-cta">Contact Sierra →</a>
-
-<script>
-(function() {
-    const overlay = document.createElement('div');
-    overlay.className = 'lightbox-overlay';
-    overlay.innerHTML = '<div class="lightbox-close">&times;</div><img class="lightbox-img" src="" alt="">';
-    document.body.appendChild(overlay);
-    const lightboxImg = overlay.querySelector('.lightbox-img');
-    overlay.querySelector('.lightbox-close').addEventListener('click', () => overlay.classList.remove('active'));
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.classList.remove('active'); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') overlay.classList.remove('active'); });
-    document.querySelectorAll('.chart-box img').forEach(img => {
-        img.addEventListener('click', () => { lightboxImg.src = img.src; overlay.classList.add('active'); });
-    });
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    setTimeout(() => { document.querySelectorAll('.reveal:not(.visible)').forEach(el => el.classList.add('visible')); }, 3000);
-})();
-</script>
-
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
 </body>
 </html>

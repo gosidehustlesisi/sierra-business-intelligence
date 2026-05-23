@@ -11,6 +11,12 @@
 </p>
 
 <p>
+  <a href="https://gosidehustlesisi.github.io/sierra-business-intelligence/">
+    <img src="https://img.shields.io/badge/Portfolio-Live%20Site-FFB800?logo=githubpages" alt="Live Portfolio">
+  </a>
+  <a href="https://star-history.com/#gosidehustlesisi/sierra-business-intelligence">
+    <img src="https://api.star-history.com/svg?repos=gosidehustlesisi/sierra-business-intelligence&type=Date" alt="Star History">
+  </a>
   <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence">
     <img src="https://img.shields.io/badge/GitHub-Repo-181717?logo=github" alt="GitHub">
   </a>
@@ -25,6 +31,23 @@
 ---
 
 I analyze complex data at scale, architect AI systems that automate it, and visualize the story so stakeholders act on it.
+
+---
+
+## 🚀 Live Portfolio
+
+Explore the full cinematic portfolio with interactive gallery, lightbox, and 28 curated figures:
+
+**[👉 gosidehustlesisi.github.io/sierra-business-intelligence](https://gosidehustlesisi.github.io/sierra-business-intelligence/)**
+
+| Feature | What You Get |
+|---|---|
+| **Particle Canvas Hero** | Animated amber particle background with real-time connections |
+| **28-Figure Gallery** | Lightbox-enabled, domain-colored borders (Netflix amber, Amazon teal, Google green) |
+| **Notebook Showcase** | Direct links to all 8 executed Jupyter notebooks |
+| **Verified Sources** | Every dataset badge-linked to its origin |
+| **Tech Stack Grid** | 10 tools with emoji icons — no generic lists |
+| **Floating CTA** | "Get in Touch" button follows you down the page |
 
 ---
 
