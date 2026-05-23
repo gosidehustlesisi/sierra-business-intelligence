@@ -111,6 +111,34 @@ python fetch_tmdb_data.py
 
 ---
 
+## Figure Gallery
+
+### Content Overview
+
+![Content Mix](figures/01_content_mix.png)
+*Movies dominate at 69.6% (6,131) vs. TV shows 30.4% (2,676)*
+
+![Genre Distribution](figures/01_genre_distribution.png)
+*Drama, Comedy, and Thriller lead the catalog by title count*
+
+![Popularity vs Rating](figures/01_popularity_vs_rating.png)
+*Popular ≠ Good (correlation ≈ 0.05). Marketing drives views; quality drives retention.*
+
+### Quality Analysis
+
+![Quality Tiers](figures/02_q10_quality_tiers.png)
+*~35% of the catalog is "Good" — the upgrade opportunity for content strategy*
+
+![Quality Sunburst](figures/03_quality_sunburst.png)
+*Radial breakdown: Drama dominates by volume, but Documentary and Thriller occupy larger quality-adjusted slices*
+
+### Executive Dashboard
+
+![Executive Dashboard](figures/03_executive_dashboard.png)
+*One dashboard, four decisions — KPI cards, content mix, top genres, rating distribution, upcoming pipeline*
+
+---
+
 ## Key Insights
 
 ### From Live TMDB Data (Current Industry Signals)

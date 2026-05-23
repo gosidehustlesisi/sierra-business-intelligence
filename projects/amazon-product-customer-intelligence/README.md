@@ -139,6 +139,32 @@ streamlit run dashboard.py
 
 ---
 
+## Figure Gallery
+
+### Distribution & Volume
+
+![Rating Distribution](figures/figure_001_rating_distribution.png)
+*Five-star reviews are the default — 59.5% of all reviews are 5★. Negative reviews break the positivity bias and are disproportionately informative.*
+
+![Monthly Volume](figures/figure_002_monthly_volume.png)
+*Review volume peaked in 2013 at 25,000+, tracking Amazon's Electronics category growth. Post-2012 slowdown is market saturation, not declining interest.*
+
+![Length by Rating](figures/figure_004_length_by_rating.png)
+*Angry customers write 16% more — 1-star reviews average 642 characters vs. 553 for 5-star. The anger-verbs-and-details effect makes negative reviews longer and more trusted.*
+
+### Patterns & Insights
+
+![Helpfulness by Length](figures/figure_005_helpfulness_by_length.png)
+*Long reviews (500+ chars) achieve 91% helpfulness vs. 78% for short ones. Specificity beats brevity in trust signals.*
+
+![Seasonal Heatmap](figures/figure_006_seasonal_heatmap.png)
+*Q4 doubles everything — review volume spikes in November-December across all rating categories. Normalize by season or you'll misread Q1 as decline.*
+
+![KPI Summary](figures/figure_018_kpi_summary.png)
+*The headline numbers for stakeholder decks: 67,325 reviews · 4.22★ average · 27,832 unique products · 1999-2014 span.*
+
+---
+
 ## 🔧 Requirements
 
 ```

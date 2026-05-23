@@ -83,6 +83,26 @@ google-search-trends-market-intelligence/
 
 ---
 
+## Figure Gallery
+
+### Search Trends Overview
+
+![Search Interest](figures/01_exploratory_analysis_figure_001.png)
+*AI is in its own category now — it's not "tech" anymore. Worldwide search interest shows AI's divergence from every other topic since 2023. This is structural growth, not a hype cycle.*
+
+![YoY Growth](figures/01_exploratory_analysis_figure_004.png)
+*Three stories in one chart: AI boom (+70.7%), inflation peak (+68.9% before cooling), mental health shift (+62.5%).*  
+
+### Geographic & Breakout Intelligence
+
+![Regional Map](figures/03_executive_dashboard_figure_002.png)
+*California and New York drive tech-topic search — but the Midwest is catching up. US regional choropleth with state-level interest scores.*
+
+![Breakout Alerts](figures/03_executive_dashboard_figure_003.png)
+*Spot emerging trends before they hit headlines. "AI" spawns "AI art," "AI detector," "AI jobs" — early signals of where attention is migrating.*
+
+---
+
 ## 🚀 Quick Start
 
 ```bash
