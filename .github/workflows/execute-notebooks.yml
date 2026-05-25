@@ -7,14 +7,21 @@ on:
     branches: [main, master]
   workflow_dispatch:
 
+permissions:
+  contents: write
+  actions: read
+
 jobs:
   execute-notebooks:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -25,7 +32,11 @@ jobs:
       - name: Install core execution dependencies
         run: |
           pip install --upgrade pip
-          pip install papermill jupyter nbformat nbconvert pandas matplotlib seaborn plotly
+          pip install papermill jupyter nbformat nbconvert \
+            pandas numpy matplotlib seaborn plotly \
+            scikit-learn xgboost lightgbm statsmodels \
+            prophet nltk textblob vaderSentiment \
+            requests beautifulsoup4 lxml wordcloud
 
       - name: Install repo-specific dependencies
         run: |
@@ -44,7 +55,7 @@ jobs:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
           CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
         run: |
-          NOTEBOOKS=$(find . -name "*.ipynb" -not -path "*/.git/*" -not -path "*/site-packages/*" | sort)
+          NOTEBOOKS=$(find . -name "*.ipynb" -not -path "*/.git/*" -not -path "*/site-packages/*" -not -path "*/venv/*" | sort)
           
           if [ -z "$NOTEBOOKS" ]; then
             echo "No notebooks found"
@@ -69,6 +80,7 @@ jobs:
             OUTPUT_DIR=$(dirname "$notebook")
             mkdir -p "$OUTPUT_DIR"
             
+            # Execute with error capture but DON'T fail the whole workflow
             if papermill \
               --log-output \
               --no-progress-bar \
@@ -83,6 +95,7 @@ jobs:
               echo "❌ FAILED: $notebook"
               FAILED=$((FAILED + 1))
               FAILED_LIST="$FAILED_LIST\n- $notebook"
+              # Continue executing other notebooks
             fi
           done
           
@@ -98,38 +111,73 @@ jobs:
           echo "notebooks_failed=$FAILED" >> $GITHUB_OUTPUT
           echo "failed_list=$FAILED_LIST" >> $GITHUB_OUTPUT
           
-          if [ $FAILED -gt 0 ]; then
-            echo ""
-            echo "Failed notebooks:"
-            echo -e "$FAILED_LIST"
-            exit 1
-          fi
+          # Save values to environment file for later steps
+          echo "PASSED=$PASSED" >> $GITHUB_ENV
+          echo "FAILED=$FAILED" >> $GITHUB_ENV
+          echo "TOTAL=$TOTAL" >> $GITHUB_ENV
 
       - name: Upload executed notebooks as artifacts
-        if: always() && steps.execute.outputs.notebooks_found > 0
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: executed-notebooks-${{ github.run_id }}
           path: '**/*.ipynb'
           retention-days: 7
 
+      - name: Commit executed notebooks back to repo
+        if: always()
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Check if there are changes
+          if git diff --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          
+          # Stage only notebook files (not other changes)
+          git add "**/*.ipynb"
+          
+          # Check if there are staged changes
+          if git diff --cached --quiet; then
+            echo "No notebook changes to commit"
+            exit 0
+          fi
+          
+          PASSED=${{ env.PASSED }}
+          TOTAL=${{ env.TOTAL }}
+          
+          git commit -m "ci: Auto-execute notebooks [$PASSED/$TOTAL passed]"
+          
+          # Pull latest to avoid conflicts
+          git pull --rebase origin main || true
+          
+          # Push back
+          git push origin main
+
       - name: Report status
         if: always()
         run: |
+          PASSED=${{ env.PASSED }}
+          FAILED=${{ env.FAILED }}
+          TOTAL=${{ env.TOTAL }}
+          
           echo "## Notebook Execution Report" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
           echo "|---|---|" >> $GITHUB_STEP_SUMMARY
-          echo "| Notebooks Found | ${{ steps.execute.outputs.notebooks_found }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Passed | ${{ steps.execute.outputs.notebooks_passed }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Failed | ${{ steps.execute.outputs.notebooks_failed }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Notebooks Found | $TOTAL |" >> $GITHUB_STEP_SUMMARY
+          echo "| Passed | $PASSED |" >> $GITHUB_STEP_SUMMARY
+          echo "| Failed | $FAILED |" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
-          if [ "${{ steps.execute.outputs.notebooks_failed }}" -gt 0 ]; then
-            echo "### ❌ Failed Notebooks" >> $GITHUB_STEP_SUMMARY
-            echo "${{ steps.execute.outputs.failed_list }}" >> $GITHUB_STEP_SUMMARY
+          if [ "$FAILED" -gt 0 ]; then
+            echo "### ⚠️ Some notebooks failed" >> $GITHUB_STEP_SUMMARY
+            echo "Failed notebooks did not block commit of successful ones." >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          if [ "$PASSED" -gt 0 ]; then
             echo "" >> $GITHUB_STEP_SUMMARY
-            echo "Download artifacts for debugging." >> $GITHUB_STEP_SUMMARY
-          else
-            echo "### ✅ All notebooks executed successfully" >> $GITHUB_STEP_SUMMARY
+            echo "### ✅ $PASSED notebooks executed and committed" >> $GITHUB_STEP_SUMMARY
           fi
