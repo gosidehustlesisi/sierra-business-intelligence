@@ -36,7 +36,8 @@ jobs:
             pandas numpy matplotlib seaborn plotly \
             scikit-learn xgboost lightgbm statsmodels \
             prophet nltk textblob vaderSentiment \
-            requests beautifulsoup4 lxml wordcloud
+            requests beautifulsoup4 lxml wordcloud \
+            duckdb
 
       - name: Install repo-specific dependencies
         run: |
