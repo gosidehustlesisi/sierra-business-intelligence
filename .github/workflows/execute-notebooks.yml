@@ -89,13 +89,19 @@ jobs:
             OUTPUT_DIR=$(dirname "$notebook")
             mkdir -p "$OUTPUT_DIR"
             
+            # Change to notebook directory so relative paths (../data) work
+            NB_DIR=$(dirname "$notebook")
+            NB_NAME=$(basename "$notebook")
+            
+            cd "$NB_DIR"
+            
             if papermill \
               --log-output \
               --no-progress-bar \
               --stdout-file /dev/null \
               --stderr-file /dev/null \
-              "$notebook" \
-              "$notebook" \
+              "$NB_NAME" \
+              "$NB_NAME" \
               2>&1; then
               echo "✅ PASSED: $notebook"
               PASSED=$((PASSED + 1))
@@ -104,6 +110,9 @@ jobs:
               FAILED=$((FAILED + 1))
               FAILED_LIST="$FAILED_LIST\n- $notebook"
             fi
+            
+            # Return to repo root for next notebook
+            cd - > /dev/null
           done
           
           echo ""
