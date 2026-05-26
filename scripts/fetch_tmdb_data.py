@@ -48,7 +48,8 @@ def generate_synthetic_trending_movies():
     
     rows = []
     for i in range(20):
-        genre_ids = json.dumps(list(np.random.choice([g["id"] for g in genres], size=np.random.randint(1, 4), replace=False)))
+        g_ids = [int(x) for x in np.random.choice([g["id"] for g in genres], size=np.random.randint(1, 4), replace=False)]
+        genre_ids = json.dumps(g_ids)
         rows.append({
             "id": 1000 + i,
             "title": titles[i],
@@ -79,7 +80,8 @@ def generate_synthetic_popular_tv():
     
     rows = []
     for i in range(20):
-        genre_ids = json.dumps(list(np.random.choice([g["id"] for g in genres], size=np.random.randint(1, 4), replace=False)))
+        g_ids = [int(x) for x in np.random.choice([g["id"] for g in genres], size=np.random.randint(1, 4), replace=False)]
+        genre_ids = json.dumps(g_ids)
         rows.append({
             "id": 2000 + i,
             "name": names[i],
@@ -150,7 +152,7 @@ def generate_synthetic_genre_popularity(genres_df):
     rows = []
     for _, g in genres_df.iterrows():
         rows.append({
-            "genre_id": g["id"],
+            "genre_id": int(g["id"]),
             "genre_name": g["name"],
             "movie_count": int(np.random.uniform(10, 500))
         })
@@ -169,7 +171,7 @@ def main():
                            "vote_average": r.get("vote_average", 0), "vote_count": r.get("vote_count", 0),
                            "release_date": r.get("release_date", ""), "genre_ids": json.dumps(r.get("genre_ids", []))} for r in data["results"]])
         df.to_csv(data_dir / "trending_movies_latest.csv", index=False)
-        print(f"  ✓ API: {filename} ({len(df)} rows)")
+        print(f"  ✓ API: trending_movies_latest.csv ({len(df)} rows)")
     else:
         df = generate_synthetic_trending_movies()
         df.to_csv(data_dir / "trending_movies_latest.csv", index=False)
