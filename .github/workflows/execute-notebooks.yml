@@ -94,8 +94,13 @@ jobs:
             NB_NAME=$(basename "$notebook")
             
             cd "$NB_DIR"
+            echo "CWD: $(pwd)"
+            echo "Notebook: $NB_NAME"
+            echo "Looking for data at: $(realpath ../data 2>/dev/null || echo '../data (not found)')"
+            ls -la ../data/ 2>/dev/null || echo "No ../data directory"
             
             if papermill \
+              --kernel python3 \
               --log-output \
               --no-progress-bar \
               --stdout-file /dev/null \
