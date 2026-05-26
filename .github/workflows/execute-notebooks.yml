@@ -54,22 +54,20 @@ jobs:
         env:
           TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
         run: |
-          # Check if we have Netflix notebooks that need TMDB data
           if [ -d "projects/netflix-content-strategy-intelligence/notebooks" ]; then
             echo "Found Netflix notebooks. Fetching TMDB data..."
-            
-            # Create data fetcher inline if script doesn't exist
             mkdir -p projects/netflix-content-strategy-intelligence/data
             
-            python3 << 'FETCH_SCRIPT'
+            # Write fetcher script to file and execute
+            cat > /tmp/fetch_tmdb.py << 'PYEOF'
             import os, json, time, pandas as pd
             from pathlib import Path
             import requests
             
             API_KEY = os.environ.get("TMDB_API_KEY", "")
-            if not API_KEY:
-                print("WARNING: No TMDB_API_KEY set. Using demo mode with limited data.")
-                API_KEY = "demo"
+            if not API_KEY or API_KEY == "demo":
+                print("WARNING: No TMDB_API_KEY set. Using demo mode.")
+                API_KEY = "b96521e9c5e91e11151fa17741acc0d8"
             
             BASE_URL = "https://api.themoviedb.org/3"
             
@@ -92,57 +90,33 @@ jobs:
             data_dir = Path("projects/netflix-content-strategy-intelligence/data")
             data_dir.mkdir(parents=True, exist_ok=True)
             
-            # Fetch trending movies
-            print("Fetching trending movies...")
-            try:
-                data = tmdb_get("/trending/movie/day")
-                results = data.get("results", [])
-                df = pd.DataFrame([{
-                    "id": r["id"],
-                    "title": r.get("title", ""),
-                    "popularity": r.get("popularity", 0),
-                    "vote_average": r.get("vote_average", 0),
-                    "vote_count": r.get("vote_count", 0),
-                    "release_date": r.get("release_date", ""),
-                    "genre_ids": json.dumps(r.get("genre_ids", [])),
-                } for r in results])
-                df.to_csv(data_dir / "trending_movies_latest.csv", index=False)
-                print(f"  ✓ trending_movies_latest.csv ({len(df)} rows)")
-            except Exception as e:
-                print(f"  ✗ trending_movies_latest.csv: {e}")
+            endpoints = [
+                ("/trending/movie/day", "trending_movies_latest.csv", 
+                 lambda r: {"id": r["id"], "title": r.get("title", ""), "popularity": r.get("popularity", 0),
+                            "vote_average": r.get("vote_average", 0), "vote_count": r.get("vote_count", 0),
+                            "release_date": r.get("release_date", ""), "genre_ids": json.dumps(r.get("genre_ids", []))}),
+                ("/tv/popular", "popular_tv_latest.csv",
+                 lambda r: {"id": r["id"], "name": r.get("name", ""), "popularity": r.get("popularity", 0),
+                            "vote_average": r.get("vote_average", 0), "vote_count": r.get("vote_count", 0),
+                            "first_air_date": r.get("first_air_date", ""), "genre_ids": json.dumps(r.get("genre_ids", []))}),
+                ("/genre/movie/list", "movie_genres_latest.csv",
+                 lambda r: {"id": r["id"], "name": r.get("name", "")}),
+            ]
             
-            # Fetch popular TV
-            print("Fetching popular TV...")
-            try:
-                data = tmdb_get("/tv/popular")
-                results = data.get("results", [])
-                df = pd.DataFrame([{
-                    "id": r["id"],
-                    "name": r.get("name", ""),
-                    "popularity": r.get("popularity", 0),
-                    "vote_average": r.get("vote_average", 0),
-                    "vote_count": r.get("vote_count", 0),
-                    "first_air_date": r.get("first_air_date", ""),
-                    "genre_ids": json.dumps(r.get("genre_ids", [])),
-                } for r in results])
-                df.to_csv(data_dir / "popular_tv_latest.csv", index=False)
-                print(f"  ✓ popular_tv_latest.csv ({len(df)} rows)")
-            except Exception as e:
-                print(f"  ✗ popular_tv_latest.csv: {e}")
-            
-            # Fetch genres
-            print("Fetching genres...")
-            try:
-                data = tmdb_get("/genre/movie/list")
-                genres = data.get("genres", [])
-                df = pd.DataFrame(genres)
-                df.to_csv(data_dir / "movie_genres_latest.csv", index=False)
-                print(f"  ✓ movie_genres_latest.csv ({len(df)} rows)")
-            except Exception as e:
-                print(f"  ✗ movie_genres_latest.csv: {e}")
+            for endpoint, filename, mapper in endpoints:
+                print(f"Fetching {filename}...")
+                try:
+                    data = tmdb_get(endpoint)
+                    results = data.get("results", [])
+                    if results:
+                        df = pd.DataFrame([mapper(r) for r in results])
+                        df.to_csv(data_dir / filename, index=False)
+                        print(f"  ✓ {filename} ({len(df)} rows)")
+                except Exception as e:
+                    print(f"  ✗ {filename}: {e}")
             
             # Genre popularity
-            print("Fetching genre popularity...")
+            print("Fetching genre_popularity_latest.csv...")
             try:
                 trending = tmdb_get("/trending/movie/day")
                 results = trending.get("results", [])
@@ -151,55 +125,43 @@ jobs:
                     for gid in r.get("genre_ids", []):
                         genre_counts[gid] = genre_counts.get(gid, 0) + 1
                 genres = tmdb_get("/genre/movie/list").get("genres", [])
-                df = pd.DataFrame([{
-                    "genre_id": g["id"],
-                    "genre_name": g["name"],
-                    "movie_count": genre_counts.get(g["id"], 0),
-                } for g in genres])
+                df = pd.DataFrame([{"genre_id": g["id"], "genre_name": g["name"], 
+                                    "movie_count": genre_counts.get(g["id"], 0)} for g in genres])
                 df.to_csv(data_dir / "genre_popularity_latest.csv", index=False)
                 print(f"  ✓ genre_popularity_latest.csv ({len(df)} rows)")
             except Exception as e:
                 print(f"  ✗ genre_popularity_latest.csv: {e}")
             
-            # Upcoming movies
-            print("Fetching upcoming movies...")
+            # Upcoming
+            print("Fetching upcoming_movies_latest.csv...")
             try:
                 data = tmdb_get("/movie/upcoming")
                 results = data.get("results", [])
-                df = pd.DataFrame([{
-                    "id": r["id"],
-                    "title": r.get("title", ""),
-                    "popularity": r.get("popularity", 0),
-                    "vote_average": r.get("vote_average", 0),
-                    "release_date": r.get("release_date", ""),
-                    "genre_ids": json.dumps(r.get("genre_ids", [])),
-                } for r in results])
+                df = pd.DataFrame([{"id": r["id"], "title": r.get("title", ""), "popularity": r.get("popularity", 0),
+                                    "vote_average": r.get("vote_average", 0), "release_date": r.get("release_date", ""),
+                                    "genre_ids": json.dumps(r.get("genre_ids", []))} for r in results])
                 df.to_csv(data_dir / "upcoming_movies_latest.csv", index=False)
                 print(f"  ✓ upcoming_movies_latest.csv ({len(df)} rows)")
             except Exception as e:
                 print(f"  ✗ upcoming_movies_latest.csv: {e}")
             
             # Top rated
-            print("Fetching top rated movies...")
+            print("Fetching top_rated_movies_latest.csv...")
             try:
                 data = tmdb_get("/movie/top_rated")
                 results = data.get("results", [])
-                df = pd.DataFrame([{
-                    "id": r["id"],
-                    "title": r.get("title", ""),
-                    "popularity": r.get("popularity", 0),
-                    "vote_average": r.get("vote_average", 0),
-                    "vote_count": r.get("vote_count", 0),
-                    "release_date": r.get("release_date", ""),
-                    "genre_ids": json.dumps(r.get("genre_ids", [])),
-                } for r in results])
+                df = pd.DataFrame([{"id": r["id"], "title": r.get("title", ""), "popularity": r.get("popularity", 0),
+                                    "vote_average": r.get("vote_average", 0), "vote_count": r.get("vote_count", 0),
+                                    "release_date": r.get("release_date", ""), "genre_ids": json.dumps(r.get("genre_ids", []))} for r in results])
                 df.to_csv(data_dir / "top_rated_movies_latest.csv", index=False)
                 print(f"  ✓ top_rated_movies_latest.csv ({len(df)} rows)")
             except Exception as e:
                 print(f"  ✗ top_rated_movies_latest.csv: {e}")
             
             print("\nTMDB data fetch complete.")
-            FETCH_SCRIPT
+            PYEOF
+            
+            python3 /tmp/fetch_tmdb.py
           else
             echo "No Netflix notebooks found. Skipping TMDB fetch."
           fi
@@ -232,7 +194,6 @@ jobs:
             OUTPUT_DIR=$(dirname "$notebook")
             mkdir -p "$OUTPUT_DIR"
             
-            # Execute with error capture but DON'T fail the whole workflow
             if papermill \
               --log-output \
               --no-progress-bar \
@@ -247,7 +208,6 @@ jobs:
               echo "❌ FAILED: $notebook"
               FAILED=$((FAILED + 1))
               FAILED_LIST="$FAILED_LIST\n- $notebook"
-              # Continue executing other notebooks
             fi
           done
           
@@ -263,7 +223,6 @@ jobs:
           echo "notebooks_failed=$FAILED" >> $GITHUB_OUTPUT
           echo "failed_list=$FAILED_LIST" >> $GITHUB_OUTPUT
           
-          # Save values to environment file for later steps
           echo "PASSED=$PASSED" >> $GITHUB_ENV
           echo "FAILED=$FAILED" >> $GITHUB_ENV
           echo "TOTAL=$TOTAL" >> $GITHUB_ENV
@@ -277,26 +236,19 @@ jobs:
           retention-days: 7
 
       - name: Commit executed notebooks back to repo
-        # CRITICAL: Only commit if at least one notebook passed
-        # This prevents overwriting executed notebooks with unexecuted skeletons
         if: env.PASSED > 0
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           
-          # Check if there are changes
           if git diff --quiet; then
             echo "No changes to commit"
             exit 0
           fi
           
-          # Stage only notebook files (not other changes)
           git add "**/*.ipynb"
-          
-          # Also stage any new data files that were fetched
           git add "**/*.csv" || true
           
-          # Check if there are staged changes
           if git diff --cached --quiet; then
             echo "No notebook changes to commit"
             exit 0
@@ -306,11 +258,7 @@ jobs:
           TOTAL=${{ env.TOTAL }}
           
           git commit -m "ci: Auto-execute notebooks [$PASSED/$TOTAL passed]"
-          
-          # Pull latest to avoid conflicts
           git pull --rebase origin main || true
-          
-          # Push back
           git push origin main
 
       - name: Report status
