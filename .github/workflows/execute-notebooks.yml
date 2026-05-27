@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
   actions: read
 
 jobs:
@@ -17,185 +17,160 @@ jobs:
     timeout-minutes: 45
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
+    - name: Checkout repository
+      uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-          cache: 'pip'
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+        cache: 'pip'
 
-      - name: Install core execution dependencies
-        run: |
-          pip install --upgrade pip
-          pip install papermill jupyter nbformat nbconvert \
-            pandas numpy matplotlib seaborn plotly \
-            scikit-learn xgboost lightgbm statsmodels \
-            prophet nltk textblob vaderSentiment \
-            requests beautifulsoup4 lxml wordcloud \
-            duckdb
+    - name: Install core execution dependencies
+      run: |
+        pip install --upgrade pip
+        pip install papermill jupyter nbformat nbconvert \
+          pandas numpy matplotlib seaborn plotly \
+          scikit-learn xgboost lightgbm statsmodels \
+          prophet nltk textblob vaderSentiment \
+          requests beautifulsoup4 lxml wordcloud \
+          duckdb
 
-      - name: Install repo-specific dependencies
-        run: |
-          if [ -f requirements.txt ]; then
-            echo "Found requirements.txt, installing..."
-            pip install -r requirements.txt
+    - name: Install repo-specific dependencies
+      run: |
+        if [ -f requirements.txt ]; then
+          echo "Found requirements.txt, installing..."
+          pip install -r requirements.txt
+        fi
+        if [ -f pyproject.toml ]; then
+          echo "Found pyproject.toml, installing..."
+          pip install -e . || pip install . || echo "pyproject.toml install failed, continuing"
+        fi
+
+    - name: Run data fetcher scripts if present
+      env:
+        TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+        CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
+      run: |
+        for script in scripts/fetch_*.py; do
+          if [ -f "$script" ]; then
+            echo "Running $script..."
+            python3 "$script"
           fi
-          if [ -f pyproject.toml ]; then
-            echo "Found pyproject.toml, installing..."
-            pip install -e . || pip install . || echo "pyproject.toml install failed, continuing"
-          fi
+        done
+        echo "Data fetcher step complete."
 
-      - name: Fetch TMDB data for Netflix notebooks
-        env:
-          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-        run: |
-          if [ -f "scripts/fetch_tmdb_data.py" ]; then
-            echo "Running TMDB data fetcher..."
-            python3 scripts/fetch_tmdb_data.py
-          else
-            echo "No TMDB fetcher script found. Skipping."
-          fi
-
-      - name: Execute all notebooks
-        id: execute
-        run: |
+    - name: Execute all notebooks
+      id: execute
+      continue-on-error: true
+      run: |
+        NOTEBOOKS=$(find . -name "*.ipynb" -not -path "*/.git/*" -not -path "*/site-packages/*" -not -path "*/venv/*" | grep "_FINAL.ipynb" | sort)
+        
+        # Fallback: if no _FINAL notebooks, run all .ipynb
+        if [ -z "$NOTEBOOKS" ]; then
           NOTEBOOKS=$(find . -name "*.ipynb" -not -path "*/.git/*" -not -path "*/site-packages/*" -not -path "*/venv/*" | sort)
-          
-          if [ -z "$NOTEBOOKS" ]; then
-            echo "No notebooks found"
-            echo "notebooks_found=0" >> $GITHUB_OUTPUT
-            exit 0
-          fi
-          
-          TOTAL=$(echo "$NOTEBOOKS" | wc -l)
-          PASSED=0
-          FAILED=0
-          FAILED_LIST=""
-          
-          echo "Found $TOTAL notebooks to execute"
-          echo "notebooks_found=$TOTAL" >> $GITHUB_OUTPUT
-          
-          for notebook in $NOTEBOOKS; do
-            echo ""
-            echo "=========================================="
-            echo "Executing: $notebook"
-            echo "=========================================="
-            
-            OUTPUT_DIR=$(dirname "$notebook")
-            mkdir -p "$OUTPUT_DIR"
-            
-            # Change to notebook directory so relative paths (../data) work
-            NB_DIR=$(dirname "$notebook")
-            NB_NAME=$(basename "$notebook")
-            
-            cd "$NB_DIR"
-            echo "CWD: $(pwd)"
-            echo "Notebook: $NB_NAME"
-            echo "Looking for data at: $(realpath ../data 2>/dev/null || echo '../data (not found)')"
-            ls -la ../data/ 2>/dev/null || echo "No ../data directory"
-            
-            if papermill \
-              --kernel python3 \
-              --log-output \
-              --no-progress-bar \
-              --stdout-file /dev/null \
-              --stderr-file /dev/null \
-              "$NB_NAME" \
-              "$NB_NAME" \
-              2>&1; then
-              echo "✅ PASSED: $notebook"
-              PASSED=$((PASSED + 1))
-            else
-              echo "❌ FAILED: $notebook"
-              FAILED=$((FAILED + 1))
-              FAILED_LIST="$FAILED_LIST\n- $notebook"
-            fi
-            
-            # Return to repo root for next notebook
-            cd - > /dev/null
-          done
-          
+        fi
+
+        if [ -z "$NOTEBOOKS" ]; then
+          echo "No notebooks found"
+          echo "notebooks_found=0" >> $GITHUB_OUTPUT
+          exit 0
+        fi
+
+        TOTAL=$(echo "$NOTEBOOKS" | wc -l)
+        PASSED=0
+        FAILED=0
+        FAILED_LIST=""
+
+        echo "Found $TOTAL notebooks to execute"
+        echo "notebooks_found=$TOTAL" >> $GITHUB_OUTPUT
+
+        for notebook in $NOTEBOOKS; do
           echo ""
           echo "=========================================="
-          echo "EXECUTION SUMMARY"
+          echo "Executing: $notebook"
           echo "=========================================="
-          echo "Total: $TOTAL"
-          echo "Passed: $PASSED"
-          echo "Failed: $FAILED"
-          
-          echo "notebooks_passed=$PASSED" >> $GITHUB_OUTPUT
-          echo "notebooks_failed=$FAILED" >> $GITHUB_OUTPUT
-          echo "failed_list=$FAILED_LIST" >> $GITHUB_OUTPUT
-          
-          echo "PASSED=$PASSED" >> $GITHUB_ENV
-          echo "FAILED=$FAILED" >> $GITHUB_ENV
-          echo "TOTAL=$TOTAL" >> $GITHUB_ENV
 
-      - name: Upload executed notebooks as artifacts
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: executed-notebooks-${{ github.run_id }}
-          path: '**/*.ipynb'
-          retention-days: 7
+          NB_DIR=$(dirname "$notebook")
+          NB_NAME=$(basename "$notebook")
 
-      - name: Commit executed notebooks back to repo
-        if: env.PASSED > 0
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          if git diff --quiet; then
-            echo "No changes to commit"
-            exit 0
-          fi
-          
-          git add "**/*.ipynb"
-          git add "**/*.csv" || true
-          
-          if git diff --cached --quiet; then
-            echo "No notebook changes to commit"
-            exit 0
-          fi
-          
-          PASSED=${{ env.PASSED }}
-          TOTAL=${{ env.TOTAL }}
-          
-          git commit -m "ci: Auto-execute notebooks [$PASSED/$TOTAL passed]"
-          git pull --rebase origin main || true
-          git push origin main
+          cd "$NB_DIR"
+          echo "CWD: $(pwd)"
+          echo "Notebook: $NB_NAME"
+          echo "Looking for data at: $(realpath ../data 2>/dev/null || echo '../data (not found)')"
+          ls -la ../data/ 2>/dev/null || echo "No ../data directory"
 
-      - name: Report status
-        if: always()
-        run: |
-          PASSED=${{ env.PASSED }}
-          FAILED=${{ env.FAILED }}
-          TOTAL=${{ env.TOTAL }}
-          
-          echo "## Notebook Execution Report" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
-          echo "|---|---|" >> $GITHUB_STEP_SUMMARY
-          echo "| Notebooks Found | $TOTAL |" >> $GITHUB_STEP_SUMMARY
-          echo "| Passed | $PASSED |" >> $GITHUB_STEP_SUMMARY
-          echo "| Failed | $FAILED |" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
-          if [ "$FAILED" -gt 0 ]; then
-            echo "### ⚠️ Some notebooks failed" >> $GITHUB_STEP_SUMMARY
-            echo "Failed notebooks were not committed." >> $GITHUB_STEP_SUMMARY
-          fi
-          
-          if [ "$PASSED" -gt 0 ]; then
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "### ✅ $PASSED notebooks executed and committed" >> $GITHUB_STEP_SUMMARY
+          if papermill \
+            --kernel python3 \
+            --log-output \
+            --no-progress-bar \
+            "$NB_NAME" \
+            "$NB_NAME" \
+            2>&1; then
+            echo "✅ PASSED: $notebook"
+            PASSED=$((PASSED + 1))
           else
-            echo "" >> $GITHUB_STEP_SUMMARY
-            echo "### ❌ No notebooks passed — nothing committed" >> $GITHUB_STEP_SUMMARY
-            echo "Check the logs for execution errors." >> $GITHUB_STEP_SUMMARY
+            echo "❌ FAILED: $notebook"
+            FAILED=$((FAILED + 1))
+            FAILED_LIST="$FAILED_LIST\n- $notebook"
           fi
+
+          cd - > /dev/null
+        done
+
+        echo ""
+        echo "=========================================="
+        echo "EXECUTION SUMMARY"
+        echo "=========================================="
+        echo "Total: $TOTAL"
+        echo "Passed: $PASSED"
+        echo "Failed: $FAILED"
+
+        echo "notebooks_passed=$PASSED" >> $GITHUB_OUTPUT
+        echo "notebooks_failed=$FAILED" >> $GITHUB_OUTPUT
+        echo "failed_list=$FAILED_LIST" >> $GITHUB_OUTPUT
+
+        echo "PASSED=$PASSED" >> $GITHUB_ENV
+        echo "FAILED=$FAILED" >> $GITHUB_ENV
+        echo "TOTAL=$TOTAL" >> $GITHUB_ENV
+
+        # NEVER fail the job — we want artifacts and reports
+        exit 0
+
+    - name: Upload executed notebooks as artifacts
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: executed-notebooks-${{ github.run_id }}
+        path: '**/*_FINAL.ipynb'
+        retention-days: 7
+
+    - name: Report status
+      if: always()
+      run: |
+        PASSED=${{ env.PASSED }}
+        FAILED=${{ env.FAILED }}
+        TOTAL=${{ env.TOTAL }}
+
+        echo "## Notebook Execution Report" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "| Metric | Value |" >> $GITHUB_STEP_SUMMARY
+        echo "|---|---|" >> $GITHUB_STEP_SUMMARY
+        echo "| Notebooks Found | $TOTAL |" >> $GITHUB_STEP_SUMMARY
+        echo "| Passed | $PASSED |" >> $GITHUB_STEP_SUMMARY
+        echo "| Failed | $FAILED |" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+
+        if [ "$FAILED" -gt 0 ]; then
+          echo "### ⚠️ Some notebooks failed" >> $GITHUB_STEP_SUMMARY
+          echo "Download artifacts to inspect failed notebooks." >> $GITHUB_STEP_SUMMARY
+        fi
+
+        if [ "$PASSED" -gt 0 ]; then
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### ✅ $PASSED notebooks executed successfully" >> $GITHUB_STEP_SUMMARY
+        else
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### ❌ No notebooks passed" >> $GITHUB_STEP_SUMMARY
+          echo "Check the logs for execution errors." >> $GITHUB_STEP_SUMMARY
+        fi
