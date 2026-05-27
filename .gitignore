@@ -1,5 +1,72 @@
-venv/
+# Security-hardened .gitignore for Sierra's portfolio repos
+# Generated: 2026-05-26
+# Purpose: Block secrets and bloat, allow necessary data/config files
+
+# ===== SECRETS (NEVER commit) =====
+.env
+.env.*
+*.env
+secrets.json
+sierra-secrets.json
+*_secrets.json
+*.key
+*.pem
+*.p12
+*.crt
+.aws/
+.ssh/
+credentials*
+*.token
+*api_key*
+*apikey*
+
+# ===== LARGE DATA FILES (keep small CSVs, block compressed) =====
+*.csv.gz
+*.csv.zip
+*.parquet
+*.parquet.gz
+*.feather
+*.hdf5
+*.h5
+*.db
+*.sqlite
+*.sqlite3
+
+# Data directories that should be generated, not committed
+data/raw/
+data/external/
+outputs/
+downloads/
+tmp/
+temp/
+
+# ===== PYTHON ARTIFACTS =====
 __pycache__/
 *.pyc
 *.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# ===== JUPYTER ARTIFACTS =====
 .ipynb_checkpoints/
+*.nbconvert.ipynb
+executed_*.ipynb
+papermill-output*
+
+# ===== OS FILES =====
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+
+# ===== IDE =====
+.vscode/
+.idea/
+*.iml
+
+# ===== LOGS =====
+*.log
+logs/
