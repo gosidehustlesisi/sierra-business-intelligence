@@ -4,10 +4,10 @@
 
 <h1>SIERRA BUSINESS INTELLIGENCE</h1>
 
-> **Real Netflix catalog data (Kaggle + TMDB Live), real Amazon reviews, real Google Trends — zero synthetic records.**
+> **Real Netflix catalog data (Kaggle CC0), real Amazon reviews, real Google Trends — zero synthetic records.**
 
 <p>
-  <b>78,055+ real records · 3 projects · 8 notebooks · 75 charts</b>
+  <b>76,394+ real records · 3 projects · 8 notebooks · 75 charts</b>
 </p>
 
 <p>
@@ -58,7 +58,7 @@ Explore the full cinematic portfolio with interactive gallery, lightbox, and 28 
 | **Kaggle** — Netflix Movies & TV Shows | Direct CSV download, SHA-verified | 8,807 titles |
 | **TMDB** — Trending, Top-Rated, Upcoming + Genre Popularity | Live API via `fetch_tmdb_data.py` | 438 live records |
 | **UCSD** — Amazon Reviews (Electronics 5-core) | Direct CSV download | 67,325 reviews |
-| **Google Trends** — pytrends API + BigQuery | Live API extraction, weekly granularity | 1,923 trend records |
+| **Google Trends** — pytrends API + BigQuery | Live API extraction, weekly granularity | 1,771 trend records |
 
 These aren't toy models. Every number below came from running real code on real data.
 
@@ -72,7 +72,7 @@ These aren't toy models. Every number below came from running real code on real 
 | **Amazon Review Intelligence** | E-commerce & Retail | 67,325 reviews | UCSD Amazon 5-core | 3 | 21+ | ✅ Complete |
 | **Google Search Trends** | Market Intelligence | 1,923 records | pytrends live API | 3 | 11+ | ✅ Complete |
 
-**Total: 78,055+ real records · 9 notebooks · 49+ production charts · 0 synthetic data**
+**Total: 76,394+ real records · 9 notebooks · 49+ production charts · 0 synthetic data**
 
 ---
 
@@ -108,7 +108,7 @@ I wrote 10 business-facing SQL queries in DuckDB against a real 8,807-title cata
 | 8,807 titles | 6,131 movies (69.6%) / 2,676 TV shows (30.4%) | 36.8% US concentration | 4.4-year avg lifecycle |
 |---|---|---|---|
 | 14.2% International Movies | TV-MA = 36.4% | Peak 2019: 1,999 titles added | 11 dashboard views |
-| **+438 TMDB live records** | Trending, top-rated, upcoming | 19 genre popularity scores | Updated 2026-05-21 |
+| **TMDB enrichment optional** | Trending, top-rated, upcoming | 19 genre popularity scores | Updated 2026-05-21 |
 
 **Peak insight:** Netflix's catalog is 70% movies but TV shows turn around faster — if you're still licensing movies on a 5-year horizon, you're bleeding speed.
 
@@ -206,7 +206,7 @@ End-to-end data pipeline skills — from ingestion to executive dashboard — on
 
 ### What This Means for Business
 
-Real-time market interest tracking across 14 keywords over 262 weeks. I captured 1,923 trend records spanning worldwide, US national, and US regional granularity. This is competitive intelligence infrastructure: knowing when "AI" spikes, when "Netflix" softens, and where regional interest concentrates before your competitors do.
+Real-time market interest tracking across 14 keywords over 262 weeks. I captured 1,771 trend records spanning worldwide, US national, and US regional granularity. This is competitive intelligence infrastructure: knowing when "AI" spikes, when "Netflix" softens, and where regional interest concentrates before your competitors do.
 
 ### Why This Matters to Hiring Managers
 
@@ -214,7 +214,7 @@ I built a live-data pipeline using pytrends and BigQuery, handled multi-granular
 
 ### Metrics Grid
 
-| 1,923 trend records | 262 weeks × 14 keywords | 714 US regional data points | 5-year window (2021–2026) |
+| 1,771 trend records | 262 weeks × 14 keywords | 714 US regional data points | 5-year window (2021–2026) |
 |---|---|---|---|
 | Worldwide + US + Regional + Top/Rising queries | Peak detection via `scipy.signal.find_peaks` | Cross-keyword correlation matrix | Plotly geospatial choropleth |
 
