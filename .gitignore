@@ -70,3 +70,6 @@ Thumbs.db
 # ===== LOGS =====
 *.log
 logs/
+secrets.toml
+.streamlit/secrets.toml
+**/secrets.toml
