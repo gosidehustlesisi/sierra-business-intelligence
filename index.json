@@ -1,0 +1,2230 @@
+{
+  "generated": "2026-06-17",
+  "count": 242,
+  "total_bytes": 114384603,
+  "assets": [
+    {
+      "path": ".github/workflows/execute-notebooks.yml",
+      "type": "yml",
+      "size_bytes": 5714,
+      "size": "5.6 KB",
+      "desc": "workflow: Execute Notebooks on Push"
+    },
+    {
+      "path": ".github/workflows/netflix-catalog.yml",
+      "type": "yml",
+      "size_bytes": 1025,
+      "size": "1.0 KB",
+      "desc": "workflow: Netflix Catalog Extract"
+    },
+    {
+      "path": ".github/workflows/netflix-enrich.yml",
+      "type": "yml",
+      "size_bytes": 1049,
+      "size": "1.0 KB",
+      "desc": "workflow: Netflix Catalog Enrich"
+    },
+    {
+      "path": ".github/workflows/tmdb-refresh.yml",
+      "type": "yml",
+      "size_bytes": 1173,
+      "size": "1.1 KB",
+      "desc": "workflow: Daily TMDB Data Refresh"
+    },
+    {
+      "path": ".gitignore",
+      "type": "file",
+      "size_bytes": 985,
+      "size": "985 B",
+      "desc": "FILE file"
+    },
+    {
+      "path": ".streamlit/secrets.toml.example",
+      "type": "example",
+      "size_bytes": 220,
+      "size": "220 B",
+      "desc": "EXAMPLE file"
+    },
+    {
+      "path": "LICENSE",
+      "type": "file",
+      "size_bytes": 1070,
+      "size": "1.0 KB",
+      "desc": "FILE file"
+    },
+    {
+      "path": "NETFLIX_DASHBOARD_STRATEGY.md",
+      "type": "md",
+      "size_bytes": 6456,
+      "size": "6.3 KB",
+      "desc": "Netflix Dashboard Embedded Strategy \u2014 Grounded Data & Execution Plan"
+    },
+    {
+      "path": "README.md",
+      "type": "md",
+      "size_bytes": 19530,
+      "size": "19.1 KB",
+      "desc": "Clone the repo"
+    },
+    {
+      "path": "avatar.png",
+      "type": "png",
+      "size_bytes": 307887,
+      "size": "300.7 KB",
+      "desc": "image 800\u00d7800px"
+    },
+    {
+      "path": "docs/avatar-aia.png",
+      "type": "png",
+      "size_bytes": 347932,
+      "size": "339.8 KB",
+      "desc": "image 1024\u00d71024px"
+    },
+    {
+      "path": "docs/catalog_stats.json",
+      "type": "json",
+      "size_bytes": 281,
+      "size": "281 B",
+      "desc": "keys: total_titles, movies, tv, pct_non_english, mean_vote_average, year_min, year_max, top_genres"
+    },
+    {
+      "path": "docs/figures/amz_01_rating_distribution.png",
+      "type": "png",
+      "size_bytes": 63206,
+      "size": "61.7 KB",
+      "desc": "image 1482\u00d7880px"
+    },
+    {
+      "path": "docs/figures/amz_02_monthly_volume.png",
+      "type": "png",
+      "size_bytes": 86569,
+      "size": "84.5 KB",
+      "desc": "image 2082\u00d7880px"
+    },
+    {
+      "path": "docs/figures/amz_03_historical_reviews.png",
+      "type": "png",
+      "size_bytes": 76376,
+      "size": "74.6 KB",
+      "desc": "image 1784\u00d7881px"
+    },
+    {
+      "path": "docs/figures/amz_04_seasonal_heatmap.png",
+      "type": "png",
+      "size_bytes": 192418,
+      "size": "187.9 KB",
+      "desc": "image 1676\u00d71180px"
+    },
+    {
+      "path": "docs/figures/amz_05_brand_performance.png",
+      "type": "png",
+      "size_bytes": 73991,
+      "size": "72.3 KB",
+      "desc": "image 1784\u00d7883px"
+    },
+    {
+      "path": "docs/figures/amz_06_rating_trends.png",
+      "type": "png",
+      "size_bytes": 57520,
+      "size": "56.2 KB",
+      "desc": "image 1784\u00d71031px"
+    },
+    {
+      "path": "docs/figures/amz_07_helpful_reviewers.png",
+      "type": "png",
+      "size_bytes": 73838,
+      "size": "72.1 KB",
+      "desc": "image 1785\u00d7880px"
+    },
+    {
+      "path": "docs/figures/amz_08_market_concentration.png",
+      "type": "png",
+      "size_bytes": 126471,
+      "size": "123.5 KB",
+      "desc": "image 1978\u00d7882px"
+    },
+    {
+      "path": "docs/figures/amz_09_rating_evolution.png",
+      "type": "png",
+      "size_bytes": 105633,
+      "size": "103.2 KB",
+      "desc": "image 1400\u00d7900px"
+    },
+    {
+      "path": "docs/figures/amz_10_rating_vs_length.png",
+      "type": "png",
+      "size_bytes": 85712,
+      "size": "83.7 KB",
+      "desc": "image 1400\u00d7900px"
+    },
+    {
+      "path": "docs/figures/goo_01_keyword_trends.png",
+      "type": "png",
+      "size_bytes": 405896,
+      "size": "396.4 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "docs/figures/goo_02_trend_comparison.png",
+      "type": "png",
+      "size_bytes": 480846,
+      "size": "469.6 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "docs/figures/goo_03_regional_heatmap.png",
+      "type": "png",
+      "size_bytes": 196590,
+      "size": "192.0 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "docs/figures/goo_04_category_analysis.png",
+      "type": "png",
+      "size_bytes": 218960,
+      "size": "213.8 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "docs/figures/goo_05_exec_overview.png",
+      "type": "png",
+      "size_bytes": 390178,
+      "size": "381.0 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "docs/figures/goo_06_trend_forecast.png",
+      "type": "png",
+      "size_bytes": 214657,
+      "size": "209.6 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "docs/figures/goo_07_market_insights.png",
+      "type": "png",
+      "size_bytes": 147805,
+      "size": "144.3 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "docs/figures/goo_08_dashboard_preview.png",
+      "type": "png",
+      "size_bytes": 397210,
+      "size": "387.9 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "docs/figures/nflx_01_genre_distribution.png",
+      "type": "png",
+      "size_bytes": 70235,
+      "size": "68.6 KB",
+      "desc": "image 1192\u00d7716px \u00b7 Netflix"
+    },
+    {
+      "path": "docs/figures/nflx_02_popularity_vs_rating.png",
+      "type": "png",
+      "size_bytes": 76967,
+      "size": "75.2 KB",
+      "desc": "image 1192\u00d7716px \u00b7 Netflix"
+    },
+    {
+      "path": "docs/figures/nflx_03_rating_distribution.png",
+      "type": "png",
+      "size_bytes": 32883,
+      "size": "32.1 KB",
+      "desc": "image 1192\u00d7716px \u00b7 Netflix"
+    },
+    {
+      "path": "docs/figures/nflx_04_release_trends.png",
+      "type": "png",
+      "size_bytes": 44208,
+      "size": "43.2 KB",
+      "desc": "image 1192\u00d7716px \u00b7 Netflix"
+    },
+    {
+      "path": "docs/figures/nflx_05_top_genres.png",
+      "type": "png",
+      "size_bytes": 50270,
+      "size": "49.1 KB",
+      "desc": "image 1192\u00d7716px \u00b7 Netflix"
+    },
+    {
+      "path": "docs/figures/nflx_06_content_growth.png",
+      "type": "png",
+      "size_bytes": 33476,
+      "size": "32.7 KB",
+      "desc": "image 1192\u00d7716px \u00b7 Netflix"
+    },
+    {
+      "path": "docs/figures/nflx_07_content_mix.png",
+      "type": "png",
+      "size_bytes": 35036,
+      "size": "34.2 KB",
+      "desc": "image 812\u00d7835px \u00b7 Netflix"
+    },
+    {
+      "path": "docs/figures/nflx_08_genre_treemap.png",
+      "type": "png",
+      "size_bytes": 35203,
+      "size": "34.4 KB",
+      "desc": "image 1192\u00d7717px \u00b7 Netflix"
+    },
+    {
+      "path": "docs/figures/nflx_09_quality_tiers.png",
+      "type": "png",
+      "size_bytes": 28233,
+      "size": "27.6 KB",
+      "desc": "image 1192\u00d7716px \u00b7 Netflix"
+    },
+    {
+      "path": "docs/figures/nflx_10_upcoming_releases.png",
+      "type": "png",
+      "size_bytes": 77612,
+      "size": "75.8 KB",
+      "desc": "image 1800\u00d71000px \u00b7 Netflix"
+    },
+    {
+      "path": "docs/index.html",
+      "type": "html",
+      "size_bytes": 59056,
+      "size": "57.7 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (57.7 KB)"
+    },
+    {
+      "path": "docs/netflix-analysis.html",
+      "type": "html",
+      "size_bytes": 460538,
+      "size": "449.7 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (449.7 KB)"
+    },
+    {
+      "path": "docs/netflix-dashboard/01_top_genres.html",
+      "type": "html",
+      "size_bytes": 8909,
+      "size": "8.7 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (8.7 KB)"
+    },
+    {
+      "path": "docs/netflix-dashboard/02_rating_distribution.html",
+      "type": "html",
+      "size_bytes": 74246,
+      "size": "72.5 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (72.5 KB)"
+    },
+    {
+      "path": "docs/netflix-dashboard/03_popularity_vs_rating.html",
+      "type": "html",
+      "size_bytes": 214431,
+      "size": "209.4 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (209.4 KB)"
+    },
+    {
+      "path": "docs/netflix-dashboard/04_release_trend.html",
+      "type": "html",
+      "size_bytes": 8805,
+      "size": "8.6 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (8.6 KB)"
+    },
+    {
+      "path": "docs/netflix-dashboard/05_content_mix.html",
+      "type": "html",
+      "size_bytes": 8357,
+      "size": "8.2 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (8.2 KB)"
+    },
+    {
+      "path": "docs/netflix-dashboard/06_genre_treemap.html",
+      "type": "html",
+      "size_bytes": 8836,
+      "size": "8.6 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (8.6 KB)"
+    },
+    {
+      "path": "docs/netflix-dashboard/07_upcoming_months.html",
+      "type": "html",
+      "size_bytes": 8574,
+      "size": "8.4 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (8.4 KB)"
+    },
+    {
+      "path": "docs/netflix-dashboard/08_quality_sunburst.html",
+      "type": "html",
+      "size_bytes": 8804,
+      "size": "8.6 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (8.6 KB)"
+    },
+    {
+      "path": "logo.png",
+      "type": "png",
+      "size_bytes": 9379,
+      "size": "9.2 KB",
+      "desc": "image"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/.gitignore",
+      "type": "file",
+      "size_bytes": 236,
+      "size": "236 B",
+      "desc": "FILE file"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/DATA_SOURCES.md",
+      "type": "md",
+      "size_bytes": 972,
+      "size": "972 B",
+      "desc": "Data Sources"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/README.md",
+      "type": "md",
+      "size_bytes": 7974,
+      "size": "7.8 KB",
+      "desc": "Amazon Product Review Intelligence"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/dashboard.py",
+      "type": "py",
+      "size_bytes": 12707,
+      "size": "12.4 KB",
+      "desc": "Amazon Review Intelligence \u2014 Streamlit Dashboard"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/data/amazon_reviews_electronics_5core.csv",
+      "type": "csv",
+      "size_bytes": 50047198,
+      "size": "47.7 MB",
+      "rows": 67325,
+      "cols": 10,
+      "columns": [
+        "reviewerID",
+        "asin",
+        "reviewerName",
+        "helpful_upvotes",
+        "helpful_total",
+        "reviewText",
+        "overall",
+        "summary",
+        "unixReviewTime",
+        "reviewTime"
+      ],
+      "desc": "67,325 rows \u00d7 10 cols \u2014 reviewerID, asin, reviewerName, helpful_upvotes, helpful_total, reviewText\u2026"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/data/data_dictionary.md",
+      "type": "md",
+      "size_bytes": 2054,
+      "size": "2.0 KB",
+      "desc": "Amazon Electronics Reviews \u2014 Data Dictionary"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/fetch_amazon_data.py",
+      "type": "py",
+      "size_bytes": 3073,
+      "size": "3.0 KB",
+      "desc": "Python module"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/fetch_amazon_data_streaming.py",
+      "type": "py",
+      "size_bytes": 3256,
+      "size": "3.2 KB",
+      "desc": "Python module"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/01_exploratory_analysis_img_0_9bda8a6c.png",
+      "type": "png",
+      "size_bytes": 35805,
+      "size": "35.0 KB",
+      "desc": "image 1189\u00d7590px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/01_exploratory_analysis_img_1_43ac2fbe.png",
+      "type": "png",
+      "size_bytes": 33880,
+      "size": "33.1 KB",
+      "desc": "image 1189\u00d7590px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/01_exploratory_analysis_img_2_2f8663eb.png",
+      "type": "png",
+      "size_bytes": 48922,
+      "size": "47.8 KB",
+      "desc": "image 1390\u00d7490px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/01_exploratory_analysis_img_3_aea50704.png",
+      "type": "png",
+      "size_bytes": 110788,
+      "size": "108.2 KB",
+      "desc": "image 1389\u00d7989px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/01_exploratory_analysis_img_4_01808855.png",
+      "type": "png",
+      "size_bytes": 42324,
+      "size": "41.3 KB",
+      "desc": "image 1389\u00d7474px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/03_executive_dashboard_img_0_526be47f.png",
+      "type": "png",
+      "size_bytes": 90751,
+      "size": "88.6 KB",
+      "desc": "image 1189\u00d7790px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/03_executive_dashboard_img_1_7b07d708.png",
+      "type": "png",
+      "size_bytes": 29788,
+      "size": "29.1 KB",
+      "desc": "image 1189\u00d7590px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/03_executive_dashboard_img_2_fc7d1824.png",
+      "type": "png",
+      "size_bytes": 142941,
+      "size": "139.6 KB",
+      "desc": "image 1389\u00d7989px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/03_executive_dashboard_img_3_e41aaa6a.png",
+      "type": "png",
+      "size_bytes": 110335,
+      "size": "107.7 KB",
+      "desc": "image 1120\u00d7790px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_001_rating_distribution.png",
+      "type": "png",
+      "size_bytes": 63206,
+      "size": "61.7 KB",
+      "desc": "image 1482\u00d7880px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_002_monthly_volume.png",
+      "type": "png",
+      "size_bytes": 86569,
+      "size": "84.5 KB",
+      "desc": "image 2082\u00d7880px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_003.png",
+      "type": "png",
+      "size_bytes": 145452,
+      "size": "142.0 KB",
+      "desc": "image 1389\u00d7989px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_003_yearly_rating.png",
+      "type": "png",
+      "size_bytes": 100703,
+      "size": "98.3 KB",
+      "desc": "image 1779\u00d7880px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_004.png",
+      "type": "png",
+      "size_bytes": 118584,
+      "size": "115.8 KB",
+      "desc": "image 1120\u00d7790px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_004_length_by_rating.png",
+      "type": "png",
+      "size_bytes": 85179,
+      "size": "83.2 KB",
+      "desc": "image 1782\u00d71008px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_005.png",
+      "type": "png",
+      "size_bytes": 42195,
+      "size": "41.2 KB",
+      "desc": "image 1389\u00d7474px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_005_helpfulness_by_length.png",
+      "type": "png",
+      "size_bytes": 67455,
+      "size": "65.9 KB",
+      "desc": "image 1482\u00d7880px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_005_historical_reviews_by_year.png",
+      "type": "png",
+      "size_bytes": 76376,
+      "size": "74.6 KB",
+      "desc": "image 1784\u00d7881px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_006_rating_comparison.png",
+      "type": "png",
+      "size_bytes": 48095,
+      "size": "47.0 KB",
+      "desc": "image 1784\u00d7882px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_006_seasonal_heatmap.png",
+      "type": "png",
+      "size_bytes": 192418,
+      "size": "187.9 KB",
+      "desc": "image 1676\u00d71180px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_007_q1_brand_performance.png",
+      "type": "png",
+      "size_bytes": 73991,
+      "size": "72.3 KB",
+      "desc": "image 1784\u00d7883px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_007_top_products.png",
+      "type": "png",
+      "size_bytes": 129616,
+      "size": "126.6 KB",
+      "desc": "image 1781\u00d71180px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_008_q1_top_volume.png",
+      "type": "png",
+      "size_bytes": 74338,
+      "size": "72.6 KB",
+      "desc": "image 1785\u00d7880px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_009_q2_rating_by_year.png",
+      "type": "png",
+      "size_bytes": 57520,
+      "size": "56.2 KB",
+      "desc": "image 1784\u00d71031px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_010_q3_helpful_reviewers.png",
+      "type": "png",
+      "size_bytes": 73838,
+      "size": "72.1 KB",
+      "desc": "image 1785\u00d7880px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_011_q4_length_rating.png",
+      "type": "png",
+      "size_bytes": 65077,
+      "size": "63.6 KB",
+      "desc": "image 1482\u00d7880px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_011_q5_volatility.png",
+      "type": "png",
+      "size_bytes": 76346,
+      "size": "74.6 KB",
+      "desc": "image 1785\u00d7882px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_012_q5_monthly_aggregate.png",
+      "type": "png",
+      "size_bytes": 67405,
+      "size": "65.8 KB",
+      "desc": "image 1782\u00d7880px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_013_q6_reviewer_loyalty.png",
+      "type": "png",
+      "size_bytes": 48465,
+      "size": "47.3 KB",
+      "desc": "image 1480\u00d7880px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_014_q7_summary_usage.png",
+      "type": "png",
+      "size_bytes": 40082,
+      "size": "39.1 KB",
+      "desc": "image 1482\u00d7880px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_015_q8_helpfulness_length.png",
+      "type": "png",
+      "size_bytes": 57469,
+      "size": "56.1 KB",
+      "desc": "image 1482\u00d7880px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_015_q9_high_low.png",
+      "type": "png",
+      "size_bytes": 111604,
+      "size": "109.0 KB",
+      "desc": "image 1784\u00d7883px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_016_q10_market_concentration.png",
+      "type": "png",
+      "size_bytes": 126471,
+      "size": "123.5 KB",
+      "desc": "image 1978\u00d7882px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_016_q9_yoy_growth.png",
+      "type": "png",
+      "size_bytes": 43037,
+      "size": "42.0 KB",
+      "desc": "image 1782\u00d7880px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_017_q10_lifecycle.png",
+      "type": "png",
+      "size_bytes": 54495,
+      "size": "53.2 KB",
+      "desc": "image 1782\u00d7880px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_018_kpi_summary.png",
+      "type": "png",
+      "size_bytes": 61359,
+      "size": "59.9 KB",
+      "desc": "image 1400\u00d7500px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_019_rating_evolution.png",
+      "type": "png",
+      "size_bytes": 105633,
+      "size": "103.2 KB",
+      "desc": "image 1400\u00d7900px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_020_length_distribution.png",
+      "type": "png",
+      "size_bytes": 74495,
+      "size": "72.7 KB",
+      "desc": "image 1400\u00d7900px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_021_helpfulness_trend.png",
+      "type": "png",
+      "size_bytes": 89305,
+      "size": "87.2 KB",
+      "desc": "image 1400\u00d7900px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_022_reviewer_loyalty.png",
+      "type": "png",
+      "size_bytes": 80630,
+      "size": "78.7 KB",
+      "desc": "image 1400\u00d7900px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/figures/figure_023_rating_vs_length.png",
+      "type": "png",
+      "size_bytes": 85712,
+      "size": "83.7 KB",
+      "desc": "image 1400\u00d7900px"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/notebooks/01_exploratory_analysis.ipynb",
+      "type": "ipynb",
+      "size_bytes": 14650,
+      "size": "14.3 KB",
+      "cells": 13,
+      "cells_with_output": 0,
+      "desc": "notebook \u2014 13 cells, 0 with output"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/notebooks/01_exploratory_analysis_FINAL.ipynb",
+      "type": "ipynb",
+      "size_bytes": 14650,
+      "size": "14.3 KB",
+      "cells": 13,
+      "cells_with_output": 0,
+      "desc": "notebook \u2014 13 cells, 0 with output"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/notebooks/02_review_analytics_sql.ipynb",
+      "type": "ipynb",
+      "size_bytes": 16393,
+      "size": "16.0 KB",
+      "cells": 23,
+      "cells_with_output": 0,
+      "desc": "notebook \u2014 23 cells, 0 with output"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/notebooks/02_review_analytics_sql_FINAL.ipynb",
+      "type": "ipynb",
+      "size_bytes": 16393,
+      "size": "16.0 KB",
+      "cells": 23,
+      "cells_with_output": 0,
+      "desc": "notebook \u2014 23 cells, 0 with output"
+    },
+    {
+      "path": "projects/amazon-product-customer-intelligence/requirements.txt",
+      "type": "txt",
+      "size_bytes": 162,
+      "size": "162 B",
+      "desc": "TXT file"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/DATA_SOURCES.md",
+      "type": "md",
+      "size_bytes": 816,
+      "size": "816 B",
+      "desc": "Data Sources"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/README.md",
+      "type": "md",
+      "size_bytes": 8809,
+      "size": "8.6 KB",
+      "desc": "Google Search Trends \u2014 Market Intelligence"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/build_notebooks.py",
+      "type": "py",
+      "size_bytes": 19542,
+      "size": "19.1 KB",
+      "desc": "Build and execute all three notebooks with real data outputs."
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/clean_data.py",
+      "type": "py",
+      "size_bytes": 2440,
+      "size": "2.4 KB",
+      "desc": "Python module"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/dashboard.py",
+      "type": "py",
+      "size_bytes": 5251,
+      "size": "5.1 KB",
+      "desc": "Python module"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/data/data_dictionary.md",
+      "type": "md",
+      "size_bytes": 2222,
+      "size": "2.2 KB",
+      "desc": "Data Dictionary \u2014 Google Search Trends Market Intelligence"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/data/interest_by_region_us.csv",
+      "type": "csv",
+      "size_bytes": 41441,
+      "size": "40.5 KB",
+      "rows": 714,
+      "cols": 6,
+      "columns": [
+        "geoName",
+        "geoCode",
+        "keyword",
+        "interest",
+        "geo_scope",
+        "fetched_at"
+      ],
+      "desc": "714 rows \u00d7 6 cols \u2014 geoName, geoCode, keyword, interest, geo_scope, fetched_at"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/data/interest_over_time_us.csv",
+      "type": "csv",
+      "size_bytes": 12140,
+      "size": "11.9 KB",
+      "rows": 262,
+      "cols": 15,
+      "columns": [
+        "date",
+        "AI",
+        "machine learning",
+        "ChatGPT",
+        "Bitcoin",
+        "Tesla",
+        "Netflix",
+        "Amazon",
+        "telehealth",
+        "mental health",
+        "fitness",
+        "inflation",
+        "recession",
+        "stock market"
+      ],
+      "desc": "262 rows \u00d7 15 cols \u2014 date, AI, machine learning, ChatGPT, Bitcoin, Tesla\u2026"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/data/interest_over_time_worldwide.csv",
+      "type": "csv",
+      "size_bytes": 12065,
+      "size": "11.8 KB",
+      "rows": 262,
+      "cols": 15,
+      "columns": [
+        "date",
+        "AI",
+        "machine learning",
+        "ChatGPT",
+        "Bitcoin",
+        "Tesla",
+        "Netflix",
+        "Amazon",
+        "telehealth",
+        "mental health",
+        "fitness",
+        "inflation",
+        "recession",
+        "stock market"
+      ],
+      "desc": "262 rows \u00d7 15 cols \u2014 date, AI, machine learning, ChatGPT, Bitcoin, Tesla\u2026"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/data/related_queries_rising.csv",
+      "type": "csv",
+      "size_bytes": 17552,
+      "size": "17.1 KB",
+      "rows": 263,
+      "cols": 5,
+      "columns": [
+        "query",
+        "value",
+        "keyword",
+        "type",
+        "fetched_at"
+      ],
+      "desc": "263 rows \u00d7 5 cols \u2014 query, value, keyword, type, fetched_at"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/data/related_queries_top.csv",
+      "type": "csv",
+      "size_bytes": 15863,
+      "size": "15.5 KB",
+      "rows": 270,
+      "cols": 5,
+      "columns": [
+        "query",
+        "value",
+        "keyword",
+        "type",
+        "fetched_at"
+      ],
+      "desc": "270 rows \u00d7 5 cols \u2014 query, value, keyword, type, fetched_at"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/fetch_trends_data.py",
+      "type": "py",
+      "size_bytes": 6552,
+      "size": "6.4 KB",
+      "desc": "Google Trends Data Fetcher"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_fig_0.png",
+      "type": "png",
+      "size_bytes": 415033,
+      "size": "405.3 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_fig_1.png",
+      "type": "png",
+      "size_bytes": 481613,
+      "size": "470.3 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_fig_2.png",
+      "type": "png",
+      "size_bytes": 195492,
+      "size": "190.9 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_fig_3.png",
+      "type": "png",
+      "size_bytes": 218943,
+      "size": "213.8 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_figure_001.png",
+      "type": "png",
+      "size_bytes": 405896,
+      "size": "396.4 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_figure_002.png",
+      "type": "png",
+      "size_bytes": 480846,
+      "size": "469.6 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_figure_003.png",
+      "type": "png",
+      "size_bytes": 196590,
+      "size": "192.0 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/figures/01_exploratory_analysis_figure_004.png",
+      "type": "png",
+      "size_bytes": 218960,
+      "size": "213.8 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/figures/03_executive_dashboard_fig_0.png",
+      "type": "png",
+      "size_bytes": 397210,
+      "size": "387.9 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/figures/03_executive_dashboard_fig_1.png",
+      "type": "png",
+      "size_bytes": 214576,
+      "size": "209.5 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/figures/03_executive_dashboard_fig_2.png",
+      "type": "png",
+      "size_bytes": 148171,
+      "size": "144.7 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/figures/03_executive_dashboard_figure_001.png",
+      "type": "png",
+      "size_bytes": 390178,
+      "size": "381.0 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/figures/03_executive_dashboard_figure_002.png",
+      "type": "png",
+      "size_bytes": 214657,
+      "size": "209.6 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/figures/03_executive_dashboard_figure_003.png",
+      "type": "png",
+      "size_bytes": 147805,
+      "size": "144.3 KB",
+      "desc": "image 2400\u00d71400px"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/notebooks/01_exploratory_analysis.ipynb",
+      "type": "ipynb",
+      "size_bytes": 8508,
+      "size": "8.3 KB",
+      "cells": 14,
+      "cells_with_output": 0,
+      "desc": "notebook \u2014 14 cells, 0 with output"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/notebooks/01_exploratory_analysis_FINAL.ipynb",
+      "type": "ipynb",
+      "size_bytes": 6688,
+      "size": "6.5 KB",
+      "cells": 14,
+      "cells_with_output": 0,
+      "desc": "notebook \u2014 14 cells, 0 with output"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/notebooks/02_market_intelligence_sql.ipynb",
+      "type": "ipynb",
+      "size_bytes": 15055,
+      "size": "14.7 KB",
+      "cells": 22,
+      "cells_with_output": 0,
+      "desc": "notebook \u2014 22 cells, 0 with output"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/notebooks/02_market_intelligence_sql_FINAL.ipynb",
+      "type": "ipynb",
+      "size_bytes": 12195,
+      "size": "11.9 KB",
+      "cells": 22,
+      "cells_with_output": 0,
+      "desc": "notebook \u2014 22 cells, 0 with output"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/notebooks/03_executive_dashboard.ipynb",
+      "type": "ipynb",
+      "size_bytes": 7892,
+      "size": "7.7 KB",
+      "cells": 12,
+      "cells_with_output": 0,
+      "desc": "notebook \u2014 12 cells, 0 with output"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/notebooks/03_executive_dashboard_FINAL.ipynb",
+      "type": "ipynb",
+      "size_bytes": 6332,
+      "size": "6.2 KB",
+      "cells": 12,
+      "cells_with_output": 0,
+      "desc": "notebook \u2014 12 cells, 0 with output"
+    },
+    {
+      "path": "projects/google-search-trends-market-intelligence/requirements.txt",
+      "type": "txt",
+      "size_bytes": 194,
+      "size": "194 B",
+      "desc": "TXT file"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/.streamlit/README.md",
+      "type": "md",
+      "size_bytes": 551,
+      "size": "551 B",
+      "desc": "Netflix Content Intelligence"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/.streamlit/secrets.toml.example",
+      "type": "example",
+      "size_bytes": 0,
+      "size": "0 B",
+      "desc": "EXAMPLE file"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/DATA_SOURCES.md",
+      "type": "md",
+      "size_bytes": 2696,
+      "size": "2.6 KB",
+      "desc": "Data Sources \u2014 Netflix Content Strategy Intelligence"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/DEPLOY.md",
+      "type": "md",
+      "size_bytes": 3876,
+      "size": "3.8 KB",
+      "desc": "\ud83c\udfac Netflix Content Strategy Intelligence"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/README.md",
+      "type": "md",
+      "size_bytes": 12078,
+      "size": "11.8 KB",
+      "desc": "Netflix Content Strategy Intelligence"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/app.py",
+      "type": "py",
+      "size_bytes": 3199,
+      "size": "3.1 KB",
+      "desc": "<style>"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/build_netflix_analysis.py",
+      "type": "py",
+      "size_bytes": 18496,
+      "size": "18.1 KB",
+      "desc": "Build the interactive Netflix catalog analysis page (Plotly)."
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/catalog_analysis.py",
+      "type": "py",
+      "size_bytes": 9265,
+      "size": "9.0 KB",
+      "desc": "Netflix Catalog Analysis \u2014 figures from the self-extracted TMDB catalog."
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/dashboard.py",
+      "type": "py",
+      "size_bytes": 24366,
+      "size": "23.8 KB",
+      "desc": "Resolve TMDB API keys from multiple sources in priority order."
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260517_165735.csv",
+      "type": "csv",
+      "size_bytes": 1334,
+      "size": "1.3 KB",
+      "rows": 27,
+      "cols": 5,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "top_movie_popularity",
+        "total_movies_in_genre",
+        "fetched_at"
+      ],
+      "desc": "27 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260519_224840.csv",
+      "type": "csv",
+      "size_bytes": 1101,
+      "size": "1.1 KB",
+      "rows": 19,
+      "cols": 5,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "top_movie_popularity",
+        "total_movies_in_genre",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260521_192044.csv",
+      "type": "csv",
+      "size_bytes": 1101,
+      "size": "1.1 KB",
+      "rows": 19,
+      "cols": 5,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "top_movie_popularity",
+        "total_movies_in_genre",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260521_221740.csv",
+      "type": "csv",
+      "size_bytes": 1100,
+      "size": "1.1 KB",
+      "rows": 19,
+      "cols": 5,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "top_movie_popularity",
+        "total_movies_in_genre",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_latest.csv",
+      "type": "csv",
+      "size_bytes": 1100,
+      "size": "1.1 KB",
+      "rows": 19,
+      "cols": 5,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "top_movie_popularity",
+        "total_movies_in_genre",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260517_165735.json",
+      "type": "json",
+      "size_bytes": 818,
+      "size": "818 B",
+      "desc": "keys: fetched_at, timestamp_suffix, source, source_url, data_provenance, record_counts"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260519_224840.json",
+      "type": "json",
+      "size_bytes": 741,
+      "size": "741 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, files"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260521_192044.json",
+      "type": "json",
+      "size_bytes": 741,
+      "size": "741 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, files"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260521_221740.json",
+      "type": "json",
+      "size_bytes": 741,
+      "size": "741 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, files"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_latest.json",
+      "type": "json",
+      "size_bytes": 818,
+      "size": "818 B",
+      "desc": "keys: fetched_at, timestamp_suffix, source, source_url, data_provenance, record_counts"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260517_165735.csv",
+      "type": "csv",
+      "size_bytes": 1118,
+      "size": "1.1 KB",
+      "rows": 27,
+      "cols": 3,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "fetched_at"
+      ],
+      "desc": "27 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260519_224840.csv",
+      "type": "csv",
+      "size_bytes": 775,
+      "size": "775 B",
+      "rows": 19,
+      "cols": 3,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260521_192044.csv",
+      "type": "csv",
+      "size_bytes": 775,
+      "size": "775 B",
+      "rows": 19,
+      "cols": 3,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260521_221740.csv",
+      "type": "csv",
+      "size_bytes": 775,
+      "size": "775 B",
+      "rows": 19,
+      "cols": 3,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_latest.csv",
+      "type": "csv",
+      "size_bytes": 775,
+      "size": "775 B",
+      "rows": 19,
+      "cols": 3,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_20260617_142125.csv",
+      "type": "csv",
+      "size_bytes": 2651934,
+      "size": "2.5 MB",
+      "rows": 7498,
+      "cols": 15,
+      "columns": [
+        "tmdb_id",
+        "media_type",
+        "title",
+        "original_title",
+        "genres",
+        "genre_ids",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "release_year",
+        "original_language",
+        "origin_country",
+        "overview"
+      ],
+      "desc": "7,498 rows \u00d7 15 cols \u2014 tmdb_id, media_type, title, original_title, genres, genre_ids\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_latest.csv",
+      "type": "csv",
+      "size_bytes": 2651934,
+      "size": "2.5 MB",
+      "rows": 7498,
+      "cols": 15,
+      "columns": [
+        "tmdb_id",
+        "media_type",
+        "title",
+        "original_title",
+        "genres",
+        "genre_ids",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "release_year",
+        "original_language",
+        "origin_country",
+        "overview"
+      ],
+      "desc": "7,498 rows \u00d7 15 cols \u2014 tmdb_id, media_type, title, original_title, genres, genre_ids\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_manifest.json",
+      "type": "json",
+      "size_bytes": 512,
+      "size": "512 B",
+      "desc": "keys: source, region, extracted_at, total_titles, movies, tv, tmdb_reported_total_movies, tmdb_reported_total_tv"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260517_165735.csv",
+      "type": "csv",
+      "size_bytes": 712453,
+      "size": "695.8 KB",
+      "rows": 2676,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "name",
+        "original_name",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "release_date",
+        "origin_country",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "fetched_at"
+      ],
+      "desc": "2,676 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260519_224840.csv",
+      "type": "csv",
+      "size_bytes": 41789,
+      "size": "40.8 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "name",
+        "original_name",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "first_air_date",
+        "origin_country",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260521_192044.csv",
+      "type": "csv",
+      "size_bytes": 44026,
+      "size": "43.0 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "name",
+        "original_name",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "first_air_date",
+        "origin_country",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260521_221740.csv",
+      "type": "csv",
+      "size_bytes": 43777,
+      "size": "42.8 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "name",
+        "original_name",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "first_air_date",
+        "origin_country",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_latest.csv",
+      "type": "csv",
+      "size_bytes": 43777,
+      "size": "42.8 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "name",
+        "original_name",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "first_air_date",
+        "origin_country",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260517_165735.csv",
+      "type": "csv",
+      "size_bytes": 1444848,
+      "size": "1.4 MB",
+      "rows": 6131,
+      "cols": 9,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "fetched_at"
+      ],
+      "desc": "6,131 rows \u00d7 9 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260519_224840.csv",
+      "type": "csv",
+      "size_bytes": 36779,
+      "size": "35.9 KB",
+      "rows": 100,
+      "cols": 9,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 9 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260521_192044.csv",
+      "type": "csv",
+      "size_bytes": 36723,
+      "size": "35.9 KB",
+      "rows": 100,
+      "cols": 9,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 9 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260521_221740.csv",
+      "type": "csv",
+      "size_bytes": 36769,
+      "size": "35.9 KB",
+      "rows": 100,
+      "cols": 9,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 9 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_latest.csv",
+      "type": "csv",
+      "size_bytes": 36769,
+      "size": "35.9 KB",
+      "rows": 100,
+      "cols": 9,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 9 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260517_165735.csv",
+      "type": "csv",
+      "size_bytes": 1576895,
+      "size": "1.5 MB",
+      "rows": 6131,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "original_title",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "media_type",
+        "fetched_at"
+      ],
+      "desc": "6,131 rows \u00d7 12 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260519_224840.csv",
+      "type": "csv",
+      "size_bytes": 39745,
+      "size": "38.8 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "original_title",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "media_type",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260521_192044.csv",
+      "type": "csv",
+      "size_bytes": 38760,
+      "size": "37.9 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "original_title",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "media_type",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260521_221740.csv",
+      "type": "csv",
+      "size_bytes": 39896,
+      "size": "39.0 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "original_title",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "media_type",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_latest.csv",
+      "type": "csv",
+      "size_bytes": 39896,
+      "size": "39.0 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "original_title",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "media_type",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260519_224840.csv",
+      "type": "csv",
+      "size_bytes": 34895,
+      "size": "34.1 KB",
+      "rows": 100,
+      "cols": 9,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "release_date",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "genre_ids",
+        "overview",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 9 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260521_192044.csv",
+      "type": "csv",
+      "size_bytes": 34945,
+      "size": "34.1 KB",
+      "rows": 100,
+      "cols": 9,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "release_date",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "genre_ids",
+        "overview",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 9 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260521_221740.csv",
+      "type": "csv",
+      "size_bytes": 34485,
+      "size": "33.7 KB",
+      "rows": 100,
+      "cols": 9,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "release_date",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "genre_ids",
+        "overview",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 9 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_latest.csv",
+      "type": "csv",
+      "size_bytes": 34485,
+      "size": "33.7 KB",
+      "rows": 100,
+      "cols": 9,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "release_date",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "genre_ids",
+        "overview",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 9 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/enrich_catalog.py",
+      "type": "py",
+      "size_bytes": 6347,
+      "size": "6.2 KB",
+      "desc": "Enrich the Netflix catalog with TMDB business-intelligence fields."
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/extract_figures.py",
+      "type": "py",
+      "size_bytes": 2748,
+      "size": "2.7 KB",
+      "desc": "Extract all matplotlib/plotly outputs from notebooks to figures/ as PNGs."
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/fetch_netflix_catalog.py",
+      "type": "py",
+      "size_bytes": 8941,
+      "size": "8.7 KB",
+      "desc": "Netflix Catalog Extractor \u2014 self-sourced from TMDB."
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/fetch_tmdb_data.py",
+      "type": "py",
+      "size_bytes": 14291,
+      "size": "14.0 KB",
+      "desc": "TMDB Live Data Fetcher"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/01_content_mix.png",
+      "type": "png",
+      "size_bytes": 35675,
+      "size": "34.8 KB",
+      "desc": "image 1500\u00d7900px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/01_genre_distribution.png",
+      "type": "png",
+      "size_bytes": 28646,
+      "size": "28.0 KB",
+      "desc": "image 1500\u00d7900px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/01_genre_popularity.png",
+      "type": "png",
+      "size_bytes": 55649,
+      "size": "54.3 KB",
+      "desc": "image 1500\u00d7900px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/01_popularity_vs_rating.png",
+      "type": "png",
+      "size_bytes": 321552,
+      "size": "314.0 KB",
+      "desc": "image 1500\u00d7900px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/01_rating_distribution.png",
+      "type": "png",
+      "size_bytes": 36001,
+      "size": "35.2 KB",
+      "desc": "image 1500\u00d7900px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/01_release_year_trend.png",
+      "type": "png",
+      "size_bytes": 59681,
+      "size": "58.3 KB",
+      "desc": "image 1500\u00d7900px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/02_q10_quality_tiers.png",
+      "type": "png",
+      "size_bytes": 52165,
+      "size": "50.9 KB",
+      "desc": "image 960\u00d7720px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/02_q2_top_genres.png",
+      "type": "png",
+      "size_bytes": 24862,
+      "size": "24.3 KB",
+      "desc": "image 960\u00d7720px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/02_q3_avg_rating_by_genre.png",
+      "type": "png",
+      "size_bytes": 26947,
+      "size": "26.3 KB",
+      "desc": "image 960\u00d7720px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/02_q5_release_trend.png",
+      "type": "png",
+      "size_bytes": 45775,
+      "size": "44.7 KB",
+      "desc": "image 960\u00d7720px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/02_q6_vote_bucket_rating.png",
+      "type": "png",
+      "size_bytes": 26586,
+      "size": "26.0 KB",
+      "desc": "image 960\u00d7720px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/03_content_mix.png",
+      "type": "png",
+      "size_bytes": 64435,
+      "size": "62.9 KB",
+      "desc": "image 1400\u00d71000px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/03_executive_dashboard.png",
+      "type": "png",
+      "size_bytes": 218683,
+      "size": "213.6 KB",
+      "desc": "image 2339\u00d71545px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/03_genre_bar.png",
+      "type": "png",
+      "size_bytes": 91457,
+      "size": "89.3 KB",
+      "desc": "image 1800\u00d71000px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/03_genre_treemap.png",
+      "type": "png",
+      "size_bytes": 96288,
+      "size": "94.0 KB",
+      "desc": "image 1800\u00d71200px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/03_pop_rating_scatter.png",
+      "type": "png",
+      "size_bytes": 419097,
+      "size": "409.3 KB",
+      "desc": "image 1800\u00d71000px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/03_quality_sunburst.png",
+      "type": "png",
+      "size_bytes": 116787,
+      "size": "114.0 KB",
+      "desc": "image 1400\u00d71200px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/03_rating_hist.png",
+      "type": "png",
+      "size_bytes": 74955,
+      "size": "73.2 KB",
+      "desc": "image 1800\u00d71000px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/03_release_trend.png",
+      "type": "png",
+      "size_bytes": 116510,
+      "size": "113.8 KB",
+      "desc": "image 1800\u00d71000px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/figures/03_upcoming_month.png",
+      "type": "png",
+      "size_bytes": 77612,
+      "size": "75.8 KB",
+      "desc": "image 1800\u00d71000px"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/html/01_top_genres.html",
+      "type": "html",
+      "size_bytes": 8909,
+      "size": "8.7 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (8.7 KB)"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/html/02_rating_distribution.html",
+      "type": "html",
+      "size_bytes": 74246,
+      "size": "72.5 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (72.5 KB)"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/html/03_popularity_vs_rating.html",
+      "type": "html",
+      "size_bytes": 214431,
+      "size": "209.4 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (209.4 KB)"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/html/04_release_trend.html",
+      "type": "html",
+      "size_bytes": 8805,
+      "size": "8.6 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (8.6 KB)"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/html/05_content_mix.html",
+      "type": "html",
+      "size_bytes": 8357,
+      "size": "8.2 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (8.2 KB)"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/html/06_genre_treemap.html",
+      "type": "html",
+      "size_bytes": 8836,
+      "size": "8.6 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (8.6 KB)"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/html/07_upcoming_months.html",
+      "type": "html",
+      "size_bytes": 8574,
+      "size": "8.4 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (8.4 KB)"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/html/08_quality_sunburst.html",
+      "type": "html",
+      "size_bytes": 8804,
+      "size": "8.6 KB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (8.6 KB)"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/notebooks/01_exploratory_analysis.ipynb",
+      "type": "ipynb",
+      "size_bytes": 8741,
+      "size": "8.5 KB",
+      "cells": 15,
+      "cells_with_output": 0,
+      "desc": "notebook \u2014 15 cells, 0 with output"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/notebooks/01_exploratory_analysis_FINAL.ipynb",
+      "type": "ipynb",
+      "size_bytes": 6921,
+      "size": "6.8 KB",
+      "cells": 15,
+      "cells_with_output": 0,
+      "desc": "notebook \u2014 15 cells, 0 with output"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/notebooks/02_content_intelligence_sql.ipynb",
+      "type": "ipynb",
+      "size_bytes": 9510,
+      "size": "9.3 KB",
+      "cells": 28,
+      "cells_with_output": 0,
+      "desc": "notebook \u2014 28 cells, 0 with output"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/notebooks/02_content_intelligence_sql_FINAL.ipynb",
+      "type": "ipynb",
+      "size_bytes": 9510,
+      "size": "9.3 KB",
+      "cells": 28,
+      "cells_with_output": 0,
+      "desc": "notebook \u2014 28 cells, 0 with output"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/notebooks/03_executive_dashboard.ipynb",
+      "type": "ipynb",
+      "size_bytes": 20130,
+      "size": "19.7 KB",
+      "cells": 23,
+      "cells_with_output": 0,
+      "desc": "notebook \u2014 23 cells, 0 with output"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/notebooks/03_executive_dashboard_FINAL.ipynb",
+      "type": "ipynb",
+      "size_bytes": 15569,
+      "size": "15.2 KB",
+      "cells": 21,
+      "cells_with_output": 0,
+      "desc": "notebook \u2014 21 cells, 0 with output"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/output/03_content_mix.html",
+      "type": "html",
+      "size_bytes": 4850320,
+      "size": "4.6 MB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (4.6 MB)"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/output/03_genre_bar.html",
+      "type": "html",
+      "size_bytes": 4850905,
+      "size": "4.6 MB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (4.6 MB)"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/output/03_genre_treemap.html",
+      "type": "html",
+      "size_bytes": 4852559,
+      "size": "4.6 MB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (4.6 MB)"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/output/03_pop_rating_scatter.html",
+      "type": "html",
+      "size_bytes": 4948309,
+      "size": "4.7 MB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (4.7 MB)"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/output/03_quality_sunburst.html",
+      "type": "html",
+      "size_bytes": 4850786,
+      "size": "4.6 MB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (4.6 MB)"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/output/03_rating_hist.html",
+      "type": "html",
+      "size_bytes": 4915918,
+      "size": "4.7 MB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (4.7 MB)"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/output/03_release_trend.html",
+      "type": "html",
+      "size_bytes": 4850708,
+      "size": "4.6 MB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (4.6 MB)"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/output/03_upcoming_month.html",
+      "type": "html",
+      "size_bytes": 4850587,
+      "size": "4.6 MB",
+      "interactive": true,
+      "desc": "interactive Plotly dashboard (4.6 MB)"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/pages/01_Executive_Summary.py",
+      "type": "py",
+      "size_bytes": 7483,
+      "size": "7.3 KB",
+      "desc": "<style>"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/pages/02_Live_Explorer.py",
+      "type": "py",
+      "size_bytes": 7142,
+      "size": "7.0 KB",
+      "desc": "Python module"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/pages/03_Genre_Analysis.py",
+      "type": "py",
+      "size_bytes": 4449,
+      "size": "4.3 KB",
+      "desc": "Python module"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/pages/04_Geographic_Insights.py",
+      "type": "py",
+      "size_bytes": 6846,
+      "size": "6.7 KB",
+      "desc": "Python module"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/pages/05_Ratings_Quality.py",
+      "type": "py",
+      "size_bytes": 5271,
+      "size": "5.1 KB",
+      "desc": "Python module"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/pages/06_Release_Timeline.py",
+      "type": "py",
+      "size_bytes": 5187,
+      "size": "5.1 KB",
+      "desc": "Python module"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/pages/07_Content_Simulator.py",
+      "type": "py",
+      "size_bytes": 9138,
+      "size": "8.9 KB",
+      "desc": "**Simulate content launch outcomes based on 438 live TMDB records.**"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/requirements.txt",
+      "type": "txt",
+      "size_bytes": 112,
+      "size": "112 B",
+      "desc": "TXT file"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/utils.py",
+      "type": "py",
+      "size_bytes": 2529,
+      "size": "2.5 KB",
+      "desc": "Load all TMDB data with self-healing validation."
+    },
+    {
+      "path": "requirements.txt",
+      "type": "txt",
+      "size_bytes": 278,
+      "size": "278 B",
+      "desc": "TXT file"
+    },
+    {
+      "path": "scripts/fetch_tmdb_data.py",
+      "type": "py",
+      "size_bytes": 5224,
+      "size": "5.1 KB",
+      "desc": "Fetch live TMDB data for Netflix notebooks."
+    },
+    {
+      "path": "scripts/gen_netflix_dashboard.py",
+      "type": "py",
+      "size_bytes": 6232,
+      "size": "6.1 KB",
+      "desc": "Python module"
+    }
+  ]
+}
