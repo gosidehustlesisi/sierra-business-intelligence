@@ -16,6 +16,7 @@ import argparse
 import json
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -143,6 +144,72 @@ def build(df):
         f"<b>{nonen:.0f}% of the catalog is non-English</b> by original language — Netflix-US is a "
         f"genuinely international service, not a domestic one with subtitles bolted on."))
 
+    # ── BI ENRICHMENT charts (only render if enriched columns are present) ──
+    if "budget" in df.columns and df["budget"].fillna(0).gt(0).any():
+        funded = df[(df["budget"].fillna(0) > 0) & (df["revenue"].fillna(0) > 0)].copy()
+        funded["roi"] = funded["revenue"] / funded["budget"]
+        mx = float(max(funded["budget"].max(), funded["revenue"].max()))
+        fig = _style(go.Figure(go.Scattergl(
+            x=funded["budget"], y=funded["revenue"], mode="markers",
+            marker=dict(size=(funded["popularity"].clip(upper=300) / 18 + 4),
+                        color=funded["roi"].clip(upper=10), colorscale="Plasma",
+                        showscale=True, colorbar=dict(title="ROI×"), opacity=0.6),
+            text=funded["title"],
+            hovertemplate="%{text}<br>budget $%{x:,.0f}<br>revenue $%{y:,.0f}<extra></extra>")))
+        fig.add_trace(go.Scatter(x=[1, mx], y=[1, mx], mode="lines",
+                      line=dict(color=MUTED, dash="dash"), name="break-even", hoverinfo="skip"))
+        fig.update_layout(title="Revenue vs Budget — Return on Investment",
+                          xaxis_title="Budget ($)", yaxis_title="Revenue ($)",
+                          xaxis_type="log", yaxis_type="log", showlegend=False)
+        profit = (funded["roi"] > 1).mean() * 100
+        blocks.append((fig.to_html(**div), "Return on investment",
+            f"Across <b>{len(funded):,} funded films</b> with disclosed budget and revenue, "
+            f"<b>{profit:.0f}% cleared a gross profit</b> (above the break-even line); median return "
+            f"<b>{funded['roi'].median():.1f}×</b>. Budget/revenue are reported mainly for theatrical "
+            f"releases — this is the funded subset, not the full catalog."))
+
+        fr = funded[funded["vote_count"].fillna(0) >= 10]
+        fig = _style(go.Figure(go.Scattergl(x=fr["budget"], y=fr["vote_average"], mode="markers",
+            marker=dict(color=GOLD, size=6, opacity=0.4), text=fr["title"],
+            hovertemplate="%{text}<br>budget $%{x:,.0f}<br>rating %{y}<extra></extra>")))
+        fig.update_layout(title="Does Spend Buy Ratings?", xaxis_title="Budget ($)",
+                          yaxis_title="Vote average", xaxis_type="log")
+        c = np.log(fr["budget"]).corr(fr["vote_average"]) if len(fr) > 2 else 0
+        blocks.append((fig.to_html(**div), "Spend vs quality",
+            f"Budget and audience rating barely move together (r ≈ {c:.2f}) — bigger budgets buy "
+            f"spectacle, not scores. Well-rated mid-budget titles are the efficiency play."))
+
+    if "runtime" in df.columns and df["runtime"].notna().any():
+        rt = df[(df["runtime"].fillna(0) > 0) & (df["media_type"] == "movie")]
+        if len(rt):
+            fig = _style(go.Figure(go.Histogram(x=rt["runtime"], nbinsx=30, marker_color=CYAN,
+                hovertemplate="%{x} min: %{y} films<extra></extra>")))
+            fig.add_vline(x=rt["runtime"].median(), line=dict(color=GOLD, dash="dash"),
+                          annotation_text=f"median {rt['runtime'].median():.0f}m", annotation_font_color=GOLD)
+            fig.update_layout(title="Film Runtime Distribution", xaxis_title="Runtime (min)", yaxis_title="Films")
+            blocks.append((fig.to_html(**div), "Runtime intelligence",
+                f"Median film runs <b>{rt['runtime'].median():.0f} minutes</b> across {len(rt):,} titles."))
+
+    if "production_companies" in df.columns and (df["production_companies"].fillna("") != "").any():
+        comp = df["production_companies"].fillna("").str.split("|").explode().str.strip()
+        comp = comp[comp != ""].value_counts().head(15).sort_values()
+        fig = _style(go.Figure(go.Bar(x=comp.values, y=comp.index, orientation="h", marker_color=GREEN,
+            hovertemplate="%{y}: %{x} titles<extra></extra>")))
+        fig.update_layout(title="Top Production Companies", xaxis_title="Titles")
+        blocks.append((fig.to_html(**div), "Who supplies the catalog",
+            f"<b>{comp.index[-1]}</b> leads the supplier mix — the production houses behind Netflix-US "
+            f"content, a window into the licensing-vs-originals balance."))
+
+    if "keywords" in df.columns and (df["keywords"].fillna("") != "").any():
+        kw = df["keywords"].fillna("").str.split("|").explode().str.strip()
+        kw = kw[kw != ""].value_counts().head(20).sort_values()
+        fig = _style(go.Figure(go.Bar(x=kw.values, y=kw.index, orientation="h", marker_color=GOLD,
+            hovertemplate="%{y}: %{x} titles<extra></extra>")), height=560)
+        fig.update_layout(title="Top Themes (TMDB keywords)", xaxis_title="Titles")
+        blocks.append((fig.to_html(**div), "Theme mining",
+            f"Beyond genre, the recurring themes — <b>{kw.index[-1]}</b> tops the keyword index. "
+            f"Keywords surface positioning that genre labels miss."))
+
     return blocks
 
 
@@ -186,17 +253,23 @@ footer{{color:var(--muted);font-size:.85rem;text-align:center;margin-top:3rem;bo
 <li><b>Tools:</b> Python · pandas · Plotly. Zero synthetic records.</li>
 </ul></div>
 {charts}
-<footer>Built by Sierra Napier · data self-extracted from TMDB · <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence">source on GitHub</a></footer>
+<footer>Built by Sierra Napier · data self-extracted from TMDB · <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence">source on GitHub</a><br><span style="font-size:.8rem">This product uses the TMDB API but is not endorsed or certified by TMDB.</span></footer>
 </div></body></html>"""
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--catalog", default="data/netflix_catalog_latest.csv")
+    ap.add_argument("--catalog", default=None,
+                    help="defaults to enriched CSV if present, else the base catalog")
     ap.add_argument("--out", default="../../docs/netflix-analysis.html")
     args = ap.parse_args()
 
-    df = pd.read_csv(args.catalog)
+    catalog = args.catalog
+    if catalog is None:
+        enriched = "data/netflix_catalog_enriched.csv"
+        catalog = enriched if Path(enriched).exists() else "data/netflix_catalog_latest.csv"
+    print(f"  source: {catalog}")
+    df = pd.read_csv(catalog)
     date = str(df["extracted_at"].iloc[0])[:10] if "extracted_at" in df else "?"
     rated = df[df["vote_count"].fillna(0) >= 10]
     statdefs = [
