@@ -1,0 +1,16 @@
+{
+  "total_titles": 7498,
+  "movies": 4125,
+  "tv": 3373,
+  "pct_non_english": 51.0,
+  "mean_vote_average": 6.82,
+  "year_min": 1962,
+  "year_max": 2026,
+  "top_genres": {
+    "Drama": 3235,
+    "Comedy": 2484,
+    "Documentary": 1182,
+    "Crime": 1072,
+    "Animation": 833
+  }
+}

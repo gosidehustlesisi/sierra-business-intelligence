@@ -172,14 +172,15 @@ def main():
 
     movie_genres = genre_map("movie")
     tv_genres = genre_map("tv")
+    all_genres = {**movie_genres, **tv_genres}  # merge so any id resolves (e.g. 10749 on TV)
 
     print("[1/2] Discovering movies on Netflix...")
     movies, movie_total = discover("movie", args.region, args.max_pages)
     print("[2/2] Discovering TV on Netflix...")
     tv, tv_total = discover("tv", args.region, args.max_pages)
 
-    rows = ([normalize(m, "movie", movie_genres, extracted_at) for m in movies]
-            + [normalize(t, "tv", tv_genres, extracted_at) for t in tv])
+    rows = ([normalize(m, "movie", all_genres, extracted_at) for m in movies]
+            + [normalize(t, "tv", all_genres, extracted_at) for t in tv])
     df = (pd.DataFrame(rows)
             .drop_duplicates(subset=["media_type", "tmdb_id"])
             .reset_index(drop=True))
