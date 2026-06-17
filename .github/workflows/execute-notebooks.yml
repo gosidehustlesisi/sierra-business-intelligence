@@ -47,18 +47,13 @@ jobs:
           pip install -e . || pip install . || echo "pyproject.toml install failed, continuing"
         fi
 
-    - name: Run data fetcher scripts if present
-      env:
-        TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
-        CENSUS_API_KEY: ${{ secrets.CENSUS_API_KEY }}
+    - name: Data note
       run: |
-        for script in scripts/fetch_*.py; do
-          if [ -f "$script" ]; then
-            echo "Running $script..."
-            python3 "$script"
-          fi
-        done
-        echo "Data fetcher step complete."
+        echo "Notebooks execute against committed data in each project's data/ dir."
+        echo "Live TMDB snapshot is refreshed daily by .github/workflows/tmdb-refresh.yml."
+        echo "The Netflix catalog is self-extracted with projects/netflix-content-strategy-intelligence/"
+        echo "fetch_netflix_catalog.py (run with a TMDB key). Fetchers are NOT run per-push"
+        echo "(avoids rate limits and fork-PR secret failures); CI only validates notebooks reproduce."
 
     - name: Execute all notebooks
       id: execute

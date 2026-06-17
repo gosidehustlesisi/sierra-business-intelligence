@@ -268,6 +268,9 @@ def enrich_with_trailers(df, trailers_dict):
     df["trailer_url"] = df["youtube_key"].apply(lambda k: f"https://www.youtube.com/watch?v={k}" if k else "")
     return df
 
+
+def fetch_all(data_dir="data"):
+    """Fetch all live TMDB datasets, save CSVs + manifest, return (datasets, manifest)."""
     Path(data_dir).mkdir(parents=True, exist_ok=True)
     ts = datetime.utcnow().strftime("%Y%m%d_%H%M%S")
     print(f"\n{'='*60}")

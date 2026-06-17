@@ -1,0 +1,33 @@
+name: Netflix Catalog Extract
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 7 * * 1'
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: pip install requests pandas
+      - name: Extract Netflix catalog from TMDB
+        env:
+          TMDB_API_KEY: ${{ secrets.TMDB_API_KEY }}
+          TMDB_READ_TOKEN: ${{ secrets.TMDB_READ_TOKEN }}
+        run: |
+          cd projects/netflix-content-strategy-intelligence
+          python fetch_netflix_catalog.py
+      - name: Commit catalog data
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add projects/netflix-content-strategy-intelligence/data/
+          git diff --staged --quiet || (git commit -m "data: self-extracted Netflix catalog $(date -u +%Y-%m-%d)" && git push)

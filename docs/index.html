@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Sierra Napier — Business Intelligence. 78,055+ real records from Netflix, Amazon, and Google. Media strategy, e-commerce analytics, and market intelligence.">
-    
+    <meta name="description" content="Sierra Napier — Business Intelligence. 78,493 real records from Netflix, Amazon, and Google. Media strategy, e-commerce analytics, and market intelligence.">
+
     <meta property="og:title" content="Sierra Napier — Business Intelligence">
-    <meta property="og:description" content="78,055+ real records · Netflix · Amazon · Google Trends. Zero synthetic data.">
+    <meta property="og:description" content="78,493 real records · Netflix · Amazon · Google Trends. Zero synthetic data.">
     <meta property="og:image" content="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/docs/figures/nflx_01_genre_distribution.png">
     <meta property="og:url" content="https://gosidehustlesisi.github.io/sierra-business-intelligence/">
     <meta property="og:type" content="website">
-    
+
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Sierra Napier — Business Intelligence">
-    <meta name="twitter:description" content="78,055+ real records from Netflix, Amazon, and Google Trends.">
+    <meta name="twitter:description" content="78,493 real records from Netflix, Amazon, and Google Trends.">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/docs/figures/nflx_01_genre_distribution.png">
 
     <title>Sierra Napier — Business Intelligence</title>
@@ -24,19 +24,20 @@
 
     <style>
         :root {
-            --charcoal: #0D0D0D;
-            --charcoal-light: #1A1A1A;
-            --charcoal-lighter: #262626;
-            --amber: #FFB800;
-            --amber-dark: #E6A600;
-            --teal: #00D4AA;
-            --teal-dark: #00B894;
-            --green: #22C55E;
-            --green-dark: #16A34A;
+            /* Aligned to the deployed portfolio house style (genai-engineering): navy + cyan, gold accent for BI */
+            --charcoal: #0f1115;        /* bg-deep */
+            --charcoal-light: #111827;  /* bg-surface */
+            --charcoal-lighter: #1a2234;/* bg-elevated */
+            --amber: #f59e0b;           /* accent-gold (BI primary) */
+            --amber-dark: #d97706;
+            --teal: #06b6d4;            /* accent-cyan */
+            --teal-dark: #0891b2;
+            --green: #22c55e;
+            --green-dark: #16a34a;
             --text-primary: #f0f0f0;
-            --text-secondary: #a0a8b8;
-            --text-muted: #6b7280;
-            --border: #2a2f3c;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #1f2d44;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -56,7 +57,7 @@
             transition: all 0.3s ease; padding: 1rem 0;
         }
         nav.scrolled {
-            background: rgba(13,13,13,0.9); backdrop-filter: blur(20px);
+            background: rgba(15,17,21,0.9); backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
         .nav-inner {
@@ -89,7 +90,7 @@
         .hero-avatar { position: relative; display: inline-block; margin-bottom: 2rem; }
         .hero-avatar::before {
             content: ''; position: absolute; inset: -10px;
-            background: radial-gradient(circle, rgba(255,184,0,0.3) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(245,158,11,0.3) 0%, transparent 70%);
             border-radius: 50%; animation: pulse-glow 3s ease-in-out infinite;
         }
         @keyframes pulse-glow {
@@ -105,7 +106,7 @@
         .hero-subtitle { font-size: clamp(1.1rem, 2.5vw, 1.4rem); color: var(--text-secondary); max-width: 600px; margin: 0 auto 2rem; font-weight: 400; }
         .hero-badge {
             display: inline-flex; align-items: center; gap: 0.5rem;
-            background: rgba(255,184,0,0.1); border: 1px solid rgba(255,184,0,0.3);
+            background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3);
             color: var(--amber); padding: 0.4rem 1rem; border-radius: 50px;
             font-size: 0.85rem; font-weight: 500; margin-bottom: 1.5rem; font-family: 'JetBrains Mono', monospace;
         }
@@ -118,7 +119,7 @@
             text-decoration: none; transition: all 0.2s; font-size: 1rem;
         }
         .btn-primary { background: linear-gradient(135deg, var(--amber), var(--amber-dark)); color: var(--charcoal); }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(255,184,0,0.3); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(245,158,11,0.3); }
         .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-primary); }
         .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
         .hero-stats { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 3rem; }
@@ -146,10 +147,10 @@
             content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
             background: linear-gradient(90deg, var(--amber), var(--teal)); opacity: 0; transition: opacity 0.3s;
         }
-        .project-card:hover { transform: translateY(-4px); border-color: rgba(255,184,0,0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .project-card:hover { transform: translateY(-4px); border-color: rgba(245,158,11,0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
         .project-card:hover::before { opacity: 1; }
-        .project-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem; background: rgba(255,184,0,0.1); border: 1px solid rgba(255,184,0,0.2); }
-        .project-card:nth-child(2) .project-icon { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); }
+        .project-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1rem; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2); }
+        .project-card:nth-child(2) .project-icon { background: rgba(6,182,212,0.1); border-color: rgba(6,182,212,0.2); }
         .project-card:nth-child(3) .project-icon { background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.2); }
         .project-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
         .project-card .subtitle { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--amber); margin-bottom: 1rem; }
@@ -157,10 +158,10 @@
         .project-card:nth-child(3) .subtitle { color: var(--green); }
         .project-card p { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem; line-height: 1.6; }
         .tldr-box {
-            background: rgba(255,184,0,0.05); border-left: 3px solid var(--amber);
+            background: rgba(245,158,11,0.05); border-left: 3px solid var(--amber);
             padding: 0.75rem 1rem; border-radius: 0 8px 8px 0; margin: 1rem 0;
         }
-        .project-card:nth-child(2) .tldr-box { background: rgba(0,212,170,0.05); border-left-color: var(--teal); }
+        .project-card:nth-child(2) .tldr-box { background: rgba(6,182,212,0.05); border-left-color: var(--teal); }
         .project-card:nth-child(3) .tldr-box { background: rgba(34,197,94,0.05); border-left-color: var(--green); }
         .tldr-box .tldr-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem; color: var(--amber); }
         .project-card:nth-child(2) .tldr-box .tldr-label { color: var(--teal); }
@@ -170,17 +171,17 @@
         .project-stat { display: flex; flex-direction: column; }
         .project-stat-value { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 1.1rem; color: var(--text-primary); }
         .project-stat-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.03em; }
-        .project-tag { display: inline-block; background: rgba(255,184,0,0.1); border: 1px solid rgba(255,184,0,0.2); color: var(--amber); padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; margin-top: 1rem; }
-        .project-card:nth-child(2) .project-tag { background: rgba(0,212,170,0.1); border-color: rgba(0,212,170,0.2); color: var(--teal); }
+        .project-tag { display: inline-block; background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.2); color: var(--amber); padding: 0.25rem 0.6rem; border-radius: 4px; font-size: 0.75rem; font-family: 'JetBrains Mono', monospace; margin-top: 1rem; }
+        .project-card:nth-child(2) .project-tag { background: rgba(6,182,212,0.1); border-color: rgba(6,182,212,0.2); color: var(--teal); }
         .project-card:nth-child(3) .project-tag { background: rgba(34,197,94,0.1); border-color: rgba(34,197,94,0.2); color: var(--green); }
 
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
         .gallery-item { background: var(--charcoal-light); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; cursor: pointer; transition: all 0.3s ease; }
-        .gallery-item:hover { transform: scale(1.02); border-color: rgba(0,212,170,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .gallery-item:hover { transform: scale(1.02); border-color: rgba(6,182,212,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
         .gallery-item.netflix { border-left: 3px solid var(--amber); }
         .gallery-item.amazon { border-left: 3px solid var(--teal); }
         .gallery-item.google { border-left: 3px solid var(--green); }
-        .gallery-item img { width: 100%; height: 220px; object-fit: cover; display: block; background: var(--charcoal); }
+        .gallery-item img { width: 100%; height: 220px; object-fit: contain; display: block; background: #ffffff; padding: 0.5rem; }
         .gallery-caption { padding: 1rem; font-size: 0.85rem; color: var(--text-secondary); }
         .gallery-caption strong { color: var(--text-primary); display: block; margin-bottom: 0.25rem; }
         .gallery-domain { font-size: 0.7rem; font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; }
@@ -199,7 +200,7 @@
             background: var(--charcoal-light); border: 1px solid var(--border); border-radius: 12px;
             padding: 1.5rem; transition: all 0.3s ease; text-decoration: none; color: inherit; display: block;
         }
-        .notebook-card:hover { transform: translateY(-4px); border-color: rgba(255,184,0,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .notebook-card:hover { transform: translateY(-4px); border-color: rgba(245,158,11,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
         .notebook-card .nb-icon { font-size: 2rem; margin-bottom: 0.75rem; }
         .notebook-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; }
         .notebook-card p { font-size: 0.85rem; color: var(--text-secondary); }
@@ -209,7 +210,7 @@
         .sources-table th, .sources-table td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--border); }
         .sources-table th { color: var(--amber); font-weight: 600; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'JetBrains Mono', monospace; }
         .sources-table td { color: var(--text-secondary); font-size: 0.95rem; }
-        .sources-table tr:hover td { color: var(--text-primary); background: rgba(255,184,0,0.03); }
+        .sources-table tr:hover td { color: var(--text-primary); background: rgba(245,158,11,0.03); }
         .sources-table a { color: var(--teal); text-decoration: none; }
         .sources-table a:hover { text-decoration: underline; }
         .source-badge { display: inline-block; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.75rem; font-weight: 600; font-family: 'JetBrains Mono', monospace; }
@@ -223,7 +224,7 @@
             background: var(--charcoal-light); border: 1px solid var(--border); border-radius: 12px;
             padding: 1.5rem 1rem; text-align: center; transition: all 0.3s ease;
         }
-        .tech-item:hover { transform: translateY(-4px); border-color: rgba(255,184,0,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        .tech-item:hover { transform: translateY(-4px); border-color: rgba(245,158,11,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
         .tech-item .tech-emoji { font-size: 2rem; margin-bottom: 0.5rem; }
         .tech-item .tech-name { font-size: 0.85rem; font-weight: 600; color: var(--text-primary); }
         .tech-item .tech-role { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.25rem; font-family: 'JetBrains Mono', monospace; }
@@ -245,10 +246,10 @@
             position: fixed; bottom: 2rem; right: 2rem; z-index: 100;
             background: linear-gradient(135deg, var(--amber), var(--amber-dark));
             color: var(--charcoal); padding: 1rem 1.5rem; border-radius: 50px;
-            font-weight: 700; text-decoration: none; box-shadow: 0 10px 30px rgba(255,184,0,0.3);
+            font-weight: 700; text-decoration: none; box-shadow: 0 10px 30px rgba(245,158,11,0.3);
             transition: all 0.3s; display: flex; align-items: center; gap: 0.5rem;
         }
-        .floating-cta:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(255,184,0,0.4); }
+        .floating-cta:hover { transform: translateY(-4px); box-shadow: 0 15px 40px rgba(245,158,11,0.4); }
 
         @media (max-width: 768px) {
             .nav-links { display: none; }
@@ -267,12 +268,13 @@
     <nav id="navbar">
         <div class="nav-inner">
             <a href="#" class="nav-brand">
-                <img src="https://avatars.githubusercontent.com/u/267403929?v=4" alt="Sierra Napier">
-                <span>Sierra.BI</span>
+                <img src="avatar-aia.png" alt="Sierra Napier">
+                <span>SnapAIArchitect.BI</span>
             </a>
             <ul class="nav-links">
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#interactive">Interactive</a></li>
                 <li><a href="#notebooks">Notebooks</a></li>
                 <li><a href="#sources">Sources</a></li>
                 <li><a href="#tech">Stack</a></li>
@@ -283,11 +285,11 @@
     <header>
         <div class="hero-content">
             <div class="hero-avatar">
-                <img src="https://avatars.githubusercontent.com/u/267403929?v=4" alt="Sierra Napier">
+                <img src="avatar-aia.png" alt="Sierra Napier">
             </div>
             <h1>SIERRA <span class="gradient-text">BUSINESS INTELLIGENCE</span></h1>
             <p class="hero-subtitle">Real Netflix catalog data. Real Amazon reviews. Real Google Trends. Zero synthetic records.</p>
-            <div class="hero-badge">LIVE INTELLIGENCE — REAL CORPORATE DATA</div>
+            <div class="hero-badge">REAL CORPORATE DATA — ZERO SYNTHETIC RECORDS</div>
             <div class="hero-cta">
                 <a href="#projects" class="btn btn-primary">Explore Projects</a>
                 <a href="https://github.com/gosidehustlesisi/sierra-business-intelligence" class="btn btn-outline" target="_blank">View on GitHub</a>
@@ -324,15 +326,15 @@
                     <div class="project-icon">🎬</div>
                     <h3>Netflix Content Strategy</h3>
                     <div class="subtitle">Media & Entertainment</div>
-                    <p>8,807-title catalog analysis + 438 live TMDB records. Genre distribution, content mix optimization, rating dynamics, and release trend forecasting for streaming strategy.</p>
+                    <p>A self-extracted Netflix catalog (TMDB Discover, provider 8) plus a live trending/top-rated snapshot — supply vs. demand. Genre structure, content mix, release-era trends, and real TMDB rating distributions, every figure source-stamped.</p>
                     <div class="tldr-box">
                         <div class="tldr-label">TL;DR</div>
-                        <p>International content (54% non-English) dominates catalog. TV shows are rated higher than movies. Dramas + Comedies = 40% of all titles.</p>
+                        <p>Two layers, kept separate: a self-extracted TMDB catalog (what Netflix carries) and a live snapshot (what's hot now). Real scores, reproducible pull, zero synthetic records.</p>
                     </div>
                     <div class="project-stats">
                         <div class="project-stat">
-                            <div class="project-stat-value">9,245</div>
-                            <div class="project-stat-label">Records</div>
+                            <div class="project-stat-value">Daily</div>
+                            <div class="project-stat-label">Live Refresh</div>
                         </div>
                         <div class="project-stat">
                             <div class="project-stat-value">10</div>
@@ -343,7 +345,7 @@
                             <div class="project-stat-label">Notebooks</div>
                         </div>
                     </div>
-                    <span class="project-tag">Kaggle + TMDB API</span>
+                    <span class="project-tag">TMDB self-extracted</span>
                 </div>
                 <div class="project-card">
                     <div class="project-icon">🛒</div>
@@ -381,7 +383,7 @@
                     </div>
                     <div class="project-stats">
                         <div class="project-stat">
-                            <div class="project-stat-value">1,923</div>
+                            <div class="project-stat-value">1,771</div>
                             <div class="project-stat-label">Records</div>
                         </div>
                         <div class="project-stat">
@@ -444,7 +446,7 @@
                     <div class="gallery-caption">
                         <div class="gallery-domain netflix">Netflix</div>
                         <strong>Top Genres by Volume</strong>
-                        International content exceeds 50% of catalog
+                        "International Movies/TV" genre exceeds 50% of catalog
                     </div>
                 </div>
                 <div class="gallery-item netflix" onclick="openLightbox('figures/nflx_06_content_growth.png', 'Content Growth')">
@@ -628,9 +630,69 @@
                     <div class="gallery-caption">
                         <div class="gallery-domain google">Google</div>
                         <strong>Dashboard Preview</strong>
-                        Interactive Streamlit executive dashboard
+                        Executive summary of key trend metrics
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interactive">
+        <div class="container">
+            <div class="section-header">
+                <h2>Interactive Dashboards</h2>
+                <p>8 live Plotly charts from the Netflix project — hover, zoom, and filter in your browser</p>
+                <div class="section-line"></div>
+            </div>
+            <div class="notebooks-grid">
+                <a href="netflix-dashboard/01_top_genres.html" class="notebook-card" target="_blank">
+                    <div class="nb-icon">🎬</div>
+                    <h4>Top Genres</h4>
+                    <p>Interactive ranking of catalog genres by volume</p>
+                    <div class="nb-meta">netflix / 01_top_genres.html</div>
+                </a>
+                <a href="netflix-dashboard/02_rating_distribution.html" class="notebook-card" target="_blank">
+                    <div class="nb-icon">⭐</div>
+                    <h4>Rating Distribution</h4>
+                    <p>Distribution of content ratings across the catalog</p>
+                    <div class="nb-meta">netflix / 02_rating_distribution.html</div>
+                </a>
+                <a href="netflix-dashboard/03_popularity_vs_rating.html" class="notebook-card" target="_blank">
+                    <div class="nb-icon">📈</div>
+                    <h4>Popularity vs Rating</h4>
+                    <p>Scatter of audience popularity against rating</p>
+                    <div class="nb-meta">netflix / 03_popularity_vs_rating.html</div>
+                </a>
+                <a href="netflix-dashboard/04_release_trend.html" class="notebook-card" target="_blank">
+                    <div class="nb-icon">📅</div>
+                    <h4>Release Trend</h4>
+                    <p>Title additions over time by content type</p>
+                    <div class="nb-meta">netflix / 04_release_trend.html</div>
+                </a>
+                <a href="netflix-dashboard/05_content_mix.html" class="notebook-card" target="_blank">
+                    <div class="nb-icon">🍿</div>
+                    <h4>Content Mix</h4>
+                    <p>Movies vs TV shows composition over time</p>
+                    <div class="nb-meta">netflix / 05_content_mix.html</div>
+                </a>
+                <a href="netflix-dashboard/06_genre_treemap.html" class="notebook-card" target="_blank">
+                    <div class="nb-icon">🗂️</div>
+                    <h4>Genre Treemap</h4>
+                    <p>Hierarchical view of content categories</p>
+                    <div class="nb-meta">netflix / 06_genre_treemap.html</div>
+                </a>
+                <a href="netflix-dashboard/07_upcoming_months.html" class="notebook-card" target="_blank">
+                    <div class="nb-icon">🔜</div>
+                    <h4>Upcoming Months</h4>
+                    <p>Live TMDB upcoming releases by month</p>
+                    <div class="nb-meta">netflix / 07_upcoming_months.html</div>
+                </a>
+                <a href="netflix-dashboard/08_quality_sunburst.html" class="notebook-card" target="_blank">
+                    <div class="nb-icon">☀️</div>
+                    <h4>Quality Sunburst</h4>
+                    <p>Content segmentation by rating and popularity</p>
+                    <div class="nb-meta">netflix / 08_quality_sunburst.html</div>
+                </a>
             </div>
         </div>
     </section>
@@ -718,16 +780,16 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><span class="source-badge badge-kaggle">KAGGLE</span> Netflix Movies & TV Shows</td>
-                        <td>CC0 Dataset</td>
-                        <td>8,807 titles</td>
-                        <td>Static, verified</td>
+                        <td><span class="source-badge badge-tmdb">TMDB</span> Netflix catalog (Discover, provider 8)</td>
+                        <td>Self-extracted</td>
+                        <td>reproducible pull</td>
+                        <td>Zero synthetic</td>
                     </tr>
                     <tr>
-                        <td><span class="source-badge badge-tmdb">TMDB</span> Trending, Top-Rated, Upcoming</td>
+                        <td><span class="source-badge badge-tmdb">TMDB</span> Trending · Top-Rated · Upcoming</td>
                         <td>Live API</td>
-                        <td>438 records</td>
-                        <td>Real-time</td>
+                        <td>live snapshot</td>
+                        <td>Daily refresh</td>
                     </tr>
                     <tr>
                         <td><span class="source-badge badge-ucsd">UCSD</span> Amazon Reviews (Electronics 5-core)</td>
@@ -738,7 +800,7 @@
                     <tr>
                         <td><span class="source-badge badge-google">GOOGLE</span> Trends API (pytrends)</td>
                         <td>Live API</td>
-                        <td>1,923 records</td>
+                        <td>1,771 records</td>
                         <td>Real-time</td>
                     </tr>
                 </tbody>
@@ -775,13 +837,13 @@
             <div class="footer-links">
                 <a href="https://github.com/gosidehustlesisi" target="_blank">GitHub</a>
                 <a href="https://www.linkedin.com/in/sierra-napier" target="_blank">LinkedIn</a>
-                <a href="mailto:sierra.napier@e3-ai.com">Email</a>
+                <a href="mailto:s.napier430@gmail.com">Email</a>
             </div>
             <p style="font-size: 0.85rem; color: var(--text-muted);">Built with real data. No synthetic records. No placeholders.</p>
         </div>
     </footer>
 
-    <a href="mailto:sierra.napier@e3-ai.com" class="floating-cta">📧 Get in Touch</a>
+    <a href="mailto:s.napier430@gmail.com" class="floating-cta">📧 Get in Touch</a>
 
     <script>
         // Particle Canvas
