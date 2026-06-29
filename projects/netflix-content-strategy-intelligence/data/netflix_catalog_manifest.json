@@ -1,15 +1,15 @@
 {
   "source": "TMDB /discover (with_watch_providers=8 Netflix, flatrate)",
   "region": "US",
-  "extracted_at": "2026-06-22T12:43:33.794445+00:00",
-  "total_titles": 7460,
-  "movies": 4631,
-  "tv": 2829,
-  "tmdb_reported_total_movies": 4638,
-  "tmdb_reported_total_tv": 3410,
+  "extracted_at": "2026-06-29T11:52:57.104021+00:00",
+  "total_titles": 8025,
+  "movies": 4618,
+  "tv": 3407,
+  "tmdb_reported_total_movies": 4618,
+  "tmdb_reported_total_tv": 3413,
   "files": [
     "netflix_catalog_latest.csv",
-    "netflix_catalog_20260622_124601.csv"
+    "netflix_catalog_20260629_115548.csv"
   ],
   "note": "First-party self-extraction from TMDB. Reproduce by re-running with a TMDB key. Zero synthetic records, zero third-party uploads."
 }
