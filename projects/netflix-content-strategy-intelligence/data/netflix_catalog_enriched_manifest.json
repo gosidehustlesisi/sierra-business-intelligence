@@ -1,9 +1,9 @@
 {
-  "enriched_at": "2026-06-17T18:54:30.162238+00:00",
-  "total_titles": 7498,
-  "with_runtime": 6085,
-  "with_budget_and_revenue": 584,
-  "with_keywords": 5694,
+  "enriched_at": "2026-07-01T11:21:00.197038+00:00",
+  "total_titles": 8025,
+  "with_runtime": 6628,
+  "with_budget_and_revenue": 655,
+  "with_keywords": 6094,
   "source": "TMDB /movie|tv/{id}?append_to_response=keywords,watch/providers",
   "note": "Budget/revenue populated mainly for theatrical films; ROI charts use the funded subset."
 }
