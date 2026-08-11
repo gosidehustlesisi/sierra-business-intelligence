@@ -18,6 +18,7 @@ Rate Limit: 40 requests per 10 seconds (respected via time.sleep).
 """
 
 import os
+import re
 import sys
 import time
 import json
@@ -227,6 +228,34 @@ def fetch_genre_popularity(genre_df):
     return pd.DataFrame(rows)
 
 
+# ── Snapshot retention ───────────────────────────────────────────────────────
+
+SNAPSHOT_RE = re.compile(r"^(?P<stem>.+)_(?P<ts>\d{8}_\d{6})\.(?P<ext>csv|json)$")
+
+
+def prune_old_snapshots(data_dir="data", keep=14):
+    """Delete timestamped dataset snapshots beyond the most recent `keep` per dataset.
+
+    Matches files like trending_movies_20260810_060012.csv and manifest_20260810_060012.json,
+    grouping by the stem before the timestamp. Never touches *_latest.csv files.
+    """
+    data_path = Path(data_dir)
+    groups = {}
+    for f in data_path.iterdir():
+        if not f.is_file():
+            continue
+        m = SNAPSHOT_RE.match(f.name)
+        if not m:
+            continue
+        groups.setdefault(m.group("stem"), []).append((m.group("ts"), f))
+
+    for stem, snapshots in groups.items():
+        snapshots.sort(key=lambda x: x[0], reverse=True)
+        for _, f in snapshots[keep:]:
+            f.unlink()
+            print(f"  ✓ Pruned old snapshot: {f.name}")
+
+
 # ── Main entrypoint ─────────────────────────────────────────────────────────
 
 def fetch_movie_trailers(movie_ids):
@@ -355,6 +384,8 @@ def fetch_all(data_dir="data"):
     with open(manifest_path, "w") as f:
         json.dump(manifest, f, indent=2)
     print(f"\n  ✓ Manifest: {manifest_path.name}")
+
+    prune_old_snapshots(data_dir)
 
     print(f"\n{'='*60}")
     print("FETCH COMPLETE — all data is live from TMDB API")
