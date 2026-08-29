@@ -4,34 +4,37 @@
 
 ## What's Actually Implemented
 
+This table describes `dashboard.py` specifically — the separate multipage app (`app.py` + `pages/`) has a different, broader feature set (see its own page list further down in this repo's `README.md`), including a Content Simulator and geographic heatmap that `dashboard.py` does not have.
+
 | Feature | Status | Notes |
 |---------|--------|-------|
-| Executive Summary (KPIs, charts) | ✅ Working | Uses Kaggle dataset or TMDB data |
+| Executive Summary (KPIs, charts) | ✅ Working | Uses the live TMDB snapshot (`data/*_latest.csv`) |
 | Content Mix Analysis | ✅ Working | Pie charts, treemaps, bar charts |
 | Genre Landscape | ✅ Working | Scatter plots, rating by genre |
 | Ratings & Quality | ✅ Working | Histograms, scatter, quality tiers |
 | Release Timeline | ✅ Working | Year trends, upcoming releases |
 | **Trailers View** | ✅ **NEW** | YouTube embed via TMDB API or search fallback |
 | Auto-Refresh Toggle | ✅ **NEW** | UI control (requires Streamlit Cloud for true auto-reload) |
-| API Status Indicator | ✅ **NEW** | Shows whether TMDB key is valid |
+| API Status Indicator | ✅ **NEW** | Shows whether TMDB key is valid — check this live rather than trusting a static claim here |
 | Data Freshness Badge | ✅ **NEW** | Hours since last fetch |
 | Settings Panel | ✅ **NEW** | Manifest viewer, cache clear, file check |
-| **Real-time API streaming** | ❌ **Not working** | TMDB API key invalid (status_code: 7) |
-| Movie poster images | ❌ Not implemented | Would need TMDB image CDN access |
-| Content Simulator | ❌ Not implemented | "What-if" tool described in DEPLOY.md but not built |
-| Geographic heatmap | ❌ Not implemented | Would need country-level data |
+| Movie poster images | ❌ Not implemented in `dashboard.py` | Would need TMDB image CDN access (the separate `pages/` app does use poster URLs via `utils.py`) |
+| Content Simulator | ❌ Not implemented in `dashboard.py` | Implemented separately in `pages/07_Content_Simulator.py`, part of the `app.py` multipage app |
+| Geographic heatmap | ❌ Not implemented in `dashboard.py` | Implemented separately in `pages/04_Geographic_Insights.py` |
 
 ## Data Sources (Honest)
 
+`dashboard.py` loads only the live TMDB snapshot layer — it does not load the self-extracted Netflix catalog CSVs at all (those power the standalone analysis scripts/notebooks and the GitHub Pages figures instead; see the project `README.md`'s "Data Sources" table).
+
 | Source | Records | Type | Status |
 |--------|---------|------|--------|
-| Netflix Catalog (Kaggle CC0) | 8,807 | Static | ✅ Always available |
-| TMDB Trending Movies | Variable | API | ❌ Key invalid |
-| TMDB Popular TV | Variable | API | ❌ Key invalid |
-| TMDB Top Rated | Variable | API | ❌ Key invalid |
-| TMDB Upcoming | Variable | API | ❌ Key invalid |
+| TMDB Trending Movies | 100 | API snapshot | ✅ Refreshed daily via `.github/workflows/tmdb-refresh.yml` |
+| TMDB Popular TV | 100 | API snapshot | ✅ Refreshed daily |
+| TMDB Genres | 19 | API snapshot | ✅ Refreshed daily |
+| TMDB Genre Popularity | 19 | API snapshot | ✅ Refreshed daily |
+| TMDB Upcoming | 100 | API snapshot | ✅ Refreshed daily |
 
-**Current fallback:** The dashboard loads CSV snapshots from `data/` directory. These were generated from TMDB on May 17, 2026 but cannot be refreshed without a valid API key.
+**Current data:** The dashboard loads CSV snapshots from the `data/` directory, refreshed automatically every day by the scheduled GitHub Actions workflow using a valid TMDB key (confirmed working — see `data/manifest_latest.json`'s `fetched_at` timestamp for the most recent successful run). That's separate from whether a Streamlit Cloud deployment of this app has its own `TMDB_API_KEY` secret configured — check this dashboard's own **Settings → API Status Indicator** for that, rather than trusting a static claim here.
 
 ## Local Development
 

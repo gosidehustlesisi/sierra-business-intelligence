@@ -1,21 +1,27 @@
 {
-  "fetched_at": "2026-05-17T16:58:17.852197",
-  "timestamp_suffix": "20260517_165735",
-  "source": "Netflix Movies & TV Shows Kaggle dataset (CC0) — transformed to TMDB schema",
-  "source_url": "https://www.kaggle.com/datasets/shivamb/netflix-shows",
-  "data_provenance": {
-    "original_dataset": "Netflix Movies & TV Shows (Kaggle, CC0)",
-    "original_records": 8807,
-    "transformation": "Mapped Netflix genres to TMDB genre taxonomy, generated synthetic TMDB IDs (100000+), applied TMDB schema structure",
-    "live_api_available": false,
-    "live_api_reason": "TMDB_API_KEY invalid (status_code: 7 from TMDB API)"
-  },
+  "fetched_at": "2026-08-29T12:26:00.253501",
+  "timestamp_suffix": "20260829_122403",
   "record_counts": {
-    "trending_movies": 6131,
-    "popular_tv": 2676,
-    "movie_genres": 27,
-    "top_rated_movies": 6131,
-    "upcoming_movies": 0,
-    "genre_popularity": 27
-  }
+    "trending_movies": 100,
+    "popular_tv": 100,
+    "movie_genres": 19,
+    "top_rated_movies": 100,
+    "upcoming_movies": 100,
+    "genre_popularity": 19
+  },
+  "trailer_count": 246,
+  "files": [
+    "trending_movies_20260829_122403.csv",
+    "popular_tv_20260829_122403.csv",
+    "movie_genres_20260829_122403.csv",
+    "top_rated_movies_20260829_122403.csv",
+    "upcoming_movies_20260829_122403.csv",
+    "genre_popularity_20260829_122403.csv",
+    "trending_movies_latest.csv",
+    "popular_tv_latest.csv",
+    "movie_genres_latest.csv",
+    "top_rated_movies_latest.csv",
+    "upcoming_movies_latest.csv",
+    "genre_popularity_latest.csv"
+  ]
 }

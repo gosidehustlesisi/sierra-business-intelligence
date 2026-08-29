@@ -72,7 +72,7 @@ google-search-trends-market-intelligence/
 │   ├── 01_exploratory_analysis.ipynb           # EDA: peaks, correlations, maps
 │   ├── 02_market_intelligence_sql.ipynb        # 10 business SQL queries
 │   └── 03_executive_dashboard.ipynb            # Streamlit-ready: explorer, alerts, forecast
-├── figures/                                    # 7 static PNGs extracted from notebooks
+├── figures/                                    # 14 static PNGs extracted from notebooks
 ├── fetch_trends_data.py                       # Automated pytrends fetcher
 ├── clean_data.py                              # Data cleaning / tidying
 ├── build_notebooks.py                         # Notebook generation + execution
@@ -194,7 +194,7 @@ Data Scientist · AI Architect · Performance Analytics & Visualization
 
 | Date | Action | Notes |
 |------|--------|-------|
-| 2026-05-17 | Full refresh via `fetch_trends_data.py` | Fresh pytrends data pulled; 3 notebooks re-executed; 7 figures extracted; README updated with current YoY metrics. 3 related-queries calls hit 429 rate-limit (recession, stock market, crypto). |
+| 2026-05-17 | Full refresh via `fetch_trends_data.py` | Fresh pytrends data pulled; 3 notebooks re-executed; 14 figures extracted; README updated with current YoY metrics. 3 related-queries calls hit 429 rate-limit (recession, stock market, crypto). |
 
 ---
 

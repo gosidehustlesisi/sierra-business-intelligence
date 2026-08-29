@@ -1,6 +1,6 @@
 # Amazon Product Review Intelligence
 
-**Deep analytics on 67,325 real Amazon Electronics reviews (2003–2013)**
+**Deep analytics on 67,325 real Amazon Electronics reviews (1999–2014)**
 
 Built entirely on verified public data from the UCSD Amazon Review Dataset. No simulated data, no paid API dependencies, no skeleton placeholders.
 
@@ -29,14 +29,13 @@ Built entirely on verified public data from the UCSD Amazon Review Dataset. No s
 ```
 amazon-product-review-intelligence/
 ├── data/
-│   ├── amazon_reviews_electronics_5core.csv      # 67K real reviews (2003-2013)
+│   ├── amazon_reviews_electronics_5core.csv      # 67K real reviews (1999-2014)
 │   ├── reviews_Electronics_5.json.gz              # 495MB raw source (UCSD, not tracked)
 │   └── data_dictionary.md                         # Column definitions and derived metrics
 ├── notebooks/
 │   ├── 01_exploratory_analysis.ipynb              # EDA: ratings, volume, helpfulness
-│   ├── 02_review_analytics_sql.ipynb              # DuckDB queries on review patterns
-│   └── 03_executive_dashboard.ipynb                 # Plotly interactive visualizations
-├── figures/                                       # 16+ extracted chart PNGs
+│   └── 02_review_analytics_sql.ipynb              # DuckDB queries on review patterns
+├── figures/                                       # 39 extracted chart PNGs
 ├── fetch_amazon_data.py                           # UCSD download + sampling pipeline
 ├── fetch_amazon_data_streaming.py                 # Streaming JSON parser for full dataset
 ├── dashboard.py                                   # Streamlit interactive dashboard

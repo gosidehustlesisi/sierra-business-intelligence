@@ -37,16 +37,16 @@ Same schema as worldwide, filtered to United States (`geo='US'`).
 | `type` | string | Always "top" |
 | `fetched_at` | string | Fetch timestamp |
 
-- **Shape:** 345 rows
+- **Shape:** 270 rows
 - **Source:** Google Trends via pytrends (`related_queries()`)
 
 ### `related_queries_rising.csv`
 Same schema as `related_queries_top.csv`, but `type` = "rising".
-- **Shape:** 340 rows
+- **Shape:** 263 rows
 - Contains queries with significant recent growth.
 
 ## Methodology Notes
-1. All data fetched live from Google Trends via `pytrends` on 2026-05-15.
+1. All data fetched live from Google Trends via `pytrends` on 2026-05-17.
 2. Interest values are **relative** (0–100) within the queried keyword group, not absolute search volume.
 3. No synthetic data — every value came from a live API call.
 4. Rate-limiting delays (1.5–2s) were applied between requests.
