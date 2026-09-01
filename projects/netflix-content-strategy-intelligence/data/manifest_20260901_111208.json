@@ -1,0 +1,27 @@
+{
+  "fetched_at": "2026-09-01T11:13:40.190157",
+  "timestamp_suffix": "20260901_111208",
+  "record_counts": {
+    "trending_movies": 99,
+    "popular_tv": 100,
+    "movie_genres": 19,
+    "top_rated_movies": 100,
+    "upcoming_movies": 100,
+    "genre_popularity": 19
+  },
+  "trailer_count": 239,
+  "files": [
+    "trending_movies_20260901_111208.csv",
+    "popular_tv_20260901_111208.csv",
+    "movie_genres_20260901_111208.csv",
+    "top_rated_movies_20260901_111208.csv",
+    "upcoming_movies_20260901_111208.csv",
+    "genre_popularity_20260901_111208.csv",
+    "trending_movies_latest.csv",
+    "popular_tv_latest.csv",
+    "movie_genres_latest.csv",
+    "top_rated_movies_latest.csv",
+    "upcoming_movies_latest.csv",
+    "genre_popularity_latest.csv"
+  ]
+}
