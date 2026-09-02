@@ -38,10 +38,8 @@ def load_all_data():
             result[key] = pd.DataFrame()
     
     # Load manifest for provenance
-    manifest_path = DATA_DIR / "manifest_20260521_221740.json"
-    if not manifest_path.exists():
-        manifest_path = DATA_DIR / "manifest_latest.json"
-    
+    manifest_path = DATA_DIR / "manifest_latest.json"
+
     manifest = {}
     if manifest_path.exists():
         try:

@@ -383,6 +383,9 @@ def fetch_all(data_dir="data"):
     manifest_path = Path(data_dir) / f"manifest_{ts}.json"
     with open(manifest_path, "w") as f:
         json.dump(manifest, f, indent=2)
+    latest_manifest_path = Path(data_dir) / "manifest_latest.json"
+    with open(latest_manifest_path, "w") as f:
+        json.dump(manifest, f, indent=2)
     print(f"\n  ✓ Manifest: {manifest_path.name}")
 
     prune_old_snapshots(data_dir)

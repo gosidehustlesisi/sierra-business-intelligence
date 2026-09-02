@@ -1,6 +1,6 @@
 # Netflix Content Strategy Intelligence
 
-> **TL;DR:** End-to-end business intelligence suite for entertainment content strategy. **438 live TMDB records** (trending, top-rated, upcoming, popular TV, genre popularity) **+ 8,807-title Netflix Kaggle catalog (CC0)** — all real, zero synthetic.
+> **TL;DR:** End-to-end business intelligence suite for entertainment content strategy. **438 live TMDB records** (trending, top-rated, upcoming, popular TV, genre popularity) **+ 8,170-title Netflix catalog, self-extracted from TMDB** — all real, zero synthetic, zero third-party CSV uploads.
 
 ---
 
@@ -8,7 +8,7 @@
 
 | Dataset | Records | Source | Status |
 |---------|---------|--------|--------|
-| Netflix Catalog | 8,807 | [Kaggle — Netflix Movies & TV Shows](https://www.kaggle.com/datasets/shivamb/netflix-shows) | ✅ Static CC0 |
+| Netflix Catalog | 8,170 | [TMDB API](https://developer.themoviedb.org/) — `/discover/movie`+`/discover/tv` (`with_watch_providers=8`, US region) | ✅ **Self-extracted** |
 | Trending Movies | 100 | [TMDB API](https://developer.themoviedb.org/) — `/trending/movie/day` | ✅ **LIVE** |
 | Popular TV Shows | 100 | [TMDB API](https://developer.themoviedb.org/) — `/tv/popular` | ✅ **LIVE** |
 | Movie Genres | 19 | [TMDB API](https://developer.themoviedb.org/) — `/genre/movie/list` | ✅ **LIVE** |
@@ -16,19 +16,22 @@
 | Upcoming Releases | 100 | [TMDB API](https://developer.themoviedb.org/) — `/movie/upcoming` | ✅ **LIVE** |
 | Genre Popularity | 19 | [TMDB API](https://developer.themoviedb.org/) — `/discover/movie` | ✅ **LIVE** |
 
-**Total: 8,807 catalog titles + 438 live TMDB records = 9,245 real records**
+**Total: 8,170 catalog titles + 438 live TMDB records = 8,608 real records**
+
+> **Note:** the catalog layer (`netflix_catalog_latest.csv`) is produced and analyzed by the standalone scripts (`fetch_netflix_catalog.py`, `catalog_analysis.py`, notebooks) and powers the GitHub Pages catalog figures — the live Streamlit app (`dashboard.py` / `pages/`) currently renders only the 438-record live TMDB snapshot layer, not the catalog CSVs.
 
 ### How It Works
 
-- **Kaggle dataset** provides the historical Netflix catalog backbone — 8,807 titles with type, genre, rating, and date_added
-- **TMDB API** provides current industry signals — what's trending now, what's coming next, which genres are hot
+- **Self-extracted TMDB catalog** provides the Netflix content backbone — 8,170 titles pulled via `/discover` with `with_watch_providers=8` (Netflix, flatrate), type, genre, rating, and release date — no third-party CSV uploads
+- **TMDB API** also provides current industry signals — what's trending now, what's coming next, which genres are hot
 - `fetch_tmdb_data.py` pulls live data with rate-limit respect (40 req / 10 sec) using authenticated API key
 - All live data includes `fetched_at` timestamp and real TMDB IDs (not synthetic)
 
 ### Data Freshness
 
-Live TMDB data fetched: **2026-05-21 22:17 UTC**  
-To refresh: `python fetch_tmdb_data.py` — new timestamped files + updated `*_latest.csv` symlinks
+Live TMDB data fetched: **2026-08-29 12:26 UTC** (refreshed daily by `.github/workflows/tmdb-refresh.yml`)
+Catalog last extracted: **2026-08-24** (refreshed weekly/monthly by `netflix-catalog.yml` / `netflix-enrich.yml`)
+To refresh manually: `python fetch_tmdb_data.py` — new timestamped files + updated `*_latest.csv` files
 
 ---
 
@@ -41,7 +44,7 @@ How is the entertainment content landscape structured across type, genre, rating
 ## What It Does
 
 - **Live TMDB Fetcher:** `fetch_tmdb_data.py` pulls 438 real-time entertainment records from TMDB API — trending movies, popular TV, top-rated, upcoming releases, and genre popularity scores. Rate-limited (40 req / 10 sec) and authenticated.
-- **Catalog Backbone:** 8,807-title Netflix Kaggle dataset (CC0) provides historical content strategy context — type, genre, rating, date_added
+- **Catalog Backbone:** 8,170-title Netflix catalog, self-extracted from TMDB, provides content strategy context — type, genre, rating, release date
 - **Exploratory Analysis:** Full EDA — genre distribution, rating trends, popularity scores, release patterns
 - **SQL Analytics:** 10 business-grade SQL queries (DuckDB in-memory) answering strategic questions
 - **Executive Dashboard:** Interactive Plotly visualizations for stakeholder presentations
@@ -88,7 +91,7 @@ jupyter lab notebooks/
 ```
 
 Notebooks:
-- `01_exploratory_analysis.ipynb` — EDA with matplotlib/seaborn (Kaggle catalog + TMDB live)
+- `01_exploratory_analysis.ipynb` — EDA with matplotlib/seaborn (TMDB catalog + TMDB live)
 - `02_content_intelligence_sql.ipynb` — 10 DuckDB SQL queries
 - `03_executive_dashboard.ipynb` — Interactive Plotly charts
 
@@ -149,12 +152,11 @@ python fetch_tmdb_data.py
 - **Genre Landscape:** 19 TMDB genres with popularity scores and total catalog depth
 - **Popularity vs. Quality:** TMDB provides both metrics — correlation analysis possible
 
-### From Netflix Kaggle Catalog (Historical Context)
-- **Content Mix:** Movies dominate at 69.6% (6,131) vs. TV shows 30.4% (2,676)
-- **Genre Leaders:** Drama, Comedy, and Thriller are the top 3 movie genres
-- **Rating Distribution:** Mean vote average of 6.48 with a left skew — most content clusters around 6–7
-- **Release Pattern:** Content production peaked in the late 2010s, with a sharp 2020+ decline (dataset limitation)
-- **Quality Tiers:** ~35% of content is rated Good (7.0–7.9), ~15% Excellent (8.0+)
+### From the Self-Extracted TMDB Catalog (Content Strategy Context)
+- **Content Mix:** Movies dominate at 57.2% (4,674) vs. TV shows 42.8% (3,496)
+- **Genre Leaders:** Drama, Comedy, and Documentary are the top 3 genres
+- **Rating Distribution:** Mean vote average of 6.8 (titles with ≥10 votes) — most content clusters around 6–7
+- **Quality Tiers:** 33.1% of rated content is Good (7.0–7.9), 9.2% Excellent (8.0+)
 
 ---
 
@@ -163,7 +165,7 @@ python fetch_tmdb_data.py
 | Layer | Tool |
 |-------|------|
 | Live Data | TMDB API — authenticated, rate-limited |
-| Catalog Backbone | Netflix Kaggle dataset (CC0) |
+| Catalog Backbone | TMDB API — self-extracted Netflix catalog |
 | Language | Python 3.12 |
 | Data Processing | pandas, numpy |
 | SQL Analytics | DuckDB (in-memory) |
@@ -241,11 +243,11 @@ netflix-content-strategy-intelligence/
 API docs: https://developer.themoviedb.org/docs/getting-started  
 Rate limit: 40 requests per 10 seconds (respected in fetcher)  
 Records: 438 (trending 100, popular TV 100, genres 19, top-rated 100, upcoming 100, genre popularity 19)  
-Fetched: 2026-05-21 22:17 UTC  
+Fetched: 2026-08-29 12:26 UTC (daily via `.github/workflows/tmdb-refresh.yml`)  
 Authentication: API key + optional v4 read token
 
-**Catalog (static):** [Netflix Movies & TV Shows](https://www.kaggle.com/datasets/shivamb/netflix-shows)  
-Author: Shivam Bansal | License: CC0 Public Domain | Records: 8,807 | Updated: 2021
+**Catalog (self-extracted):** TMDB `/discover` (`with_watch_providers=8` Netflix, flatrate, US region)  
+Records: 8,170 | Extracted: 2026-08-24 (refreshed weekly/monthly via `netflix-catalog.yml` / `netflix-enrich.yml`) | Zero third-party CSV uploads
 
 ---
 

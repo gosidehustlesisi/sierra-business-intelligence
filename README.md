@@ -4,10 +4,10 @@
 
 <h1>SIERRA BUSINESS INTELLIGENCE</h1>
 
-> **Real Netflix catalog data (Kaggle CC0), real Amazon reviews, real Google Trends — zero synthetic records.**
+> **Real Netflix catalog data (self-extracted from TMDB), real Amazon reviews, real Google Trends — zero synthetic records.**
 
 <p>
-  <b>76,394+ real records · 3 projects · 8 notebooks · 75 charts</b>
+  <b>77,704+ real records · 3 projects · 8 notebooks · 73 charts</b>
 </p>
 
 <p>
@@ -55,7 +55,7 @@ Explore the full cinematic portfolio with interactive gallery, lightbox, and 28 
 
 | Source | Verification | Records |
 |---|---|---|
-| **Kaggle** — Netflix Movies & TV Shows | Direct CSV download, SHA-verified | 8,807 titles |
+| **TMDB** — Netflix Catalog (self-extracted, `/discover`) | Live API via `fetch_netflix_catalog.py` | 8,170 titles |
 | **TMDB** — Trending, Top-Rated, Upcoming + Genre Popularity | Live API via `fetch_tmdb_data.py` | 438 live records |
 | **UCSD** — Amazon Reviews (Electronics 5-core) | Direct CSV download | 67,325 reviews |
 | **Google Trends** — pytrends API + BigQuery | Live API extraction, weekly granularity | 1,771 trend records |
@@ -68,11 +68,11 @@ These aren't toy models. Every number below came from running real code on real 
 
 | Project | Domain | Records | Source | Notebooks | Charts | Status |
 |---|---|---|---|---|---|---|
-| **Netflix Content Strategy** | Media & Entertainment | 9,245 titles | Kaggle Netflix (CC0) + TMDB Live | 3 | 17+ | ✅ Complete |
-| **Amazon Review Intelligence** | E-commerce & Retail | 67,325 reviews | UCSD Amazon 5-core | 3 | 21+ | ✅ Complete |
-| **Google Search Trends** | Market Intelligence | 1,923 records | pytrends live API | 3 | 11+ | ✅ Complete |
+| **Netflix Content Strategy** | Media & Entertainment | 8,608 titles | TMDB self-extracted catalog + TMDB Live | 3 | 20 | ✅ Complete |
+| **Amazon Review Intelligence** | E-commerce & Retail | 67,325 reviews | UCSD Amazon 5-core | 2 | 39 | ✅ Complete |
+| **Google Search Trends** | Market Intelligence | 1,771 records | pytrends live API | 3 | 14 | ✅ Complete |
 
-**Total: 76,394+ real records · 9 notebooks · 49+ production charts · 0 synthetic data**
+**Total: 77,704+ real records · 8 notebooks · 73 production charts · 0 synthetic data**
 
 ---
 
@@ -89,7 +89,7 @@ I built this because hiring managers in BI and analytics roles don't need toy mo
 ## Project 1: Netflix Content Strategy Intelligence
 
 <p>
-  <img src="https://img.shields.io/badge/Source-Kaggle%20Netflix-CC0-brightgreen" alt="Kaggle">
+  <img src="https://img.shields.io/badge/Source-TMDB%20Self--Extracted-brightgreen" alt="TMDB Catalog">
   <img src="https://img.shields.io/badge/Source-TMDB%20Live-01b4e4" alt="TMDB">
   <img src="https://img.shields.io/badge/SQL-DuckDB-yellow" alt="DuckDB">
   <img src="https://img.shields.io/badge/Dashboard-Streamlit-ff4b4b" alt="Streamlit">
@@ -97,20 +97,22 @@ I built this because hiring managers in BI and analytics roles don't need toy mo
 
 ### What This Means for Business
 
-Content acquisition and portfolio management decisions backed by SQL-driven lifecycle analysis on 8,807-title Kaggle catalog **plus 438 live records from TMDB API** (trending, top-rated, upcoming, genre popularity). I quantified that TV shows reach Netflix 2.5× faster than movies (2.1 vs. 5.3 years), identified US concentration at 36.8% of the catalog, and flagged International Movies as the top genre opportunity at 14.2% share. Live TMDB data adds current genre popularity scores and upcoming release pipeline visibility.
+Content acquisition and portfolio management decisions backed by SQL-driven lifecycle analysis on an 8,170-title Netflix catalog, self-extracted from TMDB (`/discover`, no third-party CSV) **plus 438 live records from TMDB API** (trending, top-rated, upcoming, genre popularity). Live TMDB data adds current genre popularity scores and upcoming release pipeline visibility.
+
+> The catalog's detailed lifecycle/rating breakdown (US concentration %, average catalog-to-platform lifecycle, content-rating mix, year-over-year additions) was originally computed against a retired Kaggle-sourced catalog with a different schema and hasn't been recomputed against the current TMDB-sourced catalog yet — re-run `notebooks/02_content_intelligence_sql.ipynb` against the current `netflix_catalog_latest.csv` to refresh those specific figures.
 
 ### Why This Matters to Hiring Managers
 
-I wrote 10 business-facing SQL queries in DuckDB against a real 8,807-title catalog, used window functions for cohort analysis, and built an 11-view Streamlit dashboard. I can do this on your warehouse on day one.
+I wrote 10 business-facing SQL queries in DuckDB against a real 8,170-title catalog, used window functions for cohort analysis, and built an 11-view Streamlit dashboard. I can do this on your warehouse on day one.
 
 ### Metrics Grid
 
-| 8,807 titles | 6,131 movies (69.6%) / 2,676 TV shows (30.4%) | 36.8% US concentration | 4.4-year avg lifecycle |
+| 8,170 titles | 4,674 movies (57.2%) / 3,496 TV shows (42.8%) | Mean rating 6.8 | Drama, Comedy, Documentary lead |
 |---|---|---|---|
-| 14.2% International Movies | TV-MA = 36.4% | Peak 2019: 1,999 titles added | 11 dashboard views |
-| **TMDB enrichment optional** | Trending, top-rated, upcoming | 19 genre popularity scores | Updated 2026-05-21 |
+| 33.1% rated "Good" (7.0–7.9) | 9.2% rated "Excellent" (8.0+) | 19 genre popularity scores | 11 dashboard views |
+| **TMDB enrichment optional** | Trending, top-rated, upcoming | Self-extracted, zero third-party CSVs | Catalog updated 2026-08-24 |
 
-**Peak insight:** Netflix's catalog is 70% movies but TV shows turn around faster — if you're still licensing movies on a 5-year horizon, you're bleeding speed.
+**Peak insight:** Netflix's catalog is 57% movies vs. 43% TV — Drama, Comedy, and Documentary lead by volume across both.
 
 ### Key Figures
 
@@ -119,17 +121,19 @@ I wrote 10 business-facing SQL queries in DuckDB against a real 8,807-title cata
   <img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/03_quality_sunburst.png" width="45%" alt="Quality Sunburst">
 </p>
 
-> **Peak insight — Content Mix:** Movies dominate at 69.6%, but the TV show pipeline is 2.5× faster — a strategic pivot signal for acquisition teams.
+> **Peak insight — Content Mix:** Movies outnumber TV shows in the catalog — a strategic signal for acquisition teams weighing licensing horizons.
+>
+> *(Note: these three figures — Content Mix, Quality Sunburst, Genre Treemap — predate the switch to the self-extracted TMDB catalog and are pending regeneration; the equivalent up-to-date figures live at `docs/figures/nflx_07_content_mix.png` and `docs/figures/nflx_08_genre_treemap.png`, refreshed via `catalog_analysis.py`.)*
 
 <p align="center">
   <img src="https://raw.githubusercontent.com/gosidehustlesisi/sierra-business-intelligence/main/projects/netflix-content-strategy-intelligence/figures/03_genre_treemap.png" width="70%" alt="Genre Treemap">
 </p>
 
-> **Peak insight — Genre Landscape:** Drama and Comedy hold volume, but International Movies at 14.2% represent the largest untapped expansion opportunity.
+> **Peak insight — Genre Landscape:** Drama and Comedy hold the most volume across the catalog.
 
 ### How We Got There
 
-DuckDB in-memory analytics on Kaggle's Netflix dataset **augmented with live TMDB API data** (trending movies, popular TV, top-rated, upcoming releases, genre popularity via `/discover/movie`). Window functions for release-to-platform gap analysis. SQL `UNNEST` for multi-value genre/country parsing. Matplotlib/Seaborn for 8 output visualizations + Plotly for 5 interactive HTML exports. Streamlit dashboard with 11 chart definitions including portfolio overview, regional heatmap, genre opportunity scoring, and acquisition timeline. **Live data fetcher:** `fetch_tmdb_data.py` pulls 438 records on demand via authenticated TMDB API.
+DuckDB in-memory analytics on the self-extracted TMDB Netflix catalog **augmented with live TMDB API data** (trending movies, popular TV, top-rated, upcoming releases, genre popularity via `/discover/movie`). Window functions for release-to-platform gap analysis. SQL `UNNEST` for multi-value genre/country parsing. Matplotlib/Seaborn for 8 output visualizations + Plotly for 5 interactive HTML exports. Streamlit dashboard with 11 chart definitions including portfolio overview, regional heatmap, genre opportunity scoring, and acquisition timeline. **Live data fetcher:** `fetch_tmdb_data.py` pulls 438 records on demand via authenticated TMDB API.
 
 ### Notebook
 
@@ -253,9 +257,9 @@ I can build your competitive intelligence pipeline — live data ingestion, auto
 
 | Project | Primary Source | Method | Records | Citation / URL |
 |---|---|---|---|---|
-| **Netflix Content Strategy** | Kaggle — Netflix Movies & TV Shows | Direct CSV download | 8,807 titles | [Shivam Bansal, CC0](https://www.kaggle.com/datasets/shivamb/netflix-shows) |
+| **Netflix Content Strategy** | TMDB — self-extracted Netflix catalog | `/discover` API, `with_watch_providers=8` | 8,170 titles | [TMDB API](https://developer.themoviedb.org/) |
 | **Amazon Review Intelligence** | UCSD Julian McAuley — Amazon Reviews (Electronics 5-core) | JSON.gz stream, 1/13 sample | 67,325 reviews | [Ni, Li & McAuley, EMNLP 2019](http://jmcauley.ucsd.edu/data/amazon/) |
-| **Google Search Trends** | Google Trends via pytrends | Live API, weekly granularity | 1,923 records | [Google Trends](https://trends.google.com) |
+| **Google Search Trends** | Google Trends via pytrends | Live API, weekly granularity | 1,771 records | [Google Trends](https://trends.google.com) |
 
 **Zero synthetic data. Zero `generate_data.py`. Every metric was computed on real data.**
 
@@ -333,7 +337,6 @@ sierra-business-intelligence/
 │       └── requirements.txt
 │
 ├── avatar.png
-├── logo.png
 ├── README.md
 └── LICENSE
 ```

@@ -1,7 +1,7 @@
 {
-  "generated": "2026-06-17",
-  "count": 242,
-  "total_bytes": 114384603,
+  "generated": "2026-08-29",
+  "count": 342,
+  "total_bytes": 148464112,
   "assets": [
     {
       "path": ".github/workflows/execute-notebooks.yml",
@@ -27,8 +27,8 @@
     {
       "path": ".github/workflows/tmdb-refresh.yml",
       "type": "yml",
-      "size_bytes": 1173,
-      "size": "1.1 KB",
+      "size_bytes": 1205,
+      "size": "1.2 KB",
       "desc": "workflow: Daily TMDB Data Refresh"
     },
     {
@@ -44,6 +44,13 @@
       "size_bytes": 220,
       "size": "220 B",
       "desc": "EXAMPLE file"
+    },
+    {
+      "path": "INDEX.md",
+      "type": "md",
+      "size_bytes": 25069,
+      "size": "24.5 KB",
+      "desc": "Repository Index"
     },
     {
       "path": "LICENSE",
@@ -62,8 +69,8 @@
     {
       "path": "README.md",
       "type": "md",
-      "size_bytes": 19530,
-      "size": "19.1 KB",
+      "size_bytes": 20147,
+      "size": "19.7 KB",
       "desc": "Clone the repo"
     },
     {
@@ -83,8 +90,8 @@
     {
       "path": "docs/catalog_stats.json",
       "type": "json",
-      "size_bytes": 281,
-      "size": "281 B",
+      "size_bytes": 280,
+      "size": "280 B",
       "desc": "keys: total_titles, movies, tv, pct_non_english, mean_vote_average, year_min, year_max, top_genres"
     },
     {
@@ -216,65 +223,65 @@
     {
       "path": "docs/figures/nflx_01_genre_distribution.png",
       "type": "png",
-      "size_bytes": 70235,
-      "size": "68.6 KB",
-      "desc": "image 1192\u00d7716px \u00b7 Netflix"
+      "size_bytes": 81316,
+      "size": "79.4 KB",
+      "desc": "image 1192\u00d7717px \u00b7 Netflix"
     },
     {
       "path": "docs/figures/nflx_02_popularity_vs_rating.png",
       "type": "png",
-      "size_bytes": 76967,
-      "size": "75.2 KB",
-      "desc": "image 1192\u00d7716px \u00b7 Netflix"
+      "size_bytes": 86281,
+      "size": "84.3 KB",
+      "desc": "image 1192\u00d7717px \u00b7 Netflix"
     },
     {
       "path": "docs/figures/nflx_03_rating_distribution.png",
       "type": "png",
-      "size_bytes": 32883,
-      "size": "32.1 KB",
-      "desc": "image 1192\u00d7716px \u00b7 Netflix"
+      "size_bytes": 36771,
+      "size": "35.9 KB",
+      "desc": "image 1192\u00d7717px \u00b7 Netflix"
     },
     {
       "path": "docs/figures/nflx_04_release_trends.png",
       "type": "png",
-      "size_bytes": 44208,
-      "size": "43.2 KB",
-      "desc": "image 1192\u00d7716px \u00b7 Netflix"
+      "size_bytes": 46915,
+      "size": "45.8 KB",
+      "desc": "image 1192\u00d7717px \u00b7 Netflix"
     },
     {
       "path": "docs/figures/nflx_05_top_genres.png",
       "type": "png",
-      "size_bytes": 50270,
-      "size": "49.1 KB",
-      "desc": "image 1192\u00d7716px \u00b7 Netflix"
+      "size_bytes": 57928,
+      "size": "56.6 KB",
+      "desc": "image 1192\u00d7717px \u00b7 Netflix"
     },
     {
       "path": "docs/figures/nflx_06_content_growth.png",
       "type": "png",
-      "size_bytes": 33476,
-      "size": "32.7 KB",
-      "desc": "image 1192\u00d7716px \u00b7 Netflix"
+      "size_bytes": 38408,
+      "size": "37.5 KB",
+      "desc": "image 1192\u00d7717px \u00b7 Netflix"
     },
     {
       "path": "docs/figures/nflx_07_content_mix.png",
       "type": "png",
-      "size_bytes": 35036,
-      "size": "34.2 KB",
+      "size_bytes": 37429,
+      "size": "36.6 KB",
       "desc": "image 812\u00d7835px \u00b7 Netflix"
     },
     {
       "path": "docs/figures/nflx_08_genre_treemap.png",
       "type": "png",
-      "size_bytes": 35203,
-      "size": "34.4 KB",
+      "size_bytes": 38695,
+      "size": "37.8 KB",
       "desc": "image 1192\u00d7717px \u00b7 Netflix"
     },
     {
       "path": "docs/figures/nflx_09_quality_tiers.png",
       "type": "png",
-      "size_bytes": 28233,
-      "size": "27.6 KB",
-      "desc": "image 1192\u00d7716px \u00b7 Netflix"
+      "size_bytes": 31564,
+      "size": "30.8 KB",
+      "desc": "image 1192\u00d7717px \u00b7 Netflix"
     },
     {
       "path": "docs/figures/nflx_10_upcoming_releases.png",
@@ -364,11 +371,11 @@
       "desc": "interactive Plotly dashboard (8.6 KB)"
     },
     {
-      "path": "logo.png",
-      "type": "png",
-      "size_bytes": 9379,
-      "size": "9.2 KB",
-      "desc": "image"
+      "path": "index.json",
+      "type": "json",
+      "size_bytes": 66807,
+      "size": "65.2 KB",
+      "desc": "keys: generated, count, total_bytes, assets"
     },
     {
       "path": "projects/amazon-product-customer-intelligence/.gitignore",
@@ -387,8 +394,8 @@
     {
       "path": "projects/amazon-product-customer-intelligence/README.md",
       "type": "md",
-      "size_bytes": 7974,
-      "size": "7.8 KB",
+      "size_bytes": 7876,
+      "size": "7.7 KB",
       "desc": "Amazon Product Review Intelligence"
     },
     {
@@ -780,7 +787,7 @@
     {
       "path": "projects/google-search-trends-market-intelligence/README.md",
       "type": "md",
-      "size_bytes": 8809,
+      "size_bytes": 8811,
       "size": "8.6 KB",
       "desc": "Google Search Trends \u2014 Market Intelligence"
     },
@@ -1101,22 +1108,22 @@
     {
       "path": "projects/netflix-content-strategy-intelligence/DEPLOY.md",
       "type": "md",
-      "size_bytes": 3876,
-      "size": "3.8 KB",
+      "size_bytes": 5032,
+      "size": "4.9 KB",
       "desc": "\ud83c\udfac Netflix Content Strategy Intelligence"
     },
     {
       "path": "projects/netflix-content-strategy-intelligence/README.md",
       "type": "md",
-      "size_bytes": 12078,
-      "size": "11.8 KB",
+      "size_bytes": 12834,
+      "size": "12.5 KB",
       "desc": "Netflix Content Strategy Intelligence"
     },
     {
       "path": "projects/netflix-content-strategy-intelligence/app.py",
       "type": "py",
-      "size_bytes": 3199,
-      "size": "3.1 KB",
+      "size_bytes": 4235,
+      "size": "4.1 KB",
       "desc": "<style>"
     },
     {
@@ -1141,11 +1148,11 @@
       "desc": "Resolve TMDB API keys from multiple sources in priority order."
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260517_165735.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260816_063831.csv",
       "type": "csv",
-      "size_bytes": 1334,
-      "size": "1.3 KB",
-      "rows": 27,
+      "size_bytes": 1103,
+      "size": "1.1 KB",
+      "rows": 19,
       "cols": 5,
       "columns": [
         "genre_id",
@@ -1154,10 +1161,42 @@
         "total_movies_in_genre",
         "fetched_at"
       ],
-      "desc": "27 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
+      "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260519_224840.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260817_065419.csv",
+      "type": "csv",
+      "size_bytes": 1105,
+      "size": "1.1 KB",
+      "rows": 19,
+      "cols": 5,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "top_movie_popularity",
+        "total_movies_in_genre",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260818_064138.csv",
+      "type": "csv",
+      "size_bytes": 1104,
+      "size": "1.1 KB",
+      "rows": 19,
+      "cols": 5,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "top_movie_popularity",
+        "total_movies_in_genre",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260819_064200.csv",
       "type": "csv",
       "size_bytes": 1101,
       "size": "1.1 KB",
@@ -1173,9 +1212,9 @@
       "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260521_192044.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260820_064354.csv",
       "type": "csv",
-      "size_bytes": 1101,
+      "size_bytes": 1104,
       "size": "1.1 KB",
       "rows": 19,
       "cols": 5,
@@ -1189,9 +1228,137 @@
       "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260521_221740.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260821_064505.csv",
+      "type": "csv",
+      "size_bytes": 1098,
+      "size": "1.1 KB",
+      "rows": 19,
+      "cols": 5,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "top_movie_popularity",
+        "total_movies_in_genre",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260822_063856.csv",
+      "type": "csv",
+      "size_bytes": 1099,
+      "size": "1.1 KB",
+      "rows": 19,
+      "cols": 5,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "top_movie_popularity",
+        "total_movies_in_genre",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260823_063956.csv",
       "type": "csv",
       "size_bytes": 1100,
+      "size": "1.1 KB",
+      "rows": 19,
+      "cols": 5,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "top_movie_popularity",
+        "total_movies_in_genre",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260824_065725.csv",
+      "type": "csv",
+      "size_bytes": 1105,
+      "size": "1.1 KB",
+      "rows": 19,
+      "cols": 5,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "top_movie_popularity",
+        "total_movies_in_genre",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260825_064623.csv",
+      "type": "csv",
+      "size_bytes": 1103,
+      "size": "1.1 KB",
+      "rows": 19,
+      "cols": 5,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "top_movie_popularity",
+        "total_movies_in_genre",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260826_064905.csv",
+      "type": "csv",
+      "size_bytes": 1102,
+      "size": "1.1 KB",
+      "rows": 19,
+      "cols": 5,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "top_movie_popularity",
+        "total_movies_in_genre",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260827_172239.csv",
+      "type": "csv",
+      "size_bytes": 1099,
+      "size": "1.1 KB",
+      "rows": 19,
+      "cols": 5,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "top_movie_popularity",
+        "total_movies_in_genre",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260828_181540.csv",
+      "type": "csv",
+      "size_bytes": 1102,
+      "size": "1.1 KB",
+      "rows": 19,
+      "cols": 5,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "top_movie_popularity",
+        "total_movies_in_genre",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_20260829_122403.csv",
+      "type": "csv",
+      "size_bytes": 1097,
       "size": "1.1 KB",
       "rows": 19,
       "cols": 5,
@@ -1207,7 +1374,7 @@
     {
       "path": "projects/netflix-content-strategy-intelligence/data/genre_popularity_latest.csv",
       "type": "csv",
-      "size_bytes": 1100,
+      "size_bytes": 1097,
       "size": "1.1 KB",
       "rows": 19,
       "cols": 5,
@@ -1221,56 +1388,112 @@
       "desc": "19 rows \u00d7 5 cols \u2014 genre_id, genre_name, top_movie_popularity, total_movies_in_genre, fetched_at"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260517_165735.json",
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260816_063831.json",
       "type": "json",
-      "size_bytes": 818,
-      "size": "818 B",
-      "desc": "keys: fetched_at, timestamp_suffix, source, source_url, data_provenance, record_counts"
+      "size_bytes": 765,
+      "size": "765 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, trailer_count, files"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260519_224840.json",
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260817_065419.json",
       "type": "json",
-      "size_bytes": 741,
-      "size": "741 B",
-      "desc": "keys: fetched_at, timestamp_suffix, record_counts, files"
+      "size_bytes": 765,
+      "size": "765 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, trailer_count, files"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260521_192044.json",
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260818_064138.json",
       "type": "json",
-      "size_bytes": 741,
-      "size": "741 B",
-      "desc": "keys: fetched_at, timestamp_suffix, record_counts, files"
+      "size_bytes": 765,
+      "size": "765 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, trailer_count, files"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260521_221740.json",
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260819_064200.json",
       "type": "json",
-      "size_bytes": 741,
-      "size": "741 B",
-      "desc": "keys: fetched_at, timestamp_suffix, record_counts, files"
+      "size_bytes": 765,
+      "size": "765 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, trailer_count, files"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260820_064354.json",
+      "type": "json",
+      "size_bytes": 765,
+      "size": "765 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, trailer_count, files"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260821_064505.json",
+      "type": "json",
+      "size_bytes": 765,
+      "size": "765 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, trailer_count, files"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260822_063856.json",
+      "type": "json",
+      "size_bytes": 765,
+      "size": "765 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, trailer_count, files"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260823_063956.json",
+      "type": "json",
+      "size_bytes": 765,
+      "size": "765 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, trailer_count, files"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260824_065725.json",
+      "type": "json",
+      "size_bytes": 765,
+      "size": "765 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, trailer_count, files"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260825_064623.json",
+      "type": "json",
+      "size_bytes": 765,
+      "size": "765 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, trailer_count, files"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260826_064905.json",
+      "type": "json",
+      "size_bytes": 764,
+      "size": "764 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, trailer_count, files"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260827_172239.json",
+      "type": "json",
+      "size_bytes": 765,
+      "size": "765 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, trailer_count, files"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260828_181540.json",
+      "type": "json",
+      "size_bytes": 765,
+      "size": "765 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, trailer_count, files"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/manifest_20260829_122403.json",
+      "type": "json",
+      "size_bytes": 765,
+      "size": "765 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, trailer_count, files"
     },
     {
       "path": "projects/netflix-content-strategy-intelligence/data/manifest_latest.json",
       "type": "json",
-      "size_bytes": 818,
-      "size": "818 B",
-      "desc": "keys: fetched_at, timestamp_suffix, source, source_url, data_provenance, record_counts"
+      "size_bytes": 765,
+      "size": "765 B",
+      "desc": "keys: fetched_at, timestamp_suffix, record_counts, trailer_count, files"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260517_165735.csv",
-      "type": "csv",
-      "size_bytes": 1118,
-      "size": "1.1 KB",
-      "rows": 27,
-      "cols": 3,
-      "columns": [
-        "genre_id",
-        "genre_name",
-        "fetched_at"
-      ],
-      "desc": "27 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
-    },
-    {
-      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260519_224840.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260816_063831.csv",
       "type": "csv",
       "size_bytes": 775,
       "size": "775 B",
@@ -1284,7 +1507,7 @@
       "desc": "19 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260521_192044.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260817_065419.csv",
       "type": "csv",
       "size_bytes": 775,
       "size": "775 B",
@@ -1298,7 +1521,161 @@
       "desc": "19 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260521_221740.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260818_064138.csv",
+      "type": "csv",
+      "size_bytes": 775,
+      "size": "775 B",
+      "rows": 19,
+      "cols": 3,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260819_064200.csv",
+      "type": "csv",
+      "size_bytes": 775,
+      "size": "775 B",
+      "rows": 19,
+      "cols": 3,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260820_064354.csv",
+      "type": "csv",
+      "size_bytes": 775,
+      "size": "775 B",
+      "rows": 19,
+      "cols": 3,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260821_064505.csv",
+      "type": "csv",
+      "size_bytes": 775,
+      "size": "775 B",
+      "rows": 19,
+      "cols": 3,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260822_063856.csv",
+      "type": "csv",
+      "size_bytes": 775,
+      "size": "775 B",
+      "rows": 19,
+      "cols": 3,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260823_063956.csv",
+      "type": "csv",
+      "size_bytes": 775,
+      "size": "775 B",
+      "rows": 19,
+      "cols": 3,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260824_065725.csv",
+      "type": "csv",
+      "size_bytes": 775,
+      "size": "775 B",
+      "rows": 19,
+      "cols": 3,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260825_064623.csv",
+      "type": "csv",
+      "size_bytes": 775,
+      "size": "775 B",
+      "rows": 19,
+      "cols": 3,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260826_064905.csv",
+      "type": "csv",
+      "size_bytes": 775,
+      "size": "775 B",
+      "rows": 19,
+      "cols": 3,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260827_172239.csv",
+      "type": "csv",
+      "size_bytes": 775,
+      "size": "775 B",
+      "rows": 19,
+      "cols": 3,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260828_181540.csv",
+      "type": "csv",
+      "size_bytes": 775,
+      "size": "775 B",
+      "rows": 19,
+      "cols": 3,
+      "columns": [
+        "genre_id",
+        "genre_name",
+        "fetched_at"
+      ],
+      "desc": "19 rows \u00d7 3 cols \u2014 genre_id, genre_name, fetched_at"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/movie_genres_20260829_122403.csv",
       "type": "csv",
       "size_bytes": 775,
       "size": "775 B",
@@ -1351,11 +1728,11 @@
       "desc": "7,498 rows \u00d7 15 cols \u2014 tmdb_id, media_type, title, original_title, genres, genre_ids\u2026"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_latest.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_20260622_124601.csv",
       "type": "csv",
-      "size_bytes": 2651934,
+      "size_bytes": 2659240,
       "size": "2.5 MB",
-      "rows": 7498,
+      "rows": 7460,
       "cols": 15,
       "columns": [
         "tmdb_id",
@@ -1373,7 +1750,289 @@
         "origin_country",
         "overview"
       ],
-      "desc": "7,498 rows \u00d7 15 cols \u2014 tmdb_id, media_type, title, original_title, genres, genre_ids\u2026"
+      "desc": "7,460 rows \u00d7 15 cols \u2014 tmdb_id, media_type, title, original_title, genres, genre_ids\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_20260629_115548.csv",
+      "type": "csv",
+      "size_bytes": 2843619,
+      "size": "2.7 MB",
+      "rows": 8025,
+      "cols": 15,
+      "columns": [
+        "tmdb_id",
+        "media_type",
+        "title",
+        "original_title",
+        "genres",
+        "genre_ids",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "release_year",
+        "original_language",
+        "origin_country",
+        "overview"
+      ],
+      "desc": "8,025 rows \u00d7 15 cols \u2014 tmdb_id, media_type, title, original_title, genres, genre_ids\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_20260706_112458.csv",
+      "type": "csv",
+      "size_bytes": 2858674,
+      "size": "2.7 MB",
+      "rows": 8065,
+      "cols": 15,
+      "columns": [
+        "tmdb_id",
+        "media_type",
+        "title",
+        "original_title",
+        "genres",
+        "genre_ids",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "release_year",
+        "original_language",
+        "origin_country",
+        "overview"
+      ],
+      "desc": "8,065 rows \u00d7 15 cols \u2014 tmdb_id, media_type, title, original_title, genres, genre_ids\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_20260713_101805.csv",
+      "type": "csv",
+      "size_bytes": 2871532,
+      "size": "2.7 MB",
+      "rows": 8101,
+      "cols": 15,
+      "columns": [
+        "tmdb_id",
+        "media_type",
+        "title",
+        "original_title",
+        "genres",
+        "genre_ids",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "release_year",
+        "original_language",
+        "origin_country",
+        "overview"
+      ],
+      "desc": "8,101 rows \u00d7 15 cols \u2014 tmdb_id, media_type, title, original_title, genres, genre_ids\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_20260720_095221.csv",
+      "type": "csv",
+      "size_bytes": 2836738,
+      "size": "2.7 MB",
+      "rows": 8007,
+      "cols": 15,
+      "columns": [
+        "tmdb_id",
+        "media_type",
+        "title",
+        "original_title",
+        "genres",
+        "genre_ids",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "release_year",
+        "original_language",
+        "origin_country",
+        "overview"
+      ],
+      "desc": "8,007 rows \u00d7 15 cols \u2014 tmdb_id, media_type, title, original_title, genres, genre_ids\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_20260727_103505.csv",
+      "type": "csv",
+      "size_bytes": 2844696,
+      "size": "2.7 MB",
+      "rows": 8032,
+      "cols": 15,
+      "columns": [
+        "tmdb_id",
+        "media_type",
+        "title",
+        "original_title",
+        "genres",
+        "genre_ids",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "release_year",
+        "original_language",
+        "origin_country",
+        "overview"
+      ],
+      "desc": "8,032 rows \u00d7 15 cols \u2014 tmdb_id, media_type, title, original_title, genres, genre_ids\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_20260803_103442.csv",
+      "type": "csv",
+      "size_bytes": 2880027,
+      "size": "2.7 MB",
+      "rows": 8123,
+      "cols": 15,
+      "columns": [
+        "tmdb_id",
+        "media_type",
+        "title",
+        "original_title",
+        "genres",
+        "genre_ids",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "release_year",
+        "original_language",
+        "origin_country",
+        "overview"
+      ],
+      "desc": "8,123 rows \u00d7 15 cols \u2014 tmdb_id, media_type, title, original_title, genres, genre_ids\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_20260810_082317.csv",
+      "type": "csv",
+      "size_bytes": 2886560,
+      "size": "2.8 MB",
+      "rows": 8134,
+      "cols": 15,
+      "columns": [
+        "tmdb_id",
+        "media_type",
+        "title",
+        "original_title",
+        "genres",
+        "genre_ids",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "release_year",
+        "original_language",
+        "origin_country",
+        "overview"
+      ],
+      "desc": "8,134 rows \u00d7 15 cols \u2014 tmdb_id, media_type, title, original_title, genres, genre_ids\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_20260817_074503.csv",
+      "type": "csv",
+      "size_bytes": 2892627,
+      "size": "2.8 MB",
+      "rows": 8150,
+      "cols": 15,
+      "columns": [
+        "tmdb_id",
+        "media_type",
+        "title",
+        "original_title",
+        "genres",
+        "genre_ids",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "release_year",
+        "original_language",
+        "origin_country",
+        "overview"
+      ],
+      "desc": "8,150 rows \u00d7 15 cols \u2014 tmdb_id, media_type, title, original_title, genres, genre_ids\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_20260824_075231.csv",
+      "type": "csv",
+      "size_bytes": 2898148,
+      "size": "2.8 MB",
+      "rows": 8170,
+      "cols": 15,
+      "columns": [
+        "tmdb_id",
+        "media_type",
+        "title",
+        "original_title",
+        "genres",
+        "genre_ids",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "release_year",
+        "original_language",
+        "origin_country",
+        "overview"
+      ],
+      "desc": "8,170 rows \u00d7 15 cols \u2014 tmdb_id, media_type, title, original_title, genres, genre_ids\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_enriched.csv",
+      "type": "csv",
+      "size_bytes": 6650499,
+      "size": "6.3 MB",
+      "rows": 8025,
+      "cols": 41,
+      "columns": [
+        "tmdb_id",
+        "media_type",
+        "title",
+        "original_title",
+        "genres",
+        "genre_ids",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "release_year",
+        "original_language",
+        "origin_country",
+        "overview"
+      ],
+      "desc": "8,025 rows \u00d7 41 cols \u2014 tmdb_id, media_type, title, original_title, genres, genre_ids\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_enriched_manifest.json",
+      "type": "json",
+      "size_bytes": 342,
+      "size": "342 B",
+      "desc": "keys: enriched_at, total_titles, with_runtime, with_budget_and_revenue, with_keywords, source, note"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_latest.csv",
+      "type": "csv",
+      "size_bytes": 2898148,
+      "size": "2.8 MB",
+      "rows": 8170,
+      "cols": 15,
+      "columns": [
+        "tmdb_id",
+        "media_type",
+        "title",
+        "original_title",
+        "genres",
+        "genre_ids",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "release_year",
+        "original_language",
+        "origin_country",
+        "overview"
+      ],
+      "desc": "8,170 rows \u00d7 15 cols \u2014 tmdb_id, media_type, title, original_title, genres, genre_ids\u2026"
     },
     {
       "path": "projects/netflix-content-strategy-intelligence/data/netflix_catalog_manifest.json",
@@ -1383,55 +2042,9 @@
       "desc": "keys: source, region, extracted_at, total_titles, movies, tv, tmdb_reported_total_movies, tmdb_reported_total_tv"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260517_165735.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260816_063831.csv",
       "type": "csv",
-      "size_bytes": 712453,
-      "size": "695.8 KB",
-      "rows": 2676,
-      "cols": 12,
-      "columns": [
-        "tmdb_id",
-        "name",
-        "original_name",
-        "popularity",
-        "vote_average",
-        "vote_count",
-        "release_date",
-        "origin_country",
-        "genre_ids",
-        "overview",
-        "poster_path",
-        "fetched_at"
-      ],
-      "desc": "2,676 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
-    },
-    {
-      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260519_224840.csv",
-      "type": "csv",
-      "size_bytes": 41789,
-      "size": "40.8 KB",
-      "rows": 100,
-      "cols": 12,
-      "columns": [
-        "tmdb_id",
-        "name",
-        "original_name",
-        "popularity",
-        "vote_average",
-        "vote_count",
-        "first_air_date",
-        "origin_country",
-        "genre_ids",
-        "overview",
-        "poster_path",
-        "fetched_at"
-      ],
-      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
-    },
-    {
-      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260521_192044.csv",
-      "type": "csv",
-      "size_bytes": 44026,
+      "size_bytes": 43997,
       "size": "43.0 KB",
       "rows": 100,
       "cols": 12,
@@ -1452,10 +2065,286 @@
       "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260521_221740.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260817_065419.csv",
       "type": "csv",
-      "size_bytes": 43777,
+      "size_bytes": 44462,
+      "size": "43.4 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "name",
+        "original_name",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "first_air_date",
+        "origin_country",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260818_064138.csv",
+      "type": "csv",
+      "size_bytes": 43510,
+      "size": "42.5 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "name",
+        "original_name",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "first_air_date",
+        "origin_country",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260819_064200.csv",
+      "type": "csv",
+      "size_bytes": 44395,
+      "size": "43.4 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "name",
+        "original_name",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "first_air_date",
+        "origin_country",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260820_064354.csv",
+      "type": "csv",
+      "size_bytes": 45230,
+      "size": "44.2 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "name",
+        "original_name",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "first_air_date",
+        "origin_country",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260821_064505.csv",
+      "type": "csv",
+      "size_bytes": 44401,
+      "size": "43.4 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "name",
+        "original_name",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "first_air_date",
+        "origin_country",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260822_063856.csv",
+      "type": "csv",
+      "size_bytes": 45524,
+      "size": "44.5 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "name",
+        "original_name",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "first_air_date",
+        "origin_country",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260823_063956.csv",
+      "type": "csv",
+      "size_bytes": 42990,
+      "size": "42.0 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "name",
+        "original_name",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "first_air_date",
+        "origin_country",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260824_065725.csv",
+      "type": "csv",
+      "size_bytes": 42538,
+      "size": "41.5 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "name",
+        "original_name",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "first_air_date",
+        "origin_country",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260825_064623.csv",
+      "type": "csv",
+      "size_bytes": 43796,
       "size": "42.8 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "name",
+        "original_name",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "first_air_date",
+        "origin_country",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260826_064905.csv",
+      "type": "csv",
+      "size_bytes": 44502,
+      "size": "43.5 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "name",
+        "original_name",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "first_air_date",
+        "origin_country",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260827_172239.csv",
+      "type": "csv",
+      "size_bytes": 42541,
+      "size": "41.5 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "name",
+        "original_name",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "first_air_date",
+        "origin_country",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260828_181540.csv",
+      "type": "csv",
+      "size_bytes": 43443,
+      "size": "42.4 KB",
+      "rows": 100,
+      "cols": 12,
+      "columns": [
+        "tmdb_id",
+        "name",
+        "original_name",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "first_air_date",
+        "origin_country",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "fetched_at"
+      ],
+      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_20260829_122403.csv",
+      "type": "csv",
+      "size_bytes": 43259,
+      "size": "42.2 KB",
       "rows": 100,
       "cols": 12,
       "columns": [
@@ -1477,8 +2366,8 @@
     {
       "path": "projects/netflix-content-strategy-intelligence/data/popular_tv_latest.csv",
       "type": "csv",
-      "size_bytes": 43777,
-      "size": "42.8 KB",
+      "size_bytes": 43259,
+      "size": "42.2 KB",
       "rows": 100,
       "cols": 12,
       "columns": [
@@ -1498,12 +2387,12 @@
       "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, name, original_name, popularity, vote_average, vote_count\u2026"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260517_165735.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260816_063831.csv",
       "type": "csv",
-      "size_bytes": 1444848,
-      "size": "1.4 MB",
-      "rows": 6131,
-      "cols": 9,
+      "size_bytes": 45942,
+      "size": "44.9 KB",
+      "rows": 100,
+      "cols": 13,
       "columns": [
         "tmdb_id",
         "title",
@@ -1513,17 +2402,21 @@
         "release_date",
         "genre_ids",
         "overview",
-        "fetched_at"
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
       ],
-      "desc": "6,131 rows \u00d7 9 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260519_224840.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260817_065419.csv",
       "type": "csv",
-      "size_bytes": 36779,
-      "size": "35.9 KB",
+      "size_bytes": 45925,
+      "size": "44.8 KB",
       "rows": 100,
-      "cols": 9,
+      "cols": 13,
       "columns": [
         "tmdb_id",
         "title",
@@ -1533,17 +2426,21 @@
         "release_date",
         "genre_ids",
         "overview",
-        "fetched_at"
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
       ],
-      "desc": "100 rows \u00d7 9 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260521_192044.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260818_064138.csv",
       "type": "csv",
-      "size_bytes": 36723,
-      "size": "35.9 KB",
+      "size_bytes": 45927,
+      "size": "44.9 KB",
       "rows": 100,
-      "cols": 9,
+      "cols": 13,
       "columns": [
         "tmdb_id",
         "title",
@@ -1553,17 +2450,21 @@
         "release_date",
         "genre_ids",
         "overview",
-        "fetched_at"
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
       ],
-      "desc": "100 rows \u00d7 9 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260521_221740.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260819_064200.csv",
       "type": "csv",
-      "size_bytes": 36769,
-      "size": "35.9 KB",
+      "size_bytes": 45930,
+      "size": "44.9 KB",
       "rows": 100,
-      "cols": 9,
+      "cols": 13,
       "columns": [
         "tmdb_id",
         "title",
@@ -1573,17 +2474,261 @@
         "release_date",
         "genre_ids",
         "overview",
-        "fetched_at"
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
       ],
-      "desc": "100 rows \u00d7 9 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260820_064354.csv",
+      "type": "csv",
+      "size_bytes": 45921,
+      "size": "44.8 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260821_064505.csv",
+      "type": "csv",
+      "size_bytes": 46260,
+      "size": "45.2 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260822_063856.csv",
+      "type": "csv",
+      "size_bytes": 46030,
+      "size": "45.0 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260823_063956.csv",
+      "type": "csv",
+      "size_bytes": 46032,
+      "size": "45.0 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260824_065725.csv",
+      "type": "csv",
+      "size_bytes": 46051,
+      "size": "45.0 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260825_064623.csv",
+      "type": "csv",
+      "size_bytes": 46048,
+      "size": "45.0 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260826_064905.csv",
+      "type": "csv",
+      "size_bytes": 46041,
+      "size": "45.0 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260827_172239.csv",
+      "type": "csv",
+      "size_bytes": 45999,
+      "size": "44.9 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260828_181540.csv",
+      "type": "csv",
+      "size_bytes": 45786,
+      "size": "44.7 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_20260829_122403.csv",
+      "type": "csv",
+      "size_bytes": 45672,
+      "size": "44.6 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "vote_average",
+        "vote_count",
+        "popularity",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
     },
     {
       "path": "projects/netflix-content-strategy-intelligence/data/top_rated_movies_latest.csv",
       "type": "csv",
-      "size_bytes": 36769,
-      "size": "35.9 KB",
+      "size_bytes": 45672,
+      "size": "44.6 KB",
       "rows": 100,
-      "cols": 9,
+      "cols": 13,
       "columns": [
         "tmdb_id",
         "title",
@@ -1593,17 +2738,246 @@
         "release_date",
         "genre_ids",
         "overview",
-        "fetched_at"
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
       ],
-      "desc": "100 rows \u00d7 9 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, vote_average, vote_count, popularity, release_date\u2026"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260517_165735.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/trailers_20260816_063831.csv",
       "type": "csv",
-      "size_bytes": 1576895,
-      "size": "1.5 MB",
-      "rows": 6131,
-      "cols": 12,
+      "size_bytes": 12117,
+      "size": "11.8 KB",
+      "rows": 228,
+      "cols": 4,
+      "columns": [
+        "tmdb_id",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type"
+      ],
+      "desc": "228 rows \u00d7 4 cols \u2014 tmdb_id, youtube_key, trailer_name, trailer_type"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trailers_20260817_065419.csv",
+      "type": "csv",
+      "size_bytes": 12088,
+      "size": "11.8 KB",
+      "rows": 227,
+      "cols": 4,
+      "columns": [
+        "tmdb_id",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type"
+      ],
+      "desc": "227 rows \u00d7 4 cols \u2014 tmdb_id, youtube_key, trailer_name, trailer_type"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trailers_20260818_064138.csv",
+      "type": "csv",
+      "size_bytes": 12368,
+      "size": "12.1 KB",
+      "rows": 234,
+      "cols": 4,
+      "columns": [
+        "tmdb_id",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type"
+      ],
+      "desc": "234 rows \u00d7 4 cols \u2014 tmdb_id, youtube_key, trailer_name, trailer_type"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trailers_20260819_064200.csv",
+      "type": "csv",
+      "size_bytes": 12437,
+      "size": "12.1 KB",
+      "rows": 235,
+      "cols": 4,
+      "columns": [
+        "tmdb_id",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type"
+      ],
+      "desc": "235 rows \u00d7 4 cols \u2014 tmdb_id, youtube_key, trailer_name, trailer_type"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trailers_20260820_064354.csv",
+      "type": "csv",
+      "size_bytes": 12315,
+      "size": "12.0 KB",
+      "rows": 232,
+      "cols": 4,
+      "columns": [
+        "tmdb_id",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type"
+      ],
+      "desc": "232 rows \u00d7 4 cols \u2014 tmdb_id, youtube_key, trailer_name, trailer_type"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trailers_20260821_064505.csv",
+      "type": "csv",
+      "size_bytes": 12347,
+      "size": "12.1 KB",
+      "rows": 230,
+      "cols": 4,
+      "columns": [
+        "tmdb_id",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type"
+      ],
+      "desc": "230 rows \u00d7 4 cols \u2014 tmdb_id, youtube_key, trailer_name, trailer_type"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trailers_20260822_063856.csv",
+      "type": "csv",
+      "size_bytes": 12751,
+      "size": "12.5 KB",
+      "rows": 236,
+      "cols": 4,
+      "columns": [
+        "tmdb_id",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type"
+      ],
+      "desc": "236 rows \u00d7 4 cols \u2014 tmdb_id, youtube_key, trailer_name, trailer_type"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trailers_20260823_063956.csv",
+      "type": "csv",
+      "size_bytes": 12759,
+      "size": "12.5 KB",
+      "rows": 240,
+      "cols": 4,
+      "columns": [
+        "tmdb_id",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type"
+      ],
+      "desc": "240 rows \u00d7 4 cols \u2014 tmdb_id, youtube_key, trailer_name, trailer_type"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trailers_20260824_065725.csv",
+      "type": "csv",
+      "size_bytes": 12991,
+      "size": "12.7 KB",
+      "rows": 244,
+      "cols": 4,
+      "columns": [
+        "tmdb_id",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type"
+      ],
+      "desc": "244 rows \u00d7 4 cols \u2014 tmdb_id, youtube_key, trailer_name, trailer_type"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trailers_20260825_064623.csv",
+      "type": "csv",
+      "size_bytes": 12632,
+      "size": "12.3 KB",
+      "rows": 235,
+      "cols": 4,
+      "columns": [
+        "tmdb_id",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type"
+      ],
+      "desc": "235 rows \u00d7 4 cols \u2014 tmdb_id, youtube_key, trailer_name, trailer_type"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trailers_20260826_064905.csv",
+      "type": "csv",
+      "size_bytes": 11587,
+      "size": "11.3 KB",
+      "rows": 215,
+      "cols": 4,
+      "columns": [
+        "tmdb_id",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type"
+      ],
+      "desc": "215 rows \u00d7 4 cols \u2014 tmdb_id, youtube_key, trailer_name, trailer_type"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trailers_20260827_172239.csv",
+      "type": "csv",
+      "size_bytes": 12982,
+      "size": "12.7 KB",
+      "rows": 239,
+      "cols": 4,
+      "columns": [
+        "tmdb_id",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type"
+      ],
+      "desc": "239 rows \u00d7 4 cols \u2014 tmdb_id, youtube_key, trailer_name, trailer_type"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trailers_20260828_181540.csv",
+      "type": "csv",
+      "size_bytes": 13082,
+      "size": "12.8 KB",
+      "rows": 240,
+      "cols": 4,
+      "columns": [
+        "tmdb_id",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type"
+      ],
+      "desc": "240 rows \u00d7 4 cols \u2014 tmdb_id, youtube_key, trailer_name, trailer_type"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trailers_20260829_122403.csv",
+      "type": "csv",
+      "size_bytes": 13567,
+      "size": "13.2 KB",
+      "rows": 246,
+      "cols": 4,
+      "columns": [
+        "tmdb_id",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type"
+      ],
+      "desc": "246 rows \u00d7 4 cols \u2014 tmdb_id, youtube_key, trailer_name, trailer_type"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trailers_latest.csv",
+      "type": "csv",
+      "size_bytes": 13567,
+      "size": "13.2 KB",
+      "rows": 246,
+      "cols": 4,
+      "columns": [
+        "tmdb_id",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type"
+      ],
+      "desc": "246 rows \u00d7 4 cols \u2014 tmdb_id, youtube_key, trailer_name, trailer_type"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260816_063831.csv",
+      "type": "csv",
+      "size_bytes": 46008,
+      "size": "44.9 KB",
+      "rows": 100,
+      "cols": 16,
       "columns": [
         "tmdb_id",
         "title",
@@ -1616,17 +2990,19 @@
         "overview",
         "poster_path",
         "media_type",
-        "fetched_at"
+        "fetched_at",
+        "youtube_key",
+        "trailer_name"
       ],
-      "desc": "6,131 rows \u00d7 12 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+      "desc": "100 rows \u00d7 16 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260519_224840.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260817_065419.csv",
       "type": "csv",
-      "size_bytes": 39745,
-      "size": "38.8 KB",
+      "size_bytes": 45381,
+      "size": "44.3 KB",
       "rows": 100,
-      "cols": 12,
+      "cols": 16,
       "columns": [
         "tmdb_id",
         "title",
@@ -1639,17 +3015,19 @@
         "overview",
         "poster_path",
         "media_type",
-        "fetched_at"
+        "fetched_at",
+        "youtube_key",
+        "trailer_name"
       ],
-      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+      "desc": "100 rows \u00d7 16 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260521_192044.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260818_064138.csv",
       "type": "csv",
-      "size_bytes": 38760,
-      "size": "37.9 KB",
+      "size_bytes": 46452,
+      "size": "45.4 KB",
       "rows": 100,
-      "cols": 12,
+      "cols": 16,
       "columns": [
         "tmdb_id",
         "title",
@@ -1662,17 +3040,19 @@
         "overview",
         "poster_path",
         "media_type",
-        "fetched_at"
+        "fetched_at",
+        "youtube_key",
+        "trailer_name"
       ],
-      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+      "desc": "100 rows \u00d7 16 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260521_221740.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260819_064200.csv",
       "type": "csv",
-      "size_bytes": 39896,
-      "size": "39.0 KB",
+      "size_bytes": 45332,
+      "size": "44.3 KB",
       "rows": 100,
-      "cols": 12,
+      "cols": 16,
       "columns": [
         "tmdb_id",
         "title",
@@ -1685,17 +3065,269 @@
         "overview",
         "poster_path",
         "media_type",
-        "fetched_at"
+        "fetched_at",
+        "youtube_key",
+        "trailer_name"
       ],
-      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+      "desc": "100 rows \u00d7 16 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260820_064354.csv",
+      "type": "csv",
+      "size_bytes": 46181,
+      "size": "45.1 KB",
+      "rows": 100,
+      "cols": 16,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "original_title",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "media_type",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name"
+      ],
+      "desc": "100 rows \u00d7 16 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260821_064505.csv",
+      "type": "csv",
+      "size_bytes": 46725,
+      "size": "45.6 KB",
+      "rows": 100,
+      "cols": 16,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "original_title",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "media_type",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name"
+      ],
+      "desc": "100 rows \u00d7 16 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260822_063856.csv",
+      "type": "csv",
+      "size_bytes": 46724,
+      "size": "45.6 KB",
+      "rows": 100,
+      "cols": 16,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "original_title",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "media_type",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name"
+      ],
+      "desc": "100 rows \u00d7 16 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260823_063956.csv",
+      "type": "csv",
+      "size_bytes": 46806,
+      "size": "45.7 KB",
+      "rows": 100,
+      "cols": 16,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "original_title",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "media_type",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name"
+      ],
+      "desc": "100 rows \u00d7 16 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260824_065725.csv",
+      "type": "csv",
+      "size_bytes": 48257,
+      "size": "47.1 KB",
+      "rows": 100,
+      "cols": 16,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "original_title",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "media_type",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name"
+      ],
+      "desc": "100 rows \u00d7 16 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260825_064623.csv",
+      "type": "csv",
+      "size_bytes": 47391,
+      "size": "46.3 KB",
+      "rows": 100,
+      "cols": 16,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "original_title",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "media_type",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name"
+      ],
+      "desc": "100 rows \u00d7 16 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260826_064905.csv",
+      "type": "csv",
+      "size_bytes": 47750,
+      "size": "46.6 KB",
+      "rows": 99,
+      "cols": 16,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "original_title",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "media_type",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name"
+      ],
+      "desc": "99 rows \u00d7 16 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260827_172239.csv",
+      "type": "csv",
+      "size_bytes": 48247,
+      "size": "47.1 KB",
+      "rows": 100,
+      "cols": 16,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "original_title",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "media_type",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name"
+      ],
+      "desc": "100 rows \u00d7 16 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260828_181540.csv",
+      "type": "csv",
+      "size_bytes": 49124,
+      "size": "48.0 KB",
+      "rows": 100,
+      "cols": 16,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "original_title",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "media_type",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name"
+      ],
+      "desc": "100 rows \u00d7 16 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_20260829_122403.csv",
+      "type": "csv",
+      "size_bytes": 48864,
+      "size": "47.7 KB",
+      "rows": 100,
+      "cols": 16,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "original_title",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "release_date",
+        "genre_ids",
+        "overview",
+        "poster_path",
+        "media_type",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name"
+      ],
+      "desc": "100 rows \u00d7 16 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
     },
     {
       "path": "projects/netflix-content-strategy-intelligence/data/trending_movies_latest.csv",
       "type": "csv",
-      "size_bytes": 39896,
-      "size": "39.0 KB",
+      "size_bytes": 48864,
+      "size": "47.7 KB",
       "rows": 100,
-      "cols": 12,
+      "cols": 16,
       "columns": [
         "tmdb_id",
         "title",
@@ -1708,17 +3340,19 @@
         "overview",
         "poster_path",
         "media_type",
-        "fetched_at"
+        "fetched_at",
+        "youtube_key",
+        "trailer_name"
       ],
-      "desc": "100 rows \u00d7 12 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
+      "desc": "100 rows \u00d7 16 cols \u2014 tmdb_id, title, original_title, popularity, vote_average, vote_count\u2026"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260519_224840.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260816_063831.csv",
       "type": "csv",
-      "size_bytes": 34895,
-      "size": "34.1 KB",
+      "size_bytes": 44222,
+      "size": "43.2 KB",
       "rows": 100,
-      "cols": 9,
+      "cols": 13,
       "columns": [
         "tmdb_id",
         "title",
@@ -1728,17 +3362,21 @@
         "vote_count",
         "genre_ids",
         "overview",
-        "fetched_at"
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
       ],
-      "desc": "100 rows \u00d7 9 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260521_192044.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260817_065419.csv",
       "type": "csv",
-      "size_bytes": 34945,
-      "size": "34.1 KB",
+      "size_bytes": 44023,
+      "size": "43.0 KB",
       "rows": 100,
-      "cols": 9,
+      "cols": 13,
       "columns": [
         "tmdb_id",
         "title",
@@ -1748,17 +3386,21 @@
         "vote_count",
         "genre_ids",
         "overview",
-        "fetched_at"
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
       ],
-      "desc": "100 rows \u00d7 9 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
     },
     {
-      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260521_221740.csv",
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260818_064138.csv",
       "type": "csv",
-      "size_bytes": 34485,
-      "size": "33.7 KB",
+      "size_bytes": 43501,
+      "size": "42.5 KB",
       "rows": 100,
-      "cols": 9,
+      "cols": 13,
       "columns": [
         "tmdb_id",
         "title",
@@ -1768,17 +3410,285 @@
         "vote_count",
         "genre_ids",
         "overview",
-        "fetched_at"
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
       ],
-      "desc": "100 rows \u00d7 9 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260819_064200.csv",
+      "type": "csv",
+      "size_bytes": 43218,
+      "size": "42.2 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "release_date",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260820_064354.csv",
+      "type": "csv",
+      "size_bytes": 42973,
+      "size": "42.0 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "release_date",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260821_064505.csv",
+      "type": "csv",
+      "size_bytes": 43014,
+      "size": "42.0 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "release_date",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260822_063856.csv",
+      "type": "csv",
+      "size_bytes": 44118,
+      "size": "43.1 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "release_date",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260823_063956.csv",
+      "type": "csv",
+      "size_bytes": 44035,
+      "size": "43.0 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "release_date",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260824_065725.csv",
+      "type": "csv",
+      "size_bytes": 44532,
+      "size": "43.5 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "release_date",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260825_064623.csv",
+      "type": "csv",
+      "size_bytes": 44805,
+      "size": "43.8 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "release_date",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260826_064905.csv",
+      "type": "csv",
+      "size_bytes": 44000,
+      "size": "43.0 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "release_date",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260827_172239.csv",
+      "type": "csv",
+      "size_bytes": 42307,
+      "size": "41.3 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "release_date",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260828_181540.csv",
+      "type": "csv",
+      "size_bytes": 42683,
+      "size": "41.7 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "release_date",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+    },
+    {
+      "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_20260829_122403.csv",
+      "type": "csv",
+      "size_bytes": 42960,
+      "size": "42.0 KB",
+      "rows": 100,
+      "cols": 13,
+      "columns": [
+        "tmdb_id",
+        "title",
+        "release_date",
+        "popularity",
+        "vote_average",
+        "vote_count",
+        "genre_ids",
+        "overview",
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
+      ],
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
     },
     {
       "path": "projects/netflix-content-strategy-intelligence/data/upcoming_movies_latest.csv",
       "type": "csv",
-      "size_bytes": 34485,
-      "size": "33.7 KB",
+      "size_bytes": 42960,
+      "size": "42.0 KB",
       "rows": 100,
-      "cols": 9,
+      "cols": 13,
       "columns": [
         "tmdb_id",
         "title",
@@ -1788,9 +3698,13 @@
         "vote_count",
         "genre_ids",
         "overview",
-        "fetched_at"
+        "fetched_at",
+        "youtube_key",
+        "trailer_name",
+        "trailer_type",
+        "trailer_url"
       ],
-      "desc": "100 rows \u00d7 9 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
+      "desc": "100 rows \u00d7 13 cols \u2014 tmdb_id, title, release_date, popularity, vote_average, vote_count\u2026"
     },
     {
       "path": "projects/netflix-content-strategy-intelligence/enrich_catalog.py",
@@ -1816,8 +3730,8 @@
     {
       "path": "projects/netflix-content-strategy-intelligence/fetch_tmdb_data.py",
       "type": "py",
-      "size_bytes": 14291,
-      "size": "14.0 KB",
+      "size_bytes": 15596,
+      "size": "15.2 KB",
       "desc": "TMDB Live Data Fetcher"
     },
     {
@@ -2063,11 +3977,11 @@
     {
       "path": "projects/netflix-content-strategy-intelligence/notebooks/03_executive_dashboard.ipynb",
       "type": "ipynb",
-      "size_bytes": 20130,
-      "size": "19.7 KB",
-      "cells": 23,
+      "size_bytes": 16574,
+      "size": "16.2 KB",
+      "cells": 21,
       "cells_with_output": 0,
-      "desc": "notebook \u2014 23 cells, 0 with output"
+      "desc": "notebook \u2014 21 cells, 0 with output"
     },
     {
       "path": "projects/netflix-content-strategy-intelligence/notebooks/03_executive_dashboard_FINAL.ipynb",
@@ -2201,8 +4115,8 @@
     {
       "path": "projects/netflix-content-strategy-intelligence/utils.py",
       "type": "py",
-      "size_bytes": 2529,
-      "size": "2.5 KB",
+      "size_bytes": 2423,
+      "size": "2.4 KB",
       "desc": "Load all TMDB data with self-healing validation."
     },
     {
@@ -2211,6 +4125,13 @@
       "size_bytes": 278,
       "size": "278 B",
       "desc": "TXT file"
+    },
+    {
+      "path": "scripts/build_index.py",
+      "type": "py",
+      "size_bytes": 5934,
+      "size": "5.8 KB",
+      "desc": "Repo asset index generator."
     },
     {
       "path": "scripts/fetch_tmdb_data.py",
